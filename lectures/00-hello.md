@@ -1,9 +1,8 @@
 ---
 title: Hello, world!
 headerImg: sea.jpg
-date: 2017-03-28
+date: 2021-01-05
 ---
-
 
 
 ## A Programming Language
@@ -51,7 +50,7 @@ L2: ...
 But good luck writing
 
 - ... QuickSort
-- ... Fortnite
+- ... Zelda
 - ... Spotify!
 
 <br>
@@ -197,7 +196,7 @@ to create programs that are:
 
 ## Goal: How to Design new Languages
 
-New hot lanuages being designed in industry as we speak:
+New hot languages being designed in industry as we speak:
 
 - Flow, React @ Facebook
 - Rust @ Mozilla
@@ -284,13 +283,14 @@ etc.
 
 ### Teaching Assistants
 
+- [Michael Borkowski]
 - [Matt Kolosick](https://kolosick.com/)
-- [Rose Kunkel](https://github.com/rosekunkel)
 - [George Sakkas](https://www.linkedin.com/in/gsakkas)
 
 ### Tutors
 
-- [Darya Verzhbinsky](https://darya-ver.github.io/)
+- David Cao
+- Aidan Denlinger
 
 <br>
 <br>
@@ -312,8 +312,7 @@ etc.
 
 **Logic Programming**
 
-- Prolog (2 weeks?)
-
+- Prolog (2 weeks)
 
 <br>
 <br>
@@ -387,16 +386,15 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Course Logistics
 
-[webpage](https://ucsd-cse130.github.io/wi20)
+[webpage](https://ucsd-cse130.github.io/wi21)
 
 - Calendar
 - Lecture notes
 - Programming assignments
 
-[piazza](https://piazza.com/ucsd/winter2021/cse130/home)
+[piazza](https://piazza.com/class/kjivoxdgfuc1w2)
 
 - Go-to place if you have a question or need help
-- **Email is futile**
 
 <br>
 <br>
@@ -407,10 +405,9 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Grading
 
-- 30% Assignments
-- 30% Midterm **(Feb 10)**
-- 35% Final   **(Mar 18)**
-- 05% Class participation (clickers)
+- 45% Assignments
+- 25% Midterm **(Mon Feb 8)**
+- 30% Final   **(Thu Mar 18)**
 - 05% Piazza Extra Credit
   - To **top 20** best participants
 
@@ -429,15 +426,14 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 - At least a week before due date
 - On github
 
-**Four late days** 
+**Eight late days** 
 
 - used as **whole unit**
 - 5 mins late = 1 late day
 
-**Groups of two** can do hw together 
+**Groups of two** can do assignments together 
 
 - On `ieng6` or your own machine
-- Register your group [here][groups]
 - **Submit individually** (via github)
 
 <br>
@@ -449,16 +445,20 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Exams
 
+Asynchronous but over 24 hour period
+
 ### Midterm
 
-- in-class on *Monday, Feb 10*
-- 2-sided "cheat sheet"
+- *Monday, Feb 8*
 
 ### Final
 
-- March 18, 8-11a
+- *Thursday, March 18*
+
 - 2-sided "cheat sheet"
+
 - The final is cumulative
+
 - Midterm grade is calculated as `midterm > 0 ?  max(final, midterm) : 0`
   - you get a second chance if you don’t do well on the midterm
   - you **must take** the midterm and the final
@@ -529,15 +529,15 @@ Clickers Are Not Optional
 
 ### Discussion section
 
-- Wednesday    05:00-06:00pm in CENTER 113
+- Wednesday    05:00-06:00pm (see CANVAS for ZOOM)
 
 ### Office hours
 
-- Every day, check **calendar**
+- Every day, check **CANVAS calendar**
 
 ### Piazza
 
-- We answer during work hours and office hours
+- We answer during work hours and office hours (M-F)
 
 ### No text
 
@@ -601,7 +601,7 @@ in advance so that accommodations may be arranged.
 - Create a diverse and inclusive learning environment
 - Where all students feel comfortable and can thrive.
 - *Please let us know* if there is a way to make you feel more included 
-- In person, via email/discussion board, or slip note under my door!
+- In person, via email/discussion boar 
 
 ### Expectations 
 
@@ -654,6 +654,3 @@ be aware of [Basic Needs](http://basicneeds.ucsd.edu)
 <br>
 <br>
 <br>
-
-[clickers]: https://forms.gle/8gzTuqmVxRZ7anGX6
-[groups]: https://forms.gle/jP4fGinSii5vPmNW8

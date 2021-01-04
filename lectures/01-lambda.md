@@ -232,13 +232,12 @@ of one of three kinds:
 ## Examples
 
 ```haskell
-\x -> x             -- The identity function
+\x -> x             -- The identity function (id)
                     -- ("for any x compute x")
 
-\x -> (\y -> y)     -- A function that returns the identity function
+\x -> (\y -> y)     -- A function that returns (id)
 
-\f -> f (\x -> x)   -- A function that applies its argument 
-                    -- to the identity function
+\f -> (f (\x -> x)) -- A function that applies its argument to id 
 ```
 
 <br>
@@ -422,16 +421,23 @@ Think of middle-school algebra:
 
 ```haskell
 -- Simplify expression:
-
-  (x + 2)*(3*x - 1)
- =
-  ???
+  (1 + 2) * ((3 * 8) - 2)
+ = 
+   3      * ((3 * 8) - 2)
+ = 
+   3      * ( 24     - 2)
+ = 
+   3      *  22
+ = 
+   66
 ```
 
 <br>
 
-**Execute** = rewrite step-by-step following simple rules,
-until no more rules apply
+**Execute** = rewrite step-by-step 
+
+- Following simple *rules*
+- until no more rules *apply*
 
 <br>
 <br>
@@ -450,8 +456,8 @@ until no more rules apply
 
 <br>
 
-1. $\alpha$-step  (aka _renaming formals_)
-2. $\beta$-step   (aka _function call_)
+1. $\beta$-step   (aka _function call_)
+2. $\alpha$-step  (aka _renaming formals_)
 
 <br>
 
@@ -519,21 +525,19 @@ For example, `x` is free in:
 In the expression `(\x -> x) x`,
 is `x` _bound_ or _free_?
 
-**A.**  bound
+**A.**  first occurrence is bound, second is bound 
 
-**B.**  free
+**B.**  first occurrence is bound, second is free
 
-**C.**  first occurrence is bound, second is free
+**C.**  first occurrence is free, second is bound
 
-**D.**  first occurrence is bound, second and third are free
-
-**E.**  first two occurrences are bound, third is free
+**D.**  first occurrence is free, second is free 
 
 <br>
 
 (I) final
     
-    _Correct answer:_ **C**
+    _Correct answer:_ **B**
 
 <br>
 <br>
@@ -548,7 +552,7 @@ is `x` _bound_ or _free_?
 <br>
 
 
-## Free Variables
+## EXERCISE: Free Variables
 
 An variable `x` is **free** in `e` if *there exists* a free occurrence of `x` in `e`
 
@@ -619,8 +623,41 @@ What is the shortest closed expression?
 
 <br>
 
-1. $\alpha$-step  (aka _renaming formals_)
-2. $\beta$-step   (aka _function call_)
+1. $\beta$-step   (aka _function call_)
+2. $\alpha$-step  (aka _renaming formals_)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Semantics: Redex
+
+A **redex** is a term of the form
+
+<br>
+
+```
+  (\x -> e1) e2
+```
+
+A *function* `(\x -> e1)` 
+
+
+- `x` is the *parameter*
+- `e1` is the *returned* expression
+
+*Applied to* an argument `e2`
+
+- `e2` is the *argument* 
 
 <br>
 <br>
@@ -639,11 +676,16 @@ What is the shortest closed expression?
 
 <br>
 
+A **redex** b-steps to another term ...
+
 ```
   (\x -> e1) e2   =b>   e1[x := e2]
 ```
+
 <br>
+
 where `e1[x := e2]` means
+
 "`e1` with all _free_ occurrences of `x` replaced with `e2`"
 
 <br>
@@ -672,7 +714,7 @@ replace all free occurrences of the _formal_ by that _argument_
 <br>
 <br>
 
-## Examples
+## Redex Examples
 
 <br>
 
@@ -681,24 +723,7 @@ replace all free occurrences of the _formal_ by that _argument_
 =b> apple
 ```
 
-Is this right? Ask [Elsa](http://goto.ucsd.edu:8095/index.html#?demo=blank.lc)!
-
-<br>
-<br>
-
-(I) lecture
-
-    ```haskell
-    (\f -> f (\x -> x)) (give apple)
-    =b> ???
-    ```
-
-(I) final
-
-    ```haskell
-    (\f -> f (\x -> x)) (give apple)
-    =b> give apple (\x -> x)
-    ```
+Is this right? Ask [Elsa](https://goto.ucsd.edu/elsa/index.html)
 
 <br>
 <br>
@@ -756,6 +781,37 @@ Is this right? Ask [Elsa](http://goto.ucsd.edu:8095/index.html#?demo=blank.lc)!
 <br>
 
 ```haskell
+(\x -> y x y x) apple
+=b> ???
+```
+
+**A.** `apple apple apple apple`
+
+**B.** `y apple y apple`
+
+**C.** `y y y y`
+
+**D.** `apple` 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+## QUIZ
+
+<br>
+
+```haskell
 (\x -> x (\x -> x)) apple
 =b> ???
 ```
@@ -777,6 +833,34 @@ Is this right? Ask [Elsa](http://goto.ucsd.edu:8095/index.html#?demo=blank.lc)!
 
     _Correct answer:_ **A.**
     
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## EXERCISE 
+
+What is a $\lambda$-term `fill_this_in` such that
+
+<br>
+
+```haskell
+fill_this_in apple
+=b> banana
+```
+
+ELSA: https://goto.ucsd.edu/elsa/index.html
+
+[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585434473_24432.lc)
+
 <br>
 <br>
 <br>
@@ -824,12 +908,12 @@ Is this right?
 
 Is this right?
 
-**Problem**: the _free_ `y` in the argument has been **captured** by `\y`!
-
-**Solution**: make sure that all _free variables_ of the argument
-are different from the binders in the body. 
+**Problem**: The *free* `y` in the argument has been **captured** by `\y` in *body*!
 
 <br>
+
+**Solution**: Ensure that *formals* in the body are **different from** *free-variables* of argument! 
+
 <br>
 <br>
 <br>
@@ -850,12 +934,10 @@ We have to fix our definition of $\beta$-reduction:
   (\x -> e1) e2   =b>   e1[x := e2]
 ```
 <br>
-where `e1[x := e2]` means
-~~"`e1` with all _free_ occurrences of `x` replaced with `e2`"~~
+where `e1[x := e2]` means ~~"`e1` with all _free_ occurrences of `x` replaced with `e2`"~~
 
-  - `e1` with all _free_ occurrences of `x` replaced with `e2`,
-   **as long as** no free variables of `e2` get captured
-  - undefined otherwise
+  - `e1` with all _free_ occurrences of `x` replaced with `e2`
+  - **as long as** no free variables of `e2` get captured
 
 <br>  
 
@@ -863,14 +945,20 @@ Formally:
 
 ```haskell
 x[x := e]            = e
-y[x := e]            = y            -- assuming x /= y
+
+y[x := e]            = y                          -- as x /= y
+
 (e1 e2)[x := e]      = (e1[x := e]) (e2[x := e])
-(\x -> e1)[x := e]   = \x -> e1     -- why do we leave `e1` alone?
+
+(\x -> e1)[x := e]   = \x -> e1                   -- Q: Why leave `e1` unchanged?
+
 (\y -> e1)[x := e] 
   | not (y in FV(e)) = \y -> e1[x := e]
-  | otherise         = undefined    -- wait, but what do we do then???
-
 ```
+
+**Oops, but what to do if** `y` is in the *free-variables* of `e`? 
+
+  - i.e. if `\y -> ...` may *capture* those free variables?
 
 (I) final
     
@@ -896,8 +984,8 @@ y[x := e]            = y            -- assuming x /= y
 
 <br>
 
-1. $\alpha$-step  (aka _renaming formals_)
-2. $\beta$-step   (aka _function call_)
+1. $\beta$-step   (aka _function call_)
+2. $\alpha$-step  (aka _renaming formals_)
 
 <br>
 <br>
@@ -922,7 +1010,9 @@ y[x := e]            = y            -- assuming x /= y
 ```
 <br>
 
-- We can rename a formal parameter and replace all its occurrences in the body
+- We rename a formal parameter `x` to `y` 
+
+- By replace all occurrences of `x` in the body with `y`
 
 - We say that `\x -> e` $\alpha$-steps to `\y -> e[x := y]`
 
@@ -950,7 +1040,8 @@ What's wrong with these?
 
 (I) final
 
-    *Answer:* it violates the side-condition for $\alpha$-renaming that the new formal (`x`) must not occur freely in the body 
+    *Answer:* it violates the side-condition for $\alpha$-renaming 
+    that the new formal (`x`) must not occur freely in the body 
 
 ```haskell
 -- (B)
@@ -959,54 +1050,43 @@ What's wrong with these?
 
 (I) final
      
-    *Answer:* we should only rename within the body of the abstraction; the second `y` is a free variable, and hence must remain unchanged     
+    *Answer:* we should only rename within the body of the abstraction; 
+    the second `y` is a free variable, and hence must remain unchanged     
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Tricky Example Revisited
+
+<br>
 
 ```haskell
--- (C)
-\x -> \y -> x y   =a>    \apple -> \orange -> apple orange
-```
-     
-(I) final
-     
-    *Answer:* it's fine, but technically it's two $\alpha$-steps and not one
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## The Tricky One
-
-<br>
-
-(I) lecture
-
-    ```haskell
     (\x -> (\y -> x)) y
-    =a> ???
-    ```
-    
-(I) final
-
-    ```haskell
-    (\x -> (\y -> x)) y
+                                -- rename 'y' to 'z' to avoid capture
     =a> (\x -> (\z -> x)) y
+                                -- now do b-step without capture!
     =b> \z -> y
-    ```
+```
     
 <br>
 <br>
-To avoid getting confused, you can always rename formals, so that different variables have different names!
+To avoid getting confused, 
+
+- you can **always rename** formals, 
+
+- so different **variables** have different **names**!
 
 <br>
 <br>
@@ -1020,18 +1100,16 @@ To avoid getting confused, you can always rename formals, so that different vari
 <br>
 <br>
 <br>
-
 
 
 
 ## Normal Forms
 
-A **redex** is a $\lambda$-term of the form
+Recall **redex** is a $\lambda$-term of the form
 
 `(\x -> e1) e2`
 
-A $\lambda$-term is in **normal form** if it contains no redexes.
-
+A $\lambda$-term is in **normal form** if it *contains no redexes*.
 
 <br>
 <br>
@@ -1167,7 +1245,7 @@ To substitute name with its definition, use a `=d>` step:
 
 ```haskell
 ID apple
-  =d> (\x -> x x) apple  -- expand definition
+  =d> (\x -> x) apple    -- expand definition
   =b> apple              -- beta-reduce
 ```
 
@@ -1178,10 +1256,7 @@ Evaluation:
 
 - `e1 =*> e2`: `e1` reduces to `e2` in 0 or more steps
     - where each step is `=a>`, `=b>`, or `=d>`
-- `e1 =~> e2`: `e1` evaluates to `e2`
-
-_What is the difference?_
-
+- `e1 =~> e2`: `e1` evaluates to `e2` and `e2` is **in normal form**
 
 <br>
 <br>
@@ -1195,6 +1270,34 @@ _What is the difference?_
 <br>
 <br>
 <br>
+
+## EXERCISE
+
+Fill in the definitions of `FIRST`, `SECOND` and `THIRD` 
+such that you get the following behavior in `elsa`
+
+```haskell
+let FIRST  = fill_this_in
+let SECOND = fill_this_in
+let THIRD  = fill_this_in
+
+eval ex1 : 
+  FIRST apple banana orange
+  =*> apple 
+
+eval ex2 : 
+  SECOND apple banana orange
+  =*> banana 
+  
+eval ex3 : 
+  THIRD apple banana orange
+  =*> orange
+```
+
+ELSA: https://goto.ucsd.edu/elsa/index.html
+
+[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585434130_24421.lc)
+
 
 ## Non-Terminating Evaluation
 
@@ -1203,9 +1306,9 @@ _What is the difference?_
   =b> (\x -> x x) (\x -> x x)
 ```
 
-Oops, we can write programs that loop back to themselves...
+Some programs loop back to themselves...
 
-and never reduce to a normal form!
+... and *never* reduce to a normal form!
 
 This combinator is called $\Omega$
 
@@ -1221,7 +1324,7 @@ What if we pass $\Omega$ as an argument to another function?
 ```
 let OMEGA = (\x -> x x) (\x -> x x)
 
-(\x -> \y -> y) OMEGA
+(\x -> (\y -> y)) OMEGA
 ```
 
 Does this reduce to a normal form? Try it at home!
@@ -1379,7 +1482,6 @@ eval ite_true:
 
 Now you try it!
 
-
 Can you [fill in the blanks to make it happen?][elsa-ite]
 
 
@@ -1425,63 +1527,64 @@ Can you [fill in the blanks to make it happen?][elsa-ite]
 
 
 
-## Boolean Operators
+## EXERCISE: Boolean Operators
 
+ELSA: https://goto.ucsd.edu/elsa/index.html
+[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585435168_24442.lc)
 
 Now that we have `ITE` it's easy to define other Boolean operators:
 
+(I) lecture
+
+    ```haskell
+    let NOT = \b     -> ???
+    let OR  = \b1 b2 -> ???
+    let AND = \b1 b2 -> ???
+    ```
+
+(I) final 
+
+    ```haskell
+    let NOT = \b     -> ITE b FALSE TRUE 
+    
+    let AND = \b1 b2 -> ITE b1 b2 FALSE
+    
+    let OR  = \b1 b2 -> ITE b1 TRUE b2
+    ```
+
+When you are done, you should get the following behavior:
 
 ```haskell
-let NOT = \b     -> ???
+eval ex_not_t:
+  NOT TRUE =*> FALSE
+  
+eval ex_not_f:
+  NOT FALSE =*> TRUE 
+  
+eval ex_or_ff:
+  OR FALSE FALSE =*> FALSE
 
-let AND = \b1 b2 -> ???
+eval ex_or_ft:
+  OR FALSE TRUE =*> TRUE
+  
+eval ex_or_ft:
+  OR TRUE FALSE =*> TRUE
 
-let OR  = \b1 b2 -> ???
+eval ex_or_tt:
+  OR TRUE TRUE =*> TRUE
+  
+eval ex_and_ff:
+  AND FALSE FALSE =*> FALSE
+
+eval ex_and_ft:
+  AND FALSE TRUE =*> FALSE
+  
+eval ex_and_ft:
+  AND TRUE FALSE =*> FALSE
+
+eval ex_and_tt:
+  AND TRUE TRUE =*> TRUE
 ```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-```haskell
-let NOT = \b     -> ITE b FALSE TRUE 
-
-let AND = \b1 b2 -> ITE b1 b2 FALSE
-
-let OR  = \b1 b2 -> ITE b1 TRUE b2
-```
-
-<br>
-<br>
-
-Or, since `ITE` is redundant:
-
-```haskell
-let NOT = \b     -> b FALSE TRUE 
-
-let AND = \b1 b2 -> b1 b2 FALSE
-
-let OR  = \b1 b2 -> b1 TRUE b2
-```
-
-<br>
-
-*Which definition to do you prefer and why?*
 
 <br>
 <br>
@@ -1558,8 +1661,11 @@ let SND  = \p -> ???      -- Return second element
 such that
 
 ```haskell
-FST (PAIR apple banana) =~> apple
-SND (PAIR apple banana) =~> banana
+eval ex_fst: 
+  FST (PAIR apple banana) =*> apple
+
+eval ex_snd:
+  SND (PAIR apple banana) =*> banana
 ```
 
 
@@ -1580,7 +1686,7 @@ SND (PAIR apple banana) =~> banana
 ## Pairs: Implementation
 
 A pair of `x` and `y` is just something that lets you pick between `x` and `y`!
-(I.e. a function that takes a boolean and returns either `x` or `y`)  
+(i.e. a function that takes a boolean and returns either `x` or `y`)  
 
 ```haskell
 let PAIR = \x y -> (\b -> ITE b x y)
@@ -1603,18 +1709,34 @@ let SND  = \p -> p FALSE  -- call w/ FALSE, get second value
 <br>
 
 
-## Exercise: Triples?
+## EXERCISE: Triples
 
 How can we implement a record that contains **three** values?
 
+ELSA: https://goto.ucsd.edu/elsa/index.html
+
+[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585434814_24436.lc)
+
 (I) lecture
 
-    ```haskell
-    let TRIPLE = \x y z -> ???
-    let FST3  = \t -> ???
-    let SND3  = \t -> ???
-    let TRD3  = \t -> ???
-    ```
+```haskell
+let TRIPLE = \x y z -> ???
+let FST3   = \t -> ???
+let SND3   = \t -> ???
+let THD3   = \t -> ???
+
+eval ex1:
+  FST3 (TRIPLE apple banana orange)
+  =*> apple
+
+eval ex2:
+  SND3 (TRIPLE apple banana orange)
+  =*> banana 
+
+eval ex3:
+  THD3 (TRIPLE apple banana orange)
+  =*> orange
+```
 
 (I) final
 
@@ -1622,7 +1744,7 @@ How can we implement a record that contains **three** values?
     let TRIPLE = \x y z -> PAIR x (PAIR y z)
     let FST3  = \t -> FST t
     let SND3  = \t -> FST (SND t)
-    let TRD3  = \t -> SND (SND t)
+    let THD3  = \t -> SND (SND t)
     ```
 
 
@@ -1838,6 +1960,41 @@ eval inc_zero :
 <br>
 <br>
 
+## EXERCISE 
+
+Fill in the implementation of `ADD` so that you get the following behavior
+
+
+[Click here to try this exercise](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1585436042_24449.lc)
+
+```haskell
+let ZERO = \f x -> x
+let ONE  = \f x -> f x
+let TWO  = \f x -> f (f x)
+let INC  = \n f x -> f (n f x)
+
+let ADD  = fill_this_in 
+
+eval add_zero_zero: 
+  ADD ZERO ZERO =~> ZERO
+
+eval add_zero_one: 
+  ADD ZERO ONE =~> ONE
+
+eval add_zero_two: 
+  ADD ZERO TWO =~> TWO 
+
+eval add_one_zero: 
+  ADD ONE ZERO =~> ONE
+
+eval add_one_zero: 
+  ADD ONE ONE =~> TWO
+
+eval add_two_zero: 
+  ADD TWO ZERO =~> TWO  
+```
+
+
 ## QUIZ
 
 How shall we implement `ADD`?
@@ -1973,6 +2130,7 @@ eval two_times_three :
 - **Booleans** \[done\]
 - **Records** (structs, tuples) \[done\]
 - **Numbers** \[done\]
+- **Lists** 
 - **Functions** \[we got those\]
 - Recursion
 
@@ -1989,15 +2147,144 @@ eval two_times_three :
 <br>
 <br>
 
+## $\lambda$-calculus: Lists
+
+Lets define an API to build lists in the $\lambda$-calculus.
+
+**An Empty List**
+
+```
+NIL
+```
+
+**Constructing a list**
+
+A list with 4 elements
+
+```
+CONS apple (CONS banana (CONS cantaloupe (CONS dragon NIL)))
+```
+
+intuitively `CONS h t` creates a *new* list with 
+
+- *head* `h`
+- *tail* `t`
+
+**Destructing a list**
+
+- `HEAD l` returns the _first_ element of the list
+- `TAIL l` returns the _rest_ of the list
+
+```haskell
+HEAD (CONS apple (CONS banana (CONS cantaloupe (CONS dragon NIL))))
+=~> apple
+
+TAIL (CONS apple (CONS banana (CONS cantaloupe (CONS dragon NIL))))
+=~> CONS banana (CONS cantaloupe (CONS dragon NIL)))
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## $\lambda$-calculus: Lists
+
+```haskell
+let NIL  = ???
+let CONS = ???
+let HEAD = ???
+let TAIL = ???
+
+eval exHd:
+  HEAD (CONS apple (CONS banana (CONS cantaloupe (CONS dragon NIL))))
+  =~> apple
+
+eval exTl 
+  TAIL (CONS apple (CONS banana (CONS cantaloupe (CONS dragon NIL))))
+  =~> CONS banana (CONS cantaloupe (CONS dragon NIL)))
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## EXERCISE: Nth
+
+Write an implementation of `GetNth` such that
+
+-  `GetNth n l` returns the n-th element of the list `l` 
+
+*Assume that `l` has n or more elements*
+
+```haskell
+let GetNth = ???
+
+eval nth1 :
+  GetNth ZERO (CONS apple (CONS banana (CONS cantaloupe NIL)))
+  =~> apple 
+
+eval nth1 :
+  GetNth ONE (CONS apple (CONS banana (CONS cantaloupe NIL)))
+  =~> banana
+
+eval nth2 :
+  GetNth TWO (CONS apple (CONS banana (CONS cantaloupe NIL)))
+  =~> cantaloupe
+```
+
+[Click here to try this in elsa](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1586466816_52273.lc) 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 ## $\lambda$-calculus: Recursion
 
 <br>
 
 I want to write a function that sums up natural numbers up to `n`:
 
+```haskell
+let SUM = \n -> ...  -- 0 + 1 + 2 + ... + n
 ```
-\n -> ...          -- 1 + 2 + ... + n
+
+such that we get the following behavior
+
+```haskell
+eval exSum0: SUM ZERO  =~> ZERO
+eval exSum1: SUM ONE   =~> ONE
+eval exSum2: SUM TWO   =~> THREE
+eval exSum3: SUM THREE =~> SIX
 ```
+
+Can we write sum **using Church Numerals**?
+
+[Click here to try this in Elsa](https://goto.ucsd.edu/elsa/index.html#?demo=permalink%2F1586465192_52175.lc)
 
 <br>
 <br>
@@ -2012,9 +2299,11 @@ I want to write a function that sums up natural numbers up to `n`:
 
 ## QUIZ
 
+You *can* write `SUM` using numerals but its *tedious*.
+
 Is this a correct implementation of `SUM`?
 
-```
+```haskell
 let SUM = \n -> ITE (ISZ n) 
             ZERO 
             (ADD n (SUM (DEC n)))
@@ -2040,10 +2329,10 @@ No!
   * Named terms in Elsa are just syntactic sugar
   * To translate an Elsa term to $\lambda$-calculus: replace each name with its definition
 
-```
+```haskell
 \n -> ITE (ISZ n) 
         ZERO 
-        (ADD n (SUM (DEC n))) -- But SUM is not a thing!
+        (ADD n (SUM (DEC n))) -- But SUM is not yet defined!
 ```
 
 <br>
@@ -2051,14 +2340,16 @@ No!
 
 **Recursion:** 
 
- - Inside this function I want to call *the same function* on `DEC n`
+- Inside *this* function 
+- Want to call the *same* function on `DEC n`
 
 <br>
 <br>
 
-Looks like we can't do recursion,
-because it requires being able to refer to functions *by name*,
-but in $\lambda$-calculus functions are *anonymous*.
+Looks like we can't do recursion!
+
+- Requires being able to refer to functions *by name*,
+- But $\lambda$-calculus functions are *anonymous*.
 
 Right?
 
@@ -2084,16 +2375,21 @@ Think again!
 
 **Recursion:** 
 
- - ~~Inside this function I want to call *the same function* on `DEC n`~~
- - Inside this function I want to call *a function* on `DEC n`
- - *And BTW,* I want it to be the same function 
+Instead of
+
+- ~~Inside *this* function I want to call the *same* function on `DEC n`~~
+
+Lets try
+
+- Inside *this* function I want to call *some* function `rec` on `DEC n`
+- And BTW, I want `rec` to be the *same* function 
  
 <br>
 <br>
 
 **Step 1:** Pass in the function to call "recursively"
  
-```
+```haskell
 let STEP = 
   \rec -> \n -> ITE (ISZ n) 
                   ZERO 
@@ -2102,13 +2398,18 @@ let STEP =
 <br>
 <br>
 
-**Step 2:** Do something clever to `STEP`, so that the function passed as `rec`
-itself becomes
+**Step 2:** Do some magic to `STEP`, so `rec` is itself
 
-```
+```haskell
 \n -> ITE (ISZ n) ZERO (ADD n (rec (DEC n)))
 ```
- 
+
+That is, obtain a term `MAGIC` such that 
+
+```haskell
+MAGIC =*> STEP MAGIC 
+```
+
 <br>
 <br>
 <br>
@@ -2121,15 +2422,16 @@ itself becomes
 <br>
 <br>
 <br>
- 
+
 ## $\lambda$-calculus: Fixpoint Combinator 
 
-**Wanted:** a combinator `FIX` such that `FIX STEP`
-calls `STEP` with itself as the first argument:
+
+**Wanted:** a $\lambda$-term `FIX` such that 
+
+- `FIX STEP` calls `STEP` with `FIX STEP` as the first argument:
 
 ```
-FIX STEP
-=*> STEP (FIX STEP)
+(FIX STEP) =*> STEP (FIX STEP)
 ```
 
 <br>
@@ -2148,29 +2450,28 @@ let SUM = FIX STEP
 ```
 
 Then by property of `FIX` we have:
-```
-SUM =*> STEP SUM -- (1)
+
+```haskell
+SUM   =*>   FIX STEP  =*>   STEP (FIX STEP)   =*>   STEP SUM
 ```
 
+and so now we compute:
 
 ```
-eval sum_one:
-  SUM ONE
-  =*> STEP SUM ONE                 -- (1)
-  =d> (\rec n -> ITE (ISZ n) ZERO (ADD n (rec (DEC n)))) SUM ONE
-  =b> (\n -> ITE (ISZ n) ZERO (ADD n (SUM (DEC n)))) ONE 
-                                   -- ^^^ the magic happened!
-  =b> ITE (ISZ ONE) ZERO (ADD ONE (SUM (DEC ONE)))
-  =*> ADD ONE (SUM ZERO)           -- def of ISZ, ITE, DEC, ...
-  =*> ADD ONE (STEP SUM ZERO)      -- (1)
-  =d> ADD ONE 
-        ((\rec n -> ITE (ISZ n) ZERO (ADD n (rec (DEC n)))) SUM ZERO)
-  =b> ADD ONE ((\n -> ITE (ISZ n) ZERO (ADD n (SUM (DEC n)))) ZERO)
-  =b> ADD ONE (ITE (ISZ ZERO) ZERO (ADD ZERO (SUM (DEC ZERO))))
-  =b> ADD ONE ZERO
-  =~> ONE
+eval sum_two:
+  SUM TWO
+  =*> STEP SUM TWO
+  =*> ITE (ISZ TWO) ZERO (ADD TWO (SUM (DEC TWO)))
+  =*> ADD TWO (SUM (DEC TWO))
+  =*> ADD TWO (SUM ONE)
+  =*> ADD TWO (STEP SUM ONE)
+  =*> ADD TWO (ITE (ISZ ONE) ZERO (ADD ONE (SUM (DEC ONE))))
+  =*> ADD TWO (ADD ONE (SUM (DEC ONE)))
+  =*> ADD TWO (ADD ONE (SUM ZERO))
+  =*> ADD TWO (ADD ONE (ITE (ISZ ZERO) ZERO (ADD ZERO (SUM DEC ZERO)))
+  =*> ADD TWO (ADD ONE (ZERO)) 
+  =*> THREE
 ```
-
 
 How should we define `FIX`???
 
@@ -2228,8 +2529,9 @@ eval fix_step:
 <br>
 <br>
 
-That's all folks!
+That's all folks, Haskell Curry was very clever.
 
+**Next week:** We'll look at the language named after him (`Haskell`)
 
 [elsa-ite]: http://goto.ucsd.edu:8095/index.html#?demo=ite.lc
 
