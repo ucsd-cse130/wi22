@@ -1,0 +1,224 @@
+
+let MICKEYMOUSE = (\x -> x) 
+let FUNKY       = \y -> y y
+
+let TRUE  = \x y -> x
+let FALSE = \x y -> y
+let IF    = \b stuff other -> b stuff other
+let NOT   = \b -> IF b FALSE TRUE 
+let AND   = \b1 b2 -> IF b1 b2 FALSE 
+let OR    = \b1 b2 -> IF b1 TRUE b2 
+let FIX   = \stp -> (\x -> stp  (x x)) (\x -> stp (x x))
+
+let PACK  = \v1 v2 -> (\choice -> IF choice v1 v2)
+let FST   = \box -> box TRUE 
+let SND   = \box -> box FALSE 
+
+let TODO  = \x -> x
+
+-- let PACK3 = \v1 v2 v3 -> (\c1 c2 -> IF c1 v1 (IF c2 v2 v3)) 
+-- let FST3  = \t        -> t TRUE  TRUE 
+-- let SND3  = \t        -> t FALSE TRUE 
+-- let THD3  = \t        -> t FALSE FALSE  
+
+let PACK3 = \v1 v2 v3 -> PACK (PACK v1 v2) v3
+let FST3  = \t        -> FST (FST t) 
+let SND3  = \t        -> SND (FST t) 
+let THD3  = \t        -> SND t 
+
+let PACK4 = \v1 v2 v3 v4 sel -> sel v1 v2 v3 v4 
+let F1    = \v1 v2 v3 v4     -> v1
+let F2    = \v1 v2 v3 v4     -> v2
+let F3    = \v1 v2 v3 v4     -> v3
+let F4    = \v1 v2 v3 v4     -> v4
+
+
+let ZERO  = \f x -> x 
+let ONE   = \f x -> f x 
+let TWO   = \f x -> f (f x) 
+let THREE = \f x -> f (f (f x))
+let FOUR  = \f x -> f (f (f (f x)))
+let SIX   = \f x -> f (f (f (f (f (f x)))))
+
+-- n f x == f (f( ... (f x))) -- n times
+
+let INC   = \n -> (\f x -> f (n f x))
+
+let ADD   = \n m -> n INC m
+let MUL   = \n m -> n (ADD m) ZERO
+let ISZ   = \t o b e d o n e -> e
+let DEC   = \t o b e d o n e -> e
+
+-- let SUM   = \n -> 0 + 1 + 2 + 3 + ... + n 
+let SUM_HELPER  = \callme -> \n -> IF (ISZ n) ZERO (ADD n (callme (DEC n)))
+let FIX         = \step -> (\x -> step (x x)) (\x -> step (x x))
+let SUM         = FIX SUM_HELPER 
+
+eval sum0:
+      SUM THREE  
+  =~> SIX
+
+
+eval mul0: 
+  MUL TWO TWO 
+  =~> FOUR
+
+
+eval add0: 
+  ADD TWO ONE 
+  =*> THREE
+
+
+eval pack4: 
+  (PACK4 JOHN PAUL GEORGE RINGO) F2 
+  -- =*> (\sel -> sel JOHN PAUL GEORGE RINGO) F1 
+  -- =b> (F1 JOHN PAUL GEORGE RINGO) 
+  -- =d> ((\v1 v2 v3 v4 -> v1) JOHN PAUL GEORGE RINGO) 
+  =*> PAUL 
+
+
+
+
+
+
+
+
+eval inc0: 
+  INC (INC ZERO) 
+  =*> TWO 
+
+
+eval pack1: 
+   FST3 (PACK3 Cookie Sandwich OrangeJuice)
+   =~> Cookie 
+
+eval pack2: 
+   SND3 (PACK3 Cookie Sandwich OrangeJuice)
+   =~> Sandwich 
+
+eval pack3: 
+   THD3 (PACK3 Cookie Sandwich OrangeJuice)
+   =~> OrangeJuice
+
+
+
+
+
+
+
+
+
+
+
+
+
+eval exPack0: 
+  FST (PACK COOKIE SANDWICH)
+  =*> FST (\choice -> IF choice COOKIE SANDWICH)
+  =*> (\choice -> IF choice COOKIE SANDWICH) TRUE
+  =*> IF TRUE COOKIE SANDWICH
+  =*> COOKIE
+
+eval exPack1: 
+  SND (PACK COOKIE SANDWICH)
+  =*> SND (\choice -> IF choice COOKIE SANDWICH)
+  =*> (\choice -> IF choice COOKIE SANDWICH) FALSE 
+  =*> IF FALSE COOKIE SANDWICH
+  =*> SANDWICH
+
+
+eval asIf0: 
+  IF cond this that 
+  =d> (\b stuff other -> b stuff other) cond this that 
+  =b> (\stuff other -> cond stuff other) this that 
+  =b> (\other -> cond this other) that 
+  =b> (cond this that) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+eval exNOT: 
+  NOT FALSE 
+  =d> (\b -> IF b FALSE TRUE) FALSE 
+  =b> IF FALSE FALSE TRUE  
+  =d> (\b stuff other -> b stuff other ) FALSE FALSE TRUE  
+  =b> (\stuff other -> FALSE stuff other ) FALSE TRUE  
+  =b> (\other -> FALSE FALSE other) TRUE  
+  =b> (FALSE FALSE TRUE)
+  =d> ((\x y -> y) FALSE TRUE)
+  =b> ((\ y -> y) TRUE)
+  =b> TRUE
+
+  
+eval exTRUE: 
+       (((IF TRUE) apple) banana)
+  =d>  ((\b -> (\stuff other -> b stuff other)) TRUE) apple banana
+  =b>  ((((\stuff other -> TRUE stuff other))) apple) banana
+  =b>  ((((\other -> TRUE apple other)))) banana
+  =b>  TRUE apple banana 
+  =d>  (\x y -> x) apple banana 
+  =b>  (\y -> apple) banana 
+  =b>  apple 
+
+eval exFALSE: 
+       (((IF FALSE) apple) banana)
+  =d>  ((\b -> (\stuff other -> b stuff other)) FALSE) apple banana
+  =b>  ((((\stuff other -> FALSE stuff other))) apple) banana
+  =b>  ((((\other -> FALSE apple other)))) banana
+  =b>  FALSE apple banana 
+  =d>  (\x y -> y) apple banana 
+  =b>  (\y -> y) banana 
+  =b>  banana
+
+
+
+
+
+eval mickey0 : 
+  MICKEYMOUSE cheese
+  =d> (\x -> x) cheese 
+  =b> cheese
+
+
+-- \x1 x2 x3 x4 -> e  
+-- abbrev
+-- \x1 -> (\x2 -> (\x3 -> (\x4 -> e)))
+
+-- e1 e2 e3 e4 e5 
+-- abbrev 
+-- ((((e1 e2) e3) e4) e5)
+
+-- (\x y -> x) apple orange 
+-- (((\x -> (\y -> x)) apple) orange)
+
+eval blurb: 
+          (\a b -> a) (c a b)
+      =a> (\a b -> a) (c a b)
+
+
+     -- =b> ((\b -> (c a b))) 
+      -- (\a -> (\b -> a)) (c a b)
+      --   ^    ^^^^^^^^^  ^^^^^^^     
+
+-- eval piazza2: 
+--      (\a b -> c b a)
+--   =b> (\b -> c b c)
+
+-- What's up with the below lambda terms?
+
+-- \a b -> a d
+-- \a b c -> a
+
+
+ 

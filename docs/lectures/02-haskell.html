@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 130">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse130.github.io/wi21/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse130</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse130.github.io/wi21/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 130" />
+    <meta property="og:site_name" content="UCSD CSE 130" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse130.github.io/wi21" id="blog-title-left-top">cse130</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse130.github.io/wi21/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse130.github.io/wi21/static/img/books.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>A crash course in Haskell</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="functions-and-programming">Functions and Programming</h2>
+<p><br><br />
+<br></p>
+<p><img src="../static/img/carmack-tweet-function.png" id="fig:landin" class="align-center" style="width:60.0%" /></p>
+<p><br> <br> <br> <br> <br></p>
+<h2 id="what-is-haskell">What is Haskell?</h2>
+<p><br></p>
+<p>A <strong>typed</strong>, <strong>lazy</strong>, <strong>purely functional</strong> programming language</p>
+<p><br></p>
+<p>Haskell = <span class="math inline"><em>λ</em></span>-calculus ++</p>
+<ul>
+<li>better syntax</li>
+<li>types</li>
+<li>built-in features
+<ul>
+<li>booleans, numbers, characters</li>
+<li>records (tuples)</li>
+<li>lists</li>
+<li>recursion</li>
+<li>…</li>
+</ul></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="why-haskell">Why Haskell?</h2>
+<p>Haskell programs tend to be <em>simple</em> and <em>correct</em></p>
+<h3 id="quicksort-in-haskell">QuickSort in Haskell</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sort</span><span class="ot">        ::</span> (<span class="dt">Ord</span> a) <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">sort</span> []     <span class="ot">=</span> []</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">sort</span> (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="fu">sort</span> ls <span class="op">++</span> [x] <span class="op">++</span> <span class="fu">sort</span> rs</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    ls      <span class="ot">=</span> [ l <span class="op">|</span> l <span class="ot">&lt;-</span> xs, l <span class="op">&lt;=</span> x ]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    rs      <span class="ot">=</span> [ r <span class="op">|</span> r <span class="ot">&lt;-</span> xs, x <span class="op">&lt;</span>  r ]</span></code></pre></div>
+<h3 id="goals-for-this-week">Goals for this week</h3>
+<ol type="1">
+<li>Understand the code above</li>
+<li>Understand what <strong>typed</strong>, <strong>lazy</strong>, and <strong>purely functional</strong> means (and why it’s cool)</li>
+</ol>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="haskell-vs-lambda-calculus-similarities">Haskell vs <span class="math inline"><em>λ</em></span>-calculus: similarities</h2>
+<h3 id="programs">(1) Programs</h3>
+<p>A program is an <strong>expression</strong> (<em>not</em> a sequence of statements)</p>
+<p>It <strong>evaluates</strong> to a value (it <em>does not</em> perform actions)</p>
+<ul>
+<li><p><strong><span class="math inline"><em>λ</em></span></strong>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>(\x <span class="ot">-&gt;</span> x) apple     <span class="co">-- =~&gt; apple</span></span></code></pre></div></li>
+<li><p><strong>Haskell</strong>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>(\x <span class="ot">-&gt;</span> x) <span class="st">&quot;apple&quot;</span>   <span class="co">-- =~&gt; &quot;apple&quot;</span></span></code></pre></div></li>
+</ul>
+<h3 id="functions">(2) Functions</h3>
+<p>Functions are <em>first-class values</em>:</p>
+<ul>
+<li>can be <em>passed as arguments</em> to other functions</li>
+<li>can be <em>returned as results</em> from other functions</li>
+<li>can be <em>partially applied</em> (arguments passed <em>one at a time</em>)</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>(\x <span class="ot">-&gt;</span> (\y <span class="ot">-&gt;</span> x (x y))) (\z <span class="ot">-&gt;</span> z <span class="op">+</span> <span class="dv">1</span>) <span class="dv">0</span>   <span class="co">-- =~&gt; ???</span></span></code></pre></div>
+<p><em>But:</em> unlike <span class="math inline"><em>λ</em></span>-calculus, not everything is a function!</p>
+<h3 id="top-level-bindings">(3) Top-level bindings</h3>
+<p>Like in Elsa, we can <em>name</em> terms to use them later</p>
+<p><strong>Elsa</strong>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">let</span> <span class="dt">T</span>    <span class="ot">=</span> \x y <span class="ot">-&gt;</span> x</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="kw">let</span> <span class="dt">F</span>    <span class="ot">=</span> \x y <span class="ot">-&gt;</span> y</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="kw">let</span> <span class="dt">PAIR</span> <span class="ot">=</span> \x y <span class="ot">-&gt;</span> \b <span class="ot">-&gt;</span> <span class="dt">ITE</span> b x y</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="kw">let</span> <span class="dt">FST</span>  <span class="ot">=</span> \p <span class="ot">-&gt;</span> p <span class="dt">T</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="kw">let</span> <span class="dt">SND</span>  <span class="ot">=</span> \p <span class="ot">-&gt;</span> p <span class="dt">F</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a>eval <span class="fu">fst</span><span class="op">:</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a> <span class="dt">FST</span> (<span class="dt">PAIR</span> apple orange)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a> <span class="op">=~&gt;</span> apple</span></code></pre></div>
+<p><strong>Haskell</strong>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>haskellIsAwesome <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>pair <span class="ot">=</span> \x y <span class="ot">-&gt;</span> \b <span class="ot">-&gt;</span> <span class="kw">if</span> b <span class="kw">then</span> x <span class="kw">else</span> y</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="fu">fst</span> <span class="ot">=</span> \p <span class="ot">-&gt;</span> p haskellIsAwesome</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="fu">snd</span> <span class="ot">=</span> \p <span class="ot">-&gt;</span> p <span class="dt">False</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a><span class="co">-- In GHCi:</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="op">&gt;</span> <span class="fu">fst</span> (pair <span class="st">&quot;apple&quot;</span> <span class="st">&quot;orange&quot;</span>)   <span class="co">-- &quot;apple&quot;</span></span></code></pre></div>
+<p>The names are called <strong>top-level variables</strong></p>
+<p>Their definitions are called <strong>top-level bindings</strong></p>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="better-syntax-equations-and-patterns">Better Syntax: Equations and Patterns</h2>
+<p>You can define function bindings using <strong>equations</strong>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>pair x y b <span class="ot">=</span> <span class="kw">if</span> b <span class="kw">then</span> x <span class="kw">else</span> y <span class="co">-- same as: pair = \x y b -&gt; ...</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="fu">fst</span> p      <span class="ot">=</span> p <span class="dt">True</span>             <span class="co">-- same as: fst = \p -&gt; ...</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="fu">snd</span> p      <span class="ot">=</span> p <span class="dt">False</span>            <span class="co">-- same as: snd = \p -&gt; ...</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br></p>
+<p>A <em>single</em> function binding can have <em>multiple</em> equations with different <strong>patterns</strong> of parameters:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>pair x y <span class="dt">True</span>  <span class="ot">=</span> x  <span class="co">-- If 3rd arg matches True,</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>                    <span class="co">-- use this equation;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>pair x y <span class="dt">False</span> <span class="ot">=</span> y  <span class="co">-- Otherwise, if 3rd arg matches False,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>                    <span class="co">-- use this equation.</span></span></code></pre></div>
+<p>At run time, the first equation whose pattern matches the actual arguments is chosen</p>
+<p>For now, a <strong>pattern</strong> is:</p>
+<ul>
+<li><p>a <em>variable</em> (matches any value)</p></li>
+<li><p>or a <em>value</em> (matches only that value)</p></li>
+</ul>
+<p><br> <br></p>
+<p>Same as:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>pair x y <span class="dt">True</span>  <span class="ot">=</span> x  <span class="co">-- If 3rd arg matches True,</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>                    <span class="co">-- use this equation;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>pair x y b     <span class="ot">=</span> y  <span class="co">-- Otherwise, use this equation.</span></span></code></pre></div>
+<p><br> <br></p>
+<p>Same as:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>pair x y <span class="dt">True</span>  <span class="ot">=</span> x</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>pair x y _     <span class="ot">=</span> y</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>Which of the following definitions of <code class="sourceCode haskell">pair</code> is <strong>incorrect</strong>?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell">pair x y <span class="ot">=</span> \b <span class="ot">-&gt;</span> <span class="kw">if</span> b <span class="kw">then</span> x <span class="kw">else</span> y</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell">pair x <span class="ot">=</span> \y b <span class="ot">-&gt;</span> <span class="kw">if</span> b <span class="kw">then</span> x <span class="kw">else</span> y</code></p>
+<p><strong>C.</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>pair x _ <span class="dt">True</span>  <span class="ot">=</span> x</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>pair _ y _     <span class="ot">=</span> y</span></code></pre></div>
+<p><strong>D.</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>pair x y b     <span class="ot">=</span> x</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>pair x y <span class="dt">False</span> <span class="ot">=</span> y</span></code></pre></div>
+<p><strong>E.</strong> all of the above</p>
+<p><br></p>
+<p><br> <br> <br> <br> <br></p>
+<h2 id="equations-with-guards">Equations with guards</h2>
+<p>An equation can have multiple guards (Boolean expressions):</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>cmpSquare x y  <span class="op">|</span>  x <span class="op">&gt;</span> y<span class="op">*</span>y   <span class="ot">=</span>  <span class="st">&quot;bigger :)&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>               <span class="op">|</span>  x <span class="op">==</span> y<span class="op">*</span>y  <span class="ot">=</span>  <span class="st">&quot;same :|&quot;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>               <span class="op">|</span>  x <span class="op">&lt;</span> y<span class="op">*</span>y   <span class="ot">=</span>  <span class="st">&quot;smaller :(&quot;</span></span></code></pre></div>
+<p>Same as:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>cmpSquare x y  <span class="op">|</span>  x <span class="op">&gt;</span> y<span class="op">*</span>y   <span class="ot">=</span>  <span class="st">&quot;bigger :)&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>               <span class="op">|</span>  x <span class="op">==</span> y<span class="op">*</span>y  <span class="ot">=</span>  <span class="st">&quot;same :|&quot;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>               <span class="op">|</span>  <span class="fu">otherwise</span> <span class="ot">=</span>  <span class="st">&quot;smaller :(&quot;</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="recusion">Recusion</h2>
+<p>Recursion is built-in, so you can write:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">sum</span> n <span class="ot">=</span> <span class="kw">if</span> n <span class="op">==</span> <span class="dv">0</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>          <span class="kw">then</span> <span class="dv">0</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>          <span class="kw">else</span> n <span class="op">+</span> <span class="fu">sum</span> (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p>or you can write:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="fu">sum</span> <span class="dv">0</span> <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="fu">sum</span> n <span class="ot">=</span> n <span class="op">+</span> <span class="fu">sum</span> (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="the-scope-of-variables">The scope of variables</h2>
+<p>Top-level variable have <strong>global</strong> scope, so you can write:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>message <span class="ot">=</span> <span class="kw">if</span> haskellIsAwesome          <span class="co">-- this var defined below</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>            <span class="kw">then</span> <span class="st">&quot;I love CSE 130&quot;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>            <span class="kw">else</span> <span class="st">&quot;I'm dropping CSE 130&quot;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>            </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>haskellIsAwesome <span class="ot">=</span> <span class="dt">True</span></span></code></pre></div>
+<p><br> <br></p>
+<p>Or you can write:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="co">-- What does f compute?</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>f <span class="dv">0</span> <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>f n <span class="ot">=</span> g (n <span class="op">-</span> <span class="dv">1</span>) <span class="co">-- mutual recursion!</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a>g <span class="dv">0</span> <span class="ot">=</span> <span class="dt">False</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>g n <span class="ot">=</span> f (n <span class="op">-</span> <span class="dv">1</span>) <span class="co">-- mutual recursion!</span></span></code></pre></div>
+<p><br> <br> <br></p>
+<p>Is this allowed?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>haskellIsAwesome <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>haskellIsAwesome <span class="ot">=</span> <span class="dt">False</span> <span class="co">-- changed my mind</span></span></code></pre></div>
+<p><br> <br> <br> <br></p>
+<h3 id="local-variables">Local variables</h3>
+<p>You can introduce a <em>new</em> (local) scope using a <code class="sourceCode haskell"><span class="kw">let</span></code>-expression:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="fu">sum</span> <span class="dv">0</span> <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="fu">sum</span> n <span class="ot">=</span> <span class="kw">let</span> n' <span class="ot">=</span> n <span class="op">-</span> <span class="dv">1</span>          </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>        <span class="kw">in</span> n <span class="op">+</span> <span class="fu">sum</span> n'  <span class="co">-- the scope of n' is the term after in</span></span></code></pre></div>
+<p><br> <br> <br></p>
+<p>Syntactic sugar for nested <code class="sourceCode haskell"><span class="kw">let</span></code>-expressions:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">sum</span> <span class="dv">0</span> <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="fu">sum</span> n <span class="ot">=</span> <span class="kw">let</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>          n'   <span class="ot">=</span> n <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>          sum' <span class="ot">=</span> <span class="fu">sum</span> n'</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a>        <span class="kw">in</span> n <span class="op">+</span> sum'</span></code></pre></div>
+<p><br> <br> <br></p>
+<p>If you need a variable whose scope is an equation, use the <code class="sourceCode haskell"><span class="kw">where</span></code> clause instead:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>cmpSquare x y  <span class="op">|</span>  x <span class="op">&gt;</span> z   <span class="ot">=</span>  <span class="st">&quot;bigger :)&quot;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>               <span class="op">|</span>  x <span class="op">==</span> z  <span class="ot">=</span>  <span class="st">&quot;same :|&quot;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a>               <span class="op">|</span>  x <span class="op">&lt;</span> z   <span class="ot">=</span>  <span class="st">&quot;smaller :(&quot;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>  <span class="kw">where</span> z <span class="ot">=</span> y<span class="op">*</span>y</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="types">Types</h2>
+<p><br> <br> <br> <br></p>
+<p>What would <em>Elsa</em> say?</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="kw">let</span> <span class="dt">WEIRDO</span> <span class="ot">=</span> <span class="dt">ONE</span> <span class="dt">ZERO</span></span></code></pre></div>
+<p><br></p>
+<p><br> <br> <br></p>
+<p>What would <em>Python</em> say?</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="kw">def</span> weirdo():</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>  <span class="cf">return</span> <span class="dv">0</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p><br></p>
+<p><br> <br> <br></p>
+<p>What would <em>Java</em> say?</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="dt">void</span> <span class="fu">weirdo</span>() {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>  <span class="dt">int</span> zero;</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>  <span class="fu">zero</span>(<span class="dv">1</span>);</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>}</span></code></pre></div>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="types-1">Types</h2>
+<p><img src="../static/img/trinity.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
+<p>In <em>Haskell</em> every expression either</p>
+<ul>
+<li><strong>ill-typed</strong> and <em>rejected at compile time</em> or</li>
+<li><strong>has a type</strong> and can be <em>evaluated</em> to obtain _ <strong>a value</strong> of the same type.</li>
+</ul>
+<p>Ill-typed* expressions are rejected statically at <em>compile-time</em>, before execution starts</p>
+<ul>
+<li><strong>like</strong> in Java</li>
+<li><strong>unlike</strong> <span class="math inline"><em>λ</em></span>-calculus or Python …</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a>weirdo <span class="ot">=</span> <span class="dv">1</span> <span class="dv">0</span>     <span class="co">-- rejected by GHC</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="why-are-types-good">Why are types good?</h3>
+<ul>
+<li>Helps with program <em>design</em></li>
+<li>Types are <em>contracts</em> (ignore ill-typed inputs!)</li>
+<li>Catches errors <em>early</em></li>
+<li>Allows compiler <em>to generate code</em></li>
+<li>Enables compiler <em>optimizations</em></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="type-annotations">Type annotations</h2>
+<p>You can annotate your bindings with their types using <code class="sourceCode haskell"><span class="ot">::</span></code>, like so:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="co">-- | This is a Boolean:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a><span class="ot">haskellIsAwesome ::</span> <span class="dt">Bool</span>            </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a>haskellIsAwesome <span class="ot">=</span> <span class="dt">True</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a><span class="co">-- | This is a string</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a><span class="ot">message ::</span> <span class="dt">String</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a>message <span class="ot">=</span> <span class="kw">if</span> haskellIsAwesome</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a>            <span class="kw">then</span> <span class="st">&quot;I love CSE 130&quot;</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true"></a>            <span class="kw">else</span> <span class="st">&quot;I'm dropping CSE 130&quot;</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true"></a>            </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true"></a><span class="co">-- | This is a word-size integer</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true"></a><span class="ot">rating ::</span> <span class="dt">Int</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true"></a>rating <span class="ot">=</span> <span class="kw">if</span> haskellIsAwesome <span class="kw">then</span> <span class="dv">10</span> <span class="kw">else</span> <span class="dv">0</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true"></a><span class="co">-- | This is an arbitrary precision integer</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true"></a><span class="ot">bigNumber ::</span> <span class="dt">Integer</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true"></a>bigNumber <span class="ot">=</span> factorial <span class="dv">100</span></span></code></pre></div>
+<p>If you omit annotations, GHC will infer them for you</p>
+<ul>
+<li>Inspect types in GHCi using <code class="sourceCode haskell"><span class="op">:</span>t</code></li>
+<li>You should annotate all top-level bindings anyway! (Why?)</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="function-types">Function Types</h2>
+<p>Functions have <strong>arrow types</strong>:</p>
+<ul>
+<li><code class="sourceCode haskell">\x <span class="ot">-&gt;</span> e</code> has type <code class="sourceCode haskell"><span class="dt">A</span> <span class="ot">-&gt;</span> <span class="dt">B</span></code></li>
+<li>if <code class="sourceCode haskell">e</code> has type <code class="sourceCode haskell"><span class="dt">B</span></code> assuming <code class="sourceCode haskell">x</code> has type <code class="sourceCode haskell"><span class="dt">A</span></code></li>
+</ul>
+<p>For example:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="op">&gt;</span> <span class="op">:</span>t (\x <span class="ot">-&gt;</span> <span class="kw">if</span> x <span class="kw">then</span> <span class="ot">`a`</span> <span class="kw">else</span> <span class="ot">`b`</span>)  <span class="co">-- ???</span></span></code></pre></div>
+<p><br> <br> <br> <br></p>
+<h2 id="always-annotate-your-function-bindings">Always annotate your function bindings</h2>
+<p>First understand <em>what the function does</em></p>
+<ul>
+<li>Before you think about <em>how to do it</em></li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="fu">sum</span><span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="fu">sum</span> <span class="dv">0</span> <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a><span class="fu">sum</span> n <span class="ot">=</span> n <span class="op">+</span> <span class="fu">sum</span> (n <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><br> <br> <br> <br></p>
+<h2 id="when-you-have-multiple-arguments">When you have *multiple arguments</h2>
+<p>For example</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="ot">add3 ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a>add3 x y z <span class="ot">=</span> x <span class="op">+</span> y <span class="op">+</span> z</span></code></pre></div>
+<p>why? because the above is the same as:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="ot">add3 ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a>add3 <span class="ot">=</span> \x <span class="ot">-&gt;</span> (\y <span class="ot">-&gt;</span> (\z <span class="ot">-&gt;</span> x <span class="op">+</span> y <span class="op">+</span> z))</span></code></pre></div>
+<p>however, as with the lambdas, the <code class="sourceCode haskell"><span class="ot">-&gt;</span></code> <strong>associates to the right</strong> so we will just write:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="ot">add3 ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>add3 x y z <span class="ot">=</span> x <span class="op">+</span> y <span class="op">+</span> z</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br></p>
+<!-- 
+## QUIZ
+
+Suppose `pair :: String -> String -> Bool -> String`, what is the type of:
+
+```haskell
+(pair "apple" "orange")
+```
+
+**A.** Syntax error
+
+**B.** The term is ill-typed
+
+**C.** `String`
+
+**D.** `Bool -> String`
+
+**E.** `String -> String -> Bool -> String`
+
+<br>
+
+(I) final
+
+    _Answer:_ **D**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+-->
+<h2 id="lists">Lists</h2>
+<p>A list is</p>
+<ul>
+<li><p>either an <em>empty list</em></p>
+<p><code class="sourceCode haskell">[]       <span class="co">-- pronounced &quot;nil&quot;</span></code></p></li>
+<li><p>or a <em>head element</em> attached to a <em>tail list</em></p>
+<p><code class="sourceCode haskell">h <span class="op">:</span> t     <span class="co">-- pronounced &quot;h cons t&quot;</span></code></p></li>
+</ul>
+<p><br> <br></p>
+<p>Examples:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a>[]                <span class="co">-- A list with zero elements</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a><span class="dv">1</span> <span class="op">:</span> []            <span class="co">-- A list with one element: 1</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true"></a>(<span class="op">:</span>) <span class="dv">1</span> []          <span class="co">-- As above: for any infix op, `x op y` is same as `(op) x y`</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true"></a><span class="dv">1</span><span class="op">:</span>(<span class="dv">2</span><span class="op">:</span>(<span class="dv">3</span><span class="op">:</span>(<span class="dv">4</span><span class="op">:</span>[])))  <span class="co">-- A list with four elements: 1, 2, 3, 4</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true"></a><span class="dv">1</span><span class="op">:</span><span class="dv">2</span><span class="op">:</span><span class="dv">3</span><span class="op">:</span><span class="dv">4</span><span class="op">:</span>[]        <span class="co">-- Same thing (: is right associative)</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true"></a>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]         <span class="co">-- Same thing (syntactic sugar)</span></span></code></pre></div>
+<p><br> <br> <br> <br></p>
+<h3 id="terminology-constructors-and-values">Terminology: constructors and values</h3>
+<p><code class="sourceCode haskell">[]</code> and <code class="sourceCode haskell">(<span class="op">:</span>)</code> are called the <em>list</em> <strong>constructors</strong></p>
+<p>We’ve seen constructors before:</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">True</span></code> and <code class="sourceCode haskell"><span class="dt">False</span></code> are <code class="sourceCode haskell"><span class="dt">Bool</span></code> constructors</li>
+<li><code class="sourceCode haskell"><span class="dv">0</span></code>, <code class="sourceCode haskell"><span class="dv">1</span></code>, <code class="sourceCode haskell"><span class="dv">2</span></code> are … well, you can think of them as <code class="sourceCode haskell"><span class="dt">Int</span></code> constructors
+<ul>
+<li>The <code class="sourceCode haskell"><span class="dt">Int</span></code> constructors don’t take any parameters, we just called them <em>values</em></li>
+</ul></li>
+</ul>
+<p>In general, a <strong>value</strong> is a constructor applied to <strong>other values</strong></p>
+<ul>
+<li>examples above are <em>list</em> values</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="the-type-of-a-list">The Type of a List</h2>
+<p>A list has type <code class="sourceCode haskell">[<span class="dt">Thing</span>]</code> if each of its elements has type <code class="sourceCode haskell"><span class="dt">Thing</span></code></p>
+<p>Examples:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="ot">intList ::</span> [<span class="dt">Int</span>]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a>intList <span class="ot">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a><span class="ot">boolList ::</span> [<span class="dt">Bool</span>]</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true"></a>boolList <span class="ot">=</span> [<span class="dt">True</span>, <span class="dt">False</span>, <span class="dt">True</span>]</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true"></a><span class="ot">strList ::</span> [<span class="dt">String</span>]</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true"></a>strList <span class="ot">=</span> [<span class="st">&quot;nom&quot;</span>, <span class="st">&quot;nom&quot;</span>, <span class="st">&quot;burp&quot;</span>]</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br></p>
+<!-- 
+
+(I) lecture
+ 
+    ```haskell
+    -- myList' :: ??
+    myList' = ['h', 'e', 'l', 'l', 'o']
+    ```
+    
+(I) final
+
+    ```haskell
+    myList' :: [Char]                   -- or :: String
+    myList' = ['h', 'e', 'l', 'l', 'o'] -- or = "hello"
+    ```
+
+<br>
+
+(I) lecture
+ 
+    ```haskell
+    -- myList'' :: ???
+    myList'' = [1, 'h']
+    ```
+    
+(I) final    
+
+    ```haskell
+    -- myList'' :: Type error: elements have different types!
+    myList'' = [1, 'h']
+    ```
+    
+<br>
+
+(I) lecture
+ 
+    ```haskell
+    -- myList''' :: ???
+    myList''' = []
+    ```      
+    
+(I) final    
+
+    ```haskell
+    myList''' :: [t] -- Generic: works for any type t!
+    myList''' = []
+    ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+-->
+<h2 id="lets-write-some-functions">Lets write some Functions</h2>
+<p><a href="https://www.htdp.org/">A Recipe</a></p>
+<p><strong>Step 1: Write some tests</strong></p>
+<p><strong>Step 2: Write the type</strong></p>
+<p><strong>Step 3: Write the code</strong></p>
+<h2 id="functions-on-lists-range">Functions on lists: range</h2>
+<p><strong>1. Tests</strong></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; ???</span></span></code></pre></div>
+<p><strong>2. Type</strong></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="fu">range</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>3. Code</strong></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a><span class="fu">range</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<!-- 
+(I) lecture
+    ```haskell
+    -- | List of integers from n upto m
+    upto :: Int -> Int -> [Int]
+    upto n m = ???
+    ```
+    
+(I) final    
+
+    ```haskell
+    -- | List of integers from n upto m
+    upto :: Int -> Int -> [Int]
+    upto n m
+      | n > m     = []
+      | otherwise = n : (upto (n + 1) m)
+    ```
+-->
+<p><br> <br> <br> <br> <br></p>
+<h2 id="syntactic-sugar-for-ranges">Syntactic Sugar for Ranges</h2>
+<p>There’s also syntactic sugar for this!</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true"></a>[<span class="dv">1</span><span class="op">..</span><span class="dv">7</span>]    <span class="co">-- [1,2,3,4,5,6,7]</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true"></a>[<span class="dv">1</span>,<span class="dv">3</span><span class="op">..</span><span class="dv">7</span>]  <span class="co">-- [1,3,5,7]</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="functions-on-lists-length">Functions on lists: length</h2>
+<p><strong>1. Tests</strong></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; ???</span></span></code></pre></div>
+<p><strong>2. Type</strong></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a><span class="ot">len ::</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>3. Code</strong></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true"></a>len <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="pattern-matching-on-lists">Pattern matching on lists</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true"></a><span class="co">-- | Length of the list</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true"></a><span class="ot">len ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true"></a>len []     <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true"></a>len (_<span class="op">:</span>xs) <span class="ot">=</span> <span class="dv">1</span> <span class="op">+</span> len xs</span></code></pre></div>
+<p><br> <br></p>
+<p><del>A pattern is either a <em>variable</em> (incl. <code class="sourceCode haskell">_</code>) or a <em>value</em></del></p>
+<p>A pattern is</p>
+<ul>
+<li>either a <em>variable</em> (incl. <code class="sourceCode haskell">_</code>)</li>
+<li>or a <em>constructor</em> applied to other <em>patterns</em></li>
+</ul>
+<p><br> <br></p>
+<p><strong>Pattern matching</strong> attempts to match <em>values</em> against <em>patterns</em> and, if desired, <em>bind</em> variables to successful matches.</p>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="functions-on-lists-take">Functions on lists: <code class="sourceCode haskell"><span class="fu">take</span></code></h2>
+<p>Let’s write a function to <code class="sourceCode haskell"><span class="fu">take</span></code> first <code class="sourceCode haskell">n</code> elements of a list <code class="sourceCode haskell">xs</code>.</p>
+<p><strong>1. Tests</strong></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; ???</span></span></code></pre></div>
+<p><strong>2. Type</strong></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a><span class="fu">take</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>3. Code</strong></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true"></a><span class="fu">take</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<h2 id="quiz-1">QUIZ</h2>
+<p>Which of the following is <strong>not</strong> a pattern?</p>
+<p><strong>A.</strong> <code class="sourceCode haskell">(<span class="dv">1</span><span class="op">:</span>xs)</code></p>
+<p><strong>B.</strong> <code class="sourceCode haskell">(_<span class="op">:</span>_<span class="op">:</span>_)</code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell">[x]</code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell">[<span class="dv">1</span><span class="op">+</span><span class="dv">2</span>,x,y]</code></p>
+<p><strong>E.</strong> all of the above</p>
+<p><br></p>
+<p><br> <br> <br> <br> <br></p>
+<h2 id="strings-are-lists-of-chars">Strings are Lists-of-Chars</h2>
+<p>For example</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> x <span class="ot">=</span> [<span class="ch">'h'</span>, <span class="ch">'e'</span>, <span class="ch">'l'</span>, <span class="ch">'l'</span>, <span class="ch">'o'</span>]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true"></a>λ<span class="op">&gt;</span> x</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true"></a><span class="st">&quot;hello&quot;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="kw">let</span> y <span class="ot">=</span> <span class="st">&quot;hello&quot;</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true"></a>λ<span class="op">&gt;</span> x <span class="op">==</span> y</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true"></a><span class="dt">True</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="op">:</span>t x</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true"></a><span class="ot">x ::</span> [<span class="dt">Char</span>]</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="op">:</span>t y</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true"></a><span class="ot">y ::</span> [<span class="dt">Char</span>]</span></code></pre></div>
+<h2 id="shout-shout-shout">shout Shout SHOUT</h2>
+<p>How can we convert a string to upper-case, e.g.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true"></a>ghci<span class="op">&gt;</span> shout <span class="st">&quot;like this&quot;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true"></a><span class="st">&quot;LIKE THIS&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true"></a><span class="ot">shout ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true"></a>shout s <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br></p>
+<h2 id="some-useful-library-functions">Some useful library functions</h2>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true"></a><span class="co">-- | Length of the list</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true"></a><span class="fu">length</span><span class="ot"> ::</span> [t] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true"></a><span class="co">-- | Append two lists</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true"></a><span class="ot">(++) ::</span> [t] <span class="ot">-&gt;</span> [t] <span class="ot">-&gt;</span> [t]</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true"></a><span class="co">-- | Are two lists equal?</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true"></a><span class="ot">(==) ::</span> [t] <span class="ot">-&gt;</span> [t] <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
+<p><br></p>
+<p>You can search for library functions on <a href="https://www.haskell.org/hoogle/">Hoogle</a>!</p>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="tuples">Tuples</h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true"></a><span class="ot">myPair ::</span> (<span class="dt">String</span>, <span class="dt">Int</span>)  <span class="co">-- pair of String and Int</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true"></a>myPair <span class="ot">=</span> (<span class="st">&quot;apple&quot;</span>, <span class="dv">3</span>)</span></code></pre></div>
+<p><br></p>
+<p><code class="sourceCode haskell">(,)</code> is the <em>pair constructor</em></p>
+<p><br> <br></p>
+<h2 id="field-access">Field access</h2>
+<p>Using <code class="sourceCode haskell"><span class="fu">fst</span></code> and <code class="sourceCode haskell"><span class="fu">snd</span></code></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true"></a>ghci<span class="op">&gt;</span> <span class="fu">fst</span> (<span class="st">&quot;apple&quot;</span>, <span class="dv">22</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true"></a><span class="st">&quot;apple&quot;</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true"></a>ghci<span class="op">&gt;</span> <span class="fu">snd</span> (<span class="st">&quot;apple&quot;</span>, <span class="dv">22</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true"></a><span class="dv">22</span></span></code></pre></div>
+<h2 id="tuples-to-pass-parameters">Tuples to pass parameters</h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true"></a><span class="ot">add2 ::</span> (<span class="dt">Int</span>, <span class="dt">Int</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true"></a>add2 p <span class="ot">=</span> <span class="fu">fst</span> p <span class="op">+</span> <span class="fu">snd</span> p</span></code></pre></div>
+<p>but watch out, <code class="sourceCode haskell">add2</code> expects a tuple.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true"></a>exAdd2_BAD <span class="ot">=</span> add2 <span class="dv">10</span> <span class="dv">20</span>      <span class="co">-- type error</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true"></a>exAdd2_OK  <span class="ot">=</span> add2 (<span class="dv">10</span>, <span class="dv">20</span>)   <span class="co">-- OK!</span></span></code></pre></div>
+<h2 id="tuples-and-pattern-matching">Tuples and Pattern Matching</h2>
+<p>It is often clearer to use <em>patterns</em> for tuples, e.g.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true"></a><span class="ot">add2 ::</span> (<span class="dt">Int</span>, <span class="dt">Int</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true"></a>add2 p <span class="ot">=</span> <span class="kw">let</span> (x, y) <span class="ot">=</span> p <span class="kw">in</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true"></a>           x <span class="op">+</span> y</span></code></pre></div>
+<p>or equivalently,</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true"></a><span class="ot">add2 ::</span> (<span class="dt">Int</span>, <span class="dt">Int</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true"></a>add2 p    <span class="ot">=</span> x <span class="op">+</span> y</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true"></a>   (x, y) <span class="ot">=</span> p</span></code></pre></div>
+<p>or, best, use the pattern in the parameter,</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true"></a><span class="ot">add2 ::</span> (<span class="dt">Int</span>, <span class="dt">Int</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true"></a>add2 (x, y) <span class="ot">=</span> x <span class="op">+</span> y</span></code></pre></div>
+<p><br> <br></p>
+<p>You can use pattern matching not only in equations, but also in <span class="math inline"><em>λ</em></span>-bindings and <code class="sourceCode haskell"><span class="kw">let</span></code>-bindings!</p>
+<p><br> <br> <br> <br> <br></p>
+<h3 id="quiz-pattern-matching-with-pairs">QUIZ: Pattern matching with pairs</h3>
+<p>Is this pattern matching correct? What does this function do?</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true"></a><span class="ot">quiz ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [(<span class="dt">String</span>, <span class="dt">Int</span>)] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true"></a>quiz _ []     <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true"></a>quiz x ((k,v) <span class="op">:</span> ps)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true"></a>  <span class="op">|</span> x <span class="op">==</span> k    <span class="ot">=</span> v</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true"></a>  <span class="op">|</span> <span class="fu">otherwise</span> <span class="ot">=</span> quiz x ps</span></code></pre></div>
+<p>What is <code class="sourceCode haskell">quiz <span class="st">&quot;dog&quot;</span> [ (<span class="st">&quot;cat&quot;</span>, <span class="dv">10</span>), (<span class="st">&quot;dog&quot;</span>, <span class="dv">20</span>), (<span class="st">&quot;cat&quot;</span>, <span class="dv">30</span>)]</code> ?</p>
+<p><strong>A.</strong> Type error!</p>
+<p><strong>B.</strong> <code class="sourceCode haskell"><span class="dv">0</span></code></p>
+<p><strong>C.</strong> <code class="sourceCode haskell"><span class="dv">10</span></code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dv">20</span></code></p>
+<p><strong>D.</strong> <code class="sourceCode haskell"><span class="dv">30</span></code></p>
+<p><br> <br></p>
+<p><br> <br> <br> <br> <br></p>
+<h2 id="generalized-tuples">Generalized Tuples</h2>
+<p>Can we implement triples like in <span class="math inline"><em>λ</em></span>-calculus?</p>
+<p><br> <br> <br> <br></p>
+<p>Sure! but Haskell has native support for <span class="math inline"><em>n</em></span>-tuples:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true"></a><span class="ot">myPair   ::</span> (<span class="dt">String</span>, <span class="dt">Int</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true"></a>myPair   <span class="ot">=</span> (<span class="st">&quot;apple&quot;</span>, <span class="dv">3</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true"></a><span class="ot">myTriple ::</span> (<span class="dt">Bool</span>, <span class="dt">Int</span>, [<span class="dt">Int</span>])</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true"></a>myTriple <span class="ot">=</span> (<span class="dt">True</span>, <span class="dv">1</span>, [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true"></a><span class="ot">my4tuple ::</span> (<span class="dt">Float</span>, <span class="dt">Float</span>, <span class="dt">Float</span>, <span class="dt">Float</span>)</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true"></a>my4tuple <span class="ot">=</span> (<span class="fu">pi</span>, <span class="fu">sin</span> <span class="fu">pi</span>, <span class="fu">cos</span> <span class="fu">pi</span>, <span class="fu">sqrt</span> <span class="dv">2</span>)</span></code></pre></div>
+<h2 id="the-empty-tuple">The “Empty” Tuple</h2>
+<p>It also makes sense to have an 0-ary tuple:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true"></a><span class="ot">myUnit ::</span> ()</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true"></a>myUnit <span class="ot">=</span> ()</span></code></pre></div>
+<p>often used like <code class="sourceCode haskell">void</code> in other languages.</p>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="list-comprehensions">List comprehensions</h2>
+<p>A convenient way to construct lists!</p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>What is the result of evaluating:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true"></a>quiz <span class="ot">=</span> [ <span class="dv">10</span> <span class="op">*</span> i <span class="op">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]]</span></code></pre></div>
+<p><strong>A.</strong> Infinite loop <strong>B.</strong> <code class="sourceCode haskell">[]</code> <strong>C.</strong> <code class="sourceCode haskell">[<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</code> <strong>D.</strong> <code class="sourceCode haskell"><span class="dv">150</span></code> <strong>E.</strong> Type error</p>
+<p><br> <br> <br> <br> <br></p>
+<h2 id="comprehensions-and-ranges">Comprehensions and Ranges</h2>
+<p>Recall you can <em>enumerate</em> ranges as</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true"></a>ghci<span class="op">&gt;</span> [<span class="dv">0</span><span class="op">..</span><span class="dv">5</span>]</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true"></a>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span></code></pre></div>
+<p>So, we can write the above more simply</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true"></a>quiz <span class="ot">=</span> [ <span class="dv">10</span> <span class="op">*</span> i <span class="op">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span><span class="op">..</span><span class="dv">5</span>] ]</span></code></pre></div>
+<h2 id="quiz-composing-comprehensions">QUIZ: Composing Comprehensions</h2>
+<p>What is the result of evaluating</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true"></a>quiz <span class="ot">=</span> [(i,j) <span class="op">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span>, <span class="dv">1</span>]     <span class="co">-- a first selection</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true"></a>              , j <span class="ot">&lt;-</span> [<span class="dv">0</span>, <span class="dv">1</span>] ]   <span class="co">-- a second selection</span></span></code></pre></div>
+<p><strong>A.</strong> Type error <strong>B.</strong> <code class="sourceCode haskell">[]</code> <strong>C.</strong> <code class="sourceCode haskell">[<span class="dv">0</span>,<span class="dv">1</span>]</code> <strong>D.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>,<span class="dv">0</span>), (<span class="dv">1</span>,<span class="dv">1</span>)]</code> <strong>E.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>,<span class="dv">0</span>), (<span class="dv">0</span>,<span class="dv">1</span>, (<span class="dv">1</span>,<span class="dv">0</span>), (<span class="dv">1</span>,<span class="dv">1</span>)]</code></p>
+<p><br> <br> <br> <br> <br></p>
+<h2 id="quiz-composing-comprehensions-1">QUIZ: Composing Comprehensions</h2>
+<p>What is the result of evaluating</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true"></a>quiz <span class="ot">=</span> [(i,j) <span class="op">|</span> i <span class="ot">&lt;-</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true"></a>              , j <span class="ot">&lt;-</span> [<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true"></a>              , i <span class="op">==</span> j      ]   <span class="co">-- condition!</span></span></code></pre></div>
+<p><strong>A.</strong> Type error <strong>B.</strong> <code class="sourceCode haskell">[]</code> <strong>C.</strong> <code class="sourceCode haskell">[<span class="dv">0</span>,<span class="dv">1</span>]</code> <strong>D.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>,<span class="dv">0</span>), (<span class="dv">1</span>,<span class="dv">1</span>)]</code> <strong>E.</strong> <code class="sourceCode haskell">[(<span class="dv">0</span>,<span class="dv">0</span>), (<span class="dv">0</span>,<span class="dv">1</span>, (<span class="dv">1</span>,<span class="dv">0</span>), (<span class="dv">1</span>,<span class="dv">1</span>)]</code></p>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="shout-revisited">shout revisited</h2>
+<p>How can we convert a string to upper-case, e.g.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true"></a>ghci<span class="op">&gt;</span> shout <span class="st">&quot;like this&quot;</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true"></a><span class="st">&quot;LIKE THIS&quot;</span></span></code></pre></div>
+<p>Use comprehensions to write a *non-recursive" <code class="sourceCode haskell">shout</code>?</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true"></a><span class="ot">shout ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true"></a>shout s <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br></p>
+<h2 id="quicksort-in-haskell-1">QuickSort in Haskell</h2>
+<p><strong>Step 1: Write some tests</strong></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; sort []</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true"></a><span class="co">-- ???</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true"></a></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; sort [10]</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true"></a><span class="co">-- ???</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true"></a></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; sort [12, 1, 10]</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true"></a><span class="co">-- ???</span></span></code></pre></div>
+<p><strong>Step 2: Write the type</strong></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true"></a><span class="fu">sort</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>Step 3: Write the code</strong></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true"></a><span class="fu">sort</span> []     <span class="ot">=</span> <span class="op">???</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true"></a><span class="fu">sort</span> (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true"></a><span class="fu">sort</span><span class="ot"> ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> [<span class="dt">Int</span>]</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true"></a><span class="fu">sort</span> []     <span class="ot">=</span> []</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true"></a><span class="fu">sort</span> (x<span class="op">:</span>xs) <span class="ot">=</span> <span class="fu">sort</span> ls <span class="op">++</span> [x] <span class="op">++</span> <span class="fu">sort</span> rs</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true"></a>    ls      <span class="ot">=</span> [ l <span class="op">|</span> l <span class="ot">&lt;-</span> xs, l <span class="op">&lt;=</span> x ]</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true"></a>    rs      <span class="ot">=</span> [ r <span class="op">|</span> r <span class="ot">&lt;-</span> xs, x <span class="op">&lt;</span>  r ]</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br></p>
+<h3 id="haskell-is-purely-functional">Haskell is purely functional</h3>
+<p><strong>Functional</strong> = functions are <em>first-class values</em></p>
+<p><strong>Pure</strong> = a program is an expression that evaluates to a value</p>
+<ul>
+<li><p>no side effects!</p></li>
+<li><p>unlike in Python, Java, etc:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">f</span>(<span class="dt">int</span> x) {</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true"></a>  calls++;                         <span class="co">// side effect: global variable update!</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true"></a>  <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;calling f&quot;</span>); <span class="co">// side effect: writing to screen!</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true"></a>  <span class="fu">launchMissile</span>();                 <span class="co">// side effect: can't bring back home!</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true"></a>  <span class="kw">return</span> x * <span class="dv">2</span>;</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true"></a>}</span></code></pre></div></li>
+<li><p>in Haskell, a function of type <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code> Computes a <em>single integer output</em> from a <em>single integer input</em> Does <strong>nothing else</strong></p></li>
+</ul>
+<p><strong>Referential transparency:</strong> The same expression always evaluates to the same value</p>
+<!-- 
+  * More precisely: In a scope where `x1, ..., xn` are defined,
+    all occurrences of `e` with `FV(e) = {x1, ..., xn}` have the same value
+  -->
+<p><br></p>
+<p><strong>Why is this good?</strong></p>
+<ul>
+<li>easier to reason about (remember <code class="sourceCode haskell">x<span class="op">++</span></code> vs <code class="sourceCode haskell"><span class="op">++</span>x</code> in C++?)</li>
+<li>enables compiler optimizations</li>
+<li>especially great for parallelization (<code class="sourceCode haskell">e1 <span class="op">+</span> e2</code>: we can always compute <code class="sourceCode haskell">e1</code> and <code class="sourceCode haskell">e2</code> in parallel!)</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>The function <code class="sourceCode haskell"><span class="fu">head</span></code> returns the first element of a list.</p>
+<p>What is the result of:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true"></a><span class="ot">goBabyGo ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> [<span class="dt">Int</span>]</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true"></a>goBabyGo n <span class="ot">=</span> n <span class="op">:</span> goBabyGo (n <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true"></a></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true"></a><span class="ot">quiz ::</span> <span class="dt">Int</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true"></a>quiz <span class="ot">=</span> <span class="fu">head</span> (goBabyGo <span class="dv">0</span>)</span></code></pre></div>
+<p><strong>A.</strong> Loops forever <strong>B.</strong> Type error <strong>C.</strong> <code class="sourceCode haskell"><span class="dv">0</span></code> <strong>D.</strong> <code class="sourceCode haskell"><span class="dv">1</span></code></p>
+<h2 id="haskell-is-lazy">Haskell is Lazy</h2>
+<p>An expression is evaluated only when its result is needed!</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true"></a>ghci<span class="op">&gt;</span> <span class="fu">take</span> <span class="dv">2</span> (goBabyGo <span class="dv">1</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true"></a>[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<p>Why?</p>
+<p><br> <br></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true"></a>        <span class="fu">take</span> <span class="dv">2</span> (goBabyGo <span class="dv">1</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true"></a><span class="ot">=&gt;</span>      <span class="fu">take</span> <span class="dv">2</span> (<span class="dv">1</span> <span class="op">:</span> goBabyGo <span class="dv">2</span>)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true"></a><span class="ot">=&gt;</span>      <span class="fu">take</span> <span class="dv">2</span> (<span class="dv">1</span> <span class="op">:</span> <span class="dv">2</span> <span class="op">:</span> goBabyGo <span class="dv">3</span>)</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true"></a><span class="ot">=&gt;</span> <span class="dv">1</span><span class="op">:</span>   <span class="fu">take</span> <span class="dv">1</span> (    <span class="dv">2</span> <span class="op">:</span> goBabyGo <span class="dv">3</span>)</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true"></a><span class="ot">=&gt;</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span><span class="op">:</span> <span class="fu">take</span> <span class="dv">0</span> (        goBabyGo <span class="dv">3</span>)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true"></a><span class="ot">=&gt;</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span><span class="op">:</span> []</span></code></pre></div>
+<p><br></p>
+<p><strong>Why is this good?</strong></p>
+<ul>
+<li><p>can implement cool stuff like infinite lists: <code class="sourceCode haskell">[<span class="dv">1</span><span class="op">..</span>]</code></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true"></a><span class="co">-- first n pairs of co-primes: </span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true"></a><span class="fu">take</span> n [(i,j) <span class="op">|</span> i <span class="ot">&lt;-</span> [<span class="dv">1</span><span class="op">..</span>],</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true"></a>                j <span class="ot">&lt;-</span> [<span class="dv">1</span><span class="op">..</span>i],</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true"></a>                <span class="fu">gcd</span> i j <span class="op">==</span> <span class="dv">1</span>]</span></code></pre></div></li>
+<li><p>encourages simple, general solutions</p></li>
+<li><p>but has its problems too :(</p></li>
+</ul>
+<p><br> <br> <br> <br> <br></p>
+<p>That’s all folks!</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse130.github.io/wi21/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse130.github.io/wi21/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/anim.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/scripts.js"></script>
+
+    </body>
+</html>

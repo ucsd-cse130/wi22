@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 130">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse130.github.io/wi21/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse130</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse130.github.io/wi21/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 130" />
+    <meta property="og:site_name" content="UCSD CSE 130" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse130.github.io/wi21" id="blog-title-left-top">cse130</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse130.github.io/wi21/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse130.github.io/wi21/static/img/books.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Lexing and Parsing</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="plan-for-this-week">Plan for this week</h2>
+<p><strong>Last week:</strong></p>
+<ul>
+<li>How do we <em>evaluate</em> a program given its AST?</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span></code></pre></div>
+<p><strong>This week:</strong></p>
+<ul>
+<li>How do we <em>convert</em> program text into an AST?</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ot">parse ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="example-calculator-with-variables">Example: calculator with variables</h2>
+<p>AST representation:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Aexpr</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">AConst</span>  <span class="dt">Int</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">AVar</span>    <span class="dt">Id</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">APlus</span>   <span class="dt">Aexpr</span> <span class="dt">Aexpr</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">AMinus</span>  <span class="dt">Aexpr</span> <span class="dt">Aexpr</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">AMul</span>    <span class="dt">Aexpr</span> <span class="dt">Aexpr</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">ADiv</span>    <span class="dt">Aexpr</span> <span class="dt">Aexpr</span>    </span></code></pre></div>
+<p><br></p>
+<p>Evaluator:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Aexpr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="op">...</span></span></code></pre></div>
+<p><br></p>
+<p>Using the evaluator:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> eval [] (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AConst</span> <span class="dv">6</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="dv">8</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>λ<span class="op">&gt;</span> eval [(<span class="st">&quot;x&quot;</span>, <span class="dv">16</span>), (<span class="st">&quot;y&quot;</span>, <span class="dv">10</span>)] (<span class="dt">AMinus</span> (<span class="dt">AVar</span> <span class="st">&quot;x&quot;</span>) (<span class="dt">AVar</span> <span class="st">&quot;y&quot;</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="dv">6</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>λ<span class="op">&gt;</span> eval [(<span class="st">&quot;x&quot;</span>, <span class="dv">16</span>), (<span class="st">&quot;y&quot;</span>, <span class="dv">10</span>)] (<span class="dt">AMinus</span> (<span class="dt">AVar</span> <span class="st">&quot;x&quot;</span>) (<span class="dt">AVar</span> <span class="st">&quot;z&quot;</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="op">***</span> <span class="dt">Exception</span><span class="op">:</span> <span class="dt">Error</span> {errMsg <span class="ot">=</span> <span class="st">&quot;Unbound variable z&quot;</span>}</span></code></pre></div>
+<p><br></p>
+<p>But writing ASTs explicitly is really tedious, we are used to writing programs as text!</p>
+<p><br></p>
+<p>We want to write a function that converts strings to ASTs if possible:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ot">parse ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Aexpr</span></span></code></pre></div>
+<p><br></p>
+<p>For example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> parse <span class="st">&quot;2 + 6&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AConst</span> <span class="dv">6</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>λ<span class="op">&gt;</span> parse <span class="st">&quot;(x - y) / 2&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="dt">ADiv</span> (<span class="dt">AMinus</span> (<span class="dt">AVar</span> <span class="st">&quot;x&quot;</span>) (<span class="dt">AVar</span> <span class="st">&quot;y&quot;</span>)) (<span class="dt">AConst</span> <span class="dv">2</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>λ<span class="op">&gt;</span> parse <span class="st">&quot;2 +&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="op">***</span> <span class="dt">Exception</span><span class="op">:</span> <span class="dt">Error</span> {errMsg <span class="ot">=</span> <span class="st">&quot;Syntax error&quot;</span>}</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="two-step-strategy">Two-step-strategy</h2>
+<p>How do I read a sentence “He ate a bagel”?</p>
+<ul>
+<li>First split into words: <code class="sourceCode haskell">[<span class="st">&quot;He&quot;</span>, <span class="st">&quot;ate&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;bagel&quot;</span>]</code></li>
+<li>Then relate words to each other: “He” is the subject, “ate” is the verb, etc</li>
+</ul>
+<p><br></p>
+<p>Let’s do the same thing to “read” programs!</p>
+<p><br> <br> <br> <br></p>
+<h3 id="step-1-lexing-from-string-to-tokens">Step 1 (Lexing) : From String to Tokens</h3>
+<p>A string is a list of <em>characters</em>:</p>
+<figure>
+<img src="../static/img/info_parser.001a.jpg" id="fig:chars" style="width:70.0%" alt /><figcaption>Characters</figcaption>
+</figure>
+<p>First we aggregate characters that “belong together” into <strong>tokens</strong> (i.e. the “words” of the program):</p>
+<figure>
+<img src="../static/img/info_parser.001b.jpg" id="fig:tokens" style="width:70.0%" alt /><figcaption>Tokens</figcaption>
+</figure>
+<p>We distinguish tokens of different kinds based on their format:</p>
+<ul>
+<li>all numbers: integer constant</li>
+<li>alphanumeric, starts with a letter: identifier</li>
+<li><code class="sourceCode haskell"><span class="op">+</span></code>: plus operator</li>
+<li>etc</li>
+</ul>
+<p><br> <br> <br> <br></p>
+<h3 id="step-2-parsing-from-tokens-to-ast">Step 2 (Parsing) : From Tokens to AST</h3>
+<p>Next, we convert a sequence of tokens into an AST</p>
+<ul>
+<li>This is hard…</li>
+<li>… but the hard parts do not depend on the language!</li>
+</ul>
+<p><br></p>
+<p><strong>Parser generators</strong></p>
+<ul>
+<li>Given the description of the <em>token format</em> generates a <em>lexer</em></li>
+<li>Given the description of the <em>grammar</em> generates a <em>parser</em></li>
+</ul>
+<p>We will be using parser generators, so we only care about how to describe the token format and the grammar</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="lexing">Lexing</h2>
+<p>We will use the tool called <code class="sourceCode haskell">alex</code> to generate the <strong>lexer</strong></p>
+<p>Input to <code class="sourceCode haskell">alex</code>: a <code class="sourceCode haskell"><span class="op">.</span>x</code> file that describes the <em>token format</em></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="tokens">Tokens</h2>
+<p>First we list the kinds of tokens we have in the language:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Token</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">NUM</span>    <span class="dt">AlexPosn</span> <span class="dt">Int</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">ID</span>     <span class="dt">AlexPosn</span> <span class="dt">String</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">PLUS</span>   <span class="dt">AlexPosn</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">MINUS</span>  <span class="dt">AlexPosn</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">MUL</span>    <span class="dt">AlexPosn</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">DIV</span>    <span class="dt">AlexPosn</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">LPAREN</span> <span class="dt">AlexPosn</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">RPAREN</span> <span class="dt">AlexPosn</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">EOF</span>    <span class="dt">AlexPosn</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="token-rules">Token rules</h2>
+<p>Next we describe the format of each kind of token using a rule:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>  [\<span class="op">+</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">PLUS</span>   p }</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>  [\<span class="op">-</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">MINUS</span>  p }</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>  [\<span class="op">*</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">MUL</span>    p }</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>  [\<span class="op">/</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">DIV</span>    p }</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>  \(                            { \p _ <span class="ot">-&gt;</span> <span class="dt">LPAREN</span> p }</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>  \)                            { \p _ <span class="ot">-&gt;</span> <span class="dt">RPAREN</span> p }</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>  <span class="op">$</span>alpha [<span class="op">$</span>alpha <span class="op">$</span>digit \_ \']<span class="op">*</span> { \p s <span class="ot">-&gt;</span> <span class="dt">ID</span>     p s }</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>  <span class="op">$</span>digit<span class="op">+</span>                       { \p s <span class="ot">-&gt;</span> <span class="dt">NUM</span> p (<span class="fu">read</span> s) }</span></code></pre></div>
+<p>Each line consist of:</p>
+<ul>
+<li>a <em>regular expression</em> that describes which strings should be recognized as this token</li>
+<li>a Haskell expression that generates the token</li>
+</ul>
+<p>You read it as:</p>
+<ul>
+<li>if at position <code class="sourceCode haskell">p</code> in the input string</li>
+<li>you encounter a substring <code class="sourceCode haskell">s</code> that matches the <em>regular expression</em></li>
+<li>evaluate the Haskell expression with arguments <code class="sourceCode haskell">p</code> and <code class="sourceCode haskell">s</code></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="regular-expressions">Regular Expressions</h2>
+<p>A regular expression has one of the following forms:</p>
+<ul>
+<li><p><code class="sourceCode haskell">[c1 c2 <span class="op">...</span> cn]</code> matches <em>any of</em> the characters <code class="sourceCode haskell">c1 <span class="op">..</span> cn</code></p>
+<ul>
+<li><code class="sourceCode haskell">[<span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]</code> matches <em>any digit</em></li>
+<li><code class="sourceCode haskell">[a<span class="op">-</span>z]</code> matches <em>any lower-case letter</em><br />
+</li>
+<li><code class="sourceCode haskell">[<span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>]</code> matches <em>any upper-case letter</em></li>
+<li><code class="sourceCode haskell">[a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>]</code> matches <em>any letter</em></li>
+</ul></li>
+<li><p><code class="sourceCode haskell"><span class="dt">R1</span> <span class="dt">R2</span></code> matches a string <code class="sourceCode haskell">s1 <span class="op">++</span> s2</code> where <code class="sourceCode haskell">s1</code> matches <code class="sourceCode haskell"><span class="dt">R1</span></code> and <code class="sourceCode haskell">s2</code> matches <code class="sourceCode haskell"><span class="dt">R2</span></code></p>
+<ul>
+<li>e.g. <code class="sourceCode haskell">[<span class="dv">0</span><span class="op">-</span><span class="dv">9</span>] [<span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]</code> matches any two-digit string</li>
+</ul></li>
+<li><p><code class="sourceCode haskell"><span class="dt">R</span><span class="op">+</span></code> matches <em>one or more</em> repetitions of what <code class="sourceCode haskell"><span class="dt">R</span></code> matches</p>
+<ul>
+<li>e.g. <code class="sourceCode haskell">[<span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]<span class="op">+</span></code> matches a natural number</li>
+</ul></li>
+<li><p><code class="sourceCode haskell"><span class="dt">R</span><span class="op">*</span></code> matches <em>zero or more</em> repetitions of what <code class="sourceCode haskell"><span class="dt">R</span></code> matches</p></li>
+</ul>
+<p><br> <br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>Which of the following strings are matched by <code class="sourceCode haskell">[a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>] [a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span> <span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]<span class="op">*</span></code>?</p>
+<p><strong>(A)</strong> (empty string)</p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">5</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell">x5</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell">x</code></p>
+<p><strong>(E)</strong> C and D</p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="back-to-token-rules">Back to token rules</h2>
+<p>We can <strong>name</strong> some common regexps like:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="op">$</span>digit <span class="ot">=</span> [<span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="op">$</span>alpha <span class="ot">=</span> [a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>]</span></code></pre></div>
+<p>and write <code class="sourceCode haskell">[a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span>] [a<span class="op">-</span>z <span class="dt">A</span><span class="op">-</span><span class="dt">Z</span> <span class="dv">0</span><span class="op">-</span><span class="dv">9</span>]<span class="op">*</span></code> as <code class="sourceCode haskell"><span class="op">$</span>alpha [<span class="op">$</span>alpha <span class="op">$</span>digit]<span class="op">*</span></code></p>
+<p><br></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>  [\<span class="op">+</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">PLUS</span>   p }</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>  [\<span class="op">-</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">MINUS</span>  p }</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>  [\<span class="op">*</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">MUL</span>    p }</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>  [\<span class="op">/</span>]                          { \p _ <span class="ot">-&gt;</span> <span class="dt">DIV</span>    p }</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>  \(                            { \p _ <span class="ot">-&gt;</span> <span class="dt">LPAREN</span> p }</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>  \)                            { \p _ <span class="ot">-&gt;</span> <span class="dt">RPAREN</span> p }</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>  <span class="op">$</span>alpha [<span class="op">$</span>alpha <span class="op">$</span>digit \_ \']<span class="op">*</span> { \p s <span class="ot">-&gt;</span> <span class="dt">ID</span>     p s }</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>  <span class="op">$</span>digit<span class="op">+</span>                       { \p s <span class="ot">-&gt;</span> <span class="dt">NUM</span> p (<span class="fu">read</span> s) }</span></code></pre></div>
+<ul>
+<li>When you encounter a <code class="sourceCode haskell"><span class="op">+</span></code>, generate a <code class="sourceCode haskell"><span class="dt">PLUS</span></code> token</li>
+<li>…</li>
+<li>When you encounter a nonempty string of digits, convert it into an integer and generate a <code class="sourceCode haskell"><span class="dt">NUM</span></code></li>
+<li>When you encounter an alphanumeric string that starts with a letter, save it in an `ID token</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="running-the-lexer">Running the Lexer</h2>
+<p>From the token rules, <code class="sourceCode haskell">alex</code> generates a function <code class="sourceCode haskell">alexScan</code> which</p>
+<ul>
+<li>given an input string, find the <em>longest</em> prefix <code class="sourceCode haskell">p</code> that matches one of the rules</li>
+<li>if <code class="sourceCode haskell">p</code> is empty, it fails</li>
+<li>otherwise, it converts <code class="sourceCode haskell">p</code> into a token and returns the rest of the string</li>
+</ul>
+<p>We wrap this function into a handy function</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="ot">parseTokens ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Either</span> <span class="dt">ErrMsg</span> [<span class="dt">Token</span>]</span></code></pre></div>
+<p>which repeatedly calls <code class="sourceCode haskell">alexScan</code> until it consumes the whole input string or fails</p>
+<p><br></p>
+<p>We can test the function like so:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> parseTokens <span class="st">&quot;23 + 4 / off -&quot;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="dt">Right</span> [ <span class="dt">NUM</span> (<span class="dt">AlexPn</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">1</span>) <span class="dv">23</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>      , <span class="dt">PLUS</span> (<span class="dt">AlexPn</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">4</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>      , <span class="dt">NUM</span> (<span class="dt">AlexPn</span> <span class="dv">5</span> <span class="dv">1</span> <span class="dv">6</span>) <span class="dv">4</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>      , <span class="dt">DIV</span> (<span class="dt">AlexPn</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">8</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>      , <span class="dt">ID</span> (<span class="dt">AlexPn</span> <span class="dv">9</span> <span class="dv">1</span> <span class="dv">10</span>) <span class="st">&quot;off&quot;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>      , <span class="dt">MINUS</span> (<span class="dt">AlexPn</span> <span class="dv">13</span> <span class="dv">1</span> <span class="dv">14</span>) </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>      ]      </span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> parseTokens <span class="st">&quot;%&quot;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="dt">Left</span> <span class="st">&quot;lexical error at 1 line, 1 column&quot;</span></span></code></pre></div>
+<p><br> <br> <br> <br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>What is the result of <code class="sourceCode haskell">parseTokens <span class="st">&quot;92zoo&quot;</span></code> (positions omitted for readability)?</p>
+<p><strong>(A)</strong> Lexical error</p>
+<p><strong>(B)</strong> <code class="sourceCode haskell">[<span class="dt">ID</span> <span class="st">&quot;92zoo&quot;</span>]</code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell">[<span class="dt">NUM</span> <span class="st">&quot;92&quot;</span>]</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell">[<span class="dt">NUM</span> <span class="st">&quot;92&quot;</span>, <span class="dt">ID</span> <span class="st">&quot;zoo&quot;</span>]</code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="parsing">Parsing</h2>
+<p>We will use the tool called <code class="sourceCode haskell">happy</code> to generate the <strong>parser</strong></p>
+<p>Input to <code class="sourceCode haskell">happy</code>: a <code class="sourceCode haskell"><span class="op">.</span>y</code> file that describes the <em>grammar</em></p>
+<p><br> <br></p>
+<p>Wait, wasn’t this the grammar?</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Aexpr</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">AConst</span>  <span class="dt">Int</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">AVar</span>    <span class="dt">Id</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">APlus</span>   <span class="dt">Aexpr</span> <span class="dt">Aexpr</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">AMinus</span>  <span class="dt">Aexpr</span> <span class="dt">Aexpr</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">AMul</span>    <span class="dt">Aexpr</span> <span class="dt">Aexpr</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">ADiv</span>    <span class="dt">Aexpr</span> <span class="dt">Aexpr</span>    </span></code></pre></div>
+<p>This was <em>abstract syntax</em></p>
+<p>Now we need to describe <em>concrete syntax</em></p>
+<ul>
+<li>What programs look like when written as text</li>
+<li>and how to map that text into the abstract syntax</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="grammars">Grammars</h2>
+<p>A grammar is a recursive definition of a set of trees</p>
+<ul>
+<li>each tree is a <em>parse tree</em> for some string</li>
+<li><em>parse</em> a string <code class="sourceCode haskell">s</code> = find a parse tree for <code class="sourceCode haskell">s</code> that belongs to the grammar</li>
+</ul>
+<p><br> <br></p>
+<p>A grammar is made of:</p>
+<ul>
+<li><p><strong>Terminals</strong>: the leaves of the tree (tokens!)</p></li>
+<li><p><strong>Nonterminals:</strong> the internal nodes of the tree</p></li>
+<li><p><strong>Production Rules</strong> that describe how to “produce” a non-terminal from terminals and other non-terminals</p>
+<ul>
+<li>i.e. what children each nonterminal can have:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="dt">Aexpr</span> <span class="op">:</span>   <span class="co">-- NT Aexpr can have as children:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'+'</span> <span class="dt">Aexpr</span>  { <span class="op">...</span> } <span class="co">-- NT Aexpr, T '+', and NT Aexpr, or </span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'-'</span> <span class="dt">AExpr</span>  { <span class="op">...</span> } <span class="co">-- NT Aexpr, T '-', and NT Aexpr, or </span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>  <span class="op">|</span> <span class="op">...</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="terminals">Terminals</h2>
+<p>Terminals correspond to the <em>tokens</em> returned by the lexer</p>
+<p>In the <code class="sourceCode haskell"><span class="op">.</span>y</code> file, we have to declare with terminals in the rules correspond to which tokens from the <code class="sourceCode haskell"><span class="dt">Token</span></code> datatype:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="op">%</span>token</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>    <span class="dt">TNUM</span>  { <span class="dt">NUM</span> _ <span class="op">$$</span> }</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>    <span class="dt">ID</span>    { <span class="dt">ID</span> _ <span class="op">$$</span>  }</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>    <span class="ch">'+'</span>   { <span class="dt">PLUS</span> _   }</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>    <span class="ch">'-'</span>   { <span class="dt">MINUS</span> _  }</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>    <span class="ch">'*'</span>   { <span class="dt">MUL</span> _    }</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>    <span class="ch">'/'</span>   { <span class="dt">DIV</span> _    }</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a>    <span class="ch">'('</span>   { <span class="dt">LPAREN</span> _ }</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a>    <span class="ch">')'</span>   { <span class="dt">RPAREN</span> _ }</span></code></pre></div>
+<ul>
+<li><p>Each thing on the left is terminal (as appears in the production rules)</p></li>
+<li><p>Each thing on the right is a Haskell pattern for datatype <code class="sourceCode haskell"><span class="dt">Token</span></code></p></li>
+<li><p>We use <code class="sourceCode haskell"><span class="op">$$</span></code> to designate one parameter of a token constructor as the <strong>value</strong> of that token</p>
+<ul>
+<li>we will refer back to it from the production rules</li>
+</ul></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="production-rules">Production rules</h2>
+<p>Next we define productions for our language:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="dt">Aexpr</span> <span class="op">:</span> <span class="dt">TNUM</span>                    { <span class="dt">AConst</span> <span class="op">$</span><span class="dv">1</span>    }</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">ID</span>                      { <span class="dt">AVar</span>   <span class="op">$</span><span class="dv">1</span>    }</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>      <span class="op">|</span> <span class="ch">'('</span> <span class="dt">Aexpr</span> <span class="ch">')'</span>           { <span class="op">$</span><span class="dv">2</span>           }</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'*'</span> <span class="dt">Aexpr</span>         { <span class="dt">AMul</span>   <span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">3</span> }</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'+'</span> <span class="dt">Aexpr</span>         { <span class="dt">APlus</span>  <span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">3</span> } </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'-'</span> <span class="dt">Aexpr</span>         { <span class="dt">AMinus</span> <span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">3</span> }</span></code></pre></div>
+<p>The expression on the right computes the <em>value</em> of this node</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">2</span> <span class="op">$</span><span class="dv">3</span></code> refer to the <em>values</em> of the respective child nodes</li>
+</ul>
+<p><br> <br></p>
+<p><strong>Example:</strong> parsing <code class="sourceCode haskell">(<span class="dv">2</span>)</code> as <code class="sourceCode haskell"><span class="dt">AExpr</span></code>:</p>
+<ol type="1">
+<li><p>Lexer returns a sequence of <code class="sourceCode haskell"><span class="dt">Token</span></code>s: <code class="sourceCode haskell">[<span class="dt">LPAREN</span>, <span class="dt">NUM</span> <span class="dv">2</span>, <span class="dt">RPAREN</span>]</code></p></li>
+<li><p><code class="sourceCode haskell"><span class="dt">LPAREN</span></code> is the token for terminal <code class="sourceCode haskell"><span class="ch">'('</span></code>, so let’s pick production <code class="sourceCode haskell"><span class="ch">'('</span> <span class="dt">Aexpr</span> <span class="ch">')'</span></code></p></li>
+<li><p>Now we have to parse <code class="sourceCode haskell"><span class="dt">NUM</span> <span class="dv">2</span></code> as <code class="sourceCode haskell"><span class="dt">Aexpr</span></code> and <code class="sourceCode haskell"><span class="dt">RPAREN</span></code> as <code class="sourceCode haskell"><span class="ch">')'</span></code></p></li>
+<li><p><code class="sourceCode haskell"><span class="dt">NUM</span> <span class="dv">2</span></code> is a token for nonterminal <code class="sourceCode haskell"><span class="dt">TNUM</span></code>, so let’s pick production <code class="sourceCode haskell"><span class="dt">TNUM</span></code></p></li>
+<li><p>The value of this <code class="sourceCode haskell"><span class="dt">Aexpr</span></code> node is <code class="sourceCode haskell"><span class="dt">AConst</span> <span class="dv">2</span></code>, since the value of <code class="sourceCode haskell"><span class="dt">TNUM</span></code> is <code class="sourceCode haskell"><span class="dv">2</span></code></p></li>
+<li><p>The value of the top-level <code class="sourceCode haskell"><span class="dt">Aexpr</span></code> node is also <code class="sourceCode haskell"><span class="dt">AConst</span> <span class="dv">2</span></code> (see the <code class="sourceCode haskell"><span class="ch">'('</span> <span class="dt">Aexpr</span> <span class="ch">')'</span></code> production)</p></li>
+</ol>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>What is the value of the root <code class="sourceCode haskell"><span class="dt">AExpr</span></code> node when parsing <code class="sourceCode haskell"><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></code>?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="dt">Aexpr</span> <span class="op">:</span> <span class="dt">TNUM</span>                    { <span class="dt">AConst</span> <span class="op">$</span><span class="dv">1</span>    }</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">ID</span>                      { <span class="dt">AVar</span>   <span class="op">$</span><span class="dv">1</span>    }</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>      <span class="op">|</span> <span class="ch">'('</span> <span class="dt">Aexpr</span> <span class="ch">')'</span>           { <span class="op">$</span><span class="dv">2</span>           }</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'*'</span> <span class="dt">Aexpr</span>         { <span class="dt">AMul</span>   <span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">3</span> }</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'+'</span> <span class="dt">Aexpr</span>         { <span class="dt">APlus</span>  <span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">3</span> } </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'-'</span> <span class="dt">Aexpr</span>         { <span class="dt">AMinus</span> <span class="op">$</span><span class="dv">1</span> <span class="op">$</span><span class="dv">3</span> }</span></code></pre></div>
+<p><strong>(A)</strong> Cannot be parsed as <code class="sourceCode haskell"><span class="dt">AExpr</span></code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">6</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="dt">APlus</span> (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">1</span>) (<span class="dt">AConst</span> <span class="dv">2</span>)) (<span class="dt">AConst</span> <span class="dv">3</span>)</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">1</span>) (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AConst</span> <span class="dv">3</span>))</code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="running-the-parser">Running the Parser</h2>
+<p>First, we should tell the parser that the top-level non-terminal is <code class="sourceCode haskell"><span class="dt">AExpr</span></code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="op">%</span>name aexpr</span></code></pre></div>
+<p>From the production rules and this line, <code class="sourceCode haskell">happy</code> generates a function <code class="sourceCode haskell">aexpr</code> that tries to parse a sequence of tokens as <code class="sourceCode haskell"><span class="dt">AExpr</span></code></p>
+<p>We package this function together with the lexer and the evaluator into a handy function</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="ot">evalString ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div>
+<p><br></p>
+<p>We can test the function like so:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;1 + 3 + 6&quot;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="dv">10</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>λ<span class="op">&gt;</span> evalString [(<span class="st">&quot;x&quot;</span>, <span class="dv">100</span>), (<span class="st">&quot;y&quot;</span>, <span class="dv">20</span>)] <span class="st">&quot;x - y&quot;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a><span class="op">???</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 * 5 + 5&quot;</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true"></a><span class="op">???</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 - 1 - 1&quot;</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true"></a><span class="op">???</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="precedence-and-associativity">Precedence and associativity</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 * 5 + 5&quot;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a><span class="dv">20</span></span></code></pre></div>
+<p>The problem is that our grammar is <strong>ambiguous</strong>!</p>
+<p>There are multiple ways of parsing the string <code class="sourceCode haskell"><span class="dv">2</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">5</span></code>, namely</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">APlus</span> (<span class="dt">AMul</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AConst</span> <span class="dv">5</span>)) (<span class="dt">AConst</span> <span class="dv">5</span>)</code> (good)</li>
+<li><code class="sourceCode haskell"><span class="dt">AMul</span>  (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">5</span>) (<span class="dt">AConst</span> <span class="dv">5</span>))</code> (bad!)</li>
+</ul>
+<p><em>Wanted:</em> tell <code class="sourceCode haskell">happy</code> that <code class="sourceCode haskell"><span class="op">*</span></code> has higher <strong>precedence</strong> than <code class="sourceCode haskell"><span class="op">+</span></code>!</p>
+<p><br> <br></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> evalString [] <span class="st">&quot;2 - 1 - 1&quot;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="dv">2</span></span></code></pre></div>
+<p>There are multiple ways of parsing <code class="sourceCode haskell"><span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> <span class="dv">1</span></code>, namely</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">AMinus</span> (<span class="dt">AMinus</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AConst</span> <span class="dv">1</span>)) (<span class="dt">AConst</span> <span class="dv">1</span>)</code> (good)</li>
+<li><code class="sourceCode haskell"><span class="dt">AMinus</span> (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">AMinus</span> (<span class="dt">AConst</span> <span class="dv">1</span>) (<span class="dt">AConst</span> <span class="dv">1</span>))</code> (bad!)</li>
+</ul>
+<p><em>Wanted:</em> tell <code class="sourceCode haskell">happy</code> that <code class="sourceCode haskell"><span class="op">-</span></code> is <strong>left-associative</strong>!</p>
+<p><br> <br></p>
+<p>How do we communicate precedence and associativity to <code class="sourceCode haskell">happy</code>?</p>
+<p><br> <br> <br> <br></p>
+<h3 id="solution-1-grammar-factoring">Solution 1: Grammar factoring</h3>
+<p>We can split the <code class="sourceCode haskell"><span class="dt">AExpr</span></code> non-terminal into multiple “levels”</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="dt">Aexpr</span> <span class="op">:</span> <span class="dt">Aexpr</span> <span class="ch">'+'</span> <span class="dt">Aexpr2</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr</span> <span class="ch">'-'</span> <span class="dt">Aexpr2</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>      <span class="op">|</span> <span class="dt">Aexpr2</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a><span class="dt">Aexpr2</span> <span class="op">:</span> <span class="dt">Aexpr2</span> <span class="ch">'*'</span> <span class="dt">Aexpr3</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a>       <span class="op">|</span> <span class="dt">Aexpr2</span> <span class="ch">'/'</span> <span class="dt">Aexpr3</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a>       <span class="op">|</span> <span class="dt">Aexpr3</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true"></a><span class="dt">Aexpr3</span> <span class="op">:</span> <span class="dt">TNUM</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true"></a>       <span class="op">|</span> <span class="dt">ID</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true"></a>       <span class="op">|</span> <span class="ch">'('</span> <span class="dt">Aexpr</span> <span class="ch">')'</span></span></code></pre></div>
+<p>Intuition: <code class="sourceCode haskell"><span class="dt">AExpr2</span></code> “binds tighter” than <code class="sourceCode haskell"><span class="dt">AExpr</span></code>, and <code class="sourceCode haskell"><span class="dt">AExpr3</span></code> is the tightest</p>
+<p>Now I cannot parse the string <code class="sourceCode haskell"><span class="dv">2</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">5</span></code> as</p>
+<ul>
+<li><p><code class="sourceCode haskell"><span class="dt">AMul</span>  (<span class="dt">AConst</span> <span class="dv">2</span>) (<span class="dt">APlus</span> (<span class="dt">AConst</span> <span class="dv">5</span>) (<span class="dt">AConst</span> <span class="dv">5</span>))</code></p></li>
+<li><p>Why?</p></li>
+</ul>
+<p><br> <br> <br> <br></p>
+<h3 id="solution-2-parser-directives">Solution 2: Parser directives</h3>
+<p>This problem is so common that parser generators have a special syntax for it!</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="op">%</span>left <span class="ch">'+'</span> <span class="ch">'-'</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a><span class="op">%</span>left <span class="ch">'*'</span> <span class="ch">'/'</span></span></code></pre></div>
+<p>What this means:</p>
+<ul>
+<li>All our operators are left-associative</li>
+<li>Operators on the lower line have higher precedence</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<p>That’s all folks!</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse130.github.io/wi21/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse130.github.io/wi21/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/anim.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/scripts.js"></script>
+
+    </body>
+</html>

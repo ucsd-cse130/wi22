@@ -1,0 +1,1438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 130">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse130.github.io/wi21/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse130</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse130.github.io/wi21/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 130" />
+    <meta property="og:site_name" content="UCSD CSE 130" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse130.github.io/wi21" id="blog-title-left-top">cse130</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse130.github.io/wi21/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse130.github.io/wi21/static/img/books.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Closures</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="past-three-weeks">Past three weeks</h2>
+<p>How to <em>use</em> essential language constructs?</p>
+<ul>
+<li>Data Types</li>
+<li>Recursion</li>
+<li>Higher-Order Functions</li>
+</ul>
+<h2 id="next-two-weeks">Next two weeks</h2>
+<p>How to <em>implement</em> language constructs?</p>
+<ul>
+<li>Local variables and scope</li>
+<li>Environments and Closures</li>
+</ul>
+<!--
+- Type Inference
+-->
+<h3 id="interpreter">Interpreter</h3>
+<p>How do we <em>represent</em> and <em>evaluate</em> a program?</p>
+<!-- 
+- How do we *prove properties* about our interpreter
+  (e.g. that certain programs never crash)?  
+  -->
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p>How should we evaluate this expression?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>   eval []</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    {<span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span> <span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>                  {<span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [cTimes<span class="op">:???</span>, c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>                                              {cTimes <span class="dv">2</span>}</span></code></pre></div>
+<p><br></p>
+<p>What is the <strong>value</strong> of <code class="sourceCode haskell">cTimes</code>???</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="rethinking-our-values">Rethinking our values</h2>
+<p><strong>Until now:</strong> a program <em>evaluates</em> to an integer (or fails)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">type</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">Int</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">type</span> <span class="dt">Env</span> <span class="ot">=</span> [(<span class="dt">Id</span>, <span class="dt">Value</span>)]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span></code></pre></div>
+<p><br> <br></p>
+<p>What do these programs evaluate to?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>\x <span class="ot">-&gt;</span> <span class="dv">2</span> <span class="op">*</span> x</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="op">==&gt;</span> <span class="op">???</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>(<span class="dv">2</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a><span class="kw">let</span> f <span class="ot">=</span> \x <span class="ot">-&gt;</span> \y <span class="ot">-&gt;</span> <span class="dv">2</span> <span class="op">*</span> (x <span class="op">+</span> y) <span class="kw">in</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>f <span class="dv">5</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="op">==&gt;</span> <span class="op">???</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br></p>
+<p><strong>Now:</strong> a program evaluates to an integer or <em>a lambda abstraction</em> (or fails)</p>
+<ul>
+<li>Remember: functions are <em>first-class</em> values</li>
+</ul>
+<p><br></p>
+<p>Let’s change our definition of values!</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>           <span class="op">|</span> <span class="dt">VLam</span> <span class="op">???</span> <span class="co">-- What info do we need to store?</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">-- Other types stay the same</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a><span class="kw">type</span> <span class="dt">Env</span> <span class="ot">=</span> [(<span class="dt">Id</span>, <span class="dt">Value</span>)]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="function-values">Function values</h2>
+<p>How should we represent a function value?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>cTimes <span class="dv">2</span></span></code></pre></div>
+<p>We need to store enough information about <code class="sourceCode haskell">cTimes</code> so that we can later evaluate any <em>application</em> of <code class="sourceCode haskell">cTimes</code> (like <code class="sourceCode haskell">cTimes <span class="dv">2</span></code>)!</p>
+<p><br> <br></p>
+<p>First attempt:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>           <span class="op">|</span> <span class="dt">VLam</span> <span class="dt">Id</span> <span class="dt">Expr</span> <span class="co">-- formal + body</span></span></code></pre></div>
+<p><br> <br></p>
+<p>Let’s try this!</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>   eval []         </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    {<span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span> <span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>                  {<span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [cTimes<span class="op">:</span>(\x <span class="ot">-&gt;</span> c<span class="op">*</span>x), c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>                                              {cTimes <span class="dv">2</span>}</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>    <span class="co">-- evaluate the function:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [cTimes<span class="op">:</span>(\x <span class="ot">-&gt;</span> c<span class="op">*</span>x), c<span class="op">:</span><span class="dv">42</span>]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>                                       {(\x <span class="ot">-&gt;</span> c <span class="op">*</span> x) <span class="dv">2</span>} </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a>    <span class="co">-- evaluate the argument, bind to x, evaluate body:</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [x<span class="op">:</span><span class="dv">2</span>, cTimes<span class="op">:</span>(\x <span class="ot">-&gt;</span> c<span class="op">*</span>x), c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a>                                              {c <span class="op">*</span> x}</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="ot">=&gt;</span>                                            <span class="dv">42</span> <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="ot">=&gt;</span>                                            <span class="dv">84</span></span></code></pre></div>
+<p><br></p>
+<p>Looks good… can you spot a problem?</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>What should this evaluate to?</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> <span class="co">-- but which c???</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>cTimes <span class="dv">2</span></span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">84</span></code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">10</span></code></p>
+<p><strong>(C)</strong> Error: multiple definitions of <code class="sourceCode haskell">c</code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="static-vs-dynamic-scoping">Static vs Dynamic Scoping</h2>
+<p>What we want:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>cTimes <span class="dv">2</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="ot">=&gt;</span> <span class="dv">84</span></span></code></pre></div>
+<p><strong>Lexical</strong> (or <strong>static</strong>) scoping:</p>
+<ul>
+<li>each occurrence of a variable refers to the most recent binding <em>in the program text</em></li>
+<li>definition of each variable is unique and known <em>statically</em></li>
+<li>good for readability and debugging: don’t have to figure out where a variable got “assigned”</li>
+</ul>
+<p><br> <br></p>
+<p>What we <strong>don’t</strong> want:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>cTimes <span class="dv">2</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="ot">=&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<p><strong>Dynamic</strong> scoping:</p>
+<ul>
+<li>each occurrence of a variable refers to the most recent binding <em>during program execution</em></li>
+<li>can’t tell where a variable is defined just by looking at the function body</li>
+<li>nightmare for readability and debugging:</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a><span class="kw">let</span> res1 <span class="ot">=</span> cTimes <span class="dv">2</span> <span class="kw">in</span> <span class="co">-- ==&gt; 10</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">10</span> <span class="kw">in</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="kw">let</span> res2 <span class="ot">=</span> cTimes <span class="dv">2</span> <span class="kw">in</span> <span class="co">-- ==&gt; 20!!!</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>res2 <span class="op">-</span> res1</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="function-values-1">Function values</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>           <span class="op">|</span> <span class="dt">VLam</span> <span class="dt">Id</span> <span class="dt">Expr</span> <span class="co">-- formal + body</span></span></code></pre></div>
+<p>This representation can only implement dynamic scoping!</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>cTimes <span class="dv">2</span></span></code></pre></div>
+<p>evaluates as:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>   eval []         </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>   {<span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span> <span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>                 {<span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [cTimes<span class="op">:</span>(\x <span class="ot">-&gt;</span> c<span class="op">*</span>x), c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>                                             {<span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">5</span>, cTimes<span class="op">:</span>(\x <span class="ot">-&gt;</span> c<span class="op">*</span>x), c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>                                                          {cTimes <span class="dv">2</span>}</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">5</span>, cTimes<span class="op">:</span>(\x <span class="ot">-&gt;</span> c<span class="op">*</span>x), c<span class="op">:</span><span class="dv">42</span>]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a>                                                   {(\x <span class="ot">-&gt;</span> c <span class="op">*</span> x) <span class="dv">2</span>} </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [x<span class="op">:</span><span class="dv">2</span>, c<span class="op">:</span><span class="dv">5</span>, cTimes<span class="op">:</span>(\x <span class="ot">-&gt;</span> c<span class="op">*</span>x), c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true"></a>                                                          {c <span class="op">*</span> x}</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true"></a>  <span class="co">-- latest binding for c is 5!</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true"></a><span class="ot">=&gt;</span>                                                         <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true"></a><span class="ot">=&gt;</span>                                                         <span class="dv">10</span></span></code></pre></div>
+<p><strong>Lesson learned:</strong> need to remember what <code class="sourceCode haskell">c</code> was bound to when <code class="sourceCode haskell">cTimes</code> was defined!</p>
+<ul>
+<li>i.e. “freeze” the environment at function definition</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="closures">Closures</h2>
+<p>To implement lexical scoping, we will represent function values as <em>closures</em></p>
+<p><br></p>
+<p><strong>Closure</strong> = <em>lambda abstraction</em> (formal + body) + <em>environment</em> at function definition</p>
+<p><br></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>           <span class="op">|</span> <span class="dt">VClos</span> <span class="dt">Env</span> <span class="dt">Id</span> <span class="dt">Expr</span> <span class="co">-- env + formal + body</span></span></code></pre></div>
+<p><br></p>
+<p>Our example:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>   eval []         </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>   {<span class="kw">let</span> c <span class="ot">=</span> <span class="dv">42</span> <span class="kw">in</span> <span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>                 {<span class="kw">let</span> cTimes <span class="ot">=</span> \x <span class="ot">-&gt;</span> c <span class="op">*</span> x <span class="kw">in</span> <span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>   <span class="co">-- remember current env:</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [cTimes<span class="op">:&lt;</span>[c<span class="op">:</span><span class="dv">42</span>], \x <span class="ot">-&gt;</span> c<span class="op">*</span>x<span class="op">&gt;</span>, c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true"></a>                                             {<span class="kw">let</span> c <span class="ot">=</span> <span class="dv">5</span> <span class="kw">in</span> cTimes <span class="dv">2</span>}</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">5</span>, cTimes<span class="op">:&lt;</span>[c<span class="op">:</span><span class="dv">42</span>], \x <span class="ot">-&gt;</span> c<span class="op">*</span>x<span class="op">&gt;</span>, c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true"></a>                                                          {cTimes <span class="dv">2</span>}</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [c<span class="op">:</span><span class="dv">5</span>, cTimes<span class="op">:&lt;</span>[c<span class="op">:</span><span class="dv">42</span>], \x <span class="ot">-&gt;</span> c<span class="op">*</span>x<span class="op">&gt;</span>, c<span class="op">:</span><span class="dv">42</span>]</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true"></a>                                           {<span class="op">&lt;</span>[c<span class="op">:</span><span class="dv">42</span>], \x <span class="ot">-&gt;</span> c <span class="op">*</span> x<span class="op">&gt;</span> <span class="dv">2</span>}</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true"></a>  <span class="co">-- restore env to the one inside the closure, then bind 2 to x:                                                 </span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [x<span class="op">:</span><span class="dv">2</span>, c<span class="op">:</span><span class="dv">42</span>] </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true"></a>                                                          {c <span class="op">*</span> x}</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true"></a><span class="ot">=&gt;</span>                                                        <span class="dv">42</span> <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true"></a><span class="ot">=&gt;</span>                                                        <span class="dv">84</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>Which variables should be saved in the closure environment of <code class="sourceCode haskell">f</code>?</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="kw">let</span> a <span class="ot">=</span> <span class="dv">20</span> <span class="kw">in</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="kw">let</span> f <span class="ot">=</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>  \x <span class="ot">-&gt;</span> <span class="kw">let</span> y <span class="ot">=</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>        <span class="kw">let</span> g <span class="ot">=</span> \z <span class="ot">-&gt;</span> y <span class="op">+</span> z <span class="kw">in</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>        a <span class="op">+</span> g x </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>  <span class="kw">in</span> <span class="op">...</span>        </span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell">a</code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell">a x</code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell">y g</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell">a y g</code></p>
+<p><strong>(E)</strong> <code class="sourceCode haskell">a x y g z</code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="free-vs-bound-variables">Free vs bound variables</h2>
+<ul>
+<li>An occurrence of <code class="sourceCode haskell">x</code> is <strong>free</strong> if it is not <strong>bound</strong></li>
+<li>An occurrence of <code class="sourceCode haskell">x</code> is <strong>bound</strong> if it’s inside
+<ul>
+<li><code class="sourceCode haskell">e2</code> where <code class="sourceCode haskell"><span class="kw">let</span> x <span class="ot">=</span> e1 <span class="kw">in</span> e2</code></li>
+<li><code class="sourceCode haskell">e</code> where <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> e</code></li>
+</ul></li>
+<li>A closure environment has to save <em>all free variables</em> of a function definition!</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="kw">let</span> a <span class="ot">=</span> <span class="dv">20</span> <span class="kw">in</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="kw">let</span> f <span class="ot">=</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>  \x <span class="ot">-&gt;</span> <span class="kw">let</span> y <span class="ot">=</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a>        <span class="kw">let</span> g <span class="ot">=</span> \z <span class="ot">-&gt;</span> y <span class="op">+</span> z <span class="kw">in</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a>        a <span class="op">+</span> g x <span class="co">-- a is the only free variable!</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>  <span class="kw">in</span> <span class="op">...</span>        </span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="evaluator">Evaluator</h2>
+<p>Let’s modify our evaluator to handle functions!</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Value</span> <span class="ot">=</span> <span class="dt">VNum</span> <span class="dt">Int</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>           <span class="op">|</span> <span class="dt">VClos</span> <span class="dt">Env</span> <span class="dt">Id</span> <span class="dt">Expr</span> <span class="co">-- env + formal + body</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>           </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>eval env (<span class="dt">Num</span> n)        <span class="ot">=</span> <span class="dt">VNum</span> n <span class="co">-- must wrap in VNum now!</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>eval env (<span class="dt">Var</span> x)        <span class="ot">=</span> <span class="fu">lookup</span> x env</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a>eval env (<span class="dt">Bin</span> op e1 e2) <span class="ot">=</span> <span class="dt">VNum</span> (f v1 v2)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a>    (<span class="dt">VNum</span> v1) <span class="ot">=</span> eval env e1</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a>    (<span class="dt">VNum</span> v2) <span class="ot">=</span> eval env e2</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a>    f <span class="ot">=</span> <span class="op">...</span> <span class="co">-- as before</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a>eval env (<span class="dt">Let</span> x e1 e2) <span class="ot">=</span> eval env' e2</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a>    v <span class="ot">=</span> eval env e1</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a>    env' <span class="ot">=</span> add x v env</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a>eval env (<span class="dt">Lam</span> x body) <span class="ot">=</span> <span class="op">???</span> <span class="co">-- construct a closure</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a>eval env (<span class="dt">App</span> fun arg) <span class="ot">=</span> <span class="op">???</span> <span class="co">-- eval fun, then arg, then apply</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p>Evaluating functions:</p>
+<ul>
+<li><strong>Construct a closure</strong>: save environment at function definition</li>
+<li><strong>Apply a closure</strong>: restore saved environment, add formal, evaluate the body</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="op">...</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>eval env (<span class="dt">Lam</span> x body) <span class="ot">=</span> <span class="dt">VClos</span> env x body</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>eval env (<span class="dt">App</span> fun arg) <span class="ot">=</span> eval bodyEnv body</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a>    (<span class="dt">VClos</span> closEnv x body) <span class="ot">=</span> eval env fun <span class="co">-- eval function to closure</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>    vArg                   <span class="ot">=</span> eval env arg <span class="co">-- eval argument</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a>    bodyEnv                <span class="ot">=</span> add x vArg closEnv</span></code></pre></div>
+<h2 id="quiz-2">QUIZ</h2>
+<p>With <code class="sourceCode haskell">eval</code> as defined above, what does this evaluate to?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="kw">let</span> f <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> y <span class="kw">in</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="kw">let</span> y <span class="ot">=</span> <span class="dv">10</span> <span class="kw">in</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>f <span class="dv">5</span></span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">15</span></code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">5</span></code></p>
+<p><strong>(C)</strong> Error: unbound variable <code class="sourceCode haskell">x</code></p>
+<p><strong>(D)</strong> Error: unbound variable <code class="sourceCode haskell">y</code></p>
+<p><strong>(E)</strong> Error: unbound variable <code class="sourceCode haskell">f</code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>   eval []         </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>     {<span class="kw">let</span> f <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> y <span class="kw">in</span> <span class="kw">let</span> y <span class="ot">=</span> <span class="dv">10</span> <span class="kw">in</span> f <span class="dv">5</span>}</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [f<span class="op">:&lt;</span>[], \x <span class="ot">-&gt;</span> x <span class="op">+</span> y<span class="op">&gt;</span>]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>                            {<span class="kw">let</span> y <span class="ot">=</span> <span class="dv">10</span> <span class="kw">in</span> f <span class="dv">5</span>}</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [y<span class="op">:</span><span class="dv">10</span>, f<span class="op">:&lt;</span>[], \x <span class="ot">-&gt;</span> x <span class="op">+</span> y<span class="op">&gt;</span>]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a>                                          {f <span class="dv">5</span>}</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [y<span class="op">:</span><span class="dv">10</span>, f<span class="op">:&lt;</span>[], \x <span class="ot">-&gt;</span> x <span class="op">+</span> y<span class="op">&gt;</span>]</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true"></a>                          {<span class="op">&lt;</span>[], \x <span class="ot">-&gt;</span> x <span class="op">+</span> y<span class="op">&gt;</span> <span class="dv">5</span>}  </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [x<span class="op">:</span><span class="dv">5</span>] <span class="co">-- env got replaced by closure env + formal!</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true"></a>                                     {x <span class="op">+</span> y}  <span class="co">-- y is unbound!</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>With <code class="sourceCode haskell">eval</code> as defined above, what does this evaluate to?</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="kw">let</span> f <span class="ot">=</span> \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>) <span class="kw">in</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>f <span class="dv">5</span></span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">120</span></code></p>
+<p><strong>(B)</strong> Evaluation does not terminate</p>
+<p><strong>(C)</strong> Error: unbound variable <code class="sourceCode haskell">f</code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>   eval []         </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>       {<span class="kw">let</span> f <span class="ot">=</span> \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>) <span class="kw">in</span> f <span class="dv">5</span>}</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [f<span class="op">:&lt;</span>[], \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>)<span class="op">&gt;</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a>                                      {f <span class="dv">5</span>}</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [f<span class="op">:&lt;</span>[], \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>)<span class="op">&gt;</span>]</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true"></a>              {<span class="op">&lt;</span>[], \n <span class="ot">-&gt;</span> n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>)<span class="op">&gt;</span> <span class="dv">5</span>}   </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true"></a><span class="ot">=&gt;</span> eval [n<span class="op">:</span><span class="dv">5</span>] <span class="co">-- env got replaced by closure env + formal!</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true"></a>                         {n <span class="op">*</span> f (n <span class="op">-</span> <span class="dv">1</span>)} <span class="co">-- f is unbound!</span></span></code></pre></div>
+<p><strong>Lesson learned:</strong> to support recursion, we need a different way of constructing the closure environment!</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="the-nano-language">The Nano Language</h2>
+<p>Features of Nano:</p>
+<ol type="1">
+<li>Arithmetic expressions <strong>[done]</strong></li>
+<li>Variables and let-bindings <strong>[done]</strong></li>
+<li>Functions <strong>[done]</strong></li>
+<li>Recursion <strong>[this is part of HW4]</strong></li>
+</ol>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<!-- 
+## Formalizing Nano
+
+**Goal:** we want to guarantee properties about programs, such as:
+
+  * evaluation is deterministic
+  * all programs terminate
+  * certain programs never fail at run time
+  * etc.
+  
+To prove theorems about programs we first need to define formally
+  
+  * their *syntax* (what programs look like)
+  * their *semantics* (what it means to run a program)
+  
+Let's start with Nano1 (Nano w/o functions) and prove some stuff!
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Nano1: Syntax
+
+We need to define the syntax for *expressions* (*terms*)
+and *values* using a grammar:
+
+```haskell
+e ::= n | x             -- expressions
+    | e1 + e2
+    | let x = e1 in e2
+
+v ::= n                 -- values
+```
+
+where $n \in \mathbb{N}, x \in \mathrm{Var}$
+
+<br>
+<br>
+<br>
+
+## Nano1: Operational Semantics
+
+**Operational semantics** defines how to execute a program step by step
+
+<br>
+
+Let's define a *step relation* (*reduction relation*) `e => e'`
+
+  * "expression `e` makes a step (reduces in one step) to an expression `e'`
+  
+<br>
+<br>
+  
+We define the step relation *inductively* through a set of *rules*:
+
+```haskell
+               e1 => e1'        -- premise
+[Add-L]   --------------------
+          e1 + e2 => e1' + e2   -- conclusion
+
+              e2 => e2'
+[Add-R]   --------------------
+          n1 + e2 => n1 + e2'
+          
+[Add]     n1 + n2 => n       where n == n1 + n2          
+
+                        e1 => e1'
+[Let-Def] --------------------------------------
+          let x = e1 in e2 => let x = e1' in e2
+        
+[Let]     let x = v in e2 => e2[x := v]
+```
+
+Here `e[x := v]` is a value substitution:
+
+```haskell
+x[x := v]                  = v
+y[x := v]                  = y            -- assuming x /= y
+n[x := v]                  = n
+(e1 + e2)[x := v]          = e1[x := v] + e2[x := v]
+(let x = e1 in e2)[x := v] = let x = e1[x := v] in e2
+(let y = e1 in e2)[x := v] = let y = e1[x := v] in e2[x := v]
+```
+
+Do not have to worry about capture, because `v` is a value (has not free variables!)
+
+
+<br>
+<br>
+
+A reduction is *valid* if we can build its **derivation** by "stacking" the rules:
+
+```haskell
+    [Var] --------------------
+              1 + 2 => 3
+[Add-L] -----------------------
+        (1 + 2) + 5  =>  3 + 5
+```
+
+<br>
+<br>
+
+
+Do we have rules for all kinds of expressions?
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### 1. Normal forms
+
+There are no reduction rules for:
+
+  * `n`
+  * `x`
+  
+Both of these expressions are *normal forms* (cannot be further reduced), however:
+
+  * `n` is a *value*
+      * intuitively, corresponds to successful evaluation
+  * `x` is *not* a value
+      * intuitively, corresponds to a run-time error!
+      * we say the program `x` is **stuck**
+
+<br>
+<br>
+<br>
+<br>  
+<br>
+
+### 2. Evaluation order
+
+In `e1 + e2`, which side should we evaluate first?
+
+In other words, which one of these reductions is valid (or both)?
+
+  (1) `(1 + 2) + (4 + 5)  =>  3 + (4 + 5)`
+  (2) `(1 + 2) + (4 + 5)  =>  (1 + 2) + 9`
+  
+<br>
+<br>
+
+Reduction (1) is *valid* because we can build a **derivation** using the rules:
+  
+```haskell
+          [Add] ----------
+                1 + 2 => 3
+[Add-L] ----------------------------------
+        (1 + 2) + (4 + 5)  =>  3 + (4 + 5)
+```
+
+Reduction (2) is *invalid* because we cannot build a derivation:
+
+  * there is *no rule* whose conclusion matches this reduction!
+
+```haskell
+                    ??? 
+[???] -----------------------------------
+      (1 + 2) + (4 + 5)  =>  (1 + 2) + 9
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+```haskell
+                        e1 => e1'
+[Let-Def] --------------------------------------
+          let x = e1 in e2 => let x = e1' in e2
+        
+[Let]     let x = v in e2 => e2[x := v]
+```
+
+If these are the only rules for `let` bindings,
+which reductions are valid?
+
+**(A)** `(let x = 1 + 2 in 4 + 5 + x)  =>  (let x = 3 in 4 + 5 + x)`
+
+**(B)** `(let x = 1 + 2 in 4 + 5 + x)  =>  (let x = 1 + 2 in 9 + x)`
+
+**(C)** `(let x = 1 + 2 in 4 + 5 + x)  =>  (4 + 5 + 1 + 2)`
+
+**(D)** A and B
+
+**(E)** All of the above
+
+
+<br>
+
+(I) final
+
+    *Answer:* A
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Evaluation relation
+
+Like in $\lambda$-calculus, we define the **multi-step reduction** relation `e =*> e'`:
+
+`e =*> e'` iff there exists a sequence of expressions `e1, ..., en` such that
+
+  * `e = e1`
+  * `en = e'`
+  * `ei => e(i+1)` for each `i in [0..n)`
+  
+<br>
+
+*Example:*
+
+```haskell
+    (1 + 2) + (4 + 5)  
+=*> 3 + 9
+```
+
+because
+```haskell
+   (1 + 2) + (4 + 5)  
+=> 3       + (4 + 5)
+=> 3       + 9
+```
+
+<br>
+<br>
+
+Now we define the **evaluation relation** `e =~> e'`:
+
+`e =~> e'` iff
+
+  * `e =*> e'`
+  * `e'` is in normal form
+
+<br>
+
+Example:
+
+```haskell
+    (1 + 2) + (4 + 5)  
+=~> 12
+```
+
+because
+
+```haskell
+   (1 + 2) + (4 + 5)  
+=> 3       + (4 + 5)
+=> 3       + 9
+=> 12
+```
+
+and `12` is a *value* (normal form)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Theorems about Nano1
+
+Let's prove something about Nano1!
+
+  1. Every Nano1 program terminates
+  2. Closed Nano1 programs don't get stuck  
+  3. *Corollary (1 + 2):* Every closed Nano1 program evaluates to a value
+  
+<br>
+
+How do we prove theorems about languages?
+
+**By induction.**
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Mathematical induction in PL
+
+### 1. Induction on natural numbers
+
+To prove $\forall n . P(n)$ we need to prove:
+
+  * *Base case:* $P(0)$
+  * *Inductive case:* $P(n + 1)$ assuming the *induction hypothesis* (IH): that $P(n)$ holds
+  
+<br>  
+  
+Compare with inductive definition for natural numbers:
+
+```haskell
+data Nat = Zero     -- base case
+         | Succ Nat -- inductive case
+```
+
+No reason why this would only work for natural numbers...
+
+In fact we can do induction on *any* inductively defined mathematical object (= any datatype)!
+
+  * lists
+  * trees
+  * programs (terms)
+  * etc
+  
+<br>
+<br>
+<br>
+
+### 2. Induction on terms
+
+```haskell
+e ::= n | x
+    | e1 + e2
+    | let x = e1 in e2
+```
+
+To prove $\forall e . P(e)$ we need to prove:
+
+  * *Base case 1:* `P(n)`
+  * *Base case 2:* `P(x)`
+  * *Inductive case 1:* `P(e1 + e2)` assuming the IH: that `P(e1)` and `P(e2)` hold
+  * *Inductive case 2:* `P(let x = e1 in e2)` assuming the IH: that `P(e1)` and `P(e2)` hold
+  
+<br>
+<br>
+<br>
+
+### 3. Induction on derivations
+
+Our reduction relation `=>` is also defined *inductively*!
+
+  * Axioms are bases cases
+  * Rules with premises are inductive cases
+
+To prove $\forall e,e' . P(e \Rightarrow e')$ we need to prove:
+
+  * *Base cases:* `[Add]`, `[Let]`
+  * *Inductive cases:* `[Add-L]`, `[Add-R]`, `[Let-Def]` assuming the IH: that `P` holds of their premise
+  
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Theorem: Termination
+
+**Theorem I** [Termination]: For any expression `e` there exists `e'` such that `e =~> e'`.
+
+Proof idea: let's define the *size* of an expression such that
+
+  * size of each expression is positive
+  * each reduction step strictly decreases the size
+  
+Then the length of the execution sequence for `e` is *bounded* by the size of `e`!
+
+<br>
+
+```haskell
+size n                  = ???
+size x                  = ???
+size (e1 + e1)          = ???
+size (let x = e1 in e2) = ???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Term size:
+
+```haskell
+size n                  = 1
+size x                  = 1
+size (e1 + e1)          = size e1 + size e2
+size (let x = e1 in e2) = size e1 + size e2
+```
+
+**Lemma 1**: For any `e`, `size e > 0`.
+
+**Proof:** By induction on the *term* `e`.
+
+  * *Base case 1:* `size n = 1 > 0`
+  * *Base case 2:* `size x = 1 > 0`
+  * *Inductive case 1:* `size (e1 + e2) = size e1 + size e2 > 0` because `size e1 > 0` and `size e2 > 0` by IH.
+  * *Inductive case 2:* similar.
+
+
+**QED.**
+
+<br>
+<br>
+<br>
+<br>
+
+**Lemma 2**: For any `e, e'` such that `e => e'`, `size e' < size e`.
+  
+**Proof:** By induction on the *derivation* of `e => e'`.
+
+*Base case* `[Add]`.
+
+  * Given: the root of the derivation is `[Add]`: `n1 + n2 => n` where `n = n1 + n2`
+  * To prove: `size n < size (n1 + n2)` 
+  * `size n = 1 < 2 = size (n1 + n2)`
+
+*Inductive case* `[Add-L]`.
+
+  * Given: the root of the derivation is `[Add-L]`:
+  
+```haskell  
+     e1 => e1'
+--------------------------
+e1 + e2 => e1' + e2
+```
+
+  * To prove: `size (e1' + e2) < size (e1 + e2)`
+  * IH: `size e1' < size e1`
+  
+```
+  size (e1' + e2) 
+= -- def. size
+  size e1' + size e2 
+< -- IH
+  size e1 + size e2
+= -- def. size
+  size (e1 + e2)
+```
+  
+*Inductive case* `[Add-R]`. Try at home   
+  
+*Base case* `[Let]`.
+
+  * Given: the root of the derivation is `[Let]`: `let x = v in e2 => e2[x := v]`
+  * To prove: `size (e2[x := v]) < size (let x = v in e2)` 
+  
+```
+  size (e2[x := v]) 
+= -- auxiliary lemma!
+  size e2 
+< -- IH
+  size v + size e2
+= -- def. size
+  size (let x = v in e2)
+```  
+
+*Inductive case* `[Let-Def]`. Try at home 
+
+**QED.**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## QUIZ
+
+```haskell
+                        e1 => e1'
+[Let-Def] --------------------------------------
+          let x = e1 in e2 => let x = e1' in e2
+```
+
+What is the IH for the inductive case `[Let-Def]`?
+
+**(A)** `e1 => e1'`
+
+**(B)** `size e1' < size e1`
+
+**(C)** `size (let x = e1 in e2) < size (let x = e1' in e2)`
+
+<br>
+
+(I) final
+
+    *Answer:* B
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+## Theorem: Closed Programs don't Get Stuck
+
+First we need to define what are free variables `fv` of an expression:
+
+```haskell
+fv n                  = {}
+fv x                  = {x}
+fv (e1 + e1)          = fv e1 + fv e2
+fv (let x = e1 in e2) = fv e1 + fv e2 / {x}
+```
+
+**Theorem II** [No errors]: For any `e` such that `fv e = {}`, 
+if `e =~> e'` then `e'` is a value.
+
+Proof idea:
+
+  * Proof by induction on the number of reduction steps
+  * At the beginning we are not stuck
+  * With $k + 1$ steps: after the first step, the expression is still closed, so the other $k$ steps follow by IH
+
+
+**Proof:** by induction on the number $k$ of reduction steps:
+
+  * Base case ($k = 0$): `e` is not stuck.
+    We need an auxiliary lemma that a closed expression cannot be stuck (Lemma 3)
+  * Inductive case ($k > 0$): then `e => e1 =~> e'`. 
+    To apply IH, we need to show: `fv e1 = {}` (Lemma 4).    
+    
+<br>
+<br>
+<br>
+
+**Lemma 3**: For any `e` such that `fv e = {}`, 
+either `e` is a value or there exists `e'` such that `e => e'`
+
+**Proof:** By induction on the *term* `e `.
+
+  * *Base case* `n`: It's a value.
+  * *Base case* `x`: `fv x = {x} /= {}`: contradiction!
+  * *Inductive case* `e1 + e2`: Since `fv (e1 + e2) = {}`, 
+    we know that `fv e1 = {}` and `fv e2 = {}`.
+    So we can apply IH to conclude that `e1` (resp. `e2`) is a value or steps to some `e1'` (resp. `e2'`).
+    If `e1 => e1'`, then [Add-L] applies.
+    Otherwise `e1` is a value; then if `e2 => e2'`, then [Add-R] applies.
+    Otherwise `e2` is also a value, so [Add] applies.
+  
+  * *Inductive case* `let x = e1 in e2`: Since `fv (let x = e1 in e2) = {}`, 
+    we know that `fv e1 = {}`.
+    So we can apply IH to conclude that `e1` is a value or steps to some `e1'`.
+    If `e1 => e1'`, then [Let-Def] applies.
+    Otherwise `e1` is a value; then [Let] applies.
+    
+
+<br>
+<br>
+<br>
+
+**Lemma 4**: For any `e` such that `fv e = {}`, 
+if `e => e'` then `fv e' = {}`
+
+**Proof:** By induction on the *derivation* of `e => e'`.
+  
+*Base case* `[Add]`. Try at home.
+
+  * Given: the root of the derivation is `[Add]`: `n1 + n2 => n` where `n = n1 + n2`
+  * To prove: `fv n = {}` (by definition of `fv`)
+
+*Inductive case* `[Add-L]`.
+
+  * Given: the root of the derivation is `[Add-L]`:
+  
+```haskell  
+     e1 => e1'
+--------------------------
+e1 + e2 => e1' + e2
+```
+
+  * Given: `fv (e1 + e2) = {}`
+  * To prove: `fv (e1' + e2) = {}'`
+  * IH: if `fv e1 = {}` then `fv e1' = {}`
+  
+```haskell
+  fv (e1 + e2) = {}
+<==> -- def. fv
+  (fv e1 = {}) & (fv e2 = {})
+==> -- IH
+  (fv e1' = {}) & (fv e2 = {})
+<==> -- def fv
+  fv (e1' + e2) = {}
+```    
+  
+*Inductive case* `[Add-R]`. Try at home   
+
+*Base case* `[Let]`.
+
+  * Given: the root of the derivation is `[Let]`: `let x = n in e2 => e2[x := n]`
+  * Given: `fv (let x = n in e2) = {}`
+  * To prove: `fv (e2[x := n]) = {}`
+    
+```haskell
+  fv (e2[x := n])
+== -- auxiliary lemma!
+  fv e2 / {x}
+== -- def fv  
+  fv (let x = n in e2)
+== -- given
+  {}
+```    
+
+*Inductive case* `[Let-Def]`. Try at home.
+
+**QED.**
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Nano2: adding functions
+
+<br>
+<br>
+
+### Syntax
+
+We need to extend the syntax of expressions and values:
+
+```haskell
+e ::= n | x             -- expressions
+    | e1 + e2
+    | let x = e1 in e2
+    | \x -> e       -- abstraction
+    | e1 e2         -- application
+
+v ::= n                 -- values
+    | \x -> e       -- abstraction
+```
+
+<br>
+<br>
+
+### Operational semantics
+
+We need to extend our reduction relation with rules for abstraction and application:
+
+```haskell
+           e1 => e1'
+[App-L] ----------------
+        e1 e2 => e1' e2
+        
+          e => e'
+[App-R] ------------
+        v e => v e'        
+        
+[App]   (\x -> e) v => e[x := v]          
+```
+
+### QUIZ
+
+With rules defined above, which reductions are valid?
+
+**(A)** `(\x y -> x + y) 1 (1 + 2)  =>  (\x y -> x + y) 1 3`
+ 
+**(B)** `(\x y -> x + y) 1 (1 + 2)  =>  (\y -> 1 + y) (1 + 2)`
+
+**(C)** `(\y -> 1 + y) (1 + 2)  =>  (\y -> 1 + y) 3`
+
+**(D)** `(\y -> 1 + y) (1 + 2)  =>  1 + 1 + 2`
+
+**(E)** B and C
+   
+<br>
+
+(I) final
+
+    *Answer:* E
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Evaluation Order
+
+```haskell
+   ((\x y -> x + y) 1) (1 + 2)
+=> (\y -> 1 + y) (1 + 2)       -- [App-L], [App]
+=> (\y -> 1 + y) 3             -- [App-R], [Add]
+=> 1 + 3                       -- [App]
+=> 4                           -- [Add]
+```
+
+Our rules define **call-by-value**:
+
+  1. Evaluate the function (to a lambda)
+  2. Evaluate the argument (to some value)
+  3. "Make the call": make a substitution of formal to actual in the body of the lambda
+  
+The alternative is **call-by-name**:
+
+  * do not evaluate the argument before "making the call"
+  * can we modify the application rules for Nano2 to make it call-by-name?
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  
+  
+## Theorems about Nano2
+
+Let's prove something about Nano2!
+
+  1. Every Nano2 program terminates (?)
+  2. Closed Nano2 programs don't get stuck (?)
+  
+### QUIZ
+
+Are these theorems still true?
+
+**(A)** Both true
+
+**(B)** 1 is true, 2 is false
+
+**(C)** 1 is false, 2 is true
+
+**(D)** Both false
+  
+<br>
+
+(I) final
+
+    *Answer:* D
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  
+  
+## Theorems about Nano2
+
+  1. Every Nano2 program terminates (?)
+  
+     What about `(\x -> x x) (\x -> x x)`?
+  
+  2. Closed Nano2 programs don't get stuck (?)
+  
+     What about `1 2`?
+     
+Both theorems are now false!
+
+To recover these properties, we need to add *types*:
+
+  1. Every *well-typed* Nano2 program terminates
+    
+  2. *Well-typed* Nano2 programs don't get stuck
+
+We'll do that next week!  
+     
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+That's all folks!
+
+
+-->
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse130.github.io/wi21/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse130.github.io/wi21/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/anim.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/scripts.js"></script>
+
+    </body>
+</html>

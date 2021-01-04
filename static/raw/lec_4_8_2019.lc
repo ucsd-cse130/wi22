@@ -1,0 +1,88 @@
+
+let MICKEYMOUSE = (\x -> x) 
+let FUNKY       = \y -> y y
+
+let TRUE  = \x y -> x
+let FALSE = \x y -> y
+let IF    = \b stuff other -> b stuff other
+let NOT   = \b -> IF b FALSE TRUE 
+let AND   = \b1 b2 -> IF b1 b2 FALSE 
+let OR    = \b1 b2 -> IF b1 TRUE b2 
+
+eval exNOT: 
+  NOT FALSE 
+  =d> (\b -> IF b FALSE TRUE) FALSE 
+  =b> IF FALSE FALSE TRUE  
+  =d> (\b stuff other -> b stuff other ) FALSE FALSE TRUE  
+  =b> (\stuff other -> FALSE stuff other ) FALSE TRUE  
+  =b> (\other -> FALSE FALSE other) TRUE  
+  =b> (FALSE FALSE TRUE)
+  =d> ((\x y -> y) FALSE TRUE)
+  =b> ((\ y -> y) TRUE)
+  =b> TRUE
+   
+  
+
+
+  
+eval exTRUE: 
+       (((IF TRUE) apple) banana)
+  =d>  ((\b -> (\stuff other -> b stuff other)) TRUE) apple banana
+  =b>  ((((\stuff other -> TRUE stuff other))) apple) banana
+  =b>  ((((\other -> TRUE apple other)))) banana
+  =b>  TRUE apple banana 
+  =d>  (\x y -> x) apple banana 
+  =b>  (\y -> apple) banana 
+  =b>  apple 
+
+eval exFALSE: 
+       (((IF FALSE) apple) banana)
+  =d>  ((\b -> (\stuff other -> b stuff other)) FALSE) apple banana
+  =b>  ((((\stuff other -> FALSE stuff other))) apple) banana
+  =b>  ((((\other -> FALSE apple other)))) banana
+  =b>  FALSE apple banana 
+  =d>  (\x y -> y) apple banana 
+  =b>  (\y -> y) banana 
+  =b>  banana
+
+
+
+
+
+eval mickey0 : 
+  MICKEYMOUSE cheese
+  =d> (\x -> x) cheese 
+  =b> cheese
+
+
+-- \x1 x2 x3 x4 -> e  
+-- abbrev
+-- \x1 -> (\x2 -> (\x3 -> (\x4 -> e)))
+
+-- e1 e2 e3 e4 e5 
+-- abbrev 
+-- ((((e1 e2) e3) e4) e5)
+
+-- (\x y -> x) apple orange 
+-- (((\x -> (\y -> x)) apple) orange)
+
+eval blurb: 
+          (\a b -> a) (c a b)
+      =a> (\a b -> a) (c a b)
+
+
+     -- =b> ((\b -> (c a b))) 
+      -- (\a -> (\b -> a)) (c a b)
+      --   ^    ^^^^^^^^^  ^^^^^^^     
+
+-- eval piazza2: 
+--      (\a b -> c b a)
+--   =b> (\b -> c b c)
+
+-- What's up with the below lambda terms?
+
+-- \a b -> a d
+-- \a b c -> a
+
+
+ 

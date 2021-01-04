@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!--
+      loads the http over https ssl -
+      welcome to my website!
+
+	this theme is based off the Ice & Fire theme created by Lucas Gatsas
+      https://www.twitter.com/LucasGatsas
+      www.lucasgatsas.ch - switzerland.
+  -->
+
+
+<!-- Microsoft Internet Explorer documentMode compatMode setting IE Modus -->
+<script type="text/javascript">
+var IE = null;
+if (window.navigator.appName == "Microsoft Internet Explorer") {
+  if (document.documentMode) {
+
+    IE = document.documentMode;
+    } else {
+
+        IE = 5;
+          if (document.compatMode) {
+      if (document.compatMode == "CSS1Compat")
+      IE = 11;
+      }
+    }
+  }
+</script>
+
+    <meta charset="utf-8">
+    <!-- X-UA -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="author" title="Ranjit Jhala" href="http://ranjitjhala.github.io" />
+
+    <meta name="google" content="notranslate" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- index ROBOTS follow -->
+    <meta name="robots" content="index, follow" />
+    <!-- Site Desciption -->
+    <meta name="description" content="UCSD CSE 130">
+    <!-- Site Desciption -->
+    <meta name="keywords" content="haskell, refinement types, liquid types, formal methods, type systems">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://ucsd-cse130.github.io/wi21/static/img/ico.png" type="image/x-icon" />
+    <!-- Blog Title -->
+    <title>cse130</title>
+
+    <!--     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+-->
+    <!-- Property Metas -->
+    <meta property="og:image" content="https://ucsd-cse130.github.io/wi21/static/img/ix.png" />
+    <meta property="og:title" content="UCSD CSE 130" />
+    <meta property="og:site_name" content="UCSD CSE 130" />
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseUrl | prepend: site.url }}">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/ronacher.css" type="text/css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/syntax.css">
+    <link rel="stylesheet" href="https://ucsd-cse230.github.io/sp20/static/css/liquid-light.css">
+
+    <!-- Fonts
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+	#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:url("/static/img/preloader.gif"); /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	ul, ol {margin-top: 0;margin-bottom: 10px;}
+	.navbar-inverse {background-color: #FFF;border-color: #FFFFFF;}
+</style>
+<style>
+  /* HEADER IMAGE */
+  header.intro-header {background: #6f5499;background: no-repeat center center;background-attachment: scroll;-webkit-background-size: cover;-moz-background-size: cover;background-size: cover;-o-background-size: cover;}
+
+	/* Preloader */#preloader {position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff; /* change if the mask should have another color then white */z-index:99; /* makes sure it stays on top */}
+	#status {width:200px;height:200px;position:absolute;left:50%; /* centers the loading animation horizontally one the screen */top:50%; /* centers the loading animation vertically one the screen */background-image:; /* path to your loading animation */background-repeat:no-repeat;background-position:center;margin:-100px 0 0 -100px; /* is width and height divided by two */}
+	li {list-style: none;}
+            body.modal-open
+            {overflow: hidden;padding-right: 0px;
+        }
+	article li {list-style: inherit;}
+	article .figure {text-align: center}
+    </style>
+    <!-- end Loading front stylesheet here -->
+    </head>
+
+    <body>
+	    
+	<!-- 	
+        <div id="preloader">
+	    <div id="status">
+	    </div>
+	</div>  
+	-->
+	<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://ucsd-cse130.github.io/wi21" id="blog-title-left-top">cse130</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <img src="https://ucsd-cse130.github.io/wi21/static/img/ico.png" class="img-responsive img-centered" alt title>
+                            <p class="font-style-inline-small">
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow me</a>. <br>
+                                <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                                <a href="https://www.twitter.com/ranjitjhala" target="_blank"><i class="fa fa-twitter" id="spaceg-social-modal"></i> </a>
+                                <a href="https://plus.google.com/u/0/104385825850161331469" target="_blank"> <i class="fa fa-google-plus" id="spaceg-social-modal"></i></a>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Menu Modals Add New Sa.21.Feb.2015 03:22:25 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="padding-right:0px; overflow: hidden;">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h1 class="font-style-inline-small-h1">Ranjit Jhala</h1>
+                            <hr class="star-primary">
+                            <p class="font-style-inline-small">
+                              <a href="https://www.twitter.com/ranjitjhala" target="_blank">follow</a>. <br>
+                              <a href="https://www.github.com/ranjitjhala" target="_blank">    <i class="fa fa-github" id="spaceg-social-modal"></i> </a>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/calendar.html">Calendar</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/contact.html">Contact</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/grades.html">Grades</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/lectures.html">Lectures</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/assignments.html">Assignments</a></li>
+                              <li><a href="https://ucsd-cse130.github.io/wi21/links.html">Links</a></li>
+                              <li><a href="https://www.piazza.com/class/kjivoxdgfuc1w2" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Piazza</a></li>
+                              <li><a href="https://canvas.ucsd.edu/courses/21656" id="roundbutton" target="_blank"><i class="fa fa-twitter"></i>Canvas</a></li>
+                            </p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id="content">
+            <!-- Post Header -->
+    <header class="intro-header" style="background-image: url('https://ucsd-cse130.github.io/wi21/static/img/books.jpg')" alt title>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Polymorphism and Type Inference</h1>
+                    
+                    <span class="meta">
+		    
+		    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 id="plan-for-this-week">Plan for this week</h2>
+<p><strong>Past two weeks:</strong></p>
+<p>How do we <em>implement</em> a tiny functional language?</p>
+<ol type="1">
+<li><p><em>Interpreter:</em> how do we <em>evaluate</em> a program given its AST?</p></li>
+<li><p><em>Operational semantics:</em> formalizing the interpreter</p></li>
+<li><p><em>Parser:</em> how do we convert strings to ASTs?</p></li>
+</ol>
+<p><strong>This week: adding types</strong></p>
+<p>How do we check statically if our programs “make sense”?</p>
+<ol type="1">
+<li><p><em>Type system:</em> formalizing the intuition about which expressions have which types</p></li>
+<li><p><em>Type inference:</em> computing the type of an expression</p></li>
+</ol>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="reminder-nano2">Reminder: Nano2</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>e <span class="op">::=</span> n <span class="op">|</span> x            <span class="co">-- numbers, vars</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2          <span class="co">-- arithmetic</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="op">|</span> \x <span class="ot">-&gt;</span> e          <span class="co">-- abstraction</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    <span class="op">|</span> e1 e2            <span class="co">-- application</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="op">|</span> <span class="kw">let</span> x <span class="ot">=</span> e1 <span class="kw">in</span> e2 <span class="co">-- let binding</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz">QUIZ</h2>
+<p>Which one of these Nano2 programs is well-typed?</p>
+<p><strong>(A)</strong> <code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> x) <span class="op">+</span> <span class="dv">1</span></code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">1</span> <span class="dv">2</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell"><span class="kw">let</span> f <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="kw">in</span> f (\y <span class="ot">-&gt;</span> y)</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> \y <span class="ot">-&gt;</span> x y</code></p>
+<p><strong>(E)</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x x</code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="type-system-for-nano2">Type system for Nano2</h2>
+<p>A <strong>type system</strong> defines what types an expression can have</p>
+<p>To define a type system we need to define:</p>
+<ul>
+<li>the <em>syntax</em> of types: what do types look like?</li>
+<li>the <em>static semantics</em> of our language (i.e. the typing rules): assign types to expressions</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="type-system-take-1">Type system: take 1</h2>
+<p>Syntax of types:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="dt">T</span> <span class="op">::=</span> <span class="dt">Int</span>       <span class="co">-- integers</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="op">|</span> <span class="dt">T1</span> <span class="ot">-&gt;</span> <span class="dt">T2</span>  <span class="co">-- function types</span></span></code></pre></div>
+<p><br></p>
+<p>Now we want to define a <em>typing relation</em> <code class="sourceCode haskell"><span class="ot">e ::</span> <span class="dt">T</span></code> (<code class="sourceCode haskell">e</code> has type <code class="sourceCode haskell"><span class="dt">T</span></code>)</p>
+<p><br></p>
+<p>We define this relation <em>inductively</em> through a set of <em>typing rules</em>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Num</span>]<span class="ot">  n ::</span> <span class="dt">Int</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="ot">         e1 ::</span> <span class="dt">Int</span><span class="ot">    e2 ::</span> <span class="dt">Int</span>   <span class="co">-- premises</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]  <span class="co">----------------------</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>            e1 <span class="op">+</span><span class="ot"> e2 ::</span> <span class="dt">Int</span>        <span class="co">-- conclusion</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>            </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]<span class="ot">   x ::</span> <span class="op">???</span></span></code></pre></div>
+<p><br></p>
+<p>What is the type of a variable?</p>
+<p><br> <br></p>
+<p>We have to remember what type of expression it was bound to!</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="type-environment">Type Environment</h2>
+<p>An expression has a type in a given <strong>type environment</strong> (also called <strong>context</strong>), which maps all its <em>free variables</em> to their <em>types</em></p>
+<p><code class="sourceCode haskell"><span class="dt">G</span> <span class="ot">=</span> x1<span class="op">:</span><span class="dt">T1</span>, x2<span class="op">:</span><span class="dt">T2</span>, <span class="op">...</span>, xn<span class="op">:</span><span class="dt">Tn</span></code></p>
+<p><br></p>
+<p>Our <em>typing relation</em> should include the context <code class="sourceCode haskell"><span class="dt">G</span></code>:</p>
+<p><code class="sourceCode haskell"><span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="dt">T</span></code> (<code class="sourceCode haskell">e</code> has type <code class="sourceCode haskell"><span class="dt">T</span></code> in context <code class="sourceCode haskell"><span class="dt">G</span></code>)</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="typing-rules-take-2">Typing rules: take 2</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Num</span>]  <span class="dt">G</span> <span class="op">|-</span><span class="ot"> n ::</span> <span class="dt">Int</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>         <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e1 ::</span> <span class="dt">Int</span>   <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e2 ::</span> <span class="dt">Int</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]  <span class="co">-------------------------------</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>               <span class="dt">G</span> <span class="op">|-</span> e1 <span class="op">+</span><span class="ot"> e2 ::</span> <span class="dt">Int</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]  <span class="dt">G</span> <span class="op">|-</span><span class="ot"> x ::</span> <span class="dt">T</span>          <span class="kw">if</span> x<span class="op">:</span><span class="dt">T</span> <span class="kw">in</span> <span class="dt">G</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>          <span class="dt">G</span>, x<span class="op">:</span><span class="dt">T1</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="dt">T2</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>] <span class="co">------------------------</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>        <span class="dt">G</span> <span class="op">|-</span> \x <span class="ot">-&gt; e ::</span> <span class="dt">T1</span> <span class="ot">-&gt;</span> <span class="dt">T2</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>        </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a>        <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e1 ::</span> <span class="dt">T1</span> <span class="ot">-&gt;</span> <span class="dt">T2</span>   <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e2 ::</span> <span class="dt">T1</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">App</span>] <span class="co">-----------------------------------</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a>                 <span class="dt">G</span> <span class="op">|-</span> e1<span class="ot"> e2 ::</span> <span class="dt">T2</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>        </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a>        <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e1 ::</span> <span class="dt">T1</span>   <span class="dt">G</span>, x<span class="op">:</span><span class="dt">T1</span> <span class="op">|-</span><span class="ot"> e2 ::</span> <span class="dt">T2</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Let</span>] <span class="co">------------------------------------</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true"></a>           <span class="dt">G</span> <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> e1 <span class="kw">in</span><span class="ot"> e2 ::</span> <span class="dt">T2</span></span></code></pre></div>
+<p><br></p>
+<p>An expression <code class="sourceCode haskell">e</code> <strong>has type</strong> <code class="sourceCode haskell"><span class="dt">T</span></code> in <code class="sourceCode haskell"><span class="dt">G</span></code> if we can derive <code class="sourceCode haskell"><span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="dt">T</span></code> using these rules</p>
+<p>An expression <code class="sourceCode haskell">e</code> is <strong>well-typed</strong> in <code class="sourceCode haskell"><span class="dt">G</span></code> if we can derive <code class="sourceCode haskell"><span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="dt">T</span></code> for some type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
+<ul>
+<li>and <strong>ill-typed</strong> otherwise</li>
+</ul>
+<p><br> <br> <br> <br> <br></p>
+<h3 id="examples">Examples</h3>
+<p><strong>Example 1</strong>:</p>
+<p>Let’s derive: <code class="sourceCode haskell">[] <span class="op">|-</span> (\x <span class="ot">-&gt;</span> x) <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>] <span class="co">-------------------</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>        [x<span class="op">:</span><span class="dt">Int</span>] <span class="op">|-</span><span class="ot"> x ::</span> <span class="dt">Int</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>] <span class="co">-------------------            -------------- [T-Num]</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>        [] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>    [] <span class="op">|-</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">App</span>] <span class="co">-----------------------------------------------</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a>        [] <span class="op">|-</span> (\x <span class="ot">-&gt;</span> x) <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></span></code></pre></div>
+<p>But we <em>cannot</em> derive: <code class="sourceCode haskell">[] <span class="op">|-</span> <span class="dv">1</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">T</span></code> for any type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
+<ul>
+<li>Why?</li>
+<li><code class="sourceCode haskell"><span class="dt">T</span><span class="op">-</span><span class="dt">App</span></code> only applies when LHS has a function type, but there’s no rule to derive a function type for <code class="sourceCode haskell"><span class="dv">1</span></code></li>
+</ul>
+<p><br> <br></p>
+<p><strong>Example 2</strong>:</p>
+<p>Let’s derive: <code class="sourceCode haskell">[] <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> <span class="dv">1</span> <span class="kw">in</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>      <span class="op">?</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>[<span class="op">?</span>]   <span class="co">-----------------------------------------------</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>        [] <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> <span class="dv">1</span> <span class="kw">in</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">Int</span></span></code></pre></div>
+<p>But we <em>cannot</em> derive: <code class="sourceCode haskell">[] <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> \y <span class="ot">-&gt;</span> y <span class="kw">in</span> x <span class="op">+</span> <span class="dv">2</span><span class="ot"> ::</span> <span class="dt">T</span></code> for any type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
+<p><br> <br></p>
+<p><strong>Example 3</strong>:</p>
+<p>We cannot derive: <code class="sourceCode haskell">[] <span class="op">|-</span> (\x <span class="ot">-&gt;</span> x x)<span class="ot"> ::</span> <span class="dt">T</span></code> for any type <code class="sourceCode haskell"><span class="dt">T</span></code></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="a-note-about-typing-rules">A note about typing rules</h3>
+<p>According to these rules, an expression can have <em>zero</em>, <em>one</em>, or <em>many</em> types</p>
+<ul>
+<li>examples?</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x</code> has many types:</p>
+<ul>
+<li>we can derive <code class="sourceCode haskell">[] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></li>
+<li>or <code class="sourceCode haskell">[] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>) <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>)</code></li>
+<li>or <code class="sourceCode haskell"><span class="dt">T</span> <span class="ot">-&gt;</span> <span class="dt">T</span></code> for any concrete <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+</ul>
+<p><br></p>
+<p>We would like every well-typed expression to have a single <strong>most general</strong> type!</p>
+<ul>
+<li>most general type = allows most uses</li>
+<li>infer type once and reuse later</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-1">QUIZ</h2>
+<p>Is this program well-typed according to your intuition and according to our rules?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>  <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>    <span class="fu">id</span> (\z <span class="ot">-&gt;</span> z <span class="op">+</span> y)</span></code></pre></div>
+<p><strong>(A)</strong> Me: okay, rules: okay</p>
+<p><strong>(B)</strong> Me: okay, rules: nope</p>
+<p><strong>(C)</strong> Me: nope, rules: okay</p>
+<p><strong>(D)</strong> Me: nope, rules: nope</p>
+<p><br></p>
+<h2 id="double-identity">Double identity</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>    <span class="fu">id</span> (\z <span class="ot">-&gt;</span> z <span class="op">+</span> y)</span></code></pre></div>
+<p>Intuitively this program looks okay, but our type system <em>rejects</em> it:</p>
+<ul>
+<li>in the first application, <code class="sourceCode haskell"><span class="fu">id</span></code> needs to have type <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></li>
+<li>in the second application, <code class="sourceCode haskell"><span class="fu">id</span></code> needs to have type <code class="sourceCode haskell">(<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>) <span class="ot">-&gt;</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>)</code></li>
+<li>the type system forces us to pick <em>just one type</em> for each variable, such as <code class="sourceCode haskell"><span class="fu">id</span></code> :(</li>
+</ul>
+<p><br> <br></p>
+<p>What can we do?</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="polymorphic-types">Polymorphic types</h2>
+<p>Intuitively, we can describe the type of <code class="sourceCode haskell"><span class="fu">id</span></code> like this:</p>
+<ul>
+<li>it’s a function type where</li>
+<li>the argument type can be any type <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+<li>the return type is then also <code class="sourceCode haskell"><span class="dt">T</span></code></li>
+</ul>
+<p><br></p>
+<p>We formalize this intuition as a <strong>polymorphic type</strong>: <code class="sourceCode haskell"><span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</code></p>
+<ul>
+<li><p>where <code class="sourceCode haskell">a</code> is a (bound) type variable</p></li>
+<li><p>also called a <strong>type scheme</strong></p></li>
+<li><p>Haskell also has polymorphic types, but you don’t usually write <code class="sourceCode haskell"><span class="kw">forall</span> a<span class="op">.</span></code></p></li>
+</ul>
+<p><br></p>
+<p>We can <strong>instantiate</strong> this scheme into different types by replacing <code class="sourceCode haskell">a</code> in the body with some type, e.g.</p>
+<ul>
+<li>instantiating with <code class="sourceCode haskell"><span class="dt">Int</span></code> yields <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></li>
+<li>instantiating with <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code> yields <code class="sourceCode haskell">(<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>) <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></li>
+<li>etc.</li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="inference-with-polymorphic-types">Inference with polymorphic types</h2>
+<p>With polymorphic types, we can derive <code class="sourceCode haskell"><span class="ot">e ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code> where <code class="sourceCode haskell">e</code> is</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>  <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    <span class="fu">id</span> (\z <span class="ot">-&gt;</span> z <span class="op">+</span> y)</span></code></pre></div>
+<p>At a high level, inference works as follows:</p>
+<ol type="1">
+<li><p>When we have to pick a type <code class="sourceCode haskell"><span class="dt">T</span></code> for <code class="sourceCode haskell">x</code>, we pick a <strong>fresh type variable</strong> <code class="sourceCode haskell">a</code></p></li>
+<li><p>So the type of <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x</code> comes out as <code class="sourceCode haskell">a <span class="ot">-&gt;</span> a</code></p></li>
+<li><p>We can <strong>generalize</strong> this type to <code class="sourceCode haskell"><span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</code></p></li>
+<li><p>When we apply <code class="sourceCode haskell"><span class="fu">id</span></code> the first time, we <strong>instantiate</strong> this polymorphic type with <code class="sourceCode haskell"><span class="dt">Int</span></code></p></li>
+<li><p>When we apply <code class="sourceCode haskell"><span class="fu">id</span></code> the second time, we <strong>instantiate</strong> this polymorphic type with <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></p></li>
+</ol>
+<p>Let’s formalize this intuition as a type system!</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="type-system-take-3">Type system: take 3</h2>
+<p><strong>Syntax of types</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="co">-- Mono-types</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="dt">T</span> <span class="op">::=</span> <span class="dt">Int</span>       <span class="co">-- integers</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>    <span class="op">|</span> <span class="dt">T1</span> <span class="ot">-&gt;</span> <span class="dt">T2</span>  <span class="co">-- function types</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>    <span class="op">|</span> a         <span class="co">-- NEW: type variable</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>    </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="co">-- NEW: Poly-types (type schemes)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="dt">S</span> <span class="op">::=</span> <span class="dt">T</span>            <span class="co">-- mono-type</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>    <span class="op">|</span> <span class="kw">forall</span> a <span class="op">.</span> <span class="dt">S</span> <span class="co">-- polymorphic type</span></span></code></pre></div>
+<p>where <span class="math inline"><em>a</em> ∈ <em>T</em><em>V</em><em>a</em><em>r</em>, <em>T</em> ∈ <em>T</em><em>y</em><em>p</em><em>e</em>, <em>S</em> ∈ <em>P</em><em>o</em><em>l</em><em>y</em></span></p>
+<p><br> <br></p>
+<p><strong>Type Environment</strong></p>
+<p>The type environment now maps variables to poly-types: <code class="sourceCode haskell"><span class="dt">G</span> <span class="op">:</span> <span class="dt">Var</span> <span class="ot">-&gt;</span> <span class="dt">Poly</span></code></p>
+<ul>
+<li>example, <code class="sourceCode haskell"><span class="dt">G</span> <span class="ot">=</span> [z<span class="op">:</span> <span class="dt">Int</span>, <span class="fu">id</span><span class="op">:</span> <span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a]</code></li>
+</ul>
+<p><br> <br></p>
+<p><strong>Type Substitutions</strong></p>
+<p>We need a mechanism for replacing all type variables in a type with another type</p>
+<p>A <strong>type substitution</strong> is a finite map from type variables to types: <code class="sourceCode haskell"><span class="dt">U</span> <span class="op">:</span> <span class="dt">TVar</span> <span class="ot">-&gt;</span> <span class="dt">Type</span></code></p>
+<ul>
+<li>example: <code class="sourceCode haskell"><span class="dt">U1</span> <span class="ot">=</span> [a <span class="op">/</span> <span class="dt">Int</span>, b <span class="op">/</span> (c <span class="ot">-&gt;</span> c)]</code></li>
+</ul>
+<p><br></p>
+<p>To <strong>apply</strong> a substitution <code class="sourceCode haskell"><span class="dt">U</span></code> to a type <code class="sourceCode haskell"><span class="dt">T</span></code> means replace all type vars in <code class="sourceCode haskell"><span class="dt">T</span></code> with whatever they are mapped to in <code class="sourceCode haskell"><span class="dt">U</span></code></p>
+<ul>
+<li>example 1: <code class="sourceCode haskell"><span class="dt">U1</span> (a <span class="ot">-&gt;</span> a)  <span class="ot">=</span>  <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code></li>
+<li>example 2: <code class="sourceCode haskell"><span class="dt">U1</span> <span class="dt">Int</span>  <span class="ot">=</span>  <span class="dt">Int</span></code></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-2">QUIZ</h2>
+<p>What is the result of the following substitution application?</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>[a <span class="op">/</span> <span class="dt">Int</span>, b <span class="op">/</span> c <span class="ot">-&gt;</span> c] (b <span class="ot">-&gt;</span> d <span class="ot">-&gt;</span> b)</span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell">c <span class="ot">-&gt;</span> d <span class="ot">-&gt;</span> c</code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell">(c <span class="ot">-&gt;</span> c) <span class="ot">-&gt;</span> d <span class="ot">-&gt;</span> (c <span class="ot">-&gt;</span> c)</code></p>
+<p><strong>(C)</strong> Error: no mapping for type variable <code class="sourceCode haskell">d</code></p>
+<p><strong>(D)</strong> Error: type variable <code class="sourceCode haskell">a</code> is unused</p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="typing-rules">Typing rules</h3>
+<p>We need to change the typing rules so that:</p>
+<ol type="1">
+<li>Variables (and their definitions) can have polymorphic types</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]  <span class="dt">G</span> <span class="op">|-</span><span class="ot"> x ::</span> <span class="dt">S</span>          <span class="kw">if</span> x<span class="op">:</span><span class="dt">S</span> <span class="kw">in</span> <span class="dt">G</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>        </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>        <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e1 ::</span> <span class="dt">S</span>   <span class="dt">G</span>, x<span class="op">:</span><span class="dt">S</span> <span class="op">|-</span><span class="ot"> e2 ::</span> <span class="dt">T</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Let</span>] <span class="co">------------------------------------</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>           <span class="dt">G</span> <span class="op">|-</span> <span class="kw">let</span> x <span class="ot">=</span> e1 <span class="kw">in</span><span class="ot"> e2 ::</span> <span class="dt">T</span></span></code></pre></div>
+<ol start="2" type="1">
+<li>We can <em>instantiate</em> a type scheme into a type</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>         <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="kw">forall</span> a <span class="op">.</span> <span class="dt">S</span>    </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Inst</span>] <span class="co">----------------------</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>          <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> [a <span class="op">/</span> <span class="dt">T</span>] <span class="dt">S</span></span></code></pre></div>
+<ol start="3" type="1">
+<li>We can <em>generalize</em> a type with free type variables into a type scheme</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>             <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="dt">S</span>    </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Gen</span>] <span class="co">---------------------- if not (a in FTV(G))</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>        <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="kw">forall</span> a <span class="op">.</span> <span class="dt">S</span></span></code></pre></div>
+<p>The rest of the rules are the same:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Num</span>]  <span class="dt">G</span> <span class="op">|-</span><span class="ot"> n ::</span> <span class="dt">Int</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>         <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e1 ::</span> <span class="dt">Int</span>   <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e2 ::</span> <span class="dt">Int</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]  <span class="co">-------------------------------</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>               <span class="dt">G</span> <span class="op">|-</span> e1 <span class="op">+</span><span class="ot"> e2 ::</span> <span class="dt">Int</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>          <span class="dt">G</span>, x<span class="op">:</span><span class="dt">T1</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="dt">T2</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>] <span class="co">------------------------</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a>        <span class="dt">G</span> <span class="op">|-</span> \x <span class="ot">-&gt; e ::</span> <span class="dt">T1</span> <span class="ot">-&gt;</span> <span class="dt">T2</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a>        </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a>        <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e1 ::</span> <span class="dt">T1</span> <span class="ot">-&gt;</span> <span class="dt">T2</span>   <span class="dt">G</span> <span class="op">|-</span><span class="ot"> e2 ::</span> <span class="dt">T1</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">App</span>] <span class="co">-----------------------------------</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true"></a>                 <span class="dt">G</span> <span class="op">|-</span> e1<span class="ot"> e2 ::</span> <span class="dt">T2</span>        </span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br></p>
+<h3 id="examples-1">Examples</h3>
+<p><strong>Example 1</strong></p>
+<p>Let’s derive: <code class="sourceCode haskell">[] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> <span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>] <span class="co">---------------</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>        [x<span class="op">:</span>a] <span class="op">|-</span><span class="ot"> x ::</span> a</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>] <span class="co">-----------------------</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a>        [] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Gen</span>] <span class="co">----------------------------------- not (a in FTV([]))</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a>        [] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> <span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</span></code></pre></div>
+<p><br></p>
+<p>Can we derive: <code class="sourceCode haskell">[x<span class="op">:</span>a] <span class="op">|-</span><span class="ot"> x ::</span> <span class="kw">forall</span> a <span class="op">.</span> a</code>?</p>
+<p><br> <br></p>
+<p><strong>Example 2</strong></p>
+<p>Let’s derive: <code class="sourceCode haskell"><span class="dt">G1</span> <span class="op">|-</span> <span class="fu">id</span> <span class="dv">5</span><span class="ot"> ::</span> <span class="dt">Int</span></code> where <code class="sourceCode haskell"><span class="dt">G1</span> <span class="ot">=</span> [<span class="fu">id</span> <span class="op">:</span> (<span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a)]</code>:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>    <span class="op">?</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>[<span class="op">?</span>] <span class="co">----------------</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>    <span class="dt">G1</span> <span class="op">|-</span> <span class="fu">id</span> <span class="dv">5</span><span class="ot"> ::</span> <span class="dt">Int</span></span></code></pre></div>
+<p><br> <br></p>
+<p><strong>Example 3</strong></p>
+<p>Finally, we can derive:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>(<span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>  <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>    <span class="fu">id</span> (\z <span class="ot">-&gt;</span> z <span class="op">+</span> y))<span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>                                                easy</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>    [<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]<span class="co">--------------------------     ------------------ [Add]</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>          <span class="dt">G2</span> <span class="op">|-</span><span class="ot"> id::</span><span class="kw">forall</span> a<span class="op">.</span>a <span class="ot">-&gt;</span> a       <span class="dt">G3</span> <span class="op">|-</span> z <span class="op">+</span><span class="ot"> y ::</span> <span class="dt">Int</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Inst</span>]<span class="co">------------------------------  -------------------------[T-Abs]</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>        <span class="dt">G2</span> <span class="op">|-</span><span class="ot"> id::</span>(<span class="dt">Int</span><span class="ot">-&gt;</span><span class="dt">Int</span>)<span class="ot">-&gt;</span><span class="dt">Int</span><span class="ot">-&gt;</span><span class="dt">Int</span>  <span class="dt">G2</span> <span class="op">|-</span> \z <span class="ot">-&gt;</span> z<span class="op">+</span><span class="ot">y ::</span> <span class="dt">Int</span><span class="ot">-&gt;</span><span class="dt">Int</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>                                <span class="op">|</span>                          <span class="op">|</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a>               example <span class="dv">2</span>        <span class="op">|</span>                          <span class="op">|</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a>           <span class="co">-----------------   ----------------------------------[T-App]</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a>           <span class="dt">G1</span> <span class="op">|-</span> <span class="fu">id</span> <span class="dv">5</span><span class="ot"> ::</span> <span class="dt">Int</span>   <span class="dt">G2</span> <span class="op">|-</span> <span class="fu">id</span> (\z <span class="ot">-&gt;</span> z<span class="op">+</span>y)<span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a>   [<span class="dt">T</span><span class="op">-</span><span class="dt">Let</span>] <span class="co">------------------------------------------------------</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a>                              <span class="dt">G1</span> <span class="op">|-</span> <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span> <span class="op">...</span><span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a>                                                         <span class="op">|</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a>                  example <span class="dv">1</span>                              <span class="op">|</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>] <span class="co">--------------------------------                 |</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a>        [] <span class="op">|-</span> \x <span class="ot">-&gt; x ::</span> <span class="kw">forall</span> a<span class="op">.</span>a <span class="ot">-&gt;</span> a                 <span class="op">|</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Let</span>] <span class="co">-------------------------------------------------------------</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a>        [] <span class="op">|-</span> <span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span> <span class="op">...</span><span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div>
+<p>where</p>
+<ul>
+<li><code class="sourceCode haskell"><span class="dt">G1</span> <span class="ot">=</span> [<span class="fu">id</span> <span class="op">:</span> (<span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a)]</code></li>
+<li><code class="sourceCode haskell"><span class="dt">G2</span> <span class="ot">=</span> [y <span class="op">:</span> <span class="dt">Int</span>, <span class="fu">id</span> <span class="op">:</span> (<span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a)]</code></li>
+<li><code class="sourceCode haskell"><span class="dt">G3</span> <span class="ot">=</span> [z <span class="op">:</span> <span class="dt">Int</span>, y <span class="op">:</span> <span class="dt">Int</span>, <span class="fu">id</span> <span class="op">:</span> (<span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a)]</code></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="type-inference-algorithm">Type inference algorithm</h2>
+<p>Our ultimate goal is to implement a Haskell function <code class="sourceCode haskell">infer</code> which</p>
+<ul>
+<li>given a context <code class="sourceCode haskell"><span class="dt">G</span></code> and an expression <code class="sourceCode haskell">e</code></li>
+<li>returns a type <code class="sourceCode haskell"><span class="dt">T</span></code> such that <code class="sourceCode haskell"><span class="dt">G</span> <span class="op">|-</span><span class="ot"> e ::</span> <span class="dt">T</span></code></li>
+<li><em>or</em> reports a type error if <code class="sourceCode haskell">e</code> is ill-typed in <code class="sourceCode haskell"><span class="dt">G</span></code></li>
+</ul>
+<p><br> <br> <br> <br></p>
+<h3 id="representing-types">Representing types</h3>
+<p>First, let’s define a Haskell datatype to represent Nano2 types:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Type</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">TInt</span>             <span class="co">-- Int</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">Type</span> <span class="op">:=&gt;</span> <span class="dt">Type</span>    <span class="co">-- T1 -&gt; T2</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">TVar</span> <span class="dt">TVar</span>        <span class="co">-- a, b, c</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>    </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Poly</span> <span class="ot">=</span> <span class="dt">Mono</span> <span class="dt">Type</span> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>          <span class="op">|</span> <span class="dt">Forall</span> <span class="dt">TVar</span> <span class="dt">Poly</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a>          </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true"></a><span class="kw">type</span> <span class="dt">TVar</span> <span class="ot">=</span> <span class="dt">String</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true"></a><span class="kw">type</span> <span class="dt">TEnv</span> <span class="ot">=</span> [(<span class="dt">Id</span>, <span class="dt">Poly</span>)]    <span class="co">-- type environment</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true"></a><span class="kw">type</span> <span class="dt">Subst</span> <span class="ot">=</span> [(<span class="dt">TVar</span>, <span class="dt">Type</span>)] <span class="co">-- type substitution</span></span></code></pre></div>
+<p><br> <br> <br> <br></p>
+<h3 id="inference-main-idea">Inference: main idea</h3>
+<p>Let’s implement <code class="sourceCode haskell">infer</code> like this:</p>
+<ol type="1">
+<li><p>Depending on what kind of expression <code class="sourceCode haskell">e</code> is, find a typing rule that applies to it</p></li>
+<li><p>If the rule has premises, recursively call <code class="sourceCode haskell">infer</code> to obtain the types of sub-expressions</p></li>
+<li><p>Combine the types of sub-expression according to the conclusion of the rule</p></li>
+<li><p>If no rule applies, report a type error</p></li>
+</ol>
+<p><br></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="co">-- | This is not the final version!!!</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="ot">infer ::</span> <span class="dt">TypeEnv</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Type</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>infer _    (<span class="dt">ENum</span> _)     <span class="ot">=</span> <span class="dt">TInt</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>infer tEnv (<span class="dt">EVar</span> var)   <span class="ot">=</span> <span class="fu">lookup</span> var tEnv</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a>infer tEnv (<span class="dt">EAdd</span> e1 e2) <span class="ot">=</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true"></a>  <span class="kw">if</span> t1 <span class="op">==</span> <span class="dt">TInt</span> <span class="op">&amp;&amp;</span> t2 <span class="op">==</span> <span class="dt">TInt</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true"></a>    <span class="kw">then</span> <span class="fu">return</span> <span class="dt">TInt</span> </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true"></a>    <span class="kw">else</span> throw <span class="st">&quot;type error: + expects Int operands&quot;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true"></a>    t1 <span class="ot">=</span> infer tEnv e1</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true"></a>    t2 <span class="ot">=</span> infer tEnv e2</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true"></a><span class="op">...</span>    </span></code></pre></div>
+<p><br></p>
+<p>This doesn’t quite work (for other cases). Why?</p>
+<p><br> <br> <br> <br></p>
+<h3 id="inference-tricky-bits">Inference: tricky bits</h3>
+<p>The trouble is that our typing rules are <em>nondeterministic</em>!</p>
+<ul>
+<li>When building derivations, sometimes we had to <em>guess</em> how to proceed</li>
+</ul>
+<p><strong>Problem 1:</strong> Guessing a type</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>       <span class="co">-- oh, now we know!</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]<span class="co">----------------</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a>       [x<span class="op">:?</span>] <span class="op">|-</span> x<span class="op">:</span> <span class="dt">Int</span>    [x<span class="op">:?</span>] <span class="op">|-</span> <span class="dv">1</span><span class="ot"> ::</span> <span class="dt">Int</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]<span class="co">----------------------------</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a>       [x<span class="op">:?</span>] <span class="op">|-</span> x <span class="op">+</span> <span class="dv">1</span><span class="ot"> ::</span> <span class="op">??</span> <span class="co">-- what should &quot;?&quot; be?</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>]<span class="co">------------------------------</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true"></a>       [] <span class="op">|-</span> (\x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="ot"> ::</span> <span class="op">?</span> <span class="ot">-&gt;</span> <span class="op">??</span></span></code></pre></div>
+<p>So, if we want to implement</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>infer tEnv (<span class="dt">ELam</span> x e) <span class="ot">=</span> tX <span class="op">:=&gt;</span> tBody</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a>    tEnv'  <span class="ot">=</span> extendTEnv x tX tEnv</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a>    tX     <span class="ot">=</span> <span class="op">???</span> <span class="co">-- what do we put here?</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a>    tBody  <span class="ot">=</span> infer tEnv' e</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a><span class="op">...</span>    </span></code></pre></div>
+<p><br></p>
+<p><strong>Problem 2:</strong> Guessing when to generalize</p>
+<p>In the derivation for</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>(<span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>  <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a>    <span class="fu">id</span> (\z <span class="ot">-&gt;</span> z <span class="op">+</span> y))<span class="ot"> ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div>
+<p>we had to <em>guess</em> that the type of <code class="sourceCode haskell"><span class="fu">id</span></code> should be generalized into <code class="sourceCode haskell"><span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</code></p>
+<p><br></p>
+<p>Let’s deal with problem 1 first</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="constraint-based-type-inference">Constraint-based type inference</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a>       <span class="co">-- oh, now we know!</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]<span class="co">----------------</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>       [x<span class="op">:?</span>] <span class="op">|-</span> x<span class="op">:</span> <span class="dt">Int</span>    [x<span class="op">:?</span>] <span class="op">|-</span> <span class="dv">1</span><span class="ot"> ::</span> <span class="dt">Int</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]<span class="co">----------------------------</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a>       [x<span class="op">:?</span>] <span class="op">|-</span> x <span class="op">+</span> <span class="dv">1</span><span class="ot"> ::</span> <span class="op">??</span> <span class="co">-- what should &quot;?&quot; be?</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a>[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>]<span class="co">------------------------------</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a>       [] <span class="op">|-</span> (\x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span>)<span class="ot"> ::</span> <span class="op">?</span> <span class="ot">-&gt;</span> <span class="op">??</span></span></code></pre></div>
+<p><strong>Main idea:</strong></p>
+<ol type="1">
+<li><p>Whenever you need to “guess” a type, don’t.</p>
+<ul>
+<li><p>just return a <strong>fresh</strong> type variable</p></li>
+<li><p><em>fresh</em> = not used anywhere else in the program</p></li>
+</ul></li>
+<li><p>Whenever a rule <em>imposes a constraint</em> on a type (i.e. says it should have certain form):</p>
+<ul>
+<li><p>try to find the right <em>substitution</em> for the free type vars to satisfy the constraint</p></li>
+<li><p>this step is called <strong>unification</strong></p></li>
+</ul></li>
+</ol>
+<p><br> <br> <br> <br> <br></p>
+<h3 id="example">Example</h3>
+<p>Let’s infer the type of <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span></code>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="co">-- TEnv     Expression    Step           Subst     Inferred type</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a><span class="dv">1</span>  []       \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span>   [<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>]        []</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a><span class="dv">2</span>  [x<span class="op">:</span>a0]         x <span class="op">+</span> <span class="dv">1</span>   [<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]        </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a><span class="dv">3</span>                 x       [<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]                  a0</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true"></a><span class="dv">4</span>                 x <span class="op">+</span> <span class="dv">1</span>   unify a0 <span class="dt">Int</span>   [a0<span class="op">/</span><span class="dt">Int</span>]</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true"></a><span class="dv">5</span>  [x<span class="op">:</span><span class="dt">Int</span>]            <span class="dv">1</span>   [<span class="dt">T</span><span class="op">-</span><span class="dt">Num</span>]                  <span class="dt">Int</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true"></a><span class="dv">6</span>                 x <span class="op">+</span> <span class="dv">1</span>   unify <span class="dt">Int</span> <span class="dt">Int</span>   </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true"></a><span class="dv">7</span>                 x <span class="op">+</span> <span class="dv">1</span>                            <span class="dt">Int</span> </span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true"></a><span class="dv">8</span>  []       \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span>                            <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>          </span></code></pre></div>
+<p><br></p>
+<ol type="1">
+<li><p>Infer the type of <code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span>)</code> in <code class="sourceCode haskell">[]</code> (apply <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>]</code>)</p></li>
+<li><p>For the type of <code class="sourceCode haskell">x</code>, pick <em>fresh type variable</em> (say, <code class="sourceCode haskell">a0</code>); infer the type of <code class="sourceCode haskell">x <span class="op">+</span> <span class="dv">1</span></code> in <code class="sourceCode haskell">[x<span class="op">:</span>a0]</code> (apply <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]</code>)</p></li>
+<li><p>Infer the type of <code class="sourceCode haskell">x</code> in <code class="sourceCode haskell">[x<span class="op">:</span>a0]</code> (apply <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]</code>); result: <code class="sourceCode haskell">a0</code></p></li>
+<li><p><code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]</code> <em>imposes a constraint</em>: its LHS must be of type <code class="sourceCode haskell"><span class="dt">Int</span></code>, so <em>unify</em> <code class="sourceCode haskell">a0</code> and <code class="sourceCode haskell"><span class="dt">Int</span></code> and update the <em>current substitution</em> to <code class="sourceCode haskell">[a0 <span class="op">/</span> <span class="dt">Int</span>]</code></p></li>
+<li><p><em>Apply</em> the current substitution <code class="sourceCode haskell">[a0<span class="op">/</span><span class="dt">Int</span>]</code> to the type environment <code class="sourceCode haskell">[x<span class="op">:</span>a0]</code> to get <code class="sourceCode haskell">[x<span class="op">:</span><span class="dt">Int</span>]</code>. Infer the type of <code class="sourceCode haskell"><span class="dv">1</span></code> in <code class="sourceCode haskell">[x<span class="op">:</span><span class="dt">Int</span>]</code> (apply <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Num</span>]</code>); result: <code class="sourceCode haskell"><span class="dt">Int</span></code></p></li>
+<li><p><code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]</code> <em>imposes a constraint</em>: its RHS must be of type <code class="sourceCode haskell"><span class="dt">Int</span></code>, so <em>unify</em> <code class="sourceCode haskell"><span class="dt">Int</span></code> and <code class="sourceCode haskell"><span class="dt">Int</span></code>; current substitution doesn’t change</p></li>
+<li><p>By conclusion of <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Add</span>]</code>: return <code class="sourceCode haskell"><span class="dt">Int</span></code> as the inferred type</p></li>
+<li><p>By conclusion of <code class="sourceCode haskell">[<span class="dt">T</span><span class="op">-</span><span class="dt">Lam</span>]</code>: return <code class="sourceCode haskell"><span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></code> as the inferred type</p></li>
+</ol>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="unification">Unification</h2>
+<p>The <strong>unification</strong> problem: given two types <code class="sourceCode haskell"><span class="dt">T1</span></code> and <code class="sourceCode haskell"><span class="dt">T2</span></code>, find a type substitution <code class="sourceCode haskell"><span class="dt">U</span></code> such that <code class="sourceCode haskell"><span class="dt">U</span> <span class="dt">T1</span> <span class="ot">=</span> <span class="dt">U</span> <span class="dt">T2</span></code>.</p>
+<p>Such a substitution is called a <em>unifier</em> of <code class="sourceCode haskell"><span class="dt">T1</span></code> and <code class="sourceCode haskell"><span class="dt">T2</span></code></p>
+<p><strong>Examples:</strong></p>
+<p>The unifier of:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>a         <span class="fu">and</span>  <span class="dt">Int</span>         is [a <span class="op">/</span> <span class="dt">Int</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a>a <span class="ot">-&gt;</span> a    <span class="fu">and</span>  <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>  is [a <span class="op">/</span> <span class="dt">Int</span>]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a>a <span class="ot">-&gt;</span> <span class="dt">Int</span>  <span class="fu">and</span>  <span class="dt">Int</span> <span class="ot">-&gt;</span> b    is <span class="op">???</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a><span class="dt">Int</span>       <span class="fu">and</span>  <span class="dt">Int</span>         is <span class="op">???</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true"></a>a         <span class="fu">and</span>  a           is <span class="op">???</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true"></a><span class="dt">Int</span>       <span class="fu">and</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>   is <span class="op">???</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true"></a><span class="dt">Int</span>       <span class="fu">and</span> a <span class="ot">-&gt;</span> a       is <span class="op">???</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true"></a>a         <span class="fu">and</span> a <span class="ot">-&gt;</span> a       is <span class="op">???</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-3">QUIZ</h2>
+<p>What is the unifier of the following two types?</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="dv">1</span><span class="op">.</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a><span class="dv">2</span><span class="op">.</span> b <span class="ot">-&gt;</span> c</span></code></pre></div>
+<p><strong>(A)</strong> Cannot unify</p>
+<p><strong>(B)</strong> <code class="sourceCode haskell">[a <span class="op">/</span> <span class="dt">Int</span>, b <span class="op">/</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>, c <span class="op">/</span> <span class="dt">Int</span>]</code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell">[a <span class="op">/</span> <span class="dt">Int</span>, b <span class="op">/</span> <span class="dt">Int</span>, c <span class="op">/</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>]</code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell">[b <span class="op">/</span> a, c <span class="op">/</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>]</code></p>
+<p><strong>(E)</strong> <code class="sourceCode haskell">[a <span class="op">/</span> b, c <span class="op">/</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>]</code></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p>(C), (D) and (E) are all unifiers!</p>
+<p>But somehow (D) and (E) are <em>better</em> than (C)</p>
+<ul>
+<li><p>they make the <em>least commitment</em> required to make these types equal</p></li>
+<li><p>this is called <strong>the most general unifier</strong></p></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="infer-take-2">Infer: take 2</h2>
+<p>Let’s add constraint-based typing to <code class="sourceCode haskell">infer</code>!</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="co">-- | Now has to keep track of current substitution!</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="ot">infer ::</span> <span class="dt">Subst</span> <span class="ot">-&gt;</span> <span class="dt">TypeEnv</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> (<span class="dt">Subst</span>, <span class="dt">Type</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a>infer sub _    (<span class="dt">ENum</span> _)     <span class="ot">=</span> (sub, <span class="dt">TInt</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a>infer sub tEnv (<span class="dt">EVar</span> var)   <span class="ot">=</span> (sub, <span class="fu">lookup</span> var tEnv)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true"></a><span class="co">-- Lambda case: simply generate fresh type variable! </span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true"></a>infer sub tEnv (<span class="dt">ELam</span> x e) <span class="ot">=</span> (sub1, tX' <span class="op">:=&gt;</span> tBody)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true"></a>    tEnv'          <span class="ot">=</span> extendTEnv x tX tEnv</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true"></a>    tX             <span class="ot">=</span> freshTV <span class="co">-- we'll get to this</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true"></a>    (sub1, tBody)  <span class="ot">=</span> infer sub tEnv' e</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true"></a>    tX'            <span class="ot">=</span> apply sub1 tX</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true"></a></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true"></a><span class="co">-- Add case: recursively infer types of operands </span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true"></a><span class="co">-- and enforce constraint that they are both Int</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true"></a>infer sub tEnv (<span class="dt">EAdd</span> e1 e2) <span class="ot">=</span> (sub4, <span class="dt">TInt</span>)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true"></a>    (sub1, t1) <span class="ot">=</span> infer sub tEnv e1   <span class="co">-- 1. infer type of e1</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true"></a>    sub2       <span class="ot">=</span> unify sub1 t1 <span class="dt">Int</span>   <span class="co">-- 2. enforce constraint: t1 is Int</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true"></a>    tEnv'      <span class="ot">=</span> apply sub2 tEnv     <span class="co">-- 3. apply substitution to context      </span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true"></a>    (sub3, t2) <span class="ot">=</span> infer sub2 tEnv' e2 <span class="co">-- 4. infer type of e2 in new ctx</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true"></a>    sub4       <span class="ot">=</span> unify sub3 t2 <span class="dt">Int</span>   <span class="co">-- 5. enforce constraint: t2 is Int</span></span></code></pre></div>
+<p><br></p>
+<p>Why are all these steps necessary? Can’t we just return <code class="sourceCode haskell">(sub, <span class="dt">TInt</span>)</code>?</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="quiz-4">QUIZ</h2>
+<p>Which of these programs will type-check if we skip step 3?</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a>infer sub tEnv (<span class="dt">EAdd</span> e1 e2) <span class="ot">=</span> (sub4, <span class="dt">TInt</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a>    (sub1, t1) <span class="ot">=</span> infer sub tEnv e1   <span class="co">-- 1. infer type of e1</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a>    sub2       <span class="ot">=</span> unify sub1 t1 <span class="dt">Int</span>   <span class="co">-- 2. enforce constraint: t1 is Int</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a>    tEnv'      <span class="ot">=</span> apply sub2 tEnv     <span class="co">-- 3. apply substitution to context      </span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true"></a>    (sub3, t2) <span class="ot">=</span> infer sub2 tEnv' e2 <span class="co">-- 4. infer type of e2 in new ctx</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true"></a>    sub4       <span class="ot">=</span> unify sub3 t2 <span class="dt">Int</span>   <span class="co">-- 5. enforce constraint: t2 is Int</span></span></code></pre></div>
+<p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">1</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span></code></p>
+<p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="dv">3</span></code></p>
+<p><strong>(C)</strong> <code class="sourceCode haskell">(\x <span class="ot">-&gt;</span> x) <span class="op">+</span> <span class="dv">1</span></code></p>
+<p><strong>(D)</strong> <code class="sourceCode haskell"><span class="dv">1</span> <span class="op">+</span> (\x <span class="ot">-&gt;</span> x)</code></p>
+<p><strong>(E)</strong> <code class="sourceCode haskell">\x <span class="ot">-&gt;</span> x <span class="op">+</span> x <span class="dv">5</span></code></p>
+<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="fresh-type-variables">Fresh type variables</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="co">-- | Now has to keep track of current substitution!</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a><span class="ot">infer ::</span> <span class="dt">Subst</span> <span class="ot">-&gt;</span> <span class="dt">TypeEnv</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> (<span class="dt">Subst</span>, <span class="dt">Type</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a><span class="co">-- Lambda case: simply generate fresh type variable! </span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true"></a>infer tEnv (<span class="dt">ELam</span> x e) <span class="ot">=</span> tX <span class="op">:=&gt;</span> tBody</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true"></a>    tEnv'  <span class="ot">=</span> extendTEnv x tX tEnv</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true"></a>    tX     <span class="ot">=</span> freshTV <span class="co">-- how do we do this?</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true"></a>    tBody  <span class="ot">=</span> infer tEnv' e    </span></code></pre></div>
+<p><br> <br></p>
+<p>Intended behavior:</p>
+<ul>
+<li>First time we call <code class="sourceCode haskell">freshTV</code> it returns <code class="sourceCode haskell">a0</code></li>
+<li>Second time it returns <code class="sourceCode haskell">a1</code></li>
+<li>Third time it returns <code class="sourceCode haskell">a2</code></li>
+<li>.. and so on</li>
+</ul>
+<p><br> <br></p>
+<p>Can we do that in Haskell?</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="polymorphism-the-final-frontier">Polymorphism: the final frontier</h2>
+<p>Back to double identity:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span>   <span class="co">-- Must generalize the type of id</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>  <span class="kw">let</span> y <span class="ot">=</span> <span class="fu">id</span> <span class="dv">5</span> <span class="kw">in</span>     <span class="co">-- Instantiate with Int</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a>    <span class="fu">id</span> (\z <span class="ot">-&gt;</span> z <span class="op">+</span> y)  <span class="co">-- Instantiate with (Int -&gt; Int)</span></span></code></pre></div>
+<p><br></p>
+<ul>
+<li><p>When should we to generalize a type like <code class="sourceCode haskell">a <span class="ot">-&gt;</span> a</code> into a polymorphic type like <code class="sourceCode haskell"><span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</code>?</p></li>
+<li><p>When should we instantiate a polymorphic type like <code class="sourceCode haskell"><span class="kw">forall</span> a <span class="op">.</span> a <span class="ot">-&gt;</span> a</code> and with what?</p></li>
+</ul>
+<p><br></p>
+<p><strong>Generalization and instantiation:</strong></p>
+<ul>
+<li><p>Whenever we infer a type for a let-defined variable, generalize it!</p>
+<ul>
+<li>it’s safe to do so, even when not strictly necessary</li>
+</ul></li>
+<li><p>Whenever we see a variable with a polymorphic type, instantiate it</p>
+<ul>
+<li><p>with what type?</p></li>
+<li><p>well, what do we use when we don’t know what type to use?</p></li>
+<li><p><em>fresh type variables!</em></p></li>
+</ul></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="example-1">Example</h3>
+<p>Let’s infer the type of <code class="sourceCode haskell"><span class="kw">let</span> <span class="fu">id</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="kw">in</span> <span class="fu">id</span> <span class="dv">5</span></code>:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="co">-- TEnv   Expression             Step           Subst           Type</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a><span class="dv">1</span>  []     <span class="kw">let</span> <span class="fu">id</span><span class="ot">=</span>\x<span class="ot">-&gt;</span>x <span class="kw">in</span> <span class="fu">id</span> <span class="dv">5</span>   [<span class="dt">T</span><span class="op">-</span><span class="dt">Let</span>]        []</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a><span class="dv">2</span>                \x<span class="ot">-&gt;</span>x           [<span class="dt">T</span><span class="op">-</span><span class="dt">Abs</span>]         </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true"></a><span class="dv">3</span>  [x<span class="op">:</span>a0]            x           [<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]                        a0</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true"></a><span class="dv">4</span>                \x<span class="ot">-&gt;</span>x                                          a0 <span class="ot">-&gt;</span> a0</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true"></a><span class="dv">5</span>  []     <span class="kw">let</span> <span class="fu">id</span><span class="ot">=</span>\x<span class="ot">-&gt;</span>x <span class="kw">in</span> <span class="fu">id</span> <span class="dv">5</span>   generalize a0</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true"></a><span class="dv">6</span>  tEnv                   <span class="fu">id</span> <span class="dv">5</span>   [<span class="dt">T</span><span class="op">-</span><span class="dt">App</span>]          </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true"></a><span class="dv">7</span>                         <span class="fu">id</span>     [<span class="dt">T</span><span class="op">-</span><span class="dt">Var</span>]                     </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true"></a><span class="dv">8</span>                         <span class="fu">id</span>     instantiate                    a1 <span class="ot">-&gt;</span> a1</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true"></a><span class="dv">9</span>                            <span class="dv">5</span>   [<span class="dt">T</span><span class="op">-</span><span class="dt">Num</span>]                        <span class="dt">Int</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true"></a><span class="dv">10</span>                        <span class="fu">id</span> <span class="dv">5</span>   unify (a1<span class="ot">-&gt;</span>a1) </span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true"></a>                                      (<span class="dt">Int</span><span class="ot">-&gt;</span>a2) [a1<span class="op">/</span><span class="dt">Int</span>,a2<span class="op">/</span><span class="dt">Int</span>]</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true"></a><span class="dv">10</span>                        <span class="fu">id</span> <span class="dv">5</span>                                  <span class="dt">Int</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true"></a><span class="dv">11</span> []     <span class="kw">let</span> <span class="fu">id</span><span class="ot">=</span>\x<span class="ot">-&gt;</span>x <span class="kw">in</span> <span class="fu">id</span> <span class="dv">5</span>                                  <span class="dt">Int</span> </span></code></pre></div>
+<p>Here <code class="sourceCode haskell">tEnv <span class="ot">=</span> [<span class="fu">id</span> <span class="op">:</span> <span class="kw">forall</span> a0<span class="op">.</span>a0<span class="ot">-&gt;</span>a0]</code></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="infer-take-3">Infer: take 3</h2>
+<p>Let’s add polymorphism to <code class="sourceCode haskell">infer</code>!</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="ot">infer ::</span> <span class="dt">Subst</span> <span class="ot">-&gt;</span> <span class="dt">TypeEnv</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> (<span class="dt">Subst</span>, <span class="dt">Type</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a><span class="co">-- Variable case: add instantiation!</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a>infer sub tEnv (<span class="dt">EVar</span> var)      <span class="ot">=</span> (sub, t)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true"></a>    t <span class="ot">=</span> instantiate (<span class="fu">lookup</span> var tEnv)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true"></a><span class="co">-- Let case: add generalization!</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true"></a>infer sub tEnv (<span class="dt">ELet</span> x e1 e2)  <span class="ot">=</span> infer sub1 tEnv2 e2</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true"></a>  <span class="kw">where</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true"></a>    (sub1, t1) <span class="ot">=</span> infer sub tEnv e1     <span class="co">-- 1. infer type of e1</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true"></a>    tEnv1      <span class="ot">=</span> apply sub1 tEnv       <span class="co">-- 2. apply substitution to context</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true"></a>    s1         <span class="ot">=</span> generalize tEnv1 t1   <span class="co">-- 3. generalize</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true"></a>    tEnv2      <span class="ot">=</span> extendTEnv x s1 tEnv1 <span class="co">-- 4. add x to context</span></span></code></pre></div>
+<p><strong>Note:</strong> this version still doesn’t properly handle</p>
+<ul>
+<li>generating fresh type variables</li>
+<li>recursive definitions</li>
+</ul>
+<p>You’ll have to do that in the homework!</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="what-we-learned-this-week">What we learned this week</h2>
+<p><strong>Type system:</strong> a set of rules about which expressions have which types</p>
+<p><strong>Type environment (or context):</strong> a mapping of variables to their types</p>
+<p><strong>Polymorphic type:</strong> a type parameterized with type variables that can be instantiated with any concrete type</p>
+<p><strong>Type substitution:</strong> a mapping of type variables to types; you can <strong>apply</strong> a substitution to a type by replacing all its variables with their values in the substitution</p>
+<p><strong>Unifier</strong> of two types: a substitution that makes them equal; <strong>unification</strong> is the process of finding a unifier</p>
+<p><strong>Type inference:</strong> an algorithm to determine the type of an expression</p>
+<p><strong>Constraint-based type inference:</strong> a type inference technique that uses fresh type variables and unification</p>
+<p><strong>Generalization:</strong> turning a mono-type with free type variables into a polymorphic type (by binding its variables with a <code class="sourceCode haskell"><span class="kw">forall</span></code>)</p>
+<p><strong>Instantiation:</strong> turning a polymorphic type into a mono-type by substituting type variables in its body with some types</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p>That’s all folks</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</article>
+
+        </div>
+        <div id="footer">
+        </div>
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://ucsd-cse130.github.io/wi21/feed.xml" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/ranjitjhala" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://plus.google.com/u/0/104385825850161331469" data-datatype="json" data-type="GET" data-target="#frame" class="reload" id="clickme" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/ranjitjhala" target="_blank">
+                            <span class="fa-stack fa-lg">
+
+                              <i class="fa fa-arrow-circle-o-down"></i>
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+		    
+                </ul>
+                <p class="copyright text-muted">
+                
+                  Generated by <a href="http://jaspervdj.be/hakyll">Hakyll</a>,
+                  template by <a href="http://lucumr.pocoo.org">Armin Ronacher</a>,
+                  suggest improvements <a href="https://github.com/ucsd-progsys/liquidhaskell-blog/">here</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="https://ucsd-cse130.github.io/wi21/static/js/jquery.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/spaceg.stylesheets.min.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/anim.js"></script>
+<script src="https://ucsd-cse130.github.io/wi21/static/js/scripts.js"></script>
+
+    </body>
+</html>

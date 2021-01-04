@@ -1,0 +1,33 @@
+
+eval ex0 : 
+  (\x -> x) apple     
+  =b> apple
+  
+eval ex1 : 
+  (\f -> f (\x -> x)) (give apple)
+  =b> (give apple) (\x -> x)
+
+
+eval ex2 :
+  (\x -> (\y -> x)) y 
+  =a> (\ike -> (\y -> ike)) y 
+  =a> (\ike -> (\chip -> ike)) y 
+  =b> (\chip -> y) 
+
+
+eval ex3 : 
+  (\x -> (\y -> y)) y
+  =a> (\x -> (\z -> z)) y 
+  =b> (\z -> z)
+
+eval ex5 : 
+  (\x -> (\y -> x y)) 
+  =a> (\apple -> (\y -> apple y))
+  =a> (\apple -> (\orange -> apple orange))
+
+
+eval ex6 : 
+    (\f -> f (\x -> x)) (\x -> x)
+  =a> (\f -> f (\y -> y)) (\x -> x)
+  =b> (\x -> x) (\y -> y)
+  =b> (\y -> y)
