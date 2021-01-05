@@ -283,7 +283,7 @@ etc.
 
 ### Teaching Assistants
 
-- [Michael Borkowski]
+- Michael Borkowski
 - [Matt Kolosick](https://kolosick.com/)
 - [George Sakkas](https://www.linkedin.com/in/gsakkas)
 
