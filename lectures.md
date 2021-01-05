@@ -25,6 +25,7 @@ headerImg: books.jpg
 | 3/9        | Overloading & Type Classes      | [html][lec7-cl]              | [hs-3-9]  |
 | 3/11       | Monads                          | [html][lec8-monads]          | [hs-3-11] |
 --> 
+
 ## Discussions
 
 | Date       | Topic                    | Slides               | 
@@ -72,7 +73,7 @@ headerImg: books.jpg
 [lc4]:  /static/raw/lec_4_10_2019.lc
 [pdf2]: /static/raw/01-lambda-B-annot.pdf
 
-pdf-hof]: /static/raw/04-hof.pdf 
+[pdf-hof]: /static/raw/04-hof.pdf 
 [pdf-env]: /static/raw/05-environments.pdf 
 
 [disc1]: /static/raw/disc1-lambda_calc.pdf
