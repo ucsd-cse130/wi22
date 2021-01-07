@@ -30,7 +30,7 @@ headerImg: books.jpg
 
 | Date       | Topic                    | Slides               | 
 |:----------:|:-------------------------|:--------------------:|
-|            |                          |                      |
+| 1/6        | Lambda Calculus & Elsa   | [blank][disc1-blank], [annotated][disc1-annotated]  |
 
 <!-- 
 | 1/14       | Lambda Calculus          | [pdf][disc1]         |
@@ -76,7 +76,8 @@ headerImg: books.jpg
 [pdf-hof]: /static/raw/04-hof.pdf 
 [pdf-env]: /static/raw/05-environments.pdf 
 
-[disc1]: /static/raw/disc1-lambda_calc.pdf
+[disc1-blank]: /static/raw/disc1-lambda_calc.pdf
+[disc1-annotated]: /static/raw/disc1-lambda_calc-20210106.pdf
 [disc5]: /static/raw/disc5-parsing.pdf
 [disc6]: /static/raw/disc-pa5tips.pdf
 [discFinal]: /static/raw/final-disc.pdf
