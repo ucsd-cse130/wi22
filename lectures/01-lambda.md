@@ -195,9 +195,9 @@ More precisely, *only thing* you can do is:
 <br>
 
 ```haskell
-e ::= x
-    | \x -> e
-    | e1 e2
+e ::= x           -- variable 'x'
+    | (\x -> e)   -- function that takes a parameter 'x' and returns 'e'
+    | (e1 e2)     -- call (function) 'e1' with argument 'e2'
 ```
 
 <br>
@@ -208,11 +208,11 @@ of one of three kinds:
 - **Variable**
     - `x`, `y`, `z`
 - **Abstraction** (aka _nameless_ function definition)
-    - `\x -> e`
+    - `(\x -> e)`
     - `x` is the _formal_ parameter, `e` is the _body_ 
     - "for any `x` compute `e`"
 - **Application** (aka function call)
-    - `e1 e2`
+    - `(e1 e2)`
     - `e1` is the _function_, `e2` is the _argument_
     - in your favorite language: `e1(e2)`
 
@@ -232,12 +232,11 @@ of one of three kinds:
 ## Examples
 
 ```haskell
-\x -> x             -- The identity function (id)
-                    -- ("for any x compute x")
+(\x -> x)             -- The identity function (id) that returns its input
 
-\x -> (\y -> y)     -- A function that returns (id)
+(\x -> (\y -> y))     -- A function that returns (id)
 
-\f -> (f (\x -> x)) -- A function that applies its argument to id 
+(\f -> (f (\x -> x))) -- A function that applies its argument to id 
 ```
 
 <br>
@@ -258,11 +257,11 @@ of one of three kinds:
 
 Which of the following terms are syntactically **incorrect**?
 
-**A.**  `\(\x -> x) -> y`
+**A.**  `(\(\x -> x) -> y)`
 
-**B.**  `\x -> x x`
+**B.**  `(\x -> (x x))`
 
-**C.**  `\x -> x (y x)`
+**C.**  `(\x -> (x (y x)))`
 
 **D.**  A and C
 
@@ -290,13 +289,11 @@ Which of the following terms are syntactically **incorrect**?
 ## Examples
 
 ```haskell
-\x -> x             -- The identity function
-                    -- ("for any x compute x")
+(\x -> x)             -- The identity function (id) that returns its input
 
-\x -> (\y -> y)     -- A function that returns the identity function
- 
-\f -> f (\x -> x)   -- A function that applies its argument 
-                    -- to the identity function
+(\x -> (\y -> y))     -- A function that returns (id)
+
+(\f -> (f (\x -> x))) -- A function that applies its argument to id 
 ```
 
 <br>
@@ -319,7 +316,7 @@ How do I define a function with two arguments?
 <br>
 
 ```haskell
-\x -> (\y -> y)     -- A function that returns the identity function
+(\x -> (\y -> y))   -- A function that returns the identity function
                     -- OR: a function that takes two arguments
                     -- and returns the second one!
 ```
@@ -339,7 +336,7 @@ How do I define a function with two arguments?
 
 How do I apply a function to two arguments?
 
-* e.g. apply `\x -> (\y -> y)` to `apple` and `banana`?
+* e.g. apply `(\x -> (\y -> y))` to `apple` and `banana`?
 
 <br>
 <br>
@@ -420,16 +417,15 @@ How do I "run" / "execute" a $\lambda$-term?
 Think of middle-school algebra:
 
 ```haskell
--- Simplify expression:
-  (1 + 2) * ((3 * 8) - 2)
- = 
-   3      * ((3 * 8) - 2)
- = 
-   3      * ( 24     - 2)
- = 
-   3      *  22
- = 
-   66
+    (1 + 2) * ((3 * 8) - 2)
+ == 
+    3      * ((3 * 8) - 2)
+ == 
+    3      * ( 24     - 2)
+ == 
+    3      *  22
+ == 
+    66
 ```
 
 <br>
@@ -474,21 +470,22 @@ But first we have to talk about **scope**
 
 The part of a program where a **variable is visible**
 
-In the expression `\x -> e`
+In the expression `(\x -> e)`
 
 - `x` is the newly introduced variable
 
 - `e` is **the scope** of `x`
 
-- any occurrence of `x` in `\x -> e` is **bound** (by the **binder** `\x`)
+- any occurrence of `x` in `(\x -> e)` is **bound** (by the **binder** `\x`)
 
 <br>
 
 For example, `x` is bound in:
 
-```
-  \x -> x
-  \x -> (\y -> x)
+```haskell
+  (\x -> x)
+
+  (\x -> (\y -> x))
 ```
 
 <br>
@@ -499,11 +496,13 @@ An occurrence of `x` in `e` is **free** if it's _not bound_ by an enclosing abst
 <br>
 For example, `x` is free in:
 
-```
-  x y                -- no binders at all!  
-  \y -> x y          -- no \x binder
-  (\x -> \y -> y) x  -- x is outside the scope of the \x binder;
-                     -- intuition: it's not "the same" x
+```haskell
+  (x y)                  -- no binders at all!  
+
+  (\y -> (x y))          -- no \x binder
+
+  ((\x -> (\y -> y)) x)  -- x is outside the scope of the \x binder;
+                         -- intuition: it's not "the same" x
 ```
 
 
@@ -522,8 +521,7 @@ For example, `x` is free in:
 
 ## QUIZ
 
-In the expression `(\x -> x) x`,
-is `x` _bound_ or _free_?
+Is `x` _bound_ or _free_ in the expression `((\x -> x) x)`?
 
 **A.**  first occurrence is bound, second is bound 
 
@@ -604,7 +602,7 @@ What is the shortest closed expression?
 
 (I) final
 
-    _Answer:_ `\x -> x`
+    _Answer:_ `(\x -> x)`
 
 <br>
 <br>
@@ -646,7 +644,7 @@ A **redex** is a term of the form
 <br>
 
 ```
-  (\x -> e1) e2
+  ((\x -> e1) e2)
 ```
 
 A *function* `(\x -> e1)` 
@@ -693,11 +691,12 @@ where `e1[x := e2]` means
 
 Computation by _search-and-replace_:
 
-- If you see an _abstraction_ applied to an _argument_,
-take the _body_ of the abstraction and
-replace all free occurrences of the _formal_ by that _argument_
+If you see an _abstraction_ applied to an _argument_,
 
-- We say that `(\x -> e1) e2` $\beta$-steps to `e1[x := e2]`
+- In the _body_ of the abstraction 
+- Replace all _free occurrences_ of the _formal_ by that _argument_
+
+We say that `(\x -> e1) e2` $\beta$-steps to `e1[x := e2]`
 
 
 
@@ -719,7 +718,8 @@ replace all free occurrences of the _formal_ by that _argument_
 <br>
 
 ```haskell
-(\x -> x) apple     
+((\x -> x) apple)     
+
 =b> apple
 ```
 
@@ -743,7 +743,8 @@ Is this right? Ask [Elsa](https://goto.ucsd.edu/elsa/index.html)
 <br>
 
 ```haskell
-(\x -> (\y -> y)) apple
+((\x -> (\y -> y)) apple)
+
 =b> ???
 ```
 
@@ -781,15 +782,15 @@ Is this right? Ask [Elsa](https://goto.ucsd.edu/elsa/index.html)
 <br>
 
 ```haskell
-(\x -> y x y x) apple
+(\x -> (((y x) y) x)) apple
 =b> ???
 ```
 
-**A.** `apple apple apple apple`
+**A.** `(((apple apple) apple) apple)`
 
-**B.** `y apple y apple`
+**B.** `(((y apple) y) apple)`
 
-**C.** `y y y y`
+**C.** `(((y y) y) y)`
 
 **D.** `apple` 
 
@@ -812,19 +813,20 @@ Is this right? Ask [Elsa](https://goto.ucsd.edu/elsa/index.html)
 <br>
 
 ```haskell
-(\x -> x (\x -> x)) apple
+((\x -> (x (\x -> x))) apple)
+
 =b> ???
 ```
 
-**A.** `apple (\x -> x)`
+**A.** `(apple (\x -> x))`
 
-**B.** `apple (\apple -> apple)`
+**B.** `(apple (\apple -> apple))`
 
-**C.** `apple (\x -> apple)`
+**C.** `(apple (\x -> apple))`
 
 **D.** `apple`
 
-**E.** `\x -> x`
+**E.** `(\x -> x)`
 
 
 <br>
@@ -878,7 +880,8 @@ ELSA: https://goto.ucsd.edu/elsa/index.html
 <br>
 
 ```haskell
-(\x -> (\y -> x)) y
+((\x -> (\y -> x)) y)
+
 =b> \y -> y
 ```
 
@@ -903,7 +906,8 @@ Is this right?
 
 ```haskell
 (\x -> (\y -> x)) y
-=b> \y -> y
+
+=b> (\y -> y)
 ```
 
 Is this right?
@@ -946,11 +950,11 @@ Formally:
 ```haskell
 x[x := e]            = e
 
-y[x := e]            = y                          -- as x /= y
+y[x := e]            = y                 -- as x /= y
 
 (e1 e2)[x := e]      = (e1[x := e]) (e2[x := e])
 
-(\x -> e1)[x := e]   = \x -> e1                   -- Q: Why leave `e1` unchanged?
+(\x -> e1)[x := e]   = (\x -> e1)        -- Q: Why leave `e1` unchanged?
 
 (\y -> e1)[x := e] 
   | not (y in FV(e)) = \y -> e1[x := e]
@@ -1022,7 +1026,7 @@ y[x := e]            = y                          -- as x /= y
 Example:
 
 ```haskell
-\x -> x   =a>   \y -> y   =a>    \z -> z
+(\x -> x)   =a>   (\y -> y)   =a>    (\z -> z)
 ```
 
 All these expressions are **$\alpha$-equivalent**
@@ -1035,7 +1039,7 @@ What's wrong with these?
 
 ```haskell
 -- (A)
-\f -> f x    =a>   \x -> x x
+(\f -> (f x))    =a>   (\x -> (x x))
 ```
 
 (I) final
@@ -1045,7 +1049,7 @@ What's wrong with these?
 
 ```haskell
 -- (B)
-(\x -> \y -> y) y   =a>   (\x -> \z -> z) z
+((\x -> (\y -> y)) y)   =a>   ((\x -> (\z -> z)) z)
 ```
 
 (I) final
@@ -1073,11 +1077,11 @@ What's wrong with these?
 <br>
 
 ```haskell
-    (\x -> (\y -> x)) y
+    ((\x -> (\y -> x)) y)
                                 -- rename 'y' to 'z' to avoid capture
-    =a> (\x -> (\z -> x)) y
+    =a> ((\x -> (\z -> x)) y)
                                 -- now do b-step without capture!
-    =b> \z -> y
+    =b> (\z -> y)
 ```
     
 <br>
@@ -1107,7 +1111,7 @@ To avoid getting confused,
 
 Recall **redex** is a $\lambda$-term of the form
 
-`(\x -> e1) e2`
+`((\x -> e1) e2)`
 
 A $\lambda$-term is in **normal form** if it *contains no redexes*.
 
@@ -1131,11 +1135,11 @@ Which of the following term are **not** in _normal form_ ?
 
 **A.** `x`
 
-**B.** `x y`
+**B.** `(x y)`
 
-**C.** `(\x -> x) y`
+**C.** `((\x -> x) y)`
 
-**D.** `x (\y -> y)`
+**D.** `(x (\y -> y))`
 
 **E.** C and D
 
@@ -1184,7 +1188,8 @@ e =?> e_1 =?> ... =?> e_N =?> e'
 ## Examples of Evaluation
 
 ```haskell
-(\x -> x) apple
+((\x -> x) apple)
+
   =b> apple
 ```
 
@@ -1194,6 +1199,7 @@ e =?> e_1 =?> ... =?> e_N =?> e'
          
     ```haskell
     (\f -> f (\x -> x)) (\x -> x)
+
       =?> ???
     ```
     
@@ -1235,7 +1241,7 @@ e =?> e_1 =?> ... =?> e_N =?> e'
 Named $\lambda$-terms:
 
 ```
-let ID = \x -> x  -- abbreviation for \x -> x
+let ID = (\x -> x)  -- abbreviation for (\x -> x)
 ```
 
 <br>
@@ -1244,8 +1250,8 @@ let ID = \x -> x  -- abbreviation for \x -> x
 To substitute name with its definition, use a `=d>` step:
 
 ```haskell
-ID apple
-  =d> (\x -> x) apple    -- expand definition
+(ID apple)
+  =d> ((\x -> x) apple)  -- expand definition
   =b> apple              -- beta-reduce
 ```
 
@@ -1302,13 +1308,12 @@ ELSA: https://goto.ucsd.edu/elsa/index.html
 ## Non-Terminating Evaluation
 
 ```haskell
-(\x -> x x) (\x -> x x)
-  =b> (\x -> x x) (\x -> x x)
+((\x -> (x x)) (\x -> (x x)))
+
+  =b> ((\x -> (x x)) (\x -> (x x)))
 ```
 
-Some programs loop back to themselves...
-
-... and *never* reduce to a normal form!
+Some programs loop back to themselves ... *never* reduce to a normal form!
 
 This combinator is called $\Omega$
 
@@ -1322,9 +1327,9 @@ This combinator is called $\Omega$
 What if we pass $\Omega$ as an argument to another function?
 
 ```
-let OMEGA = (\x -> x x) (\x -> x x)
+let OMEGA = ((\x -> (x x)) (\x -> (x x)))
 
-(\x -> (\y -> y)) OMEGA
+((\x -> (\y -> y)) OMEGA)
 ```
 
 Does this reduce to a normal form? Try it at home!
@@ -1366,6 +1371,39 @@ with the $\lambda$-calculus.
 <br>
 <br>
 
+## Syntactic Sugar
+
+<br>
+<br>
+
+instead of                |  we write
+:-------------------------|:-------------------------
+`\x -> (\y -> (\z -> e))` | `\x -> \y -> \z -> e`
+`\x -> \y -> \z -> e`     | `\x y z -> e`
+`(((e1 e2) e3) e4)`       |  `e1 e2 e3 e4`
+
+<br>
+<br>
+
+```haskell
+\x y -> y     -- A function that that takes two arguments
+              -- and returns the second one...
+              
+(\x y -> y) apple banana -- ... applied to two arguments
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 ## $\lambda$-calculus: Booleans
 
 <br>
