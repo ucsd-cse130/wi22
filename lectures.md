@@ -71,7 +71,6 @@ headerImg: books.jpg
 [pdf-data-b]: /static/raw/03-datatypes-B.pdf
 [pdf-parse]: /static/raw/06-parsing.pdf
 [lc4]:  /static/raw/lec_4_10_2019.lc
-[pdf2]: /static/raw/01-lambda-B-annot.pdf
 
 [pdf-hof]: /static/raw/04-hof.pdf 
 [pdf-env]: /static/raw/05-environments.pdf 
