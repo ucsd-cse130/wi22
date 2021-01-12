@@ -1,0 +1,117 @@
+
+let ID = (\x -> x)
+let FIRST  = \x1 x2 x3 -> x1  -- (\x1 -> (\x2 -> (\x3 -> x1)))
+let SECOND = \x1 x2 x3 -> x2 -- (\x1 -> (\x2 -> (\x3 -> x2)))
+let THIRD  = \x1 x2 x3 -> x3  -- (\x1 -> (\x2 -> (\x3 -> x3)))
+
+let TRUE  = (\x -> (\y -> x)) 
+let FALSE = (\x -> (\y -> y))
+let ITE   = (\b -> (\x -> (\y -> ((b x) y)))) 
+
+let NOT = \b     -> ITE b FALSE TRUE
+let AND = \b1 b2 -> ITE b1 b2 FALSE
+let OR  = \b1 b2 -> ITE b1 TRUE b2
+
+-- 
+eval not_false: 
+  NOT FALSE
+  =d> (\b -> ITE b FALSE TRUE) FALSE
+  =b> ITE FALSE FALSE TRUE
+  -- =d> ((((\b -> (\x -> (\y -> ((b x) y)))) FALSE) FALSE) TRUE)
+  -- =*> ((FALSE FALSE) TRUE)
+  -- =d> ((((\x -> (\y -> y))) FALSE) TRUE)
+  -- =b> (\y -> y) TRUE
+  =*> TRUE
+  
+eval and_t_t : 
+  AND TRUE TRUE 
+  =d> (\b1 b2 -> ITE b1 b2 FALSE) TRUE TRUE
+  =*> ITE TRUE TRUE FALSE
+  =*> TRUE
+
+eval and_t_f : 
+  AND TRUE FALSE 
+  =d> (\b1 b2 -> ITE b1 b2 FALSE) TRUE FALSE
+  =*> ITE TRUE FALSE FALSE
+  =*> FALSE
+  
+  
+eval ite_true: 
+  ITE TRUE xxx yyy
+  =d> (\b x y -> b x y) TRUE xxx yyy
+  =*> TRUE xxx yyy
+  =d> (\x -> (\y -> x)) xxx yyy
+  =b> (\y -> xxx) yyy
+  =b> xxx
+ 
+eval ite_true: 
+  ITE FALSE xxx yyy
+  =d> (\b x y -> b x y) FALSE xxx yyy
+  =*> FALSE xxx yyy
+  =d> (\x -> (\y -> y)) xxx yyy
+  =b> (\y -> y) yyy
+  =b> yyy
+
+eval and_f_t : 
+  AND FALSE TRUE 
+  =d> (\b1 b2 -> ITE b1 b2 FALSE) FALSE TRUE
+  =*> ITE  FALSE TRUE FALSE
+  =*> FALSE
+  
+  
+
+
+
+eval ex_true: 
+  (((ITE TRUE) apple) banana)
+  =d> ((((\b -> (\x -> (\y -> ((b x) y)))) TRUE) apple) banana)
+  =*> ((TRUE apple) banana)
+  =*> (\x y -> x) apple banana
+  =*> apple
+  
+eval ex_false: 
+  (((ITE FALSE) apple) banana)
+  =d> ((((\b -> (\x -> (\y -> ((b x) y)))) FALSE) apple) banana)
+  =*> ((FALSE apple) banana)
+  =*> (\x y -> y) apple banana
+  =*> banana
+  
+  
+
+eval ex_first: 
+  (((FIRST apple) banana) orange)
+  =d>((((\x1 -> (\x2 -> (\x3 -> x1))) apple) banana) orange)
+  =b> (((\x2 -> (\x3 -> apple)) banana) orange)
+  =b> (\x3 -> apple) orange
+  =b> apple
+
+
+eval ex_second: 
+  (((SECOND apple) banana) orange)
+  =d> ((((\x1 -> (\x2 -> (\x3 -> x2))) apple) banana) orange)
+  =b> (((((\x2 -> (\x3 -> x2)))) banana) orange)
+  =b> ((((((\x3 -> banana))))) orange)
+  =b> ((((((banana))))) )
+
+  
+  
+  
+eval tricky : 
+  ((\x -> (\y -> x)) y)
+  =a> ((\x -> (\z -> x)) y)
+  =a> ((\tue -> (\z -> tue)) y)
+  =b> (\z -> y)
+  
+eval id_apple : 
+  ID apple
+  =d> (\x -> x) apple
+  =b> apple
+  
+eval ex1 : 
+
+      ((\f -> (f ID)) ID)
+  =d> ((\f -> (f (\x -> x))) (\x -> x))
+  =a> ((\f -> (f (\x -> x))) (\y -> y))
+  =b> ((\y -> y) (\x -> x))
+  =b> (\x -> x)
+  
