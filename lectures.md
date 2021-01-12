@@ -6,7 +6,8 @@ headerImg: books.jpg
 | **Date**   | **Topic**                       | **Notes**                 | **Code**      |
 |:----------:|:--------------------------------|:--------------------------|:--------------|
 | 1/5        | Hello, World!                   | [html][lec0] [pdf][pdf0]  |               |
-| 1/7        | The Lambda Calculus             | [html][lec1]              |               |
+| 1/7        | The Lambda Calculus             | [html][lec1] [pdf][pdf1]  |               |
+| 1/7        | The Lambda Calculus             |              [pdf][pdf2]  |               |
 
 <!-- 
 | 1/22       | A crash course in Haskell       | [html][lec2] [pdf][pdf2]  | [hs] [hs-1-29] |
@@ -57,9 +58,8 @@ headerImg: books.jpg
 [mapRed]: https://en.wikipedia.org/wiki/MapReduce
 
 [pdf0]: /static/raw/01-lambda-A.pdf
-
-[pdf1]: /static/raw/01-lambda-annot.pdf
-[pdf2]: /static/raw/02-haskell-annot.pdf
+[pdf1]: /static/raw/01-lambda-B.pdf
+[pdf2]: /static/raw/01-lambda-C.pdf
 
 [pdf3]: /static/raw/01-lambda-C-annot.pdf
 [pdf4]: /static/raw/01-lambda-D-annot.pdf
