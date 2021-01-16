@@ -7,7 +7,7 @@ headerImg: books.jpg
 |:----------:|:--------------------------------|:--------------------------|:--------------|
 | 1/5        | Hello, World!                   | [html][lec0] [pdf][pdf0]  |               |
 | 1/7        | The Lambda Calculus             | [html][lec1] [pdf][pdf1]  |               |
-| 1/12       | "" 			       |              [pdf][pdf2]  | [lc][lc-1-12] |
+| 1/12       | ""                              |              [pdf][pdf2]  | [lc][lc-1-12] |
 
 <!-- 
 | 1/22       | A crash course in Haskell       | [html][lec2] [pdf][pdf2]  | [hs] [hs-1-29] |
@@ -60,7 +60,7 @@ headerImg: books.jpg
 [pdf0]: /static/raw/01-lambda-A.pdf
 [pdf1]: /static/raw/01-lambda-B.pdf
 [pdf2]: /static/raw/01-lambda-C.pdf
-[lc-1-12]: /static/raw/lec-1-12.lc
+[lc-1-12]: /static/raw/lec_1_12_21.lc
 
 [pdf3]: /static/raw/01-lambda-C-annot.pdf
 [pdf4]: /static/raw/01-lambda-D-annot.pdf
