@@ -529,6 +529,7 @@ For example
 <br>
 <br>
 
+
 ## EXERCISE 
 
 Write a function `myMax` that returns the *maximum* of two inputs
@@ -557,6 +558,35 @@ When you are done you should see the following behavior:
 <br>
 <br>
 
+
+## EXERCISE 
+
+Write a function `sumTo` such that `sumTo n` evaluates to `0 + 1 + 2 + ... + n` 
+
+```haskell
+sumTo :: Int -> Int
+sumTo n = ???
+```
+
+When you are done you should see the following behavior:
+
+```haskell
+>>> sumTo 3
+6 
+>>> sumTo 4
+10 
+>>> sumTo 5
+15
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## How to Return Multiple Outputs?
 
