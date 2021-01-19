@@ -7,11 +7,11 @@ headerImg: books.jpg
 |:----------:|:--------------------------------|:--------------------------|:--------------|
 | 1/5        | Hello, World!                   | [html][lec0] [pdf][pdf0]  |               |
 | 1/7        | The Lambda Calculus             | [html][lec1] [pdf][pdf1]  |               |
-| 1/12       | "" 			       |              [pdf][pdf2]  | [lc][lc-1-12] |
-| 1/14       | "" 			       |              [pdf][pdf3]  | [lc][lc-1-14] |
+| 1/12       | "" 			                       |              [pdf][pdf2]  | [lc][lc-1-12] |
+| 1/14       | "" 			                       |              [pdf][pdf3]  |               |
+| 1/19       | A crash course in Haskell       | [html][lec2]              | [hs][hs-1-19] |
 
 <!-- 
-| 1/22       | A crash course in Haskell       | [html][lec2] [pdf][pdf2]  | [hs] [hs-1-29] |
 | 2/3        | Datatypes & Recursion           | [html][lec3] [pdf][pdf-data] | [hs-2-3]  |
 | 2/5        | ""                              |                              | [hs-2-5]  |
 | 2/7        | ""                              |                              | [hs-2-7]  |
@@ -62,14 +62,12 @@ headerImg: books.jpg
 [pdf1]: /static/raw/01-lambda-B.pdf
 [pdf2]: /static/raw/01-lambda-C.pdf
 [pdf3]: /static/raw/01-lambda-D.pdf
-[lc-1-12]: /static/raw/lec-1-12.lc
-
+[lc-1-12]: /static/raw/lec_1_12_21.lc
 [pdf3]: /static/raw/01-lambda-C-annot.pdf
 [pdf4]: /static/raw/01-lambda-D-annot.pdf
-[lc2]:  /static/raw/lec_4_2_2019.lc
-[lc3]:  /static/raw/lec_4_8_2019.lc
-[pdf5]: /static/raw/02-haskell-A.pdf
-[pdf6]: /static/raw/02-haskell-B.pdf
+
+
+
 [pdf-data]: /static/raw/03-datatypes.pdf
 [pdf-data-b]: /static/raw/03-datatypes-B.pdf
 [pdf-parse]: /static/raw/06-parsing.pdf

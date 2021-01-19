@@ -19,6 +19,31 @@ headerImg: sea.jpg
 <br>
 <br>
 
+## What is Haskell?
+
+<br>
+
+A **typed**, **lazy**, **purely functional** programming language
+
+<br>
+
+Haskell = $\lambda$-calculus ++
+
+  + better syntax
+  + types
+  + built-in features
+    - booleans, numbers, characters
+    - records (tuples)
+    - lists
+    - recursion
+    - ...
+    
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>    
 
 ## Programming in Haskell
 
@@ -152,6 +177,30 @@ Ill-typed* expressions are rejected at *compile-time* before execution
 - *like*    in Java
 - *not like* $\lambda$-calculus or Python ...
 
+
+```haskell
+weirdo = 1 0     -- rejected by GHC
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## Why are types good?
+
+* Helps with program *design*
+* Types are *contracts* (ignore ill-typed inputs!)
+* Catches errors *early*
+* Allows compiler *to generate code*
+* Enables compiler *optimizations*
+  
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -589,17 +638,20 @@ tup = (e1, e2, e3)
 
 ... but how to **extract** the values from this tuple?
 
-**Pattern Matching**
+**Pattern Matching** via `case-of` expressions
 
 ```haskell
 fst3 :: (t1, t2, t3) -> t1
-fst3 (x1, x2, x3) = x1
+fst3 t = case t of 
+           (x1, x2, x3) -> x1
 
 snd3 :: (t1, t2, t3) -> t2
-snd3 (x1, x2, x3) = x2
+snd3 t = case t of 
+           (x1, x2, x3) -> x2
 
 thd3 :: (t1, t2, t3) -> t3
-thd3 (x1, x2, x3) = x3
+thd3 t = case t of 
+           (x1, x2, x3) -> x3
 ```
 
 <br>
@@ -620,7 +672,8 @@ tup2 :: (Char, Double, Int)
 tup2 = ('a', 5.2, 7) 
 
 snd3 :: (t1, t2, t3) -> t2
-snd3 (x1, x2, x3) = x2
+snd3 t = case t of 
+           (x1, x2, x3) -> x2
 
 quiz = snd3 tup2
 ```
@@ -656,13 +709,13 @@ For example
 
 ```haskell
 chars :: [Char]
-chars = ['a','b','c'] 
+chars = ['a', 'b', 'c'] 
 
 ints :: [Int]
-ints = [1,3,5,7] 
+ints = [1, 3, 5, 7] 
 
 pairs :: [(Int, Bool)]
-pairs = [(1,True),(2,False)]
+pairs = [(1,True), (2,False)]
 ```
 
 <br>
@@ -929,7 +982,7 @@ So far: how to *produce* lists.
 <br>
 <br>
 
-## Example
+## EXERCISE
 
 Lets write a function `firstElem` such that 
 `firstElem xs` returns the _first_ element 
@@ -939,6 +992,8 @@ Lets write a function `firstElem` such that
 firstElem :: [Int] -> Int
 firstElem xs = ???
 ```
+
+**HINT:** How to _extract_ values from a list?
 
 When you are done you should see the following behavior:
 
@@ -968,8 +1023,9 @@ Suppose we have the following `mystery` function
 
 ```haskell
 mystery :: [a] -> Int
-mystery []     = 0
-mystery (x:xs) = 1 + mystery xs
+mystery l = case l of 
+              []     -> 0
+              (x:xs) -> 1 + mystery xs
 ```
 
 What does `mystery [10, 20, 30]` evaluate to?
