@@ -9,7 +9,8 @@ headerImg: books.jpg
 | 1/7        | The Lambda Calculus             | [html][lec1] [pdf][pdf1]  |               |
 | 1/12       | contd.                          | [pdf][pdf2]               | [lc][lc-1-12] |
 | 1/14       | contd.                          | [pdf][pdf3]               |               |
-| 1/19       | A crash course in Haskell       | [html][lec2]              |               |
+| 1/19       | A crash course in Haskell       | [html][lec2] [pdf][pdf2]  | [hs][code]    |
+
 
 <!-- 
 | 2/3        | Datatypes & Recursion           | [html][lec3] [pdf][pdf-data] | [hs-2-3]  |
@@ -60,8 +61,9 @@ headerImg: books.jpg
 
 [pdf0]: /static/raw/01-lambda-A.pdf
 [pdf1]: /static/raw/01-lambda-B.pdf
-[pdf2]: /static/raw/01-lambda-C.pdf
-[pdf3]: /static/raw/01-lambda-D.pdf
+[pdf2]: /static/raw/02-haskell-A.pdf
+[code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
+
 [lc-1-12]: /static/raw/lec_1_12_21.lc
 [pdf3]: /static/raw/01-lambda-C-annot.pdf
 [pdf4]: /static/raw/01-lambda-D-annot.pdf
