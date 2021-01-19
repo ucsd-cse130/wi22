@@ -1351,6 +1351,7 @@ Does this reduce to a normal form? Try it at home!
 - Booleans
 - Records (structs, tuples)
 - Numbers
+- Lists
 - **Functions** \[we got those\]
 - Recursion
 
@@ -1641,6 +1642,7 @@ eval ex_and_tt:
 - **Booleans** \[done\]
 - Records (structs, tuples)
 - Numbers
+- Lists
 - **Functions** \[we got those\]
 - Recursion
 
@@ -1724,10 +1726,18 @@ eval ex_snd:
 ## Pairs: Implementation
 
 A pair of `x` and `y` is just something that lets you pick between `x` and `y`!
-(i.e. a function that takes a boolean and returns either `x` or `y`)  
 
 ```haskell
 let PAIR = \x y -> (\b -> ITE b x y)
+```
+
+i.e. `PAIR x y` is a function that 
+
+* takes a boolean and returns either `x` or `y` 
+
+We can now implement `FST` and `SND` by "calling" the pair with `TRUE` or `FALSE`
+
+```haskell
 let FST  = \p -> p TRUE   -- call w/ TRUE, get first value
 let SND  = \p -> p FALSE  -- call w/ FALSE, get second value
 ```
@@ -1804,6 +1814,7 @@ eval ex3:
 - **Booleans** \[done\]
 - **Records** (structs, tuples) \[done\]
 - Numbers
+- Lists
 - **Functions** \[we got those\]
 - Recursion
 
