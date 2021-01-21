@@ -596,50 +596,63 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> copy3 <span class="st">&quot;cat&quot;</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true"></a>[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>]</span></code></pre></div>
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="lets-write-some-functions">Lets write some Functions</h2>
+<p><a href="https://www.htdp.org/">A Recipe</a></p>
+<p><strong>Step 1: Write some tests</strong></p>
+<p><strong>Step 2: Write the type</strong></p>
+<p><strong>Step 3: Write the code</strong></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="practice-clone">PRACTICE: Clone</h2>
 <p>Write a function <code class="sourceCode haskell">clone</code> such that <code class="sourceCode haskell">clone n x</code> returns a list with <code class="sourceCode haskell">n</code> copies of <code class="sourceCode haskell">x</code>.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true"></a><span class="ot">clone ::</span> <span class="op">???</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true"></a>clone n x <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>1. Tests</strong></p>
 <p>When you are done you should see the following behavior</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">0</span> <span class="st">&quot;cat&quot;</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true"></a>[]</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">1</span> <span class="st">&quot;cat&quot;</span> </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true"></a>[<span class="st">&quot;cat&quot;</span>]</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true"></a></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">2</span> <span class="st">&quot;cat&quot;</span> </span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true"></a>[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>]</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">3</span> <span class="st">&quot;cat&quot;</span> </span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true"></a>[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>]</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true"></a></span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">3</span> <span class="dv">100</span></span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true"></a>[<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">0</span> <span class="st">&quot;cat&quot;</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true"></a>[]</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">1</span> <span class="st">&quot;cat&quot;</span> </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true"></a>[<span class="st">&quot;cat&quot;</span>]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">2</span> <span class="st">&quot;cat&quot;</span> </span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true"></a>[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>]</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">3</span> <span class="st">&quot;cat&quot;</span> </span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true"></a>[<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>]</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true"></a></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> clone <span class="dv">3</span> <span class="dv">100</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true"></a>[<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>]</span></code></pre></div>
+<p><strong>2. Types</strong></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true"></a><span class="ot">clone ::</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>3. Code</strong></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true"></a>clone n x <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="how-does-clone-execute">How does <code class="sourceCode haskell">clone</code> execute?</h2>
 <p>(Substituting equals-by-equals!)</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true"></a>clone <span class="dv">3</span> <span class="dv">100</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true"></a>  <span class="op">=*&gt;</span> <span class="op">???</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a>clone <span class="dv">3</span> <span class="dv">100</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true"></a>  <span class="op">=*&gt;</span> <span class="op">???</span></span></code></pre></div>
 <p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="exercise-range">EXERCISE: Range</h2>
 <p>Write a function <code class="sourceCode haskell"><span class="fu">range</span></code> such that <code class="sourceCode haskell"><span class="fu">range</span> i j</code> returns the list of values <code class="sourceCode haskell">[i, i<span class="op">+</span><span class="dv">1</span>, <span class="op">...</span>, j]</code></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a><span class="fu">range</span><span class="ot"> ::</span> <span class="op">???</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true"></a><span class="fu">range</span> i j <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
-<p>When we are done you should get the behavior</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">4</span> <span class="dv">3</span> </span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true"></a>[]</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">3</span> <span class="dv">3</span> </span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true"></a>[<span class="dv">3</span>]</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true"></a></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">2</span> <span class="dv">3</span> </span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true"></a>[<span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true"></a></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">1</span> <span class="dv">3</span> </span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true"></a></span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">0</span> <span class="dv">3</span> </span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true"></a>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true"></a><span class="fu">range</span><span class="ot"> ::</span> <span class="op">???</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true"></a><span class="fu">range</span> i j <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>1. Tests</strong></p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">4</span> <span class="dv">3</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true"></a>[]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">3</span> <span class="dv">3</span> </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true"></a>[<span class="dv">3</span>]</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">2</span> <span class="dv">3</span> </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true"></a>[<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">1</span> <span class="dv">3</span> </span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> <span class="fu">range</span> <span class="dv">0</span> <span class="dv">3</span> </span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true"></a>[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<p><strong>2. Type</strong></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true"></a><span class="fu">range</span><span class="ot"> ::</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>3. Code</strong></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true"></a><span class="fu">range</span> <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="functions-consuming-lists">Functions Consuming Lists</h2>
 <p>So far: how to <em>produce</em> lists.</p>
@@ -648,25 +661,28 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="exercise-2">EXERCISE</h2>
 <p>Lets write a function <code class="sourceCode haskell">firstElem</code> such that <code class="sourceCode haskell">firstElem xs</code> returns the <em>first</em> element <code class="sourceCode haskell">xs</code> if it is a non-empty list, and <code class="sourceCode haskell"><span class="dv">0</span></code> otherwise.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true"></a><span class="ot">firstElem ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true"></a>firstElem xs <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><strong>HINT:</strong> How to <em>extract</em> values from a list?</p>
+<p><strong>1. Tests</strong></p>
 <p>When you are done you should see the following behavior:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> firstElem []</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true"></a><span class="dv">0</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> firstElem [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true"></a><span class="dv">10</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true"></a></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> firstElem [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>] </span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true"></a><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> firstElem []</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true"></a><span class="dv">0</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> firstElem [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true"></a><span class="dv">10</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> firstElem [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>] </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true"></a><span class="dv">5</span></span></code></pre></div>
+<p><strong>2. Type</strong></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true"></a><span class="ot">firstElem ::</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>3. Code</strong></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true"></a>firstElem <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-4">QUIZ</h2>
 <p>Suppose we have the following <code class="sourceCode haskell">mystery</code> function</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true"></a><span class="ot">mystery ::</span> [a] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true"></a>mystery l <span class="ot">=</span> <span class="kw">case</span> l <span class="kw">of</span> </span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true"></a>              []     <span class="ot">-&gt;</span> <span class="dv">0</span></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true"></a>              (x<span class="op">:</span>xs) <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="op">+</span> mystery xs</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true"></a><span class="ot">mystery ::</span> [a] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true"></a>mystery l <span class="ot">=</span> <span class="kw">case</span> l <span class="kw">of</span> </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true"></a>              []     <span class="ot">-&gt;</span> <span class="dv">0</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true"></a>              (x<span class="op">:</span>xs) <span class="ot">-&gt;</span> <span class="dv">1</span> <span class="op">+</span> mystery xs</span></code></pre></div>
 <p>What does <code class="sourceCode haskell">mystery [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>]</code> evaluate to?</p>
 <p><strong>A.</strong> <code class="sourceCode haskell"><span class="dv">10</span></code></p>
 <p><strong>B.</strong> <code class="sourceCode haskell"><span class="dv">20</span></code></p>
@@ -676,20 +692,59 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="exercise-summing-a-list">EXERCISE: Summing a List</h2>
 <p>Write a function <code class="sourceCode haskell">sumList</code> such that <code class="sourceCode haskell">sumList [x1, <span class="op">...</span>, xn]</code> returns <code class="sourceCode haskell">x1 <span class="op">+</span> <span class="op">...</span> <span class="op">+</span> xn</code></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true"></a><span class="ot">sumList ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true"></a>sumList <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<p><strong>1. Tests</strong></p>
 <p>When you are done you should get the following behavior:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumList []</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true"></a><span class="dv">0</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumlist [<span class="dv">3</span>]</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true"></a><span class="dv">3</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true"></a></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumlist [<span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true"></a><span class="dv">5</span></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true"></a></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumlist [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true"></a><span class="dv">6</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumList []</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true"></a><span class="dv">0</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumlist [<span class="dv">3</span>]</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true"></a><span class="dv">3</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true"></a></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumlist [<span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true"></a><span class="dv">5</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true"></a><span class="op">&gt;&gt;&gt;</span> sumlist [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true"></a><span class="dv">6</span></span></code></pre></div>
+<p><strong>2. Type</strong></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true"></a><span class="ot">sumList ::</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div>
+<p><strong>3. Code</strong></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true"></a>sumList <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
+<h2 id="functions-on-lists-take">Functions on lists: <code class="sourceCode haskell"><span class="fu">take</span></code></h2>
+<p>Let’s write a function to <code class="sourceCode haskell"><span class="fu">take</span></code> first <code class="sourceCode haskell">n</code> elements of a list <code class="sourceCode haskell">xs</code>.</p>
+<p><strong>1. Tests</strong></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; ???</span></span></code></pre></div>
+<p><strong>2. Type</strong></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true"></a><span class="fu">take</span><span class="ot"> ::</span> <span class="op">???##</span> <span class="dt">Some</span> useful library functions</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true"></a><span class="ot">```haskell</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true"></a><span class="ot">-- | Length of the list</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true"></a><span class="ot">length :: [t] -&gt; Int</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true"></a><span class="ot">-- | Append two lists</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true"></a><span class="ot">(++) :: [t] -&gt; [t] -&gt; [t]</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true"></a></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true"></a><span class="ot">-- | Are two lists equal?</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true"></a><span class="ot">(==) :: [t] -&gt; [t] -&gt; Bool</span></span></code></pre></div>
+<p><br></p>
+<p>You can search for library functions on <a href="https://www.haskell.org/hoogle/">Hoogle</a>!</p>
+<p><br> <br> <br> <br> <br> <br></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true"></a></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true"></a><span class="op">**</span><span class="dv">3</span><span class="op">.</span> <span class="dt">Code</span><span class="op">**</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true"></a><span class="ot">```haskell</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true"></a><span class="ot">take = ???</span></span></code></pre></div>
+<h2 id="some-useful-library-functions">Some useful library functions</h2>
+<div class="sourceCode" id="cb59"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true"></a><span class="co">-- | Length of the list</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true"></a><span class="fu">length</span><span class="ot"> ::</span> [t] <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true"></a><span class="co">-- | Append two lists</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true"></a><span class="ot">(++) ::</span> [t] <span class="ot">-&gt;</span> [t] <span class="ot">-&gt;</span> [t]</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true"></a></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true"></a><span class="co">-- | Are two lists equal?</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true"></a><span class="ot">(==) ::</span> [t] <span class="ot">-&gt;</span> [t] <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
+<p><br></p>
+<p>You can search for library functions on <a href="https://www.haskell.org/hoogle/">Hoogle</a>!</p>
+<p><br> <br> <br> <br> <br> <br></p>
 <h2 id="recap">Recap</h2>
 <p><img src="../static/img/trinity.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
 <ul>

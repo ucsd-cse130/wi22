@@ -10,6 +10,7 @@ headerImg: books.jpg
 | 1/12       | contd.                          | [pdf][pdf2]               | [lc][lc-1-12] |
 | 1/14       | contd.                          | [pdf][pdf3]               |               |
 | 1/19       | A crash course in Haskell       | [html][lec2] [pdf][pdf4]  | [hs][code]    |
+| 1/21       | contd.                          | [html][lec2]              | [hs][code]    |
 
 
 <!-- 
