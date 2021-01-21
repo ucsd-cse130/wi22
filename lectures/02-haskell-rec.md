@@ -883,37 +883,15 @@ When you are done, you should see the following
 <br>
 <br>
 
-## Lets write some Functions
-
-
-[A Recipe](https://www.htdp.org/)
-
-**Step 1: Write some tests**
-
-**Step 2: Write the type**
-
-**Step 3: Write the code**
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 ## PRACTICE: Clone
 
 Write a function `clone` such that 
 `clone n x` returns a list with `n` copies of `x`. 
 
-
-
-**1. Tests**
+```haskell
+clone :: ???
+clone n x = ???
+```
 
 When you are done you should see the following behavior
 
@@ -934,17 +912,6 @@ When you are done you should see the following behavior
 [100, 100, 100]
 ```
 
-**2. Types**
-
-```haskell
-clone :: ???
-```
-
-**3. Code**
-
-```haskell
-clone n x = ???
-```
 <br>
 <br>
 <br>
@@ -983,8 +950,6 @@ clone 3 100
 <br>
 <br>
 
-
-
 ## EXERCISE: Range
 
 Write a function `range` such that `range i j` 
@@ -995,7 +960,7 @@ range :: ???
 range i j = ???
 ```
 
-**1. Tests** 
+When we are done you should get the behavior
 
 ```haskell
 >>> range 4 3 
@@ -1012,18 +977,6 @@ range i j = ???
 
 >>> range 0 3 
 [0, 1, 2, 3]
-```
-
-**2. Type** 
-
-```haskell
-range :: ???
-```
-
-**3. Code**
-
-```haskell
-range = ???
 ```
 
 <br>
@@ -1065,10 +1018,12 @@ Lets write a function `firstElem` such that
 `firstElem xs` returns the _first_ element 
 `xs` if it is a non-empty list, and `0` otherwise.
 
+```haskell
+firstElem :: [Int] -> Int
+firstElem xs = ???
+```
+
 **HINT:** How to _extract_ values from a list?
-
-
-**1. Tests** 
 
 When you are done you should see the following behavior:
 
@@ -1081,16 +1036,6 @@ When you are done you should see the following behavior:
 
 >>> firstElem [5, 6, 7, 8] 
 5
-```
-
-**2. Type** 
-```haskell
-firstElem :: ???
-```
-
-**3. Code** 
-```haskell
-firstElem = ???
 ```
 
 <br>
@@ -1138,7 +1083,10 @@ What does `mystery [10, 20, 30]` evaluate to?
 
 Write a function `sumList` such that `sumList [x1, ..., xn]` returns `x1 + ... + xn` 
 
-**1. Tests**
+```haskell
+sumList :: [Int] -> Int
+sumList = ???
+```
 
 When you are done you should get the following behavior:
 
@@ -1155,87 +1103,6 @@ When you are done you should get the following behavior:
 >>> sumlist [1, 2, 3]
 6
 ```
-
-**2. Type**
-
-```haskell
-sumList :: [Int] -> Int
-```
-
-**3. Code**
-
-```haskell
-sumList = ???
-```
-
-## Functions on lists: `take` 
-
-Let's write a function to `take` first `n` elements of a list `xs`.
-
-**1. Tests** 
-
-```haskell
--- >>> ???
-```
-
-**2. Type** 
-
-```haskell
-take :: ???## Some useful library functions
-
-```haskell
--- | Length of the list
-length :: [t] -> Int
-
--- | Append two lists
-(++) :: [t] -> [t] -> [t]
-
--- | Are two lists equal?
-(==) :: [t] -> [t] -> Bool
-```
-
-<br>
-
-You can search for library functions on [Hoogle](https://www.haskell.org/hoogle/)!
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-```
-
-**3. Code**
-
-```haskell
-take = ???
-```
-
-## Some useful library functions
-
-```haskell
--- | Length of the list
-length :: [t] -> Int
-
--- | Append two lists
-(++) :: [t] -> [t] -> [t]
-
--- | Are two lists equal?
-(==) :: [t] -> [t] -> Bool
-```
-
-<br>
-
-You can search for library functions on [Hoogle](https://www.haskell.org/hoogle/)!
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 
 ## Recap
 
