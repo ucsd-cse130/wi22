@@ -11,7 +11,7 @@ headerImg: books.jpg
 | 1/14       | contd.                          | [pdf][pdf3]               |               |
 | 1/19       | A crash course in Haskell       | [html][lec2] [pdf][pdf4]  | [hs][code]    |
 | 1/21       | contd.                          | [html][lec2]              | [hs][code]    |
-
+| 1/26       | Datatypes & Recursion           | [html][lec3] [pdf][pdf5]  | [hs][code]    |
 
 <!-- 
 | 2/3        | Datatypes & Recursion           | [html][lec3] [pdf][pdf-data] | [hs-2-3]  |
@@ -65,6 +65,7 @@ headerImg: books.jpg
 [pdf2]: /static/raw/01-lambda-C.pdf
 [pdf3]: /static/raw/01-lambda-D.pdf
 [pdf4]: /static/raw/02-haskell-A.pdf
+[pdf5]: /static/raw/02-haskell-A.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [lc-1-12]: /static/raw/lec_1_12_21.lc
