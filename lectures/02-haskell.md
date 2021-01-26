@@ -984,7 +984,6 @@ clone 3 100
 <br>
 
 
-
 ## EXERCISE: Range
 
 Write a function `range` such that `range i j` 

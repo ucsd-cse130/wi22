@@ -25,6 +25,8 @@ source-repository head
 library
   other-modules:
       Paths_cse130_code
+  ghc-options:      -Wall -fwarn-tabs
+ 
   hs-source-dirs:
       src
   build-depends:
