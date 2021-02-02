@@ -68,7 +68,7 @@ headerImg: books.jpg
 [pdf3]: /static/raw/01-lambda-D.pdf
 [pdf4]: /static/raw/02-haskell-A.pdf
 [pdf5]: /static/raw/03-datatypes-prod-sum.pdf
-[pdf5]: /static/raw/03-datatypes-rec.pdf
+[pdf6]: /static/raw/03-datatypes-rec.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [lc-1-12]: /static/raw/lec_1_12_21.lc
