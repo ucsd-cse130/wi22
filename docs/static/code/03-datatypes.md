@@ -237,7 +237,7 @@ Three key ways to build complex types/values:
 
 Suppose I want to represent a *text document* with simple markup
 
-Each paragraph is either:
+Each paragraph is either (ONE OF):
  
   * plain text (`String`)
   * heading: level *and* text (`Int` *and* `String`)
@@ -277,9 +277,9 @@ Each paragraph is either:
 * list: ordered? and items (`Bool` and `[String]`)
   
 ```haskell
-data Paragraph              -- ^ THREE constructors, w/ different parameters
+data Paragraph              -- ^ THREE constructors 
   = PText    String         -- ^ text: plain string
-  | PHeading Int   String   -- ^ head: level and text (Int & String)
+  | PHeading Int   String   -- ^ head: level & text (Int & String)
   | PList    Bool [String]  -- ^ list: ordered? & items (Bool & [String])
 ```
   
@@ -305,7 +305,7 @@ data Paragraph
 What is the type of `Text "Hey there!"`? i.e. How would GHCi reply to:
 
 ```haskell
->:t (PText "Hey there!")
+> :type (PText "Hey there!")
 ```
 
 **A.**  Syntax error
