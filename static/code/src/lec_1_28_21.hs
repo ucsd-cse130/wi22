@@ -132,6 +132,6 @@ sumList (x:xs) = x + sumList xs
 
 
 -- >>> sumList [Mon,Tue]
--- /Users/rjhala/teaching/130-wi21/static/code/src/lec_1_28_21.hs:86:10-16: No instance nor default method for class operation fromInteger
+-- Wed
 
 

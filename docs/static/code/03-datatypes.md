@@ -237,7 +237,7 @@ Three key ways to build complex types/values:
 
 Suppose I want to represent a *text document* with simple markup
 
-Each paragraph is either (ONE OF):
+Each paragraph is either:
  
   * plain text (`String`)
   * heading: level *and* text (`Int` *and* `String`)
@@ -277,9 +277,9 @@ Each paragraph is either:
 * list: ordered? and items (`Bool` and `[String]`)
   
 ```haskell
-data Paragraph              -- ^ THREE constructors 
+data Paragraph              -- ^ THREE constructors, w/ different parameters
   = PText    String         -- ^ text: plain string
-  | PHeading Int   String   -- ^ head: level & text (Int & String)
+  | PHeading Int   String   -- ^ head: level and text (Int & String)
   | PList    Bool [String]  -- ^ list: ordered? & items (Bool & [String])
 ```
   
@@ -305,7 +305,7 @@ data Paragraph
 What is the type of `Text "Hey there!"`? i.e. How would GHCi reply to:
 
 ```haskell
-> :type (PText "Hey there!")
+>:t (PText "Hey there!")
 ```
 
 **A.**  Syntax error
@@ -972,7 +972,7 @@ fromInt n
 <br>
 
 
-### 3. Putting the two together
+## EXERCISE: Putting the two together
 
 ```haskell
 data Nat = Zero     -- base constructor
@@ -996,27 +996,94 @@ sub n m = ???
 <br>
 <br>
 
+## EXERCISE: Putting the two together
+
 ```haskell
 data Nat = Zero     -- base constructor
          | Succ Nat -- inductive constructor
 
          
 add :: Nat -> Nat -> Nat
-add Zero     m = m              -- base case
-add (Succ n) m = Succ (add n m) -- inductive case
-
-sub :: Nat -> Nat -> Nat
-sub n        Zero     = n       -- base case 1
-sub Zero     _        = Zero    -- base case 2
-sub (Succ n) (Succ m) = sub n m -- inductive case
+add n m = ???
 ```
 
-Lessons learned:
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-* **Recursive code mirrors recursive data**
-* With **multiple** arguments of a recursive type,
-  which one should I recurse on?
-* The name of the game is to pick the right **inductive strategy**!
+```haskell
+data Nat = Zero     -- base constructor
+         | Succ Nat -- inductive constructor
+
+         
+add :: Nat -> Nat -> Nat
+add Zero     m = ???            -- base case
+add (Succ n) m = ???            -- inductive case
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## EXERCISE: Putting the two together
+
+```haskell
+data Nat = Zero     -- base constructor
+         | Succ Nat -- inductive constructor
+
+sub :: Nat -> Nat -> Nat
+sub n m = ???
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+```haskell
+sub :: Nat -> Nat -> Nat
+sub n        Zero     = ???     -- base case 1
+sub Zero     _        = ???     -- base case 2
+sub (Succ n) (Succ m) = ???     -- inductive case
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Lesson: Recursive code mirrors recursive data
+
+* Which of **multiple** arguments should you recurse on? 
+
+* Key: Pick the right **inductive strategy**!
+
+<br>
+
+(easiest if there is a _single_ argument of course...)
 
 <br>
 <br>
@@ -1063,10 +1130,31 @@ data Expr = Num Float
 <br>
 <br>
 
-How do we write a function to *evaluate* an expression?
+We can represent expressions as
+
+```haskell
+e0, e1, e2 :: Expr
+e0 = Add (Num 4.0)  (Num 2.9)
+e1 = Sub (Num 3.78) (Num 5.92)
+e2 = Mul e0 e1
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## EXERCISE: Expression Evaluator 
+
+Write a function to *evaluate* an expression.
 
 
 ```haskell
+-- >>> eval (Add (Num 4.0)  (Num 2.9))
+-- 6.9
+
 eval :: Expr -> Float
 eval e = ???
 ```
@@ -1113,8 +1201,9 @@ from solutions for *sub-problems*
 Lists aren't built-in! They are an *algebraic data type* like any other:
 
 ```haskell
-data List = Nil           -- base constructor
-          | Cons Int List -- inductive constructor
+data List 
+  = Nil           -- ^ base constructor
+  | Cons Int List -- ^ inductive constructor
 ```
 
 * List `[1, 2, 3]` is *represented* as `Cons 1 (Cons 2 (Cons 3 Nil))`
@@ -1138,9 +1227,20 @@ length (Cons _ xs) = 1 + length xs  -- inductive case
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## EXERCISE: Appending Lists
 
 What is the right *inductive strategy* for appending two lists?
 
+```haskell
+-- >>> append (Cons 1 (Cons 2 (Cons 3 Nil))) (Cons 4 (Cons 5 (Cons 6 Nil)))
+-- (Cons 1 (Cons 2 (Cons 3 (Cons 4 (Cons 5 (Cons 6 Nil))))))
+```
 
 (I) lecture
     
@@ -1448,7 +1548,9 @@ Let's write a tail-recursive factorial!
     facTR :: Int -> Int
     facTR n = ... 
     ```
-    
+
+**HINT:** Lets first write it with a `loop`
+
 (I) final
 
     ```haskell
