@@ -14,6 +14,7 @@ headerImg: books.jpg
 | 1/26       | Datatypes & Recursion           | [html][lec3] [pdf][pdf5]  | [hs][code]    |
 | 1/28       | contd.                          | contd.                    | [hs][code]    |
 | 2/2        | contd.                          |              [pdf][pdf6]  | [hs][code]    |
+| 2/2        | contd.                          |              [pdf][pdf7]  | [hs][code]    |
 
 <!-- 
 | 2/3        | Datatypes & Recursion           | [html][lec3] [pdf][pdf-data] | [hs-2-3]  |
@@ -69,6 +70,7 @@ headerImg: books.jpg
 [pdf4]: /static/raw/02-haskell-A.pdf
 [pdf5]: /static/raw/03-datatypes-prod-sum.pdf
 [pdf6]: /static/raw/03-datatypes-rec.pdf
+[pdf7]: /static/raw/03-datatypes-tree.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [lc-1-12]: /static/raw/lec_1_12_21.lc
