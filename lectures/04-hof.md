@@ -9,7 +9,64 @@ headerImg: books.jpg
 **Last week:**
 
   * user-defined *data types*
-    - and how to manipulate them using *pattern matching* and *recursion* 
+    
+  * manipulating data-types with *pattern matching* and *recursion* 
+
+  * how to make recursive functions more efficient with *tail recursion*
+    
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>    
+
+## The long arc of history
+
+Pattern matching is a *very* old PL idea ...  
+
+- Variants of LISP from 1970 by [Fred McBride](https://personal.cis.strath.ac.uk/conor.mcbride/FVMcB-PhD.pdf)
+
+... but will finally be added to Python 3.10
+
+- https://www.python.org/dev/peps/pep-0622/
+
+```python
+def make_point_3d(pt):
+    match pt:
+        case (x, y):
+            return Point3d(x, y, 0)
+        case (x, y, z):
+            return Point3d(x, y, z)
+        case Point2d(x, y):
+            return Point3d(x, y, 0)
+        case Point3d(_, _, _):
+            return pt
+        case _:
+            raise TypeError("not a point we support")
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>    
+
+## Plan for this week
+
+**Last week:**
+
+  * user-defined *data types*
+    
+  * manipulating data-types with *pattern matching* and *recursion* 
+
   * how to make recursive functions more efficient with *tail recursion*
   
 **This week:**
@@ -27,7 +84,6 @@ headerImg: books.jpg
 <br>
 <br>
 <br>    
-
 
 ## Recursion is good... 
 
@@ -96,7 +152,7 @@ fourChars (x:xs) = ...
 <br>
 <br>
 
-## Yikes, Most Code is the Same
+## Yikes! Most Code is the Same!
 
 Lets rename the functions to `foo`:
 
@@ -136,8 +192,9 @@ Only difference is **condition**
 
 Can we 
 
-  * *reuse* the general pattern and
-  * *substitute in* the custom condition?
+* *reuse* the general pattern and
+
+* *plug-in* the custom condition?
 
 <br>
 <br>
@@ -149,12 +206,12 @@ Can we
 <br>
 <br>
 
-## HOFs to the rescue!
+## Higher-Order Functions
 
 General **Pattern**
   
   - expressed as a *higher-order function*
-  - takes customizable operations as *arguments* 
+  - takes plugin operations as *arguments* 
 
 Specific **Operation**
 
@@ -195,7 +252,7 @@ Specific Operations
 <br>
 <br>
 
-## Let's talk about types
+## QUIZ: What is the type of `filter`?
 
 ```haskell
 -- evens [1,2,3,4] ==> [2,4]
@@ -204,19 +261,7 @@ evens xs = filter isEven xs
   where
     isEven :: Int -> Bool
     isEven x  =  x `mod` 2 == 0
-```
 
-```haskell
-filter :: ???
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
-```haskell
 -- fourChars ["i","must","do","work"] ==> ["must","work"]
 fourChars :: [String] -> [String]
 fourChars xs = filter isFour xs
@@ -225,43 +270,83 @@ fourChars xs = filter isFour xs
     isFour x  =  length x == 4
 ```
 
-```haskell
-filter :: ???
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 So what's the type of `filter`?
 
 ```haskell
-filter :: (Int -> Bool) -> [Int] -> [Int] -- ???
+{- A -} filter :: (Int -> Bool) -> [Int] -> [Int]
 
-filter :: (String -> Bool) -> [String] -> [String] -- ???
+{- B -} filter :: (String -> Bool) -> [String] -> [String]
+
+{- C -} filter :: (a -> Bool) -> [a] -> [a]
+
+{- D -} filter :: (a -> Bool) -> [a] -> [Bool]
+
+{- E -} filter :: (a -> b) -> [a] -> [b]
 ```
 
 <br>
-
-* It *does not care* what the list elements are
-
-    * as long as the predicate can handle them
-  
-* It's type is **polymorphic** (generic) in the type of list elements
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
+    
+## Type of `filter` 
+
 ```haskell
--- For any type `a`
---   if you give me a predicate on `a`s
---   and a list of `a`s,
---   I'll give you back a list of `a`s 
+-- evens [1,2,3,4] ==> [2,4]
+evens :: [Int] -> [Int]
+evens xs = filter isEven xs
+  where
+    isEven :: Int -> Bool
+    isEven x  =  x `mod` 2 == 0
+
+-- fourChars ["i","must","do","work"] ==> ["must","work"]
+fourChars :: [String] -> [String]
+fourChars xs = filter isFour xs
+  where
+    isFour :: String -> Bool
+    isFour x  =  length x == 4
+```
+
+For *any* type `a`
+
+- **Input** a _predicate_ `a -> Bool` and _collection_ `[a]` 
+- **Output** a (smaller) _collection_ `[a]`
+
+
+```haskell
 filter :: (a -> Bool) -> [a] -> [a]
 ```
 
+`filter` *does not care* what the list elements are
+
+* as long as the predicate can handle them
+  
+`filter` is **polymorphic** (generic) in the type of list elements
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -272,7 +357,8 @@ filter :: (a -> Bool) -> [a] -> [a]
 
 
 
-## Example: all caps
+
+## Example: ALL CAPS!
 
 Lets write a function `shout`:
 
@@ -483,12 +569,6 @@ quiz = map (\(x, y) -> x + y) [1, 2, 3]
 **(E)** None of the above
 
 <br>
-
-(I) final
-    
-    *Answer:* D (list elements are integers, but operation expects a pair)
-
-<br>
 <br>
 <br>
 <br>
@@ -537,6 +617,12 @@ len (x:xs) = 1 + len xs
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 
 ## Recall: summing a list
@@ -549,6 +635,11 @@ sum []     = 0
 sum (x:xs) = x + sum xs
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -573,7 +664,12 @@ cat (x:xs) = ...
 <br>
 <br>
 <br>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Can you spot the pattern?
 
@@ -796,178 +892,6 @@ foldr f b (x:xs) = f x (foldr f b xs)
 <br>
 <br>
 
-## Tail Recursion
-
-Recursive call is the *top-most* sub-expression in the function body
-
-  - i.e. no computations allowed on recursively returned value 
-
-  - i.e. value returned by the recursive call == value returned by function
-  
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-### QUIZ: Is this function tail recursive? 
-
-```haskell
-fac :: Int -> Int
-fac n
-  | n <= 1    = 1
-  | otherwise = n * fac (n - 1)
-```
-
-fac 10000
-  ==> 10000 * (fac 9999)
-  ==> 10000 * 9999 * (fac 9998)
-
-facTR 10000
-  ==> loop 1 10000 
-  ==> loop 10000 (9999) 
-  ==> loop (10000 * 9999) (9998) 
-  ==> loop (10000 * 9999 * 9998) (9997) 
-
-
-
-**A.** Yes
-
-**B.** No
-
-<br>
-
-(I) final
-
-    *Answer:* B
-    
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Tail recursive factorial
-
-Let's write a tail-recursive factorial!
-
-(I) lecture
-
-```haskell
-facTR :: Int -> Int
-facTR n = loop 1 n 
-  where 
-    loop acc n 
-      | 1 <= n    = loop (acc * n) (n - 1)
-      | otherwise = acc
-```
-    
-```python
-def fac(n):
-  acc = 1
-  while (1 <= n):
-    acc = acc * n
-    n   = n - 1  
-  return acc 
-```
-
-
-
-
-
-
-
-(I) final
-
-    ```haskell
-    facTR :: Int -> Int
-    facTR n = loop 1 n
-      where
-        loop :: Int -> Int -> Int
-        loop acc n
-          | n <= 1    = acc
-          | otherwise = loop (acc * n) (n - 1)
-    ```      
-      
-<br>
-<br>
-<br>
-<br>    
-
-Lets see how `facTR` is evaluated:
-
-
-```haskell
-facTR 4
-  ==> loop 1  4     -- call loop 1 4
-  ==> loop 4  3     -- rec call loop 4 3 
-  ==> loop 12 2     -- rec call loop 12 2
-  ==> loop 24 1     -- rec call loop 24 1
-  ==> 24            -- return result 24! 
-```
-
-Each recursive call **directly** returns the result 
-
-  - without further computation
-
-  - no need to remember what to do next!
-  
-  - no need to store the "empty" stack frames!
-    
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-
-## Why care about Tail Recursion?
-
-Because the _compiler_ can transform it into a _fast loop_
-
-```haskell
-facTR n = loop 1 n
-  where
-    loop acc n
-      | n <= 1    = acc
-      | otherwise = loop (acc * n) (n - 1)
-```
-
-<br>
-
-```javascript 
-function facTR(n){ 
-  var acc = 1;
-  while (true) {
-    if (n <= 1) { return acc ; }
-    else        { acc = acc * n; n = n - 1; }
-  }
-}
-```
-
-- Tail recursive calls can be optimized as a **loop**
-
-    - no stack frames needed! 
-
-- Part of the language specification of most functional languages
-
-    - compiler **guarantees** to optimize tail calls
-
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ## Tail Recursive Fold
 
