@@ -14,20 +14,12 @@ headerImg: books.jpg
 | 1/26       | Datatypes & Recursion           | [html][lec3] [pdf][pdf5]  | [hs][code]    |
 | 1/28       | contd.                          | contd.                    | [hs][code]    |
 | 2/2        | contd.                          |              [pdf][pdf6]  | [hs][code]    |
-| 2/2        | contd.                          |              [pdf][pdf7]  | [hs][code]    |
+| 2/4        | contd.                          |              [pdf][pdf7]  | [hs][code]    |
+| 2/9        | Higher Order Functions          | [html][lec4] [pdf][pdf8]  | [hs][code]    |
 
 <!-- 
-| 2/3        | Datatypes & Recursion           | [html][lec3] [pdf][pdf-data] | [hs-2-3]  |
-| 2/5        | ""                              |                              | [hs-2-5]  |
-| 2/7        | ""                              |                              | [hs-2-7]  |
-| 2/10       |  **Midterm**  		               |                              |           |
-| 2/12       | Higher Order Functions          | [html][lec4] [pdf][pdf-hof]  | [hs-2-12] |
-| 2/14       | ""                              |                              | [hs-2-14] |
 | 2/19       | "" [map-reduce][mapRed], [react][rhoc] |                       | [hs-2-19] |
 | 2/21       | Environments & Closures         | [html][lec5] 	              | [hs-2-21] |
-| 2/24       | ""                              |  		              | [hs-2-24] |
-| 2/26       | ""                              |  		              | [hs-2-26] |
-| 2/28       | ""                              |  		              | [hs-2-28] |
 | 3/2        | Lexing and Parsing              | [html][lec6], [tutorial][parsing]  [pdf][pdf-parse] | [hs-3-2] |
 | 3/9        | Overloading & Type Classes      | [html][lec7-cl]              | [hs-3-9]  |
 | 3/11       | Monads                          | [html][lec8-monads]          | [hs-3-11] |
@@ -71,6 +63,7 @@ headerImg: books.jpg
 [pdf5]: /static/raw/03-datatypes-prod-sum.pdf
 [pdf6]: /static/raw/03-datatypes-rec.pdf
 [pdf7]: /static/raw/03-datatypes-tree.pdf
+[pdf8]: /static/raw/04-hof-A.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [lc-1-12]: /static/raw/lec_1_12_21.lc
