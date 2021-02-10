@@ -17,7 +17,7 @@ headerImg: world-map.jpg
 ## Teaching Assistants
 
 - Michael Borkowski
-- [Matt Kolosick](https://kolosick.com/)
+- [Matt Kolosick](mailto:mkolosick@eng.ucsd.edu)
 - [George Sakkas](https://www.linkedin.com/in/gsakkas)
 
 ## Tutors
