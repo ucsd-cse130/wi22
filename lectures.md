@@ -16,6 +16,7 @@ headerImg: books.jpg
 | 2/2        | contd.                          |              [pdf][pdf6]  | [hs][code]    |
 | 2/4        | contd.                          |              [pdf][pdf7]  | [hs][code]    |
 | 2/9        | Higher Order Functions          | [html][lec4] [pdf][pdf8]  | [hs][code]    |
+| 2/11       | contd.                          | contd.       [pdf][pdf9]  | [hs][code]    |
 
 <!-- 
 | 2/19       | "" [map-reduce][mapRed], [react][rhoc] |                       | [hs-2-19] |
@@ -64,6 +65,7 @@ headerImg: books.jpg
 [pdf6]: /static/raw/03-datatypes-rec.pdf
 [pdf7]: /static/raw/03-datatypes-tree.pdf
 [pdf8]: /static/raw/04-hof-A.pdf
+[pdf9]: /static/raw/04-hof-B.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [lc-1-12]: /static/raw/lec_1_12_21.lc
