@@ -1,6 +1,6 @@
 ---
 title: Environments
-date: 2020-02-24
+date: 2021-02-16
 headerImg: books.jpg
 ---
 
@@ -17,9 +17,10 @@ How to *use* essential language constructs?
 How to *implement* language constructs?
 
 - Local variables and scope
-- Environments and Closures
-- _(skip)_ Type Inference
 
+- Environments and Closures
+
+- _(skip)_ Type Inference
 
 ### Interpreter
 
@@ -64,7 +65,7 @@ Features of Nano:
 
 ## 1. Nano: Arithmetic
 
-A "grammar" of arithmetic expressions:
+A *grammar* of arithmetic expressions:
 
 ```haskell
 e ::= n
@@ -226,7 +227,7 @@ Lets extend our datatype
 type Id = String
 
 data Expr
-  = ENum Int              -- OLD
+  = ENum Int             -- OLD
   | EBin Binop Expr Expr  
                          -- NEW
   | EVar Id              -- variables
@@ -292,12 +293,13 @@ to mean
 
 When `expr` is **evaluated in environment** `env` the result is `value`
 
-That is, when we have variables, we modify our `eval`uator to take an input 
-environment `env` in which `expr` must be evaluated.
+So: when we have variables, we modify our evaluator (`eval`) 
+
+- to take an input  environment `env` in which `expr` must be evaluated.
 
 ```haskell
 eval :: Env -> Expr -> Value
-eval env expr = ... value-of-expr-in-env...
+eval env expr = -- ... value-of-expr-in-env...
 ```
 
 First, lets update the evaluator for the arithmetic cases `ENum` and `EBin`
@@ -308,6 +310,11 @@ eval env (ENum n)        = ???
 eval env (EBin op e1 e2) = ???
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -328,6 +335,15 @@ eval [ "x" := 0, "y" := 12, ...] (x + 1)  ==>  ?value
 
 **(C)** Error
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -365,6 +381,15 @@ eval env (x + 1)   ==>   10
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Evaluating Variables
 
@@ -393,6 +418,25 @@ envE = ["y" := 10, "z" := 666, "x" := 9  ]
 -- >>> eval envD (EBin Add (EVar "x") (ENum 1))
 -- >>> eval envE (EBin Add (EVar "x") (ENum 1))
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## The Nano Language
 
@@ -446,6 +490,25 @@ data Expr
 How should we extend `eval` ?
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## QUIZ
 
@@ -581,17 +644,24 @@ Every variable *use* gets its value from a unique *definition*:
 
 - "Nearest" `let`-binder in program *text*
 
-"Static" means you can tell *without running the program*
+**Static** means you can tell *without running the program*
 
 Great for readability and debugging
 
 1. Define *local* variables
+
 2. Be sure *where* each variable got its value
 
 Don’t have to scratch head to figure where a variable got "assigned"
 
 How to **implement** static scoping?
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -625,6 +695,14 @@ in            -- ??? what env to use for `x + 1`?
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## QUIZ
 
@@ -647,6 +725,15 @@ in                  -- (x := 0) : env
 
 **(E)** `[("y" := 100), ("x" := 0)]`
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -681,6 +768,19 @@ in              -- ("x" := 0) : env
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Extending Environments
 
@@ -691,9 +791,17 @@ eval env (ELet x e1 e2) = ???
 ```
 
 1. **Evaluate** `e1` in `env` to get a value `v1`
+
 2. **Extend** environment with value for `x` i.e. to `(x := v1) : env`
+
 3. **Evaluate** `e2` using *extended* environment.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -787,6 +895,11 @@ An expression `e` is **closed** in environment `env`:
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## QUIZ
 
@@ -825,7 +938,7 @@ in
 <br>
 <br>
 
-## Exercise
+## Exercise to try at home
 
 Consider the function
 
@@ -840,7 +953,21 @@ evaluate e
 
 What should `isOk` check for? (Try to implement it for `nano`...)
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## The Nano Language
 
@@ -855,6 +982,12 @@ Features of Nano:
 ![](/static/img/trinity.png){#fig:types .align-center width=60%}
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -894,6 +1027,21 @@ in
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## Representation
 
@@ -912,6 +1060,21 @@ data Expr
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## Representation
 
@@ -942,6 +1105,24 @@ ELet "incr" (ELam "x" (EBin Add (EVar "x") (ENum 1)))
     EApp (EVar "incr") (ENum 10)
   )
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
 
 ## Functions are Values
 

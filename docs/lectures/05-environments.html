@@ -241,9 +241,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="next-two-weeks">Next two weeks</h2>
 <p>How to <em>implement</em> language constructs?</p>
 <ul>
-<li>Local variables and scope</li>
-<li>Environments and Closures</li>
-<li><em>(skip)</em> Type Inference</li>
+<li><p>Local variables and scope</p></li>
+<li><p>Environments and Closures</p></li>
+<li><p><em>(skip)</em> Type Inference</p></li>
 </ul>
 <h3 id="interpreter">Interpreter</h3>
 <p>How do we <em>represent</em> and <em>evaluate</em> a program?</p>
@@ -264,7 +264,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><img src="../static/img/trinity.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
 <p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="nano-arithmetic">1. Nano: Arithmetic</h2>
-<p>A “grammar” of arithmetic expressions:</p>
+<p>A <em>grammar</em> of arithmetic expressions:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>e <span class="op">::=</span> n</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="op">|</span> e1 <span class="op">+</span> e2</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="op">|</span> e1 <span class="op">-</span> e2</span>
@@ -361,7 +361,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="kw">type</span> <span class="dt">Id</span> <span class="ot">=</span> <span class="dt">String</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Expr</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">ENum</span> <span class="dt">Int</span>              <span class="co">-- OLD</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">ENum</span> <span class="dt">Int</span>             <span class="co">-- OLD</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">EBin</span> <span class="dt">Binop</span> <span class="dt">Expr</span> <span class="dt">Expr</span>  </span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>                         <span class="co">-- NEW</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">EVar</span> <span class="dt">Id</span>              <span class="co">-- variables</span></span></code></pre></div>
@@ -387,21 +387,24 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>(eval env expr) <span class="op">==&gt;</span> value</span></code></pre></div>
 <p>to mean</p>
 <p>When <code class="sourceCode haskell">expr</code> is <strong>evaluated in environment</strong> <code class="sourceCode haskell">env</code> the result is <code class="sourceCode haskell">value</code></p>
-<p>That is, when we have variables, we modify our <code class="sourceCode haskell">eval</code>uator to take an input environment <code class="sourceCode haskell">env</code> in which <code class="sourceCode haskell">expr</code> must be evaluated.</p>
+<p>So: when we have variables, we modify our evaluator (<code class="sourceCode haskell">eval</code>)</p>
+<ul>
+<li>to take an input environment <code class="sourceCode haskell">env</code> in which <code class="sourceCode haskell">expr</code> must be evaluated.</li>
+</ul>
 <div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>eval env expr <span class="ot">=</span> <span class="op">...</span> value<span class="op">-</span><span class="kw">of</span><span class="op">-</span>expr<span class="op">-</span><span class="kw">in</span><span class="op">-</span>env<span class="op">...</span></span></code></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>eval env expr <span class="ot">=</span> <span class="co">-- ... value-of-expr-in-env...</span></span></code></pre></div>
 <p>First, lets update the evaluator for the arithmetic cases <code class="sourceCode haskell"><span class="dt">ENum</span></code> and <code class="sourceCode haskell"><span class="dt">EBin</span></code></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="ot">eval ::</span> <span class="dt">Env</span> <span class="ot">-&gt;</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>eval env (<span class="dt">ENum</span> n)        <span class="ot">=</span> <span class="op">???</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>eval env (<span class="dt">EBin</span> op e1 e2) <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-2">QUIZ</h2>
 <p>What is a suitable <code class="sourceCode haskell"><span class="op">?</span>value</code> such that</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>eval [ <span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>, <span class="st">&quot;y&quot;</span> <span class="op">:=</span> <span class="dv">12</span>, <span class="op">...</span>] (x <span class="op">+</span> <span class="dv">1</span>)  <span class="op">==&gt;</span>  <span class="op">?</span>value</span></code></pre></div>
 <p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dv">0</span></code></p>
 <p><strong>(B)</strong> <code class="sourceCode haskell"><span class="dv">1</span></code></p>
 <p><strong>(C)</strong> Error</p>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-3">QUIZ</h2>
 <p>What is a suitable <code class="sourceCode haskell">env</code> such that</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>eval env (x <span class="op">+</span> <span class="dv">1</span>)   <span class="op">==&gt;</span>   <span class="dv">10</span></span></code></pre></div>
@@ -410,7 +413,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(C)</strong> <code class="sourceCode haskell">[x <span class="op">:=</span> <span class="dv">9</span>, y <span class="op">:=</span> <span class="dv">0</span>]</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">[x <span class="op">:=</span> <span class="dv">9</span>, y <span class="op">:=</span> <span class="dv">10</span>, z <span class="op">:=</span> <span class="dv">666</span>]</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">[y <span class="op">:=</span> <span class="dv">10</span>, z <span class="op">:=</span> <span class="dv">666</span>, x <span class="op">:=</span> <span class="dv">9</span>]</code></p>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="evaluating-variables">Evaluating Variables</h2>
 <p>Using the above intuition, lets update our evaluator to handle variables i.e. the <code class="sourceCode haskell"><span class="dt">EVar</span></code> case:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>eval env (<span class="dt">EVar</span> x)        <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
@@ -427,6 +430,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; eval envC (EBin Add (EVar &quot;x&quot;) (ENum 1))</span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; eval envD (EBin Add (EVar &quot;x&quot;) (ENum 1))</span></span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; eval envE (EBin Add (EVar &quot;x&quot;) (ENum 1))</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="the-nano-language-1">The Nano Language</h2>
 <p>Features of Nano:</p>
 <ol type="1">
@@ -457,7 +461,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true"></a>                         <span class="co">-- NEW</span></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">ELet</span> <span class="dt">Id</span> <span class="dt">Expr</span> <span class="dt">Expr</span></span></code></pre></div>
 <p>How should we extend <code class="sourceCode haskell">eval</code> ?</p>
-<p><br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-4">QUIZ</h2>
 <p>What <em>should</em> the following expression evaluate to?</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">0</span></span>
@@ -514,15 +518,15 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <ul>
 <li>“Nearest” <code class="sourceCode haskell"><span class="kw">let</span></code>-binder in program <em>text</em></li>
 </ul>
-<p>“Static” means you can tell <em>without running the program</em></p>
+<p><strong>Static</strong> means you can tell <em>without running the program</em></p>
 <p>Great for readability and debugging</p>
 <ol type="1">
-<li>Define <em>local</em> variables</li>
-<li>Be sure <em>where</em> each variable got its value</li>
+<li><p>Define <em>local</em> variables</p></li>
+<li><p>Be sure <em>where</em> each variable got its value</p></li>
 </ol>
 <p>Don’t have to scratch head to figure where a variable got “assigned”</p>
 <p>How to <strong>implement</strong> static scoping?</p>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-8">QUIZ</h2>
 <p>Lets re-evaluate the quizzes!</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a>              <span class="co">-- env</span></span>
@@ -534,7 +538,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(C)</strong> <code class="sourceCode haskell">[ (<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>) ]</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">(<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>) <span class="op">:</span> env</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">env <span class="op">++</span> [<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>]</code></p>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-9">QUIZ</h2>
 <div class="sourceCode" id="cb27"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a>                  <span class="co">-- env</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a><span class="kw">let</span> x <span class="ot">=</span> <span class="dv">0</span></span>
@@ -547,7 +551,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(C)</strong> <code class="sourceCode haskell">(<span class="st">&quot;y&quot;</span> <span class="op">:=</span> <span class="dv">100</span>) <span class="op">:</span> (<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>) <span class="op">:</span> env</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">(<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>) <span class="op">:</span> (<span class="st">&quot;y&quot;</span> <span class="op">:=</span> <span class="dv">100</span>) <span class="op">:</span> env</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">[(<span class="st">&quot;y&quot;</span> <span class="op">:=</span> <span class="dv">100</span>), (<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>)]</code></p>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-10">QUIZ</h2>
 <p>Lets re-evaluate the quizzes!</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a>              <span class="co">-- env</span></span>
@@ -561,16 +565,16 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(C)</strong> <code class="sourceCode haskell">(<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">100</span>) <span class="op">:</span> (<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>) <span class="op">:</span> env</code></p>
 <p><strong>(D)</strong> <code class="sourceCode haskell">(<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">0</span>) <span class="op">:</span> (<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">100</span>) <span class="op">:</span> env</code></p>
 <p><strong>(E)</strong> <code class="sourceCode haskell">[(<span class="st">&quot;x&quot;</span> <span class="op">:=</span> <span class="dv">100</span>)]</code></p>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="extending-environments">Extending Environments</h2>
 <p>Lets fill in <code class="sourceCode haskell">eval</code> for the <code class="sourceCode haskell"><span class="kw">let</span> x <span class="ot">=</span> e1 <span class="kw">in</span> e2</code> case!</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a>eval env (<span class="dt">ELet</span> x e1 e2) <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
 <ol type="1">
-<li><strong>Evaluate</strong> <code class="sourceCode haskell">e1</code> in <code class="sourceCode haskell">env</code> to get a value <code class="sourceCode haskell">v1</code></li>
-<li><strong>Extend</strong> environment with value for <code class="sourceCode haskell">x</code> i.e. to <code class="sourceCode haskell">(x <span class="op">:=</span> v1) <span class="op">:</span> env</code></li>
-<li><strong>Evaluate</strong> <code class="sourceCode haskell">e2</code> using <em>extended</em> environment.</li>
+<li><p><strong>Evaluate</strong> <code class="sourceCode haskell">e1</code> in <code class="sourceCode haskell">env</code> to get a value <code class="sourceCode haskell">v1</code></p></li>
+<li><p><strong>Extend</strong> environment with value for <code class="sourceCode haskell">x</code> i.e. to <code class="sourceCode haskell">(x <span class="op">:=</span> v1) <span class="op">:</span> env</code></p></li>
+<li><p><strong>Evaluate</strong> <code class="sourceCode haskell">e2</code> using <em>extended</em> environment.</p></li>
 </ol>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <p>Lets make sure our tests pass!</p>
 <h2 id="run-time-errors">Run-time Errors</h2>
 <p>Haskell function to <em>evaluate</em> an expression:</p>
@@ -611,7 +615,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <ul>
 <li>If <code class="sourceCode haskell">eval env e</code> is only called on <code class="sourceCode haskell">e</code> that is closed in <code class="sourceCode haskell">env</code></li>
 </ul>
-<p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-12">QUIZ</h2>
 <p>Which variables occur free in the expression?</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="kw">let</span> y <span class="ot">=</span> (<span class="kw">let</span> x <span class="ot">=</span> <span class="dv">2</span></span>
@@ -626,7 +630,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p><strong>(D)</strong> <code class="sourceCode haskell">x</code> and <code class="sourceCode haskell">y</code></p>
 <p><br></p>
 <p><br> <br> <br> <br> <br> <br> <br> <br> <br></p>
-<h2 id="exercise">Exercise</h2>
+<h2 id="exercise-to-try-at-home">Exercise to try at home</h2>
 <p>Consider the function</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="ot">evaluate ::</span> <span class="dt">Expr</span> <span class="ot">-&gt;</span> <span class="dt">Value</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>evaluate e</span>
@@ -635,6 +639,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true"></a>  <span class="kw">where</span></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true"></a>    emptyEnv  <span class="ot">=</span> []               <span class="co">-- has NO bindings</span></span></code></pre></div>
 <p>What should <code class="sourceCode haskell">isOk</code> check for? (Try to implement it for <code class="sourceCode haskell">nano</code>…)</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="the-nano-language-2">The Nano Language</h2>
 <p>Features of Nano:</p>
 <ol type="1">
@@ -645,7 +650,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Recursion</li>
 </ol>
 <p><img src="../static/img/trinity.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
-<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="nano-functions">Nano: Functions</h2>
 <p>Let’s add</p>
 <ul>
@@ -663,7 +668,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="kw">let</span> incr <span class="ot">=</span> \x <span class="ot">-&gt;</span> x <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a><span class="kw">in</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a>   incr <span class="dv">10</span></span></code></pre></div>
-<p><br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="representation">Representation</h2>
 <div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Expr</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">ENum</span> <span class="dt">Int</span>              <span class="co">-- OLD</span></span>
@@ -673,7 +678,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true"></a>                         <span class="co">-- NEW</span></span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true"></a>  <span class="op">|</span> <span class="op">???</span>                  <span class="co">-- abstraction \x -&gt; e</span></span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true"></a>  <span class="op">|</span> <span class="op">???</span>                  <span class="co">-- application (e1 e2)</span></span></code></pre></div>
-<p><br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="representation-1">Representation</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Expr</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">ENum</span> <span class="dt">Int</span>              <span class="co">-- OLD</span></span>
@@ -692,6 +697,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true"></a>  (</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true"></a>    <span class="dt">EApp</span> (<span class="dt">EVar</span> <span class="st">&quot;incr&quot;</span>) (<span class="dt">ENum</span> <span class="dv">10</span>)</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true"></a>  )</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="functions-are-values">Functions are Values</h2>
 <p>Recall the trinity</p>
 <p><img src="../static/img/trinity.png" id="fig:types" class="align-center" style="width:60.0%" /></p>

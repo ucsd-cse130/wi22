@@ -10,13 +10,14 @@ headerImg: books.jpg
 | 1/12       | contd.                          | [pdf][pdf2]               | [lc][lc-1-12] |
 | 1/14       | contd.                          | [pdf][pdf3]               |               |
 | 1/19       | A crash course in Haskell       | [html][lec2] [pdf][pdf4]  | [hs][code]    |
-| 1/21       | contd.                          | [html][lec2]              | [hs][code]    |
+| 1/21       | contd.                          | contd.                    | [hs][code]    |
 | 1/26       | Datatypes & Recursion           | [html][lec3] [pdf][pdf5]  | [hs][code]    |
 | 1/28       | contd.                          | contd.                    | [hs][code]    |
 | 2/2        | contd.                          |              [pdf][pdf6]  | [hs][code]    |
 | 2/4        | contd.                          |              [pdf][pdf7]  | [hs][code]    |
 | 2/9        | Higher Order Functions          | [html][lec4] [pdf][pdf8]  | [hs][code]    |
 | 2/11       | contd.                          | contd.       [pdf][pdf9]  | [hs][code]    |
+| 2/16       | Environments & Closures         | [html][lec5] 	           | [hs][code]    |
 
 <!-- 
 | 2/19       | "" [map-reduce][mapRed], [react][rhoc] |                       | [hs-2-19] |
