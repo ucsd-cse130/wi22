@@ -1,7 +1,7 @@
 {-# LANGUAGE PartialTypeSignatures #-}
 {-# LANGUAGE DeriveFunctor #-}
 
-module Lec_2_9_21 where
+module Lec_2_16_21 where
 
 import Prelude hiding (foldl, foldr, map)
 import Text.Printf
