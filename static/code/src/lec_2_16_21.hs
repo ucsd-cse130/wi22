@@ -3,210 +3,93 @@
 
 module Lec_2_16_21 where
 
-import Prelude hiding (foldl, foldr, map)
 import Text.Printf
 
 import Debug.Trace
-import Data.Char (toUpper)
-
-shout :: [Char] -> [Char]
--- shout []     = [] 
--- shout (x:xs) = toUpper x : shout xs
-shout = map toUpper 
-
--- >>> squares [1,2,3,4,5,6]
--- [1, 4, 9, 16, 25, 36]
-
--- squares []     = []
--- squares (x:xs) = (x * x) : squares xs
-
-squares :: [Int] -> [Int]
-squares xs = map (\x -> x * x) xs
-
-
--- >>> sizes ["this", "is", "the", "end", "my", "friend"]
--- [4,2,3,3,2,6]
-
-map :: (t -> a) -> [t] -> [a]
-map f []     = [] 
-map f (x:xs) = f x : map f xs
-
-
-data Table a 
-  = Emp 
-  | Node String a (Table a) (Table a)
-  deriving (Show, Functor)
-
--- tableMap :: (a -> b) -> Table a -> Table b
--- tableMap f Emp            = Emp
--- tableMap f (Node k v l r) = Node k (f v) (tableMap f l) (tableMap f r) 
-
-
-menu :: Table Int
-menu =  Node "cortado" 4
-          (Node "breve" 3
-            (Node "americano" 3 Emp Emp)
-            (Node "cappucino"  4 Emp Emp)
-          )
-          (Node "latte" 6
-            (Node "espresso" 2 Emp Emp)
-            (Node "mocha" 5 Emp Emp)
-          )
-
-expensiveMenu :: Table Int
-expensiveMenu = fmap (\p -> p * 10)  menu
-
--- >>> expensiveMenu
--- Node "cortado" 40 (Node "breve" 30 (Node "americano" 30 Emp Emp) (Node "cappucino" 40 Emp Emp)) (Node "latte" 60 (Node "espresso" 20 Emp Emp) (Node "mocha" 50 Emp Emp))
-
-
-
-
--- >>> size "caterpillar"
--- 11
-
-
-
--- total :: [Int] -> Int 
--- total [] = 0
--- total (x:xs) = x + total xs 
-
--- cat :: [String] -> String
--- cat []     = ""
--- cat (x:xs) = x ++ cat xs
-
--- >
-
-total :: [Int] -> Int
-total xs = foldr (+) 0 xs
-
-cat :: [String] -> String 
-cat xs  = foldr (++) "" xs
-
-foldr op b []     = b
-foldr op b (x:xs) = op x (foldr op b xs) 
-
-size' :: [a] -> Int 
-size' xs = foldr (\_ v -> 1 + v) 0 xs
-
--- >>> size' "cat"
--- 3
 
 {- 
+  e := n 
+     | e1 + e2 
+     | e1 - e2 
+     | e1 * e2
+
+     | x, y, z, ... 
+
+(4 + 12) - 5
+
+
+(10 + a) * b
+
+ -}
+
+
+ex0 :: Expr 
+ex0 = ESub (EAdd (EInt 4) (EInt 12)) (EInt 5)
+
+ex1 :: Expr
+ex1 = EAdd (EVar "x") (EInt 1)
+
+ex2 :: Expr
+ex2 = EMul (EAdd (EInt 10) (EVar "a")) (EVar "b")
+
+ex3 :: Expr
+ex3 = ELet "x" (EInt 0)
+        ( 
+          ELet "x" (EInt 100) 
+            (
+              EAdd (EVar "x") (EInt 1)
+            )
+        )
+
+quiz :: Int
+quiz = 
+  let x = 0 in
+   let y = 100 in
+    let z = x - y in
+      x + y + z
+
+-- >>> eval [("a", VInt 100), ("b", VInt 5)] ex2
+-- VInt 550
 
 
 
 
-foldr op b (x1:(x2:(x3:(x4:[]))))
-
-==> op x1 (foldr op b (x2:(x3:(x4:[]))))
-
-==> op x1 (op x2 (foldr op b (x3:(x4:[])))
-
-==> op x1 (op x2 (op x3 (foldr op b (x4:[]))
-
-==> op x1 (op x2 (op x3 (op x4 (foldr op b []))))
-
-==> op x1 (op x2 (op x3 (op x4 b))))
 
 
+data Expr 
+  = EInt Int 
+  | EAdd Expr Expr 
+  | ESub Expr Expr 
+  | EMul Expr Expr 
+  | EVar Var 
+  | ELet Var  Expr Expr
+  deriving (Show)
 
+type Var = String
 
+type Env = [(Var, Value)]
 
+data Value = VInt Int | VUndef
+             deriving (Show) 
 
+eval :: Env -> Expr -> Value 
+eval _   (EInt n)     = VInt n 
+eval env (EAdd e1 e2) = binop (+) (eval env e1) (eval env e2)
+eval env (ESub e1 e2) = binop (-) (eval env e1) (eval env e2)
+eval env (EMul e1 e2) = binop (*) (eval env e1) (eval env e2)
+eval env (EVar v)     = lookupValue env v
 
+binop :: (Int -> Int -> Int) -> Value -> Value -> Value
+binop op (VInt v1) (VInt v2) = VInt (op v1 v2)
+binop _  _         _         = VUndef 
 
-(\x -> EXPR x) ==== EXPR
+lookupValue :: Env -> Var -> Value
+lookupValue ((k,v):rest) x 
+  | x == k       = v
+  | otherwise    = lookupValue rest x
+lookupValue [] _ = VUndef
 
-
--- base = 0, op = +
-foo []     = 0
-foo (x:xs) = x + foo xs 
-
--- base = 0, op = \x v -> 1 + v
-foo []     = 0
-foo (x:xs) = 1 + foo xs
-
--- base = "", op = ++
-foo []     = ""
-foo (x:xs) = x ++ foo xs
-
-
--}
-
--- >>> total [10,20,30,40,50]
--- 150
-
--- >>> cat ("now" : ["i", "am", "hungry"])
--- "nowiamhungry"
-
-
-sumTR :: [Int] -> Int
-sumTR = foldl (+) 0 
-
-catTR :: [String] -> String
-catTR = foldl (++) "" 
-
-foldl op acc []    = acc
-foldl op acc (h:t) = foldl op (op acc h) t 
-
--- map/reduce
-
-{- 
-
-foldl op acc (x1 : (x2 : (x3 : (x4 : []))))
-
-==> foldl op (op acc x1) (x2 : (x3 : (x4 : [])))
-
-==> foldl op (op (op acc x1) x2) ((x3 : (x4 : [])))
-
-==> foldl op (op (op (op acc x1) x2) x3) (((x4 : [])))
-
-==> foldl op (op (op (op (op acc x1) x2) x3) x4) ((([])))
-
--- FOLD-LEFT
-==> ((((acc `op` x1) `op` x2) `op` x3) `op` x4) 
-
--- FOLD-RIGHT
-==>  x1 `op` (x2 `op` (x3 `op` (x4 `op` b)))
+-- >>> eval e1
 
 
 
--}
-
-
--- >>> catTR ["10", "20", "30", "40"]
--- "10203040"
-
-{- 
-
-sumTR [10, 20, 30, 40]
-
-==> loop 0        [10, 20, 30, 40]
-
-==> loop 10       [20, 30, 40]
-
-==> loop 30       [30, 40]
-
-==> loop 60       [40]
-
-==> loop 100      []
-
-==> 100
-
-
-catTR ["10", "20", "30", "40"]
-
-==> loop ""       ["10", "20", "30", "40"]
-
-==> loop "10"     ["20", "30", "40"]
-
-==> loop "1020"   ["30", "40"]
-
-==> loop "102030" ["40"]
-
-==> loop "10203040" []
-
-==> "10203040" 
-
--}
