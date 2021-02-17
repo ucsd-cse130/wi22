@@ -19,11 +19,10 @@ but no more than *four late days* per assignment.
 |:-------------------------------------------------|:------------------------|:---------------------------|
 | [HW #0](https://classroom.github.com/a/xElhJEdo) | Lambda Calculus         | Fri 1/15                   |
 | [HW #1](https://classroom.github.com/a/e18HdBWh) | Introduction to Haskell | Wed 1/27                   |
+| [HW #2](https://classroom.github.com/a/yWvckJjt) | Data types              | Wed 2/10                   |
+| [HW #3](https://classroom.github.com/a/JV9YLoCP) | Higher-order Functions  | Fri 2/19                   |
 
 <!-- 
-| [HW #1](https://classroom.github.com/a/B5wdCjPJ) | Introduction to Haskell | Fri 1/31                   |
-| [HW #2](https://classroom.github.com/a/Rmz7BvXX) | Data types              | Fri 2/7                    |
-| [HW #3](https://classroom.github.com/a/qiPy2W1Q) | Higher-Order Functions  | Fri 2/21                   |
 | [HW #4](https://classroom.github.com/a/hbFGb_aj) | Interpreting languages  | Fri 3/4                    |
 | [HW #5](https://classroom.github.com/a/N5jjfNpQ) | Classes                 | Fri 3/13                   |
 -->
