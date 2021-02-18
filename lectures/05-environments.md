@@ -1214,6 +1214,11 @@ What information do we store about `<code>` ?
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## A Call's Value
 
@@ -1223,6 +1228,14 @@ How to evaluate the "call" `incr 10` ?
 
 2. Evaluate `body` with `param` set to `10`!
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -1380,6 +1393,17 @@ Wednesday that he believed on Monday — no matter what
 happened Tuesday. 
 -->
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## The Immutability Principle ?
 
 How does our `eval` work?
@@ -1427,6 +1451,17 @@ eval env (inc 10)
 
 Ouch.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Enforcing Immutability with Closures
 
 How to enforce immutability principle
@@ -1470,6 +1505,17 @@ eval env (inc 10)
 
 tada!
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Representing Closures
 
 Lets change the `Value` datatype to also store an `Env`
@@ -1479,6 +1525,17 @@ data Value
   = VInt  Int          -- OLD
   | VClos Env Id Expr  -- <frozenv, param, body>  
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Evaluating Function Definitions
 
@@ -1528,6 +1585,19 @@ Let's generalize that recipe!
 2. Evaluate `e2`   to get `v2`
 3. Evaluate `body` in `param := v2 : frozenv`
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 ## Immutability Achieved
 
 Lets put our code to the test!
@@ -1548,6 +1618,19 @@ exLam3 = ELet "c" (ENum 1)
 -- ???
 ```
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 ## QUIZ 
 
 What should the following evaluate to?
@@ -1562,7 +1645,30 @@ in
       (add10 100) + (add20 1000)
 ```
 
-TODO
+**A.** `1100`
+
+**B.** `1110`
+
+**C.** `1120`
+
+**D.** `1130`
+
+**E.** `1140`
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 ## Functions Returning Functions Achieved!
 
@@ -1572,7 +1678,20 @@ exLam4 = ...
 -- >>> eval [] exLam4
 ```
 
-TODO
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
 
 ## Practice
 
@@ -1589,6 +1708,20 @@ in
 ```
 
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
 ## Functions Accepting Functions Achieved!
 
 ```haskell
@@ -1596,6 +1729,20 @@ exLam5 = ...
 
 -- >>> eval [] exLam4
 ```
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 ## The Nano Language
 
