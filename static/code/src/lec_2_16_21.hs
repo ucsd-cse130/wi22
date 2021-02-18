@@ -24,9 +24,9 @@ foo = dec . dub . inc
 
 -- foo x = dub (inc x)
 
--- f . g = \x -> f (g x)
+-- f . g   ====> \x -> f (g x)
 
-
+-- e1 . e2 ====> \x -> e1 (e2 x)
 
 expr0 :: Expr
 expr0 = EAdd (EVar "x") (EInt 1)
