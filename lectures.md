@@ -19,11 +19,12 @@ headerImg: books.jpg
 | 2/11       | contd.                          | contd.       [pdf][pdf9]  | [hs][code]    |
 | 2/16       | Environments & Closures         | [html][lec5] [pdf][pdf10] | [hs][code]    |
 | 2/18       | contd.                          | contd.       [pdf][pdf11] | [hs][code]    |
+| 2/23       | contd.                          | contd.       [pdf][pdf11] | [hs][code]    |
+| 2/25       | Lexing and Parsing              | [html][lec6], [tutorial][parsing]  |      |
 
 <!-- 
 | 2/19       | "" [map-reduce][mapRed], [react][rhoc] |                       | [hs-2-19] |
 | 2/21       | Environments & Closures         | [html][lec5] 	              | [hs-2-21] |
-| 3/2        | Lexing and Parsing              | [html][lec6], [tutorial][parsing]  [pdf][pdf-parse] | [hs-3-2] |
 | 3/9        | Overloading & Type Classes      | [html][lec7-cl]              | [hs-3-9]  |
 | 3/11       | Monads                          | [html][lec8-monads]          | [hs-3-11] |
 --> 
