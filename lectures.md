@@ -19,7 +19,7 @@ headerImg: books.jpg
 | 2/11       | contd.                          | contd.       [pdf][pdf9]  | [hs][code]    |
 | 2/16       | Environments & Closures         | [html][lec5] [pdf][pdf10] | [hs][code]    |
 | 2/18       | contd.                          | contd.       [pdf][pdf11] | [hs][code]    |
-| 2/23       | contd.                          | contd.       [pdf][pdf11] | [hs][code]    |
+| 2/23       | contd.                          | contd.       [pdf][pdf12] | [hs][code]    |
 | 2/25       | Lexing and Parsing              | [html][lec6], [tutorial][parsing]  |      |
 
 <!-- 
@@ -71,6 +71,7 @@ headerImg: books.jpg
 [pdf9]: /static/raw/04-hof-B.pdf
 [pdf10]: /static/raw/05-environments-A.pdf
 [pdf11]: /static/raw/05-environments-B.pdf
+[pdf12]: /static/raw/05-environments-C.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [lc-1-12]: /static/raw/lec_1_12_21.lc
