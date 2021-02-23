@@ -1,7 +1,7 @@
 {-# LANGUAGE PartialTypeSignatures #-}
 {-# LANGUAGE DeriveFunctor #-}
 
-module Lec_2_16_21 where
+module Lec_2_18_21 where
 
 import Text.Printf
 
@@ -105,6 +105,41 @@ exIncr =
   ELet "incr" (ELam "x" (EAdd (EVar "x") (EInt 1))) 
     (EApp (EVar "incr") (EInt 50))
 
+exIncrByCC :: Expr
+exIncrByCC = 
+  -- []
+  ELet "c" (EInt 1)
+    (
+        -- [c := 1]
+      ELet "incr" (ELam "x" (EAdd (EVar "x") (EVar "c"))) 
+        ( -- [incr := <'x', 'x+c', [c := 1]>, c := 1]
+          ELet "c" (EInt 100)
+          (   -- [c := 100, incr := <'x', 'x+c', [c:=1]>, c := 1]
+            EApp (EVar "incr") (EInt 10)
+              -- eval [x := 10, c := 1] ('x+c')
+              --  ==> 11
+          )
+        )
+    )
+-- >>> eval [] exIncrByCC
+-- VInt 11
+
+
+exIncrByCCC :: Expr
+exIncrByCCC = 
+      ELet "incr" (ELam "x" (EAdd (EVar "x") (EInt 1))) 
+        ( 
+          ELet "c" (EInt 100)
+          (  
+            EApp (EVar "incr") (EVar "c")
+          )
+        )
+-- >>> eval [] exIncrByCCC
+-- VInt 101
+
+-- >>> eval [] exIncr
+-- VInt 51
+
 data Expr 
   = EInt Int 
   | EVar Var 
@@ -138,14 +173,63 @@ evalHelper env (ELet x e1 e2) = eval extEnv e2
   where 
     v1                        = eval env e1
     extEnv                    = (x, v1) : env 
--- evalHelper env (ELam x e)     = _fixme
--- evalHelper env (EApp e1 e2)   = _fixme
+
+evalHelper env (EApp e1 e2)   = eval extEnv funBody 
+  where
+    extEnv                    = (funParam, argValue) : funEnv -- (a)
+    VClos funParam funBody funEnv  = eval env e1                 -- (b)
+    argValue                  = eval env e2                 -- (c)
+
+evalHelper env (ELam x e)     = VClos x e env
+
+
+exAdd_10_20 :: Expr
+exAdd_10_20 = 
+  -- []
+  ELet "add" (ELam "x" (ELam "y" (EAdd (EVar "x") (EVar "y"))))
+    ( -- [add := <'x', \y -> x + y, []>]
+      ELet "add10" (EApp (EVar "add") (EInt 10))
+      ( -- [add10 := <'y', 'x+y' , [x:=10]  >,    add := <'x', \y -> x + y, []>]
+        ELet "add20" (EApp (EVar "add") (EInt 20))
+        (
+         EAdd
+          (EApp (EVar "add10") (EInt 100))
+          (EApp (EVar "add20") (EInt 1000))
+        )
+      )
+    )
+
+-- >>> eval [("add", VClos "x" (ELam "y" (EAdd (EVar "x") (EVar "y"))) [])] ((EApp (EVar "add") (EInt 10)))
+-- VClos "y" (EAdd (EVar "x") (EVar "y")) [("x",VInt 10)]
+
+-- >>> eval [("y", VInt 100), ("x",VInt 10)] (EAdd (EVar "x") (EVar "y"))
+-- VInt 110
+
+-- >>> eval [("y", VInt 1000), ("x",VInt 20)] (EAdd (EVar "x") (EVar "y"))
+-- VInt 1020
 
 
 
+-- >>> eval [("add", VClos "x" (ELam "y" (EAdd (EVar "x") (EVar "y"))) [])] ((EApp (EVar "add") (EInt 20)))
+-- VClos "y" (EAdd (EVar "x") (EVar "y")) [("x",VInt 20)]
 
-data Value = VInt Int 
-           | VFun Var Expr    -- param, body
+-- >>> eval [] exAdd_10_20
+-- VInt 1130
+
+
+{-                      -- [] 
+let inc = \x -> x + 1
+in                      -- [inc := <'x', x+1, []>]
+   let tmp = 10
+   in                   -- [tmp := 10, inc := <'x', x+1, []> ]
+
+     inc tmp
+                        -- frozEnv = []
+-}
+
+
+data Value = VInt  Int 
+           | VClos Var Expr Env -- param, body, env-at-func-def
            | VUndef
            deriving (Show) 
 
