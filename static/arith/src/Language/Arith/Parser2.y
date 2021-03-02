@@ -36,6 +36,12 @@ import Control.Exception
 
 %%
 
+SUM-OF-PRODUCT 
+
+((((((10) + (20)) + (30 * 49 * 41)))) - (29 * 80))
+
+Aexpr -> (((10 + 20) + ((30 * 49) * 41) - (29 * 80) ) 
+
 Aexpr : Aexpr '+' Aexpr2         { APlus $1 $3  }
       | Aexpr '-' Aexpr2         { AMinus $1 $3 }
       | Aexpr2                   { $1 }

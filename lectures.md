@@ -20,12 +20,10 @@ headerImg: books.jpg
 | 2/16       | Environments & Closures         | [html][lec5] [pdf][pdf10] | [hs][code]    |
 | 2/18       | contd.                          | contd.       [pdf][pdf11] | [hs][code]    |
 | 2/23       | contd.                          | contd.       [pdf][pdf12] | [hs][code]    |
-| 2/25       | Lexing and Parsing              | [html][lec6], [tutorial][parsing]  |      |
+| 2/25       | Lexing and Parsing              | [html][lec6] [pdf][pdf12] | [hs][arith]   |
+| 3/2        | Overloading & Type Classes      | [html][lec7-cl]           | [hs][code]    |
 
 <!-- 
-| 2/19       | "" [map-reduce][mapRed], [react][rhoc] |                       | [hs-2-19] |
-| 2/21       | Environments & Closures         | [html][lec5] 	              | [hs-2-21] |
-| 3/9        | Overloading & Type Classes      | [html][lec7-cl]              | [hs-3-9]  |
 | 3/11       | Monads                          | [html][lec8-monads]          | [hs-3-11] |
 --> 
 
@@ -74,6 +72,8 @@ headerImg: books.jpg
 [pdf12]: /static/raw/05-environments-C.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
+[arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
+
 [lc-1-12]: /static/raw/lec_1_12_21.lc
 
 

@@ -35,19 +35,18 @@ import Control.Exception
     ')'   { RPAREN _ }
 
 -- Operators
--- %left '+' '-'
--- %left '*' '/'
+%left '+' '-'
+%left '*' '/'
 %%
 
-Aexpr : BinExp                   { $1           }
-      | TNUM                     { AConst $1    }
-      | ID                       { AVar   $1    }
-      | '(' Aexpr ')'            { $2           }
 
-BinExp : Aexpr '+' Aexpr         { APlus  $1 $3 } 
-       | Aexpr '-' Aexpr         { AMinus $1 $3 }
-       | Aexpr '*' Aexpr         { AMul   $1 $3 }
-       | Aexpr '/' Aexpr         { ADiv   $1 $3 }
+Aexpr  : TNUM                     { AConst $1    }
+       | ID                       { AVar   $1    }
+       | Aexpr '+' Aexpr          { APlus  $1 $3 } 
+       | Aexpr '-' Aexpr          { AMinus $1 $3 }
+       | Aexpr '*' Aexpr          { AMul   $1 $3 }
+       | Aexpr '/' Aexpr          { ADiv   $1 $3 }
+       | '(' Aexpr ')'            { $2           }
        
 {
 

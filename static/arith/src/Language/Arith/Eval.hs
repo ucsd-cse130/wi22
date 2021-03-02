@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ExtendedDefaultRules #-}
 
 module Language.Arith.Eval
   ( 
@@ -15,7 +16,7 @@ module Language.Arith.Eval
 
 import Control.Exception (catch)
 import Language.Arith.Types
-import Language.Arith.Lexer 
+import Language.Arith.Lexer ( Token ) 
 import Language.Arith.Parser
 
 --------------------------------------------------------------------------------
