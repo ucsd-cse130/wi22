@@ -10,13 +10,44 @@ How to *implement* language constructs?
 
 - Local variables and scope
 - Environments and Closures
+- Parsing
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Next two Weeks
 
 Modern language features for structuring programs
 
+- Overloading
 - Type classes
 - Monads
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## Overloading Operators: Arithmetic
 
@@ -41,6 +72,19 @@ for `Double` precision floats:
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Overloading Comparisons
 
@@ -60,6 +104,27 @@ False
 True
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
 ## Ad-Hoc Overloading
 
 Seems unremarkable?
@@ -77,6 +142,25 @@ You really **need** to _add_ and _compare_ values of _multiple_ types!
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## Haskell has no caste system
 
@@ -91,6 +175,26 @@ But then, what type do we give to *functions* like `+` and `==` ?
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 ## QUIZ
 
@@ -161,14 +265,21 @@ Which of the following would be appropriate types for `(+)` ?
 ## Type Classes for Ad Hoc Polymorphism 
 
 Haskell solves this problem with an *insanely slick*
-mechanism called typeclasses, introduced by [Wadler and Blott](http://portal.acm.org/citation.cfm?id=75283) 
+mechanism called **type-classes**, introduced by [Wadler and Blott](http://portal.acm.org/citation.cfm?id=75283) 
 
 ![](/static/img/blott-wadler.png){#fig:types .align-center width=60%}
 
 **BTW:** The paper is one of the clearest examples of academic writing I have seen.
+
 The next time you hear a curmudgeon say all the best CS was done in the 60s,
 just point them to the above.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -195,13 +306,43 @@ for any type `a` that
 - _implements_ the `Num` interface or
 - _is an instance of_ a `Num`.
 
-The name `Num` can be thought of as a _predicate_  or _constraint_ over types.
+The name `Num` can be thought of as a _predicate_  or _constraint_ over types 
+
+- Similar but different than [Java interfaces](https://www.parsonsmatt.org/2017/01/07/how_do_type_classes_differ_from_interfaces.html)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 ## Some types _are_ `Num`s 
 
 Examples include `Integer`, `Double` etc
 
 - Any such values of those types can be passed to `+`. 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Other types _are not_ `Num`s 
 
@@ -223,9 +364,23 @@ Examples include `Char`, `String`, functions etc,
 - Haskell is complaining that `True` and `False` are of type `Bool` 
 - and that `Bool` is _not_ an instance of `Num`.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 ## Type Class is a Set of Operations
 
-A typeclass is a collection of operations (functions) 
+A type class is a collection of operations (functions) 
 that must exist for the underlying type.
 
 <br>
@@ -234,10 +389,23 @@ that must exist for the underlying type.
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## The `Eq` Type Class
 
-The simplest typeclass is perhaps, `Eq`
+The simplest type class is perhaps, `Eq`
 
 ```haskell
 class  Eq a  where
@@ -251,9 +419,22 @@ A type `a` is _an instance of_ `Eq` if there are two functions
 
 That determine if two `a` values are respectively _equal_ or _disequal_.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## The `Show` Type Class
 
-The typeclass `Show` requires  that instances be convertible to `String`
+The type class `Show` requires  that instances be convertible to `String`
 (which can then be printed out)
 
 ```haskell
@@ -320,6 +501,19 @@ and we **cannot compare** them!
 Again, the previously incomprehensible type error message should
 make sense to you.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Creating Instances
 
 Tell Haskell how to show or compare values of type `Unshowable`
@@ -337,6 +531,22 @@ instance Eq Unshowable where
 ```
 
 **EXERCISE** Lets *create* an `instance` for `Show Unshowable`
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Automatic Derivation
 
@@ -368,6 +578,22 @@ True
 λ> x' == B'
 False
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Standard Typeclass Hierarchy
 
@@ -401,6 +627,22 @@ Haskell comes equipped with a rich set of built-in classes.
 In the above picture, there is an edge from `Eq` and `Show` to `Num`
 because for something to be a `Num` it must also be an `Eq` and `Show`.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## The `Ord` Typeclass
 
 Another typeclass you've used already is the one for `Ord`ering values:
@@ -423,6 +665,22 @@ True
 True
 ```
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## QUIZ 
 
 Recall the datatype:
@@ -442,6 +700,22 @@ What is the result of:
 **(C)** Type error
 **(D)** Run-time exception
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Using Typeclasses
 
 Typeclasses integrate with the rest of Haskell's type system.
@@ -454,6 +728,22 @@ data Env k v
   | Bind k v (Env k v)  -- bind key `k` to the value `v`
   deriving (Show)
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## An API for `Env`
 
@@ -490,6 +780,13 @@ get key env = ???
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 Oops, y u no check?
 
@@ -515,10 +812,17 @@ How, did GHC figure this out?
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-## Exercise
+## EXERCISE (Do at home)
 
-Write an optimized version of
+Write an *optimized* version of
 
 - `add` that ensures the keys are in _increasing_ order,
 - `get` that gives up and returns the "default" the moment
@@ -593,6 +897,20 @@ what to convert the string to:
 
 Note the different results due to the different types.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Creating Typeclasses
 
 Typeclasses are useful for *many* different things.
@@ -600,6 +918,20 @@ Typeclasses are useful for *many* different things.
 We will see some of those over the next few lectures.
 
 Lets conclude today's class with a quick example that provides a small taste. 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## JSON
 
@@ -795,7 +1127,7 @@ bootstrap the above functions to work for lists and key-value lists!
 
 ```haskell
 instance JSON a => JSON [a] where
-  toJSON xs = JArr [toJSON x | x <- xs]
+  toJSON xs = JArr (map toJSON xs)
 ```
 
 The above says, if `a` is an instance of `JSON`, that is,
@@ -833,7 +1165,7 @@ JArr [ JObj [ ("day",JStr "monday"), ("loc",JStr "zanzibar")]
      ]
 ```
 
-It is also useful to bootstrap the serialization for tuples (upto some
+It is also useful to bootstrap the serialization for tuples (up to some
 fixed size) so we can easily write "non-uniform" JSON objects where keys
 are bound to values with different shapes.
 
@@ -897,4 +1229,4 @@ JObj [ ("cat", JNum 10.0)
 
 Thats it for today.
 
-We will see much more typeclass awesomeness in the next few lectures...
+We will see much more type class awesomeness in the next few lectures...

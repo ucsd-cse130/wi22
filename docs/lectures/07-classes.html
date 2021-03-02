@@ -236,13 +236,17 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <ul>
 <li>Local variables and scope</li>
 <li>Environments and Closures</li>
+<li>Parsing</li>
 </ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="next-two-weeks">Next two Weeks</h2>
 <p>Modern language features for structuring programs</p>
 <ul>
+<li>Overloading</li>
 <li>Type classes</li>
 <li>Monads</li>
 </ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="overloading-operators-arithmetic">Overloading Operators: Arithmetic</h2>
 <p>The <code class="sourceCode haskell"><span class="op">+</span></code> operator works for a bunch of different types.</p>
 <p>For <code class="sourceCode haskell"><span class="dt">Integer</span></code>:</p>
@@ -251,7 +255,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <p>for <code class="sourceCode haskell"><span class="dt">Double</span></code> precision floats:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="fl">2.9</span> <span class="op">+</span> <span class="fl">3.5</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="fl">6.4</span></span></code></pre></div>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="overloading-comparisons">Overloading Comparisons</h2>
 <p>Similarly we can <em>compare</em> different types of values</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">3</span></span>
@@ -265,6 +269,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>λ<span class="op">&gt;</span> (<span class="st">&quot;cat&quot;</span>, <span class="dv">10</span>) <span class="op">&lt;</span> (<span class="st">&quot;cat&quot;</span>, <span class="dv">20</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="dt">True</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="ad-hoc-overloading">Ad-Hoc Overloading</h2>
 <p>Seems unremarkable?</p>
 <p>Languages since the dawn of time have supported “operator overloading”</p>
@@ -273,14 +278,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li><p>Ad-hoc: “created or done for a particular purpose as necessary.”</p></li>
 </ul>
 <p>You really <strong>need</strong> to <em>add</em> and <em>compare</em> values of <em>multiple</em> types!</p>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="haskell-has-no-caste-system">Haskell has no caste system</h2>
 <p>No distinction between operators and functions</p>
 <ul>
 <li>All are first class citizens!</li>
 </ul>
 <p>But then, what type do we give to <em>functions</em> like <code class="sourceCode haskell"><span class="op">+</span></code> and <code class="sourceCode haskell"><span class="op">==</span></code> ?</p>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz">QUIZ</h2>
 <p>Which of the following would be appropriate types for <code class="sourceCode haskell">(<span class="op">+</span>)</code> ?</p>
 <p><strong>(A)</strong> <code class="sourceCode haskell"><span class="ot">(+) ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span></code></p>
@@ -304,10 +309,11 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>That doesn’t make sense, e.g. to add two <code class="sourceCode haskell"><span class="dt">Bool</span></code> or two <code class="sourceCode haskell">[<span class="dt">Int</span>]</code> or two functions!</li>
 </ul>
 <h2 id="type-classes-for-ad-hoc-polymorphism">Type Classes for Ad Hoc Polymorphism</h2>
-<p>Haskell solves this problem with an <em>insanely slick</em> mechanism called typeclasses, introduced by <a href="http://portal.acm.org/citation.cfm?id=75283">Wadler and Blott</a></p>
+<p>Haskell solves this problem with an <em>insanely slick</em> mechanism called <strong>type-classes</strong>, introduced by <a href="http://portal.acm.org/citation.cfm?id=75283">Wadler and Blott</a></p>
 <p><img src="../static/img/blott-wadler.png" id="fig:types" class="align-center" style="width:60.0%" /></p>
-<p><strong>BTW:</strong> The paper is one of the clearest examples of academic writing I have seen. The next time you hear a curmudgeon say all the best CS was done in the 60s, just point them to the above.</p>
-<p><br> <br> <br> <br> <br> <br></p>
+<p><strong>BTW:</strong> The paper is one of the clearest examples of academic writing I have seen.</p>
+<p>The next time you hear a curmudgeon say all the best CS was done in the 60s, just point them to the above.</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="qualified-types">Qualified Types</h2>
 <p>To see the right type, lets ask:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="op">:</span><span class="kw">type</span> (<span class="op">+</span>)</span>
@@ -322,12 +328,17 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li><em>implements</em> the <code class="sourceCode haskell"><span class="dt">Num</span></code> interface or</li>
 <li><em>is an instance of</em> a <code class="sourceCode haskell"><span class="dt">Num</span></code>.</li>
 </ul>
-<p>The name <code class="sourceCode haskell"><span class="dt">Num</span></code> can be thought of as a <em>predicate</em> or <em>constraint</em> over types.</p>
+<p>The name <code class="sourceCode haskell"><span class="dt">Num</span></code> can be thought of as a <em>predicate</em> or <em>constraint</em> over types</p>
+<ul>
+<li>Similar but different than <a href="https://www.parsonsmatt.org/2017/01/07/how_do_type_classes_differ_from_interfaces.html">Java interfaces</a></li>
+</ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="some-types-are-nums">Some types <em>are</em> <code class="sourceCode haskell"><span class="dt">Num</span></code>s</h2>
 <p>Examples include <code class="sourceCode haskell"><span class="dt">Integer</span></code>, <code class="sourceCode haskell"><span class="dt">Double</span></code> etc</p>
 <ul>
 <li>Any such values of those types can be passed to <code class="sourceCode haskell"><span class="op">+</span></code>.</li>
 </ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="other-types-are-not-nums">Other types <em>are not</em> <code class="sourceCode haskell"><span class="dt">Num</span></code>s</h2>
 <p>Examples include <code class="sourceCode haskell"><span class="dt">Char</span></code>, <code class="sourceCode haskell"><span class="dt">String</span></code>, functions etc,</p>
 <ul>
@@ -344,11 +355,12 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li>Haskell is complaining that <code class="sourceCode haskell"><span class="dt">True</span></code> and <code class="sourceCode haskell"><span class="dt">False</span></code> are of type <code class="sourceCode haskell"><span class="dt">Bool</span></code></li>
 <li>and that <code class="sourceCode haskell"><span class="dt">Bool</span></code> is <em>not</em> an instance of <code class="sourceCode haskell"><span class="dt">Num</span></code>.</li>
 </ul>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="type-class-is-a-set-of-operations">Type Class is a Set of Operations</h2>
-<p>A typeclass is a collection of operations (functions) that must exist for the underlying type.</p>
-<p><br> <br> <br> <br> <br> <br></p>
+<p>A type class is a collection of operations (functions) that must exist for the underlying type.</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="the-eq-type-class">The <code class="sourceCode haskell"><span class="dt">Eq</span></code> Type Class</h2>
-<p>The simplest typeclass is perhaps, <code class="sourceCode haskell"><span class="dt">Eq</span></code></p>
+<p>The simplest type class is perhaps, <code class="sourceCode haskell"><span class="dt">Eq</span></code></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">class</span>  <span class="dt">Eq</span> a  <span class="kw">where</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="ot">  (==) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="ot">  (/=) ::</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span></span></code></pre></div>
@@ -357,8 +369,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <li><code class="sourceCode haskell"><span class="op">==</span></code> and <code class="sourceCode haskell"><span class="op">/=</span></code></li>
 </ul>
 <p>That determine if two <code class="sourceCode haskell">a</code> values are respectively <em>equal</em> or <em>disequal</em>.</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="the-show-type-class">The <code class="sourceCode haskell"><span class="dt">Show</span></code> Type Class</h2>
-<p>The typeclass <code class="sourceCode haskell"><span class="dt">Show</span></code> requires that instances be convertible to <code class="sourceCode haskell"><span class="dt">String</span></code> (which can then be printed out)</p>
+<p>The type class <code class="sourceCode haskell"><span class="dt">Show</span></code> requires that instances be convertible to <code class="sourceCode haskell"><span class="dt">String</span></code> (which can then be printed out)</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="kw">class</span>  <span class="dt">Show</span> a  <span class="kw">where</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="ot">  show ::</span> a <span class="ot">-&gt;</span> <span class="dt">String</span></span></code></pre></div>
 <p>Indeed, we can test this on different (built-in) types</p>
@@ -395,6 +408,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a><span class="ot">    In the expression: x == x</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="ot">    In the definition of `</span>it'<span class="op">:</span> it <span class="ot">=</span> x <span class="op">==</span> x</span></code></pre></div>
 <p>Again, the previously incomprehensible type error message should make sense to you.</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="creating-instances">Creating Instances</h2>
 <p>Tell Haskell how to show or compare values of type <code class="sourceCode haskell"><span class="dt">Unshowable</span></code></p>
 <p>By <strong>creating instances</strong> of <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code> for that type:</p>
@@ -406,6 +420,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>  (<span class="op">/=</span>) x y <span class="ot">=</span> <span class="fu">not</span> (x <span class="op">==</span> y)   <span class="co">-- Test if `x == y` and negate result!</span></span></code></pre></div>
 <p><strong>EXERCISE</strong> Lets <em>create</em> an <code class="sourceCode haskell"><span class="kw">instance</span></code> for <code class="sourceCode haskell"><span class="dt">Show</span> <span class="dt">Unshowable</span></code></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="automatic-derivation">Automatic Derivation</h2>
 <p>This is silly: we <em>should</em> be able to compare and view <code class="sourceCode haskell"><span class="dt">Unshowble</span></code> “automatically”!</p>
 <p>Haskell lets us <em>automatically derive</em> functions for some classes in the standard library.</p>
@@ -426,6 +441,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a></span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true"></a>λ<span class="op">&gt;</span> x' <span class="op">==</span> <span class="dt">B'</span></span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true"></a><span class="dt">False</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="standard-typeclass-hierarchy">Standard Typeclass Hierarchy</h2>
 <p>Let us now peruse the definition of the <code class="sourceCode haskell"><span class="dt">Num</span></code> typeclass.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info <span class="dt">Num</span></span>
@@ -448,6 +464,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <img src="../static/img/haskell98-classes.png" alt /><figcaption>Standard Typeclass Hierarchy</figcaption>
 </figure>
 <p>In the above picture, there is an edge from <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code> to <code class="sourceCode haskell"><span class="dt">Num</span></code> because for something to be a <code class="sourceCode haskell"><span class="dt">Num</span></code> it must also be an <code class="sourceCode haskell"><span class="dt">Eq</span></code> and <code class="sourceCode haskell"><span class="dt">Show</span></code>.</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="the-ord-typeclass">The <code class="sourceCode haskell"><span class="dt">Ord</span></code> Typeclass</h2>
 <p>Another typeclass you’ve used already is the one for <code class="sourceCode haskell"><span class="dt">Ord</span></code>ering values:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="op">:</span>info (<span class="op">&lt;</span>)</span>
@@ -461,12 +478,14 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="st">&quot;cat&quot;</span> <span class="op">&lt;</span> <span class="st">&quot;dog&quot;</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a><span class="dt">True</span></span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="quiz-1">QUIZ</h2>
 <p>Recall the datatype:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Showable</span> <span class="ot">=</span> <span class="dt">A'</span> <span class="op">|</span> <span class="dt">B'</span> <span class="op">|</span> <span class="dt">C'</span> <span class="kw">deriving</span> (<span class="dt">Eq</span>, <span class="dt">Show</span>)</span></code></pre></div>
 <p>What is the result of:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> <span class="dt">A'</span> <span class="op">&lt;</span> <span class="dt">B'</span></span></code></pre></div>
 <p><strong>(A)</strong> <code class="sourceCode haskell"><span class="dt">True</span></code> <strong>(B)</strong> <code class="sourceCode haskell"><span class="dt">False</span></code> <strong>(C)</strong> Type error <strong>(D)</strong> Run-time exception</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="using-typeclasses">Using Typeclasses</h2>
 <p>Typeclasses integrate with the rest of Haskell’s type system.</p>
 <p>Lets build a small library for <em>Environments</em> mapping keys <code class="sourceCode haskell">k</code> to values <code class="sourceCode haskell">v</code></p>
@@ -474,6 +493,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>  <span class="ot">=</span> <span class="dt">Def</span>  v              <span class="co">-- default value `v` to be used for &quot;missing&quot; keys</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>  <span class="op">|</span> <span class="dt">Bind</span> k v (<span class="dt">Env</span> k v)  <span class="co">-- bind key `k` to the value `v`</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>  <span class="kw">deriving</span> (<span class="dt">Show</span>)</span></code></pre></div>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="an-api-for-env">An API for <code class="sourceCode haskell"><span class="dt">Env</span></code></h2>
 <p>Lets write a small API for <code class="sourceCode haskell"><span class="dt">Env</span></code></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; let env0 = add &quot;cat&quot; 10.0 (add &quot;dog&quot; 20.0 (Def 0))</span></span>
@@ -495,7 +515,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a></span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true"></a><span class="ot">get ::</span> k <span class="ot">-&gt;</span> <span class="dt">Env</span> k v <span class="ot">-&gt;</span> v</span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true"></a>get key env <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <p>Oops, y u no check?</p>
 <h2 id="constraint-propagation">Constraint Propagation</h2>
 <p>Lets <em>delete</em> the types of <code class="sourceCode haskell">add</code> and <code class="sourceCode haskell">get</code> and see what Haskell says their types are!</p>
@@ -506,9 +526,9 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <ul>
 <li>If you look at the code for <code class="sourceCode haskell">get</code> you’ll see that we check if two keys <em>are equal</em>!</li>
 </ul>
-<p><br> <br> <br> <br> <br> <br></p>
-<h2 id="exercise">Exercise</h2>
-<p>Write an optimized version of</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="exercise-do-at-home">EXERCISE (Do at home)</h2>
+<p>Write an <em>optimized</em> version of</p>
 <ul>
 <li><code class="sourceCode haskell">add</code> that ensures the keys are in <em>increasing</em> order,</li>
 <li><code class="sourceCode haskell">get</code> that gives up and returns the “default” the moment we see a key thats larger than the one we’re looking for.</li>
@@ -543,10 +563,12 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a>λ<span class="op">&gt;</span> (<span class="fu">read</span> <span class="st">&quot;2&quot;</span>)<span class="ot"> ::</span> <span class="dt">Float</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a><span class="fl">2.0</span></span></code></pre></div>
 <p>Note the different results due to the different types.</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="creating-typeclasses">Creating Typeclasses</h2>
 <p>Typeclasses are useful for <em>many</em> different things.</p>
 <p>We will see some of those over the next few lectures.</p>
 <p>Lets conclude today’s class with a quick example that provides a small taste.</p>
+<p><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br></p>
 <h2 id="json">JSON</h2>
 <p><em>JavaScript Object Notation</em> or <a href="http://www.json.org/">JSON</a> is a simple format for transferring data around. Here is an example:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="fu">{</span> <span class="dt">&quot;name&quot;</span>    <span class="fu">:</span> <span class="st">&quot;Ranjit&quot;</span></span>
@@ -670,7 +692,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <h2 id="bootstrapping-instances">Bootstrapping Instances</h2>
 <p>The real fun begins when we get Haskell to automatically bootstrap the above functions to work for lists and key-value lists!</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true"></a><span class="kw">instance</span> <span class="dt">JSON</span> a <span class="ot">=&gt;</span> <span class="dt">JSON</span> [a] <span class="kw">where</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true"></a>  toJSON xs <span class="ot">=</span> <span class="dt">JArr</span> [toJSON x <span class="op">|</span> x <span class="ot">&lt;-</span> xs]</span></code></pre></div>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true"></a>  toJSON xs <span class="ot">=</span> <span class="dt">JArr</span> (<span class="fu">map</span> toJSON xs)</span></code></pre></div>
 <p>The above says, if <code class="sourceCode haskell">a</code> is an instance of <code class="sourceCode haskell"><span class="dt">JSON</span></code>, that is, if you can convert <code class="sourceCode haskell">a</code> to <code class="sourceCode haskell"><span class="dt">JVal</span></code> then here’s a generic recipe to convert lists of <code class="sourceCode haskell">a</code> values!</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a>λ<span class="op">&gt;</span> toJSON [<span class="dt">True</span>, <span class="dt">False</span>, <span class="dt">True</span>]</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true"></a><span class="dt">JArr</span> [<span class="dt">JBln</span> <span class="dt">True</span>, <span class="dt">JBln</span> <span class="dt">False</span>, <span class="dt">JBln</span> <span class="dt">True</span>]</span>
@@ -688,7 +710,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true"></a><span class="dt">JArr</span> [ <span class="dt">JObj</span> [ (<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;monday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;zanzibar&quot;</span>)]</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true"></a>     , <span class="dt">JObj</span> [(<span class="st">&quot;day&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;tuesday&quot;</span>), (<span class="st">&quot;loc&quot;</span>,<span class="dt">JStr</span> <span class="st">&quot;farmers market&quot;</span>)]</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true"></a>     ]</span></code></pre></div>
-<p>It is also useful to bootstrap the serialization for tuples (upto some fixed size) so we can easily write “non-uniform” JSON objects where keys are bound to values with different shapes.</p>
+<p>It is also useful to bootstrap the serialization for tuples (up to some fixed size) so we can easily write “non-uniform” JSON objects where keys are bound to values with different shapes.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a><span class="kw">instance</span> (<span class="dt">JSON</span> a, <span class="dt">JSON</span> b) <span class="ot">=&gt;</span> <span class="dt">JSON</span> ((<span class="dt">String</span>, a), (<span class="dt">String</span>, b)) <span class="kw">where</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true"></a>  toJSON ((k1, v1), (k2, v2)) <span class="ot">=</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true"></a>    <span class="dt">JObj</span> [(k1, toJSON v1), (k2, toJSON v2)]</span>
@@ -727,7 +749,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb48-7"><a href="#cb48-7" aria-hidden="true"></a>     , (<span class="st">&quot;def&quot;</span>, <span class="dt">JNum</span> <span class="fl">0.0</span>)</span>
 <span id="cb48-8"><a href="#cb48-8" aria-hidden="true"></a>     ]</span></code></pre></div>
 <p>Thats it for today.</p>
-<p>We will see much more typeclass awesomeness in the next few lectures…</p>
+<p>We will see much more type class awesomeness in the next few lectures…</p>
                 <hr>
             </div>
         </div>

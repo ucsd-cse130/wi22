@@ -834,7 +834,7 @@ eval env (Let x e1 e2)  = eval env1 e2
 
 ## QUIZ
 
-Will `eval env expr` always return a `value` ? Or, can it *crash*?
+Will `eval env expr` always return a `VInt ...` ? Or, can it `VUndef` ?
 
 **(A)** operation at `A` may fail
 **(B)** operation at `B` may fail
@@ -1633,14 +1633,14 @@ exLam3 = ELet "c" (ENum 1)
 
 ## QUIZ 
 
-What should the following evaluate to?
+What *should* the following evaluate to?
 
 ```haskell
 let add = \x -> (\y -> x + y)
 in
-  let add10 = add 10
+  let add10 = add 10          -- \y -> 10 + y
   in
-    let add20 = add 20
+    let add20 = add 20        -- \y -> 20 + y
     in 
       (add10 100) + (add20 1000)
 ```
