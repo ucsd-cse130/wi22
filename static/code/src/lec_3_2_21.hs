@@ -1,3 +1,5 @@
+{-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
 {- LANGUAGE ExtendedDefaultRules #-}
 
 module Lec_3_2_21 where 
@@ -5,6 +7,29 @@ module Lec_3_2_21 where
 import Prelude hiding (showList)
 
 
+-- >>> 2 + 3
+
+-- >>> 2.1 + 3.2
+-- 5.300000000000001
+
+-- >>> True + False
+
+
+-- >>> 2 == 3
+-- False
+
+-- >>> 2 < 3
+-- True
+
+-- >>> True + True
+-- No instance for (Num Bool) arising from a use of ‘+’
+
+
+-- >>> ['c', 'a', 't'] == ['c', 'a', 't']
+-- True
+
+-- >>> ("cat", 2) < ("cat", 3)
+-- True
 
 
 
@@ -21,13 +46,94 @@ import Prelude hiding (showList)
 
 
 
+class JEq a where
+    (===) :: a -> a -> Bool
+    (===) x y = not (x =!= y)
+
+    (=!=) :: a -> a -> Bool
+    (=!=) x y = not (x === y)
+
+-- A implements Eq then A implement JEq
+instance (Eq a) => JEq a where
+    (===) x y = x == y
+
+-- >>> twelve =!= twelve
+-- False
+
+twelve :: Int
+twelve = 12
+
+data Days = Mon | Tue | Wed | Thu | Fri
+            deriving (Eq, Ord, Show)
+
+-- instance Show Days where
+--   show Mon = "Mon" 
+--   show Tue = "Tue" 
+--   show Wed = "Wed" 
+--   show Thu = "Thu" 
+--   show Fri = "Fri" 
+
+-- instance Eq Days where
+--   (==) Mon Mon = True 
+--   (==) Tue Tue = True 
+--   (==) Wed Wed = True 
+--   (==) Thu Thu = True 
+--   (==) Fri Fri = True 
+--   (==) _   _   = False 
+
+-- >>> Fri < Fri 
+-- False
+
+class MyLess a where
+    leq :: a -> a -> Bool
+
+instance MyLess Int where
+    leq i j = i <= j
+instance MyLess String where
+    leq i j = i <= j
+
+instance (MyLess a, MyLess b) => MyLess (a, b) where
+    leq (x1,y1) (x2,y2) 
+      | leq x1 x2              = True 
+      | leq x1 x2 && leq x2 x1 = leq y1 y2
+      | otherwise              = False
+
+-- >>> leq ("dat", 2::Int) ("cat", 3)
+-- False
+
+
+{- 
+
+"DeriveGeneric"
+"DeriveVia"
+
+data Jhala = 
+
+    GENERIC 
+
+instance NEWCLASS Gen where 
+    ...
+
+ -}
 
 
 
 
 
 
-
+-- Ambiguous type variable ‘a0’ arising from the literal ‘12’
+-- prevents the constraint ‘(Num a0)’ from being solved.
+-- Probable fix: use a type annotation to specify what ‘a0’ should be.
+-- These potential instances exist:
+--   instance Num a => Num (Blind a)
+--     -- Defined in ‘Test.QuickCheck.Modifiers’
+--   instance Num a => Num (Fixed a)
+--     -- Defined in ‘Test.QuickCheck.Modifiers’
+--   instance Num a => Num (Large a)
+--     -- Defined in ‘Test.QuickCheck.Modifiers’
+--   ...plus 80 others
+--   (use -fprint-potential-instances to see them all)
+-- No instance for (JEq a0) arising from a use of ‘===’
 
 
 
