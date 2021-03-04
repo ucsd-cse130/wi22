@@ -23,7 +23,7 @@ headerImg: books.jpg
 | 2/25       | Lexing and Parsing              | [html][lec6] [pdf][pdf12] | [hs][arith]   |
 | 3/2        | Overloading & Type Classes      | [html][lec7-cl]           | [hs][code]    |
 | 3/4        | contd.                          | contd.                    | [hs][code]    |
-| 3/9        | Monads                          | [html][lec8-monads]       |               |
+| 3/9        | Functors & Monads               | [html][lec8-monads]       |               |
 
 ## Discussions
 
