@@ -6,7 +6,7 @@ headerImg: books.jpg
 
 ## Abstracting Code Patterns
 
-a.k.a. **Dont Repeat Yourself**
+a.k.a. **Don't Repeat Yourself**
 
 ### Lists
 
@@ -700,7 +700,7 @@ What must the type of `combineWithResult` be?
 <br>
 <br>
 
-## Looks Familar
+## Looks Familiar
 
 Wait a bit, the signature looks familiar!
 

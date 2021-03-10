@@ -15,6 +15,7 @@ import Control.Monad.Except
 $digit = 0-9
 $alpha = [a-zA-Z]
 $eol   = [\n]
+$hex   = [$digit a-f A-F]
 
 tokens :-
 
@@ -26,14 +27,15 @@ tokens :-
   "#".*                         ;
 
   ------------------------------------------------------------------------------
-  [\+]                          { \p _ -> PLUS   p }
-  [\-]                          { \p _ -> MINUS  p }
-  [\*]                          { \p _ -> MUL    p }
-  [\/]                          { \p _ -> DIV    p }
+  \+                            { \p _ -> PLUS   p }
+  \-                            { \p _ -> MINUS  p }
+  \*                            { \p _ -> MUL    p }
+  \/                            { \p _ -> DIV    p }
   \(                            { \p _ -> LPAREN p }
   \)                            { \p _ -> RPAREN p }
   $alpha [$alpha $digit \_ \']* { \p s -> ID     p s }
   $digit+                       { \p s -> NUM p (read s) }
+  0x $hex+                 { \p s -> NUM p (read s) }
   
   ------------------------------------------------------------------------------
 {

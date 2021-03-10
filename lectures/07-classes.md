@@ -1205,7 +1205,7 @@ and can convert it directly like so
 js2 = toJSON hs
 ```
 
-## Serializing Environments
+## EXERCISE: Serializing Environments
 
 To wrap everything up, lets write a routine to serialize our `Env`
 
