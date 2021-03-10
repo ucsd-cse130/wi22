@@ -735,7 +735,7 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true"></a>     )</span></code></pre></div>
 <p>which is a Haskell value that describes our running JSON example, and can convert it directly like so</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true"></a>js2 <span class="ot">=</span> toJSON hs</span></code></pre></div>
-<h2 id="serializing-environments">Serializing Environments</h2>
+<h2 id="exercise-serializing-environments">EXERCISE: Serializing Environments</h2>
 <p>To wrap everything up, lets write a routine to serialize our <code class="sourceCode haskell"><span class="dt">Env</span></code></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true"></a><span class="kw">instance</span> <span class="dt">JSON</span> (<span class="dt">Env</span> k v) <span class="kw">where</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true"></a>  toJSON env <span class="ot">=</span> <span class="op">???</span></span></code></pre></div>
