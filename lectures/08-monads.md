@@ -420,5 +420,102 @@ eval (Div e1 e2)  = do v1 <- eval e1
 <br>
 <br>
 
+## Generalizing `Result` to *Many* Values
 
-[brietner]: https://www.seas.upenn.edu/~cis194/fall16/lectures/06-io-and-monads.html
+We can generalize `Result` to "many" values, using `List`
+
+```haskell
+data Result a = Err String | Result a
+data List   a = Nil        | Cons   a (List a) 
+```
+
+- The `Err` is like `[]` except it has a message too,
+- The `tail` of type `(List a)` lets us hold *many* possible `a` values
+
+We can now make a `Monad` instance for lists as
+
+```haskell
+instance Monad [] where
+  return = returnList 
+  (>>=)  = bindList 
+
+returnList :: a -> [a]
+returnList x = [x]
+
+bindList :: [a] -> (a -> [b]) -> [b]
+bindList []     f = []
+bindList (x:xs) f = f x ++ bindList xs f
+```
+
+Notice `bindList xs f` is like a `for-loop`:
+
+- **for each** `x` in `xs` we call,
+- `f x` to get the results 
+- and concatenate _all_ the results
+
+so,
+
+```haskell
+bindList [x1,x2,x3,...,xn] f ==>
+  f x1 ++ f x2 ++ f x3 ++ ... ++ f xn
+```
+
+This has some fun consequences!
+
+```haskell
+silly xs = do
+  x <- xs
+  return (x * 10)
+```
+
+produces the result
+
+```haskell
+-- >>> silly [1,2,3]
+-- [10,20,30]
+```
+
+and
+
+```haskell
+foo xs ys = do
+  x <- xs
+  y <- ys
+  return (x, y)
+```
+
+produces the result
+
+```haskell
+-- >>> foo ["1", "2", "red", "blue"] ["fish"]
+-- [("1","fish"),("2","fish"),("red","fish"),("blue","fish")]
+```
+
+behaves like Python's
+
+```python
+for x in xs:
+  for y in ys:
+    yield (x, y)
+```
+
+## EXERCISE 
+
+Fill in the blanks to implement `mMap` (i.e. `map` using monads) 
+
+```haskell
+mMap :: (a -> b) -> [a] -> [b]
+mMap f xs = do
+  _fixme
+```
+
+## EXERCISE 
+
+Fill in the blanks to implement `mFilter` (i.e. `filter` using monads)
+
+```haskell
+mFilter :: (a -> Bool) -> [a] -> [a]
+mFilter f xs = do
+  _fixme
+```
+
