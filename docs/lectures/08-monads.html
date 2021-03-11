@@ -479,6 +479,63 @@ if (window.navigator.appName == "Microsoft Internet Explorer") {
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true"></a>                         <span class="kw">then</span> <span class="dt">Error</span> (<span class="st">&quot;yikes dbz:&quot;</span> <span class="op">++</span> <span class="fu">show</span> e2)</span>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true"></a>                         <span class="kw">else</span> <span class="fu">return</span> (v1 <span class="ot">`div`</span> v2)</span></code></pre></div>
 <p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h2 id="generalizing-result-to-many-values">Generalizing <code class="sourceCode haskell"><span class="dt">Result</span></code> to <em>Many</em> Values</h2>
+<p>We can generalize <code class="sourceCode haskell"><span class="dt">Result</span></code> to “many” values, using <code class="sourceCode haskell"><span class="dt">List</span></code></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">Result</span> a <span class="ot">=</span> <span class="dt">Err</span> <span class="dt">String</span> <span class="op">|</span> <span class="dt">Result</span> a</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a><span class="kw">data</span> <span class="dt">List</span>   a <span class="ot">=</span> <span class="dt">Nil</span>        <span class="op">|</span> <span class="dt">Cons</span>   a (<span class="dt">List</span> a) </span></code></pre></div>
+<ul>
+<li>The <code class="sourceCode haskell"><span class="dt">Err</span></code> is like <code class="sourceCode haskell">[]</code> except it has a message too,</li>
+<li>The <code class="sourceCode haskell"><span class="fu">tail</span></code> of type <code class="sourceCode haskell">(<span class="dt">List</span> a)</code> lets us hold <em>many</em> possible <code class="sourceCode haskell">a</code> values</li>
+</ul>
+<p>We can now make a <code class="sourceCode haskell"><span class="dt">Monad</span></code> instance for lists as</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="kw">instance</span> <span class="dt">Monad</span> [] <span class="kw">where</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a>  <span class="fu">return</span> <span class="ot">=</span> returnList </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a>  (<span class="op">&gt;&gt;=</span>)  <span class="ot">=</span> bindList </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true"></a><span class="ot">returnList ::</span> a <span class="ot">-&gt;</span> [a]</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true"></a>returnList x <span class="ot">=</span> [x]</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true"></a><span class="ot">bindList ::</span> [a] <span class="ot">-&gt;</span> (a <span class="ot">-&gt;</span> [b]) <span class="ot">-&gt;</span> [b]</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true"></a>bindList []     f <span class="ot">=</span> []</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true"></a>bindList (x<span class="op">:</span>xs) f <span class="ot">=</span> f x <span class="op">++</span> bindList xs f</span></code></pre></div>
+<p>Notice <code class="sourceCode haskell">bindList xs f</code> is like a <code class="sourceCode haskell">for<span class="op">-</span>loop</code>:</p>
+<ul>
+<li><strong>for each</strong> <code class="sourceCode haskell">x</code> in <code class="sourceCode haskell">xs</code> we call,</li>
+<li><code class="sourceCode haskell">f x</code> to get the results</li>
+<li>and concatenate <em>all</em> the results</li>
+</ul>
+<p>so,</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a>bindList [x1,x2,x3,<span class="op">...</span>,xn] f <span class="op">==&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>  f x1 <span class="op">++</span> f x2 <span class="op">++</span> f x3 <span class="op">++</span> <span class="op">...</span> <span class="op">++</span> f xn</span></code></pre></div>
+<p>This has some fun consequences!</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a>silly xs <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a>  x <span class="ot">&lt;-</span> xs</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a>  <span class="fu">return</span> (x <span class="op">*</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>produces the result</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; silly [1,2,3]</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a><span class="co">-- [10,20,30]</span></span></code></pre></div>
+<p>and</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a>foo xs ys <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a>  x <span class="ot">&lt;-</span> xs</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a>  y <span class="ot">&lt;-</span> ys</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true"></a>  <span class="fu">return</span> (x, y)</span></code></pre></div>
+<p>produces the result</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="co">-- &gt;&gt;&gt; foo [&quot;1&quot;, &quot;2&quot;, &quot;red&quot;, &quot;blue&quot;] [&quot;fish&quot;]</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true"></a><span class="co">-- [(&quot;1&quot;,&quot;fish&quot;),(&quot;2&quot;,&quot;fish&quot;),(&quot;red&quot;,&quot;fish&quot;),(&quot;blue&quot;,&quot;fish&quot;)]</span></span></code></pre></div>
+<p>behaves like Python’s</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a><span class="cf">for</span> x <span class="kw">in</span> xs:</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true"></a>  <span class="cf">for</span> y <span class="kw">in</span> ys:</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true"></a>    <span class="cf">yield</span> (x, y)</span></code></pre></div>
+<h2 id="exercise">EXERCISE</h2>
+<p>Fill in the blanks to implement <code class="sourceCode haskell">mMap</code> (i.e. <code class="sourceCode haskell"><span class="fu">map</span></code> using monads)</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true"></a><span class="ot">mMap ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true"></a>mMap f xs <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true"></a>  _fixme</span></code></pre></div>
+<h2 id="exercise-1">EXERCISE</h2>
+<p>Fill in the blanks to implement <code class="sourceCode haskell">mFilter</code> (i.e. <code class="sourceCode haskell"><span class="fu">filter</span></code> using monads)</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true"></a><span class="ot">mFilter ::</span> (a <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [a]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true"></a>mFilter f xs <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true"></a>  _fixme</span></code></pre></div>
                 <hr>
             </div>
         </div>
