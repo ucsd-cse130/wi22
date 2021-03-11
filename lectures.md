@@ -52,6 +52,7 @@ headerImg: books.jpg
 [lec7-ty]: lectures/07-types.html
 [lec7-cl]: lectures/07-classes.html
 [lec8-monads]: lectures/08-monads.html
+[lec9-io]: lectures/09-io.html
 [lec8]: lectures/08-prolog.html
 [rhoc]: https://reactjs.org/docs/higher-order-components.html
 [mapRed]: https://en.wikipedia.org/wiki/MapReduce
