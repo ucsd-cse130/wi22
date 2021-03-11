@@ -3,27 +3,28 @@ title: Lecture Notes
 headerImg: books.jpg
 ---
 
-| **Date**   | **Topic**                       | **Notes**                 | **Code**      |
-|:----------:|:--------------------------------|:--------------------------|:--------------|
-| 1/5        | Hello, World!                   | [html][lec0] [pdf][pdf0]  |               |
-| 1/7        | The Lambda Calculus             | [html][lec1] [pdf][pdf1]  |               |
-| 1/12       | contd.                          | [pdf][pdf2]               | [lc][lc-1-12] |
-| 1/14       | contd.                          | [pdf][pdf3]               |               |
-| 1/19       | A crash course in Haskell       | [html][lec2] [pdf][pdf4]  | [hs][code]    |
-| 1/21       | contd.                          | contd.                    | [hs][code]    |
-| 1/26       | Datatypes & Recursion           | [html][lec3] [pdf][pdf5]  | [hs][code]    |
-| 1/28       | contd.                          | contd.                    | [hs][code]    |
-| 2/2        | contd.                          |              [pdf][pdf6]  | [hs][code]    |
-| 2/4        | contd.                          |              [pdf][pdf7]  | [hs][code]    |
-| 2/9        | Higher Order Functions          | [html][lec4] [pdf][pdf8]  | [hs][code]    |
-| 2/11       | contd.                          | contd.       [pdf][pdf9]  | [hs][code]    |
-| 2/16       | Environments & Closures         | [html][lec5] [pdf][pdf10] | [hs][code]    |
-| 2/18       | contd.                          | contd.       [pdf][pdf11] | [hs][code]    |
-| 2/23       | contd.                          | contd.       [pdf][pdf12] | [hs][code]    |
-| 2/25       | Lexing and Parsing              | [html][lec6] [pdf][pdf12] | [hs][arith]   |
-| 3/2        | Overloading & Type Classes      | [html][lec7-cl]           | [hs][code]    |
-| 3/4        | contd.                          | contd.                    | [hs][code]    |
-| 3/9        | Functors & Monads               | [html][lec8-monads]       |               |
+| **Date**   | **Topic**                  | **Notes**                        | **Code**      |
+|:----------:|:---------------------------|:---------------------------------|:--------------|
+| 1/5        | Hello, World!              | [html][lec0] [pdf][pdf0]         |               |
+| 1/7        | The Lambda Calculus        | [html][lec1] [pdf][pdf1]         |               |
+| 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
+| 1/14       | contd.                     | [pdf][pdf3]                      |               |
+| 1/19       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]         | [hs][code]    |
+| 1/21       | contd.                     | contd.                           | [hs][code]    |
+| 1/26       | Datatypes & Recursion      | [html][lec3] [pdf][pdf5]         | [hs][code]    |
+| 1/28       | contd.                     | contd.                           | [hs][code]    |
+| 2/2        | contd.                     |              [pdf][pdf6]         | [hs][code]    |
+| 2/4        | contd.                     |              [pdf][pdf7]         | [hs][code]    |
+| 2/9        | Higher Order Functions     | [html][lec4] [pdf][pdf8]         | [hs][code]    |
+| 2/11       | contd.                     | contd.       [pdf][pdf9]         | [hs][code]    |
+| 2/16       | Environments & Closures    | [html][lec5] [pdf][pdf10]        | [hs][code]    |
+| 2/18       | contd.                     | contd.       [pdf][pdf11]        | [hs][code]    |
+| 2/23       | contd.                     | contd.       [pdf][pdf12]        | [hs][code]    |
+| 2/25       | Lexing and Parsing         | [html][lec6] [pdf][pdf13]        | [hs][arith]   |
+| 3/2        | Overloading & Type Classes | [html][lec7-cl] [pdf][pdf14]     | [hs][code]    |
+| 3/4        | contd.                     | contd.                           | [hs][code]    |
+| 3/9        | Functors & Monads          | [html][lec8-monads] [pdf][pdf15] | [hs][code]    |
+| 3/11       | Hello, world! (IO Monad)   | [html][lec9-io]     [pdf][pdf16] | [hs][arith]   |
 
 ## Discussions
 
@@ -68,6 +69,11 @@ headerImg: books.jpg
 [pdf10]: /static/raw/05-environments-A.pdf
 [pdf11]: /static/raw/05-environments-B.pdf
 [pdf12]: /static/raw/05-environments-C.pdf
+
+[pdf13]: /static/raw/06-parser.pdf
+[pdf14]: /static/raw/07-classes.pdf
+[pdf15]: /static/raw/08-monads.pdf
+[pdf16]: /static/raw/09-io.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
