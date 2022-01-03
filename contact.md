@@ -5,22 +5,22 @@ headerImg: world-map.jpg
 
 ## Course Details
 
-- **Course ID:**         30328
-- **Lectures:**          Tu-Th 09:00-10:20am on ZOOM
-- **Section:**           W    05:00-05:50pm  on ZOOM 
+- **Lectures:**          Tu-Th 09:30-10:50am at P416 WEST (+ Zoom)
+- **Section:**           W    08:00-08:50am  at P416 WEST (+ Zoom)
 - **Announcements:**     Posted on Piazza. Please check often!
 
 ## Instructor
 
-- [Ranjit Jhala](https://cseweb.ucsd.edu/~rjhala)
+- [Ranjit Jhala](https://ranjitjhala.github.io)
 
 ## Teaching Assistants
 
-- Michael Borkowski
-- [Matt Kolosick](mailto:mkolosick@eng.ucsd.edu)
-- [George Sakkas](https://www.linkedin.com/in/gsakkas)
+- [Kasra Ferdowsifard](mailto:kferdows@eng.ucsd.edu)
+- [Ahmed Youssef](mailto:a1yousse@eng.ucsd.edu)
+- [Abhishek Sharma](mailto:acsharma@ucsd.edu)
+- [York Liu](mailto:yil173@ucsd.edu)
 
 ## Tutors
 
-- [David Cao](https://cao.sh/)
 - [Aidan Denlinger](https://acsweb.ucsd.edu/~adenling/)
+- [Kyeling Ong](mailto:k8ong@ucsd.edu)

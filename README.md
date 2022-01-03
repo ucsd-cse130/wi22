@@ -69,8 +69,8 @@ with
 Then, as you go through the lectures, replace `match "lectures/*"` with
 
 ```
-match "lectures/00-*"    $ crunchWithCtxCustom "final" postCtx
-match "lectures/*"       $ crunchWithCtxCustom "lecture" postCtx
+match "lectures/00-*" $ crunchWithCtxCustom "final" postCtx
+match "lectures/*"    $ crunchWithCtxCustom "lecture" postCtx
 ```
 
 (and gradually add more and more lectures to `final` as I go through them)
@@ -84,7 +84,7 @@ match "lectures/*"       $ crunchWithCtxCustom "lecture" postCtx
 - [x] lectures.md
 - [x] calendar.md
 - [ ] groups
-- [-] seating chart
+- [ ] seating chart
 - [x] grades.md
 - [x] assignments.md
 - [x] 00-lambda

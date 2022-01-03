@@ -5,7 +5,9 @@ headerImg: books.jpg
 
 | **Date**   | **Topic**                  | **Notes**                        | **Code**      |
 |:----------:|:---------------------------|:---------------------------------|:--------------|
-| 1/5        | Hello, World!              | [html][lec0] [pdf][pdf0]         |               |
+| 1/4        | Hello, World!              | [html][lec0]                     |               |
+
+<!-- 
 | 1/7        | The Lambda Calculus        | [html][lec1] [pdf][pdf1]         |               |
 | 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
 | 1/14       | contd.                     | [pdf][pdf3]                      |               |
@@ -26,16 +28,18 @@ headerImg: books.jpg
 | 3/9        | Functors & Monads          | [html][lec8-monads] [pdf][pdf15] | [hs][code]    |
 | 3/11       | Hello, world! (IO Monad)   | [html][lec9-io]     [pdf][pdf16] | [hs][arith]   |
 
+-->
+
+
 ## Discussions
 
 | Date       | Topic                    | Slides               | 
 |:----------:|:-------------------------|:--------------------:|
-| 1/6        | Lambda Calculus & Elsa   | [blank][disc1-blank], [annotated][disc1-annotated]  |
 
 <!-- 
+| 1/6        | Lambda Calculus & Elsa   | [blank][disc1-blank], [annotated][disc1-annotated]  |
 | 1/14       | Lambda Calculus          | [pdf][disc1]         |
 | 3/17       | Final Review             | [html][final-review] |
-
 | 2/25       | Nano: Parsing and Eval   | [pdf][disc5]  |
 | 3/4        | Type checking tips       | [pdf][disc6]  |
 | 3/11       | Final Review             | [pdf][discFinal] |

@@ -17,13 +17,13 @@ but no more than *four late days* per assignment.
 
 | **HW-link**                                      | **Name**                |  **Deadline (23:59:59pm)** |
 |:-------------------------------------------------|:------------------------|:---------------------------|
-| [HW #0](https://classroom.github.com/a/xElhJEdo) | Lambda Calculus         | Fri 1/15                   |
+| [HW #0](https://classroom.github.com/a/_Z02Ovjv) | Lambda Calculus         | Wed 1/19                   |
+
+<!-- 
 | [HW #1](https://classroom.github.com/a/e18HdBWh) | Introduction to Haskell | Wed 1/27                   |
 | [HW #2](https://classroom.github.com/a/yWvckJjt) | Data types              | Wed 2/10                   |
 | [HW #3](https://classroom.github.com/a/JV9YLoCP) | Higher-order Functions  | Fri 2/19                   |
 | [HW #4](https://classroom.github.com/a/M_ogdXm7) | Interpreters            | Fri 3/5                    |
-
-<!-- 
 | [HW #5](https://classroom.github.com/a/N5jjfNpQ) | Classes                 | Fri 3/13                   |
 -->
 

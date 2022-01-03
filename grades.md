@@ -15,19 +15,19 @@ Instructions on turning them in will be posted with each assignment.
 
 ### Midterm (25%)
 
-Will be held on **Monday February 8**.
+Will be held in class on **Thursday February 10**.
+
 The format will be announced before the midterm.
 
 ### Final (30%)
   
-Will be held on **Thursday March 18**.
+Will be held on **Tuesday March 15**.
+
 The format will be announced before the final.
   
 Since the final is cumulative, your midterm grade will be calculated as 
-`midterm > 0 ?  max(final, midterm) : 0`.
-This means that you get a second chance if you don’t do well on the midterm but 
-you must turn in both the midterm and the final.
-
+`midterm > 0 ?  max(final, midterm) : 0`. This means that you get a second 
+chance if you don’t do well on the midterm but you **must turn in both the midterm and the final**.
 ### Discussions (+5%)
 
 Extra credit for top-20 best participants in Piazza discussions,

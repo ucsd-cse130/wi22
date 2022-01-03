@@ -4,7 +4,7 @@ github:              "ucsd-cse130/wi21"
 license:             MIT
 author:              "Ranjit Jhala"
 maintainer:          "jhala@cs.ucsd.edu"
-copyright:           "2020 Ranjit Jhala"
+copyright:           "2022 Ranjit Jhala"
 
 extra-source-files:
 - README.md

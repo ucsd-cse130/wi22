@@ -1,4 +1,4 @@
 cradle:
-  stack:
-    - path: "./src"
-      component: "cse130-code:lib"
+  cabal:
+    - path: "src"
+      component: "lib:cse230-code"
