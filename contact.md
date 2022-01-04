@@ -16,7 +16,7 @@ headerImg: world-map.jpg
 ## Teaching Assistants
 
 - [Kasra Ferdowsifard](mailto:kferdows@eng.ucsd.edu)
-- [Ahmed Youssef](mailto:a1yousse@eng.ucsd.edu)
+- [Yousef Alhessi](mailto:yalhessi@ucsd.edu)
 - [Abhishek Sharma](mailto:acsharma@ucsd.edu)
 - [York Liu](mailto:yil173@ucsd.edu)
 
