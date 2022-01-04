@@ -5,7 +5,7 @@ headerImg: angles.jpg
 
 ## Late Policy 
 
-You have a total of *eight late days* that you can use throughout the quarter,
+You have a total of *five late days* that you can use throughout the quarter,
 but no more than *four late days* per assignment.
     
 - A late day means anything between 1 second and 23

@@ -6,9 +6,9 @@ headerImg: books.jpg
 | **Date**   | **Topic**                  | **Notes**                        | **Code**      |
 |:----------:|:---------------------------|:---------------------------------|:--------------|
 | 1/4        | Hello, World!              | [html][lec0]                     |               |
+| 1/6        | The Lambda Calculus        | [html][lec1]                     |               |
 
 <!-- 
-| 1/7        | The Lambda Calculus        | [html][lec1] [pdf][pdf1]         |               |
 | 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
 | 1/14       | contd.                     | [pdf][pdf3]                      |               |
 | 1/19       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]         | [hs][code]    |

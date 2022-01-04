@@ -283,14 +283,15 @@ etc.
 
 ### Teaching Assistants
 
-- Michael Borkowski
-- [Matt Kolosick](https://kolosick.com/)
-- [George Sakkas](https://www.linkedin.com/in/gsakkas)
+- [Kasra Ferdowsifard](mailto:kferdows@eng.ucsd.edu)
+- [Ahmed Youssef](mailto:a1yousse@eng.ucsd.edu)
+- [Abhishek Sharma](mailto:acsharma@ucsd.edu)
+- [York Liu](mailto:yil173@ucsd.edu)
 
 ### Tutors
 
-- David Cao
-- Aidan Denlinger
+- [Aidan Denlinger](https://acsweb.ucsd.edu/~adenling/)
+- [Kyeling Ong](mailto:k8ong@ucsd.edu)
 
 <br>
 <br>
@@ -386,13 +387,13 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Course Logistics
 
-[webpage](https://ucsd-cse130.github.io/wi21)
+[webpage](https://ucsd-cse130.github.io/wi22)
 
 - Calendar
 - Lecture notes
 - Programming assignments
 
-[piazza](https://piazza.com/class/kjivoxdgfuc1w2)
+[piazza](https://piazza.com/class/kxyzngg3rhg65n)
 
 - Go-to place if you have a question or need help
 
@@ -406,8 +407,8 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 ## Grading
 
 - 45% Assignments
-- 25% Midterm **(Mon Feb 8)**
-- 30% Final   **(Thu Mar 18)**
+- 25% Midterm **(Thu Feb 10)**
+- 30% Final   **(Tue Mar 15)**
 - 05% Piazza Extra Credit
   - To **top 20** best participants
 
@@ -445,15 +446,7 @@ sort (x:xs) = sort ls ++ [x] ++ sort rs
 
 ## Exams
 
-Asynchronous but over 24 hour period
-
-### Midterm
-
-- *Monday, Feb 8*
-
-### Final
-
-- *Thursday, March 18*
+- Synchronous, must be done at allotted time and location
 
 - 2-sided "cheat sheet"
 
@@ -529,7 +522,7 @@ Clickers Are Not Optional
 
 ### Discussion section
 
-- Wednesday    05:00-06:00pm (see CANVAS for ZOOM)
+- Wednesday    08:00-08:50am (see CANVAS for ZOOM)
 
 ### Office hours
 
@@ -609,44 +602,6 @@ in advance so that accommodations may be arranged.
 - Abide by the UCSD [Principles of Community](https://ucsd.edu/about/principles.html)
 - Understand that others’ backgrounds, perspectives and experiences will be different
 - Help build an environment where everyone is respected and comfortable.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## If you experience any **harassment or discrimination**
-
-Contact the [Office of Prevention of Harassment and Discrimination](https://ophd.ucsd.edu/)
-
-### Students may receive confidential assistance 
-
-- [Sexual Assault Resource Center](http://care.ucsd.edu) at (858) 534-5793
-
-- [Counseling and Psychological Services](http://caps.ucsd.edu.) (CAPS) at (858) 534-3755.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Basic Needs
-
-- Are you eating properly?
-- Do you have adequate access to nutritious food?
-- Do you have stable housing?
-- Are you homeless or couch surfing?
-
-If you or someone you know has food and/or housing insecurity, 
-be aware of [Basic Needs](http://basicneeds.ucsd.edu)
-
-- The [Triton Food Pantry](https://www.facebook.com/tritonfoodpantry/) (in the old Student Center), is free and anonymous, and includes produce.
-- Financial aid resources, the possibility of emergency grant funding, and off-campus housing referral resources are available.
-- CAPS and college deans can connect students to the above resources, as well as other community resources and support.  
 
 <br>
 <br>
