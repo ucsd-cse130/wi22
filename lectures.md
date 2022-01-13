@@ -8,11 +8,11 @@ headerImg: books.jpg
 | 1/4        | Hello, World!              | [html][lec0]                     |               |
 | 1/6        | The Lambda Calculus        | [html][lec1]                     |               |
 | 1/11       | contd.                     | [pdf][pdf1]                      |               |
+| 1/13       | A crash course in Haskell  | [html][lec2]                     | [hs][code]    |
 
 <!-- 
 | 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
 | 1/14       | contd.                     | [pdf][pdf3]                      |               |
-| 1/19       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]         | [hs][code]    |
 | 1/21       | contd.                     | contd.                           | [hs][code]    |
 | 1/26       | Datatypes & Recursion      | [html][lec3] [pdf][pdf5]         | [hs][code]    |
 | 1/28       | contd.                     | contd.                           | [hs][code]    |
