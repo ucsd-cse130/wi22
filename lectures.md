@@ -7,6 +7,7 @@ headerImg: books.jpg
 |:----------:|:---------------------------|:---------------------------------|:--------------|
 | 1/4        | Hello, World!              | [html][lec0]                     |               |
 | 1/6        | The Lambda Calculus        | [html][lec1]                     |               |
+| 1/11       | contd.                     | [pdf][pdf1]                      |               |
 
 <!-- 
 | 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
@@ -61,8 +62,7 @@ headerImg: books.jpg
 [rhoc]: https://reactjs.org/docs/higher-order-components.html
 [mapRed]: https://en.wikipedia.org/wiki/MapReduce
 
-[pdf0]: /static/raw/01-lambda-A.pdf
-[pdf1]: /static/raw/01-lambda-B.pdf
+[pdf1]: /static/raw/01-lambda.pdf
 [pdf2]: /static/raw/01-lambda-C.pdf
 [pdf3]: /static/raw/01-lambda-D.pdf
 [pdf4]: /static/raw/02-haskell-A.pdf
