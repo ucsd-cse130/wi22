@@ -649,16 +649,6 @@ tup3 = ((7, 5.2), True)
 **E.** `(Tuple, Bool)`
 
 
-IF 
-     e1 :: T1
-     e2 :: T2
-THEN
-     (e1, e2) :: (T1, T2)
-
-tup3 == ((7, 5.2), True) :: ((Integer, Double), Bool)
-e1 == (7, 5.2) :: (Integer, Double) == T1
-e2 == True     :: Bool              == T2
-
 <br>
 <br>
 <br>
@@ -992,7 +982,6 @@ clone 3 100
 <br>
 <br>
 <br>
-
 
 
 ## EXERCISE: Range
