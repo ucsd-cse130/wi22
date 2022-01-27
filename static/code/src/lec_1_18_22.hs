@@ -109,7 +109,8 @@ sumTo :: Int -> Int
 
 -- sumTo n = if n <= 0 then 0 else n + sumTo (n-1)
 
-{- 
+{- EXAMPLE OF SUBSTITUTING EQUALS FOR EQUALS  
+
 sumTo 5
 == 5 + sumTo (5 - 1)
 == 5 + sumTo 4

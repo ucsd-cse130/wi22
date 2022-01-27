@@ -8,8 +8,10 @@ headerImg: books.jpg
 | 1/4        | Hello, World!              | [html][lec0]                     |               |
 | 1/6        | The Lambda Calculus        | [html][lec1]                     |               |
 | 1/11       | contd.                     | [pdf][pdf1]                      |               |
-| 1/13       | A crash course in Haskell  | [html][lec2]                     | [hs][code]    |
-
+| 1/13       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]         | [hs][code]    |
+| 1/18       | contd.                     |                                  |               |
+| 1/20       | contd.                     |                                  |               |
+|
 <!-- 
 | 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
 | 1/14       | contd.                     | [pdf][pdf3]                      |               |
@@ -65,7 +67,7 @@ headerImg: books.jpg
 [pdf1]: /static/raw/01-lambda.pdf
 [pdf2]: /static/raw/01-lambda-C.pdf
 [pdf3]: /static/raw/01-lambda-D.pdf
-[pdf4]: /static/raw/02-haskell-A.pdf
+[pdf4]: /static/raw/02-haskell.pdf
 [pdf5]: /static/raw/03-datatypes-prod-sum.pdf
 [pdf6]: /static/raw/03-datatypes-rec.pdf
 [pdf7]: /static/raw/03-datatypes-tree.pdf
