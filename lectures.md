@@ -11,12 +11,12 @@ headerImg: books.jpg
 | 1/13       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]         | [hs][code]    |
 | 1/18       | contd.                     |                                  |               |
 | 1/20       | contd.                     |                                  |               |
-|
+| 1/27       | Datatypes & Recursion      | [html][lec3]                     | [hs][code]    |
+
 <!-- 
 | 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
 | 1/14       | contd.                     | [pdf][pdf3]                      |               |
 | 1/21       | contd.                     | contd.                           | [hs][code]    |
-| 1/26       | Datatypes & Recursion      | [html][lec3] [pdf][pdf5]         | [hs][code]    |
 | 1/28       | contd.                     | contd.                           | [hs][code]    |
 | 2/2        | contd.                     |              [pdf][pdf6]         | [hs][code]    |
 | 2/4        | contd.                     |              [pdf][pdf7]         | [hs][code]    |
