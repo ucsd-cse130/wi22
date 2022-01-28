@@ -1180,7 +1180,10 @@ Let's write a function to `take` first `n` elements of a list `xs`.
 **2. Type** 
 
 ```haskell
-take :: ???## Some useful library functions
+take :: ???
+```
+
+## Some useful library functions
 
 ```haskell
 -- | Length of the list

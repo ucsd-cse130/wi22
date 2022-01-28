@@ -92,7 +92,7 @@ Tuples can do the job but there are two problems...
 
 ```haskell
 deadlineDate :: (Int, Int, Int)
-deadlineDate = (1, 28, 2021)
+deadlineDate = (1, 28, 2022)
 
 deadlineTime :: (Int, Int, Int)
 deadlineTime = (11, 59, 59)
