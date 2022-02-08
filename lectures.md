@@ -10,10 +10,10 @@ The live-edited code for each lecture can be found [here][code].
 | 1/4        | Hello, World!              | [html][lec0]              |
 | 1/6        | The Lambda Calculus        | [html][lec1]              |
 | 1/11       | contd.                     | [pdf][pdf1]               |
-| 1/13       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]  |
+| 1/13       | A crash course in Haskell  | [html][lec2] [pdf][pdf2]  |
 | 1/18       | contd.                     |                           |
 | 1/20       | contd.                     |                           |
-| 1/27       | Datatypes & Recursion      | [html][lec3]              |
+| 1/27       | Datatypes & Recursion      | [html][lec3] [pdf][pdf3]  |
 | 2/1        | contd.                     | contd.                    |
 | 2/3        | contd.                     | contd.                    |
 | 2/8        | Higher Order Functions     | [html][lec4]              | 
@@ -64,23 +64,8 @@ The live-edited code for each lecture can be found [here][code].
 [mapRed]: https://en.wikipedia.org/wiki/MapReduce
 
 [pdf1]: /static/raw/01-lambda.pdf
-[pdf2]: /static/raw/01-lambda-C.pdf
-[pdf3]: /static/raw/01-lambda-D.pdf
-[pdf4]: /static/raw/02-haskell.pdf
-[pdf5]: /static/raw/03-datatypes-prod-sum.pdf
-[pdf6]: /static/raw/03-datatypes-rec.pdf
-[pdf7]: /static/raw/03-datatypes-tree.pdf
-[pdf8]: /static/raw/04-hof-A.pdf
-[pdf9]: /static/raw/04-hof-B.pdf
-[pdf10]: /static/raw/05-environments-A.pdf
-[pdf11]: /static/raw/05-environments-B.pdf
-[pdf12]: /static/raw/05-environments-C.pdf
-
-[pdf13]: /static/raw/06-parser.pdf
-[pdf14]: /static/raw/07-classes.pdf
-[pdf15]: /static/raw/08-monads.pdf
-[pdf16]: /static/raw/09-io.pdf
-
+[pdf2]: /static/raw/02-haskell.pdf
+[pdf3]: /static/raw/03-data.pdf
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
 
