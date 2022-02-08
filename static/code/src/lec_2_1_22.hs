@@ -1,158 +1,215 @@
-module Lec_1_27_22 where
+module Lec_2_3_22 where
+import Test.QuickCheck (InfiniteList)
 
-import Text.Printf
+data Nat 
+  = Zero 
+  | OnePlus Nat
 
-string1 :: [Char]
-string1 = "cat"
+data List a 
+  = Nil 
+  | Cons a (List a)
+  deriving (Show)
 
-string2 :: String
-string2 = ['c', 'a', 't']
+len :: List a -> Int
+len Nil = 0
+len (Cons x xs) = 1 + len xs
 
--- >>> [1,2,3] ++ [4,5,6]
--- [1,2,3,4,5,6]
+lenTR :: List a -> Int
+lenTR l = loop 0 l
+  where
+    loop res Nil    = res
+    loop res (Cons _ t) = loop (res+1) t 
 
--- >>> string1 ++ "horse" ++ string2 
--- "cathorsecat"
+{- 
 
-data Date = MkDate 
-    { mm :: Int 
-    , dd :: Int
-    , yy :: Int
-    }
+def len(l):
+  res = 0
+  while true:
+    if l == Nil: 
+      return res
+    else:
+      (res, l) = (res + 1, tail(l))
+  return res
+
+-}
+
+
+-- >>> [1,2,3] ++ [5,6,7]
+-- [1,2,3,4,5,6,7]
+
+l_123 :: List Int 
+l_123 = Cons 1 (Cons 2 (Cons 3 Nil))
+
+l_456 :: List Int 
+l_456 = Cons 4 (Cons 5 (Cons 6 Nil))
+
+l_123456 :: List Int
+l_123456 = Cons 1 (Cons 2 (Cons 3 (Cons 4 (Cons 5 (Cons 6 Nil))) ))
+
+append :: List a -> List a -> List a
+append Nil         ys  = ys
+append (Cons x xs) ys  = Cons x (append xs ys)
+
+rev :: List a -> List a
+rev l = case l of
+  Nil -> Nil 
+  Cons h t -> append (rev t) (Cons h Nil)
+
+-- >>> rev l_123
+-- Cons 3 (Cons 2 (Cons 1 Nil))
+
+-- append l_123 l_456
+-- (A) Nil
+-- (B) l_123
+-- (C) l_456    <<<
+-- (D) l_123456
+
+
+-- append (Cons 2 (Cons 3 Nil)) l_456 
+-- ==> Cons 2 (append (Cons 3 Nil) l_456)
+-- ==> Cons 2 (Cons 3 (append Nil l456))
+-- ==> Cons 2 (Cons 3 l456)
+-- >>> append (Cons 3 Nil) l_456 
+-- Cons 3 (Cons 4 (Cons 5 (Cons 6 Nil)))
+
+
+
+-- Cons 1 (Cons 2 (Cons 3 (Cons 4 (Cons 5 (Cons 6 Nil))) ))
+
+
+-- >>> Cons "cat" (Cons "dog" Nil)
+-- Cons "cat" (Cons "dog" Nil)
+
+
+
+-- (4.0 + 2.9)  * (3.78 - 5.92)
+
+e0 :: Expr
+e0 = EBin Mul 
+        (EBin Add 
+            (ENum 4.0) 
+            (ENum 2.9)
+        )
+        (EBin Sub 
+            (ENum 3.78) 
+            (ENum 5.92)
+        )
+
+calc :: Expr -> Double
+calc e = case e of
+  ENum x -> x
+  EBin Add e1 e2 -> calc e1 + calc e2 
+  EBin Sub e1 e2 -> calc e1 - calc e2 
+  EBin Mul e1 e2 -> calc e1 * calc e2 
+
+-- >>> calc e0 
+-- -14.766000000000002
+
+-- type Op = Double -> Double -> Double
+
+data Op 
+  = Add 
+  | Sub 
+  | Mul 
+  deriving (Show)
+
+data Expr 
+    = ENum Double
+    | EBin Op Expr Expr
     deriving (Show)
 
-{- 
-struct Date {
-   int mm;
-   int dd;
-   int yyyy;
-};
+    
+data Tree a = Leaf | Node a (Tree a) (Tree a) 
+  deriving (Show)
 
-deadlineDate.mm
+myTree :: Tree Int
+myTree = 
+  Node 1 (Node 2 (Node 3 Leaf Leaf) Leaf) 
+         (Node 4 Leaf Leaf)
 
--}
-
--- >>> deadlineDate 
--- MkDate {mm = 1, dd = 28, yy = 2022}
+-- >>> height myTree
+-- 3
 
 
-data Time = MkTime 
-                Int         -- hour
-                Int         -- min
-                Int         -- sec
-                   
+height :: Tree a -> Int
+height t = case t of  
+  Leaf -> 0
+  Node _ l r -> 1 + larger (height l) (height r)
 
-getHour :: Time -> Int 
-getHour t = case t of 
-    MkTime h _ _ -> h
+larger :: Int -> Int -> Int
+larger x y = if x >= y then x else y
 
+----
 
-
-deadlineDate :: Date 
-deadlineDate = MkDate 1 28 2022
-
-deadlineTime :: Time 
-deadlineTime = MkTime 11 59 59
-
--- foo :: Date
--- foo = extendDateByOne deadlineTime
-
--- (mon, day, year)
-
-extendDateByOne :: Date -> Date 
-extendDateByOne = undefined
-
--- monthDays :: [(Int, Int)]
--- monthDays = [(1, 31), (2, 28), (3, 31)]
-
--- >>> putStrLn (docHtml doc)
-
-doc :: [Para]
-doc = [ MkHeading 1 "Notes from 130"                        -- Level 1 heading
-      , MkPlain     "There are two types of languages:"     -- Plain text
-      , MkList    True  [ "those people complain about"     -- Ordered list
-                        , "those no one uses"]
-      ]
-
-docHtml ::  [Para] -> String
-docHtml ps = case ps of
-  [] -> ""
-  pa : pas -> paraHtml pa ++ "\n" ++ docHtml pas
-
-paraHtml :: Para -> String
-paraHtml p = case p of 
-  MkHeading n s -> headingHtml n s
-  MkPlain s -> "<p>" ++ s ++ "</p>"
-  MkList ord items -> listHtml ord items 
-
-listHtml :: Bool -> [String] -> String
-listHtml isOrd strs = printf "<%s>%s</%s>" listTag contents listTag
-  where 
-      listTag  = if isOrd then "ol" else "ul"
-      contents = concat [ "<li>" ++ str ++ "</li>" | str <- strs ] 
-                    --  [ "<li>" ++ str ++ "</li>" for str in strs ] 
-
-myList :: [Integer]
-myList = [1..10]
-
--- >>> ["<li>" ++ str ++ "</li>" | str <- ["cat", "dog"] ]
--- ["<li>cat</li>","<li>dog</li>"]
-
-
--- >>> myList
--- [1,2,3,4,5,6,7,8,9,10]
-
-headingHtml :: Int -> String -> String
-headingHtml level str = "<" ++ hdr ++ ">" ++ str ++ "</" ++ hdr ++ ">"
-  where 
-      hdr = levelLabel level 
-
-levelLabel :: Int -> String
-levelLabel i = "h" ++ show i
 {- 
 
-<h1>Notes from 130</h1>
-<p>"There are two types of languages:"</p>
-<ol>
-<li>"those people complain about"</li>
-<li>"those no one uses"</li>
-</ol>
+<sumTo 3>
+==> 3 + < sumTo 2 >
+==> 3 + < 2 + <sumTo 1> >
+==> 3 + < 2 + < 1  + < sumTo 0 > > >
+==> 3 + < 2 + < 1  + < 0 > > >
 
--}
+def sumTo(n):
 
--- >>> doc
--- [MkHeading 1 "Notes from 130",MkPlain "There are two types of languages:",MkList True ["those people complain about","those no one uses"]]
+  (res, 0) = (0, 0)
+
+  while true: 
+    if (i <= n):
+      (res, i) = (res + i, i + 1)
+    else 
+      break
+  
+  return res
 
 
 
-data Para 
-    = PHead  Heading
-    | PPlain Plain
-    | PList  ParaList
-    deriving (Show)
+sumTo n = loop (0, 0)
+  where
+    loop (res, i) = 
+      if (i <= n):
+        -- (res, i) = (res + i, i + 1)
+        loop (res + i, i + 1)
+      else 
+        res
 
-data Heading = MkHeading Int String     deriving(Show)
-data Plain   = MkPlain String           deriving(Show)
-data ParaList = MkList Bool [String]    deriving(Show)
-{- 
 
-List<Paragraph> doc
 
-class Paragraph {} 
-
-class Heading extends Para { 
-    int level;
-    string text;
-}
-class PlainText extends Para { 
-    string text;
-}
-class ParaList extends Para { 
-    bool isOrdered;
-    List<String> items;
-}
 
 
 
 
 -}
+
+sumTo' :: Int -> Int
+sumTo' 0 = 0
+sumTo' n = n + sumTo' (n - 1)
+
+sumTo :: Int -> Int
+sumTo n = loop (0, 0)
+  where
+    loop (res, i) 
+      | i <= n    = loop (res + i, i + 1)
+      | otherwise = res
+
+-- >>> sumTo 5
+-- ==> loop (0, 0)
+-- ==> loop (0, 1)
+-- ==> loop (1, 2)
+-- ==> loop (3, 3)
+-- ==> loop (6, 4)
+-- ==> loop (10, 5)
+-- ==> loop (15, 6)
+-- ==> 15
+
+fac :: Int -> Int
+fac n = if n <= 0 then 1 else n * fac (n-1)
+
+facTR :: Int -> Int
+facTR n = loop (1, 1)
+  where
+    loop (res, i) 
+      | i <= n = loop (res * i, i + 1)
+      | otherwise = res
+
+-- >>> facTR 5
+-- 120

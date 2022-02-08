@@ -134,11 +134,22 @@ data Para
 data Heading = MkHeading Int String     deriving(Show)
 data Plain   = MkPlain String           deriving(Show)
 data ParaList = MkList Bool [String]    deriving(Show)
+
 {- 
 
 List<Paragraph> doc
 
-class Paragraph {} 
+string paraHtml(para p) {
+    if (p instanceof Heading) { 
+        ...
+    } else if (p instsance)
+    instanceOf(p) { 
+        ...
+    }
+}
+
+class Paragraph {
+} 
 
 class Heading extends Para { 
     int level;

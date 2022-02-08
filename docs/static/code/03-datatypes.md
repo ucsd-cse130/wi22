@@ -628,8 +628,8 @@ html (PHeading 0 "Introduction")
 
 Beware of **missing** and **overlapped** patterns
 
-  * GHC warns you about *overlapped* patterns
-  * GHC warns you about *missing* patterns when called with `-W` (use `:set -W` in GHCi)
+* GHC warns you about *overlapped* patterns
+* GHC warns you about *missing* patterns when called with `-W` (use `:set -W` in GHCi)
 
 <br>
 <br>

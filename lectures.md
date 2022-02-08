@@ -3,24 +3,23 @@ title: Lecture Notes
 headerImg: books.jpg
 ---
 
-| **Date**   | **Topic**                  | **Notes**                        | **Code**      |
-|:----------:|:---------------------------|:---------------------------------|:--------------|
-| 1/4        | Hello, World!              | [html][lec0]                     |               |
-| 1/6        | The Lambda Calculus        | [html][lec1]                     |               |
-| 1/11       | contd.                     | [pdf][pdf1]                      |               |
-| 1/13       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]         | [hs][code]    |
-| 1/18       | contd.                     |                                  |               |
-| 1/20       | contd.                     |                                  |               |
-| 1/27       | Datatypes & Recursion      | [html][lec3]                     | [hs][code]    |
+The live-edited code for each lecture can be found [here][code].
+
+| **Date**   | **Topic**                  | **Notes**                 |
+|:----------:|:---------------------------|:--------------------------|
+| 1/4        | Hello, World!              | [html][lec0]              |
+| 1/6        | The Lambda Calculus        | [html][lec1]              |
+| 1/11       | contd.                     | [pdf][pdf1]               |
+| 1/13       | A crash course in Haskell  | [html][lec2] [pdf][pdf4]  |
+| 1/18       | contd.                     |                           |
+| 1/20       | contd.                     |                           |
+| 1/27       | Datatypes & Recursion      | [html][lec3]              |
+| 2/1        | contd.                     | contd.                    |
+| 2/3        | contd.                     | contd.                    |
+| 2/8        | Higher Order Functions     | [html][lec4]              | 
+
 
 <!-- 
-| 1/12       | contd.                     | [pdf][pdf2]                      | [lc][lc-1-12] |
-| 1/14       | contd.                     | [pdf][pdf3]                      |               |
-| 1/21       | contd.                     | contd.                           | [hs][code]    |
-| 1/28       | contd.                     | contd.                           | [hs][code]    |
-| 2/2        | contd.                     |              [pdf][pdf6]         | [hs][code]    |
-| 2/4        | contd.                     |              [pdf][pdf7]         | [hs][code]    |
-| 2/9        | Higher Order Functions     | [html][lec4] [pdf][pdf8]         | [hs][code]    |
 | 2/11       | contd.                     | contd.       [pdf][pdf9]         | [hs][code]    |
 | 2/16       | Environments & Closures    | [html][lec5] [pdf][pdf10]        | [hs][code]    |
 | 2/18       | contd.                     | contd.       [pdf][pdf11]        | [hs][code]    |
