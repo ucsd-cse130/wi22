@@ -35,10 +35,12 @@ Check out these [lecture notes](https://ucsd-cse130.github.io/web/lectures/02-ha
 for a comparison between the two languages.
 
 - [Midterm Sp 18](/static/raw/130-midterm-sp18.pdf) ([solution](/static/raw/130-midterm-sp18-solution.pdf)),
-  [Midterm Sp 15](/static/raw/midterm-sp15.pdf),
-  [Midterm Sp 14](/static/raw/midterm-sp14.pdf),
-  [Midterm Sp 12](/static/raw/midterm-sp12.pdf),
-  [Midterm Wi 12](/static/raw/midterm-wi12.pdf).
+
+- [Midterm Sp 15](/static/raw/midterm-sp15.pdf), ocaml code ported to [haskell](/static/raw/MidtermSp15.hs) 
+
+- [Midterm Sp 14](/static/raw/midterm-sp14.pdf), ocaml code ported to [haskell](/static/raw/MidtermSp14.hs)
+
+-  [Midterm Sp 12](/static/raw/midterm-sp12.pdf), [Midterm Wi 12](/static/raw/midterm-wi12.pdf).
 
 - [Final Sp 18](/static/raw/130-final-sp18.pdf) ([solution](/static/raw/130-final-sp18-solution.pdf)),
   [Final Sp 14](/static/raw/final-sp14.pdf),

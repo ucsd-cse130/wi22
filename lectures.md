@@ -16,7 +16,7 @@ The live-edited code for each lecture can be found [here][code].
 | 1/27       | Datatypes & Recursion      | [html][lec3] [pdf][pdf3]  |
 | 2/1        | contd.                     | contd.                    |
 | 2/3        | contd.                     | contd.                    |
-| 2/8        | Higher Order Functions     | [html][lec4]              | 
+| 2/8        | Higher Order Functions     | [html][lec4] [pdf][pdf4]  | 
 
 
 <!-- 
@@ -66,6 +66,7 @@ The live-edited code for each lecture can be found [here][code].
 [pdf1]: /static/raw/01-lambda.pdf
 [pdf2]: /static/raw/02-haskell.pdf
 [pdf3]: /static/raw/03-data.pdf
+[pdf4]: /static/raw/04-hof.pdf
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
 
