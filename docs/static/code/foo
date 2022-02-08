@@ -1,0 +1,8 @@
+
+
+
+n = \n f x -> f (f (f (f (f x))))
+
+REPEAT 3 x = (CONS x (CONS x (CONS x NIL)))
+
+REPEAT = \n x -> n (CONS x) NIL
