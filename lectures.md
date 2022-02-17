@@ -17,10 +17,11 @@ The live-edited code for each lecture can be found [here][code].
 | 2/1        | contd.                     | contd.                    |
 | 2/3        | contd.                     | contd.                    |
 | 2/8        | Higher Order Functions     | [html][lec4] [pdf][pdf4]  | 
-
+| 2/10       | **midterm** 		  | contd.                    |
+| 2/15       | contd. 		          | contd. 		      |
+| 2/17       | Environments & Closures    | [html][lec5] [pdf][pdf5]  |
 
 <!-- 
-| 2/11       | contd.                     | contd.       [pdf][pdf9]         | [hs][code]    |
 | 2/16       | Environments & Closures    | [html][lec5] [pdf][pdf10]        | [hs][code]    |
 | 2/18       | contd.                     | contd.       [pdf][pdf11]        | [hs][code]    |
 | 2/23       | contd.                     | contd.       [pdf][pdf12]        | [hs][code]    |
@@ -67,6 +68,7 @@ The live-edited code for each lecture can be found [here][code].
 [pdf2]: /static/raw/02-haskell.pdf
 [pdf3]: /static/raw/03-data.pdf
 [pdf4]: /static/raw/04-hof.pdf
+[pdf5]: /static/raw/05-closures.pdf
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
 
