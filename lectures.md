@@ -68,7 +68,7 @@ The live-edited code for each lecture can be found [here][code].
 [pdf2]: /static/raw/02-haskell.pdf
 [pdf3]: /static/raw/03-data.pdf
 [pdf4]: /static/raw/04-hof.pdf
-[pdf5]: /static/raw/05-closures.pdf
+[pdf5]: /static/raw/05-environments.pdf
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
 
