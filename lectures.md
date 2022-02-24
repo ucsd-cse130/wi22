@@ -20,10 +20,12 @@ The live-edited code for each lecture can be found [here][code].
 | 2/10       | **midterm** 		  | contd.                    |
 | 2/15       | contd. 		          | contd. 		      |
 | 2/17       | Environments & Closures    | [html][lec5] [pdf][pdf5]  |
+| 2/22       | contd.                     | contd.                    |
+| 2/24       | Lexing and Parsing         | [html][lec6] [pdf][pdf6]  |
+
 
 <!-- 
 | 2/16       | Environments & Closures    | [html][lec5] [pdf][pdf10]        | [hs][code]    |
-| 2/18       | contd.                     | contd.       [pdf][pdf11]        | [hs][code]    |
 | 2/23       | contd.                     | contd.       [pdf][pdf12]        | [hs][code]    |
 | 2/25       | Lexing and Parsing         | [html][lec6] [pdf][pdf13]        | [hs][arith]   |
 | 3/2        | Overloading & Type Classes | [html][lec7-cl] [pdf][pdf14]     | [hs][code]    |
@@ -69,6 +71,8 @@ The live-edited code for each lecture can be found [here][code].
 [pdf3]: /static/raw/03-data.pdf
 [pdf4]: /static/raw/04-hof.pdf
 [pdf5]: /static/raw/05-environments.pdf
+[pdf6]: /static/raw/06-parsing.pdf
+
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
 
