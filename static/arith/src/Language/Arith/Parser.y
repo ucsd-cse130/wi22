@@ -35,8 +35,8 @@ import Control.Exception
     ')'   { RPAREN _ }
 
 -- Operators
-%left '+' '-' 
-%left '*' '/'
+-- %left '+' '-'
+-- %left '*' '/'
 %%
 
 Aexpr : BinExp                   { $1           }

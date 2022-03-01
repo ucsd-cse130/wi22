@@ -22,32 +22,27 @@ The live-edited code for each lecture can be found [here][code].
 | 2/17       | Environments & Closures    | [html][lec5] [pdf][pdf5]  |
 | 2/22       | contd.                     | contd.                    |
 | 2/24       | Lexing and Parsing         | [html][lec6] [pdf][pdf6]  |
-
+| 3/1        | Overloading & Type Classes | [html][lec7] [pdf][pdf7]  | 
 
 <!-- 
-| 2/16       | Environments & Closures    | [html][lec5] [pdf][pdf10]        | [hs][code]    |
-| 2/23       | contd.                     | contd.       [pdf][pdf12]        | [hs][code]    |
-| 2/25       | Lexing and Parsing         | [html][lec6] [pdf][pdf13]        | [hs][arith]   |
-| 3/2        | Overloading & Type Classes | [html][lec7-cl] [pdf][pdf14]     | [hs][code]    |
-| 3/4        | contd.                     | contd.                           | [hs][code]    |
-| 3/9        | Functors & Monads          | [html][lec8-monads] [pdf][pdf15] | [hs][code]    |
-| 3/11       | Hello, world! (IO Monad)   | [html][lec9-io]     [pdf][pdf16] | [hs][arith]   |
-
+| 3/3        | Functors & Monads          | [html][lec8] [pdf][pdf8]  | 
+| 3/8 	     | Hello, world! (IO Monad)   | [html][lec9] [pdf][pdf9]  |
 -->
 
 
+<!-- 
 ## Discussions
 
 | Date       | Topic                    | Slides               | 
 |:----------:|:-------------------------|:--------------------:|
 
-<!-- 
 | 1/6        | Lambda Calculus & Elsa   | [blank][disc1-blank], [annotated][disc1-annotated]  |
 | 1/14       | Lambda Calculus          | [pdf][disc1]         |
 | 3/17       | Final Review             | [html][final-review] |
 | 2/25       | Nano: Parsing and Eval   | [pdf][disc5]  |
 | 3/4        | Type checking tips       | [pdf][disc6]  |
 | 3/11       | Final Review             | [pdf][discFinal] |
+
 -->
 
 [lec0]: lectures/00-hello.html
@@ -58,11 +53,10 @@ The live-edited code for each lecture can be found [here][code].
 [lec5]: lectures/05-environments.html
 [lec5-clos]: lectures/05-closure.html
 [lec6]: lectures/06-parsing.html
-[lec7-ty]: lectures/07-types.html
-[lec7-cl]: lectures/07-classes.html
-[lec8-monads]: lectures/08-monads.html
-[lec9-io]: lectures/09-io.html
-[lec8]: lectures/08-prolog.html
+[lec7]: lectures/07-classes.html
+[lec8]: lectures/08-monads.html
+[lec9]: lectures/09-io.html
+
 [rhoc]: https://reactjs.org/docs/higher-order-components.html
 [mapRed]: https://en.wikipedia.org/wiki/MapReduce
 

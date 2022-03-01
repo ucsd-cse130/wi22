@@ -33,8 +33,8 @@ data Expr
     deriving (Show)
 
 data Value
-  = VInt Int
-  | VFun Id Expr Env
+  = VInt     Int
+  | VClosure Id Expr Env    -- ^ <param, body, frozen-env>
   deriving (Show)
 
 data BOp = Add | Sub | Mul deriving (Show)
@@ -88,11 +88,11 @@ eval env e = case e of
                    where
                        env' = (x := xval) : env
                        xval = eval env ex1
-  ELam x body    -> VFun x body env
-  EApp eFun eArg -> eval (x := v2 : eEnv) eBody
+  ELam x body    -> VClosure x body env
+  EApp eFun eArg -> eval (x := vArg : frozEnv) eBody
                     where
-                      VFun x eBody eEnv = eval env eFun
-                      v2                = eval env eArg
+                      VClosure x eBody frozEnv = eval env eFun
+                      vArg                     = eval env eArg
 
 
 
@@ -122,13 +122,70 @@ ex_inc_c =
     (ELet "inc" (ELam "x" (EBin Add (EVar "x") (EVar "c")))
       (ELet "c" (ENum 100)
         (
-          EApp (EVar "inc") (ENum 10)
+          EApp (EVar "inc") (EVar "c")
         )
       )
     )
 
+-- >>> eval [] ex_add
+-- VInt 1130
+
+-- >>> eval [] (ELam "x" (ELam "y" (EBin Add (EVar "x") (EVar "y"))))
+
+-- >>> let env1 = ["add" := VClosure "x" (ELam "y" (EBin Add (EVar "x") (EVar "y"))) [] ]
+-- >>> let v_add10 = VClosure "y" (EBin Add (EVar "x") (EVar "y")) ["x" := VInt 10]
+-- >>> let env2 = "add10" := v_add10 : env1
+-- >>> let v_add20 = VClosure "y" (EBin Add (EVar "x") (EVar "y")) ["x" := VInt 20]
+-- >>> let env3 = "add20" := v_add20 : env2
+-- >>> eval env3 (EApp (EVar "add10") (ENum 100))
+-- >>> eval env3 (EApp (EVar "add20") (ENum 1000))
+-- VInt 110
+-- VInt 1020
+
+
+ex_add :: Expr
+ex_add =                                              -- []
+  ELet "add" (ELam "x" (ELam "y" (EBin Add (EVar "x") (EVar "y"))))
+    (                                                 -- env1
+      ELet "add10" (EApp (EVar "add") (ENum 10))
+        (                                             -- env2
+          ELet "add20" (EApp (EVar "add") (ENum 20))
+            (                                         -- env3
+              EBin Add (EApp (EVar "add10") (ENum 100)) (EApp (EVar "add20") (ENum 1000))
+            )
+        )
+    )
+
+{-
+
+let add = \x y -> x + y
+    add10 = add 10
+    twice = \f x -> f (f x)
+in
+    twice add10 100
+
+-}
+
+-- >>> eval [] ex_twice
+-- VInt 120
+
+ex_twice :: Expr
+ex_twice =
+  ELet "add" (ELam "x" (ELam "y" (EBin Add (EVar "x") (EVar "y"))))
+    (
+      ELet "add10" (EApp (EVar "add") (ENum 10))
+        (
+          ELet "twice" (ELam "f" (ELam "x" (EApp (EVar "f") (EApp (EVar "f") (EVar "x")))))
+            (
+              EApp (EApp (EVar "twice") (EVar "add10")) (ENum 100)
+            )
+        )
+    )
+
+
+
 -- >>> eval []  ex_inc_c
--- VInt 11
+-- VInt 101
 
 
 
