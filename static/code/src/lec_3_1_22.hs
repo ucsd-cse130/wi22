@@ -77,6 +77,16 @@ v2 = 4.5
 -- >>> v1 + v2
 -- Couldn't match expected type ‘Int’ with actual type ‘Double’
 
+{-
+
+ (+)
+ (<=)
+ (==)
+ show
+-}
+
+foo = (+)
+
 
 exEnv :: Env String Int
 exEnv = Bind "dog" 20 (Bind "cat" 10 (Def 0))

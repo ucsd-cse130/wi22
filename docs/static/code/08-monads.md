@@ -137,9 +137,8 @@ mapTree f (Node v l r) = ???
 Wait ... there is a common pattern across two _datatypes_
 
 ```haskell
-mapList :: (a -> b) -> List a  -> List b    -- List
-mapEnv  :: (a -> b) -> Env k a -> Env k b   -- Env 
-mapTree :: (a -> b) -> Tree a -> Tree b     -- Tree
+mapList :: (a -> b) -> List a -> List b    -- List
+mapTree :: (a -> b) -> Tree a -> Tree b    -- Tree
 ```
 
 Lets make a `class` for it!
@@ -156,7 +155,7 @@ What type should we give to `map`?
 {- B -} (a -> a) -> t a    -> t a
 {- C -} (a -> b) -> [a]    -> [b]
 {- D -} (a -> b) -> t a    -> t b
-{- E -} (a -> b) -> Env k a -> Env k b
+{- E -} (a -> b) -> Tree a -> Tree b
 ```
 
 <br>
@@ -421,405 +420,102 @@ eval (Div e1 e2)  = do v1 <- eval e1
 <br>
 <br>
 
-## Writing Applications
+## Generalizing `Result` to *Many* Values
 
-In most language related classes, we _start_ with a "Hello world!" program.
+We can generalize `Result` to "many" values, using `List`
 
-With 130, we will _end_ with it.
+```haskell
+data Result a = Err String | Result a
+data List   a = Nil        | Cons   a (List a) 
+```
 
-<!-- 
-For example, in Python you may write:
+- The `Err` is like `[]` except it has a message too,
+- The `tail` of type `(List a)` lets us hold *many* possible `a` values
+
+We can now make a `Monad` instance for lists as
+
+```haskell
+instance Monad [] where
+  return = returnList 
+  (>>=)  = bindList 
+
+returnList :: a -> [a]
+returnList x = [x]
+
+bindList :: [a] -> (a -> [b]) -> [b]
+bindList []     f = []
+bindList (x:xs) f = f x ++ bindList xs f
+```
+
+Notice `bindList xs f` is like a `for-loop`:
+
+- **for each** `x` in `xs` we call,
+- `f x` to get the results 
+- and concatenate _all_ the results
+
+so,
+
+```haskell
+bindList [x1,x2,x3,...,xn] f ==>
+  f x1 ++ f x2 ++ f x3 ++ ... ++ f xn
+```
+
+This has some fun consequences!
+
+```haskell
+silly xs = do
+  x <- xs
+  return (x * 10)
+```
+
+produces the result
+
+```haskell
+-- >>> silly [1,2,3]
+-- [10,20,30]
+```
+
+and
+
+```haskell
+foo xs ys = do
+  x <- xs
+  y <- ys
+  return (x, y)
+```
+
+produces the result
+
+```haskell
+-- >>> foo ["1", "2", "red", "blue"] ["fish"]
+-- [("1","fish"),("2","fish"),("red","fish"),("blue","fish")]
+```
+
+behaves like Python's
 
 ```python
-def main():
-    print "hello, world!"
-
-main()
+for x in xs:
+  for y in ys:
+    yield (x, y)
 ```
 
-and then you can run it:
+## EXERCISE 
 
-```sh
-$ python hello.py
-hello world!
-```
--->
-
-## Purity and the Immutability Principle
-
-Haskell is a **pure** language. Not a _value_ judgment, but a precise _technical_ statement:
-
-**The "Immutability Principle":**
-
-- A function must _always_ return the same output for a given input
-
-- A function's behavior should _never change_
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## No Side Effects
-
-![](/static/img/trinity.png){#fig:types .align-center width=60%}
-
-Haskell's most radical idea: `expression ==> value`
-
-- When you evaluate an expression you get a value and **nothing else happens**
-
-Specifically, evaluation must not have an **side effects**
-
-- _change_ a global variable or
-
-- _print_ to screen or
-
-- _read_ a file or
-
-- _send_ an email or
-
-- _launch_ a missile.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## Purity
-
-Means _functions may depend only on their inputs_
-
-- i.e. **functions should give the same output for the same input every time.**
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-## But... how to write "Hello, world!"
-
-But, we _want_ to ...
-
-- print to screen
-- read a file
-- send an email
-
-A language that only lets you write `factorial` and `fibonacci` is ... _not very useful_!
-
-Thankfully, you _can_ do all the above via a very clever idea: `Recipe`
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Recipes
-
-[This analogy is due to Joachim Brietner][brietner]
-
-Haskell has a special type called `IO` -- which you can think of as `Recipe` 
+Fill in the blanks to implement `mMap` (i.e. `map` using monads) 
 
 ```haskell
-type Recipe a = IO a
+mMap :: (a -> b) -> [a] -> [b]
+mMap f xs = do
+  _fixme
 ```
 
-A _value_ of type `Recipe a` is
+## EXERCISE 
 
-- a **description** of an effectful computations
-
-- when **when executed** (possibly) perform some effectful I/O operations to
-
-- **produce** a value of type `a`.
-
-## Recipes have No Effects
-
-A value of type `Recipe a` is
-
-- Just a **description** of an effectful computation
-
-- An inert, perfectly safe thing with **no effects**.
-
-![Cake vs. Recipe](/static/img/cake.png){#fig:types .align-center width=80%}
-
-**(L)** chocolate _cake_, **(R)** a _sequence of instructions_ on how to make a cake.
-
-They are different (_hint_: only one of them is delicious.)
-
-Merely having a `Recipe Cake` has no effects: holding the recipe
-
-- Does not make your oven _hot_
-
-- Does not make your your floor _dirty_
-
-## Executing Recipes
-
-There is **only one way** to execute a `Recipe a`
-
-Haskell looks for a special value
+Fill in the blanks to implement `mFilter` (i.e. `filter` using monads)
 
 ```haskell
-main :: Recipe ()
+mFilter :: (a -> Bool) -> [a] -> [a]
+mFilter f xs = do
+  _fixme
 ```
 
-The value associated with `main` is handed to the **runtime system and executed**
-
-![Baker Aker](/static/img/baker-aker.jpg){#fig:types .align-center width=70%}
-
-The Haskell runtime is a _master chef_ who is the only one allowed to cook!
-
-## How to write an App in Haskell
-
-Make a `Recipe ()` that is handed off to the master chef `main`.
-
-- `main` can be arbitrarily complicated
-
-- will be composed of _many smaller_ recipes
-
-## Hello World
-
-
-```haskell
-putStrLn :: String -> Recipe ()
-```
-
-The function `putStrLn`
-
-- takes as input a `String`
-- returns as output a `Recipe ()`
-
-`putStrLn msg` is a `Recipe ()` _when executed_ prints out `msg` on the screen.
-
-```haskell
-main :: Recipe ()
-main = putStrLn "Hello, world!"
-```
-
-... and we can compile and run it
-
-```sh
-$ ghc --make hello.hs
-$ ./hello
-Hello, world!
-```
-
-## QUIZ: Combining Recipes
-
-Next, lets write a program that prints multiple things:
-
-```haskell
-main :: IO ()
-main = combine (putStrLn "Hello,") (putStrLn "World!")
-
--- putStrLn :: String -> Recipe ()
--- combine  :: ???
-```
-
-What must the _type_ of `combine` be?
-
-```haskell
-{- A -} combine :: () -> () -> ()
-{- B -} combine :: Recipe () -> Recipe () -> Recipe ()
-{- C -} combine :: Recipe a  -> Recipe a  -> Recipe a
-{- D -} combine :: Recipe a  -> Recipe b  -> Recipe b
-{- E -} combine :: Recipe a  -> Recipe b  -> Recipe a
-```
-
-<br>
-<br>
-<br>
-<br>
-
-## Using Intermediate Results
-
-Next, lets write a program that
-
-1. **Asks** for the user's `name` using
-
-```haskell
-    getLine :: Recipe String
-```
-
-2. **Prints** out a greeting with that `name` using
-
-```haskell
-    putStrLn :: String -> Recipe ()
-```
-
-**Problem:** How to pass the **output** of _first_ recipe into the _second_ recipe?
-
-<br>
-<br>
-<br>
-<br>
-
-## QUIZ: Using Yolks to Make Batter
-
-Suppose you have two recipes
-
-```haskell
-crack     :: Recipe Yolk
-eggBatter :: Yolk -> Recipe Batter
-```
-
-and we want to get 
-
-```haskell
-mkBatter :: Recipe Batter
-mkBatter = crack `combineWithResult` eggBatter
-```
-
-What must the type of `combineWithResult` be?
-
-```haskell
-{- A -} Yolk -> Batter -> Batter
-{- B -} Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe Batter
-{- C -} Recipe a    -> (a     -> Recipe a     ) -> Recipe a
-{- D -} Recipe a    -> (a     -> Recipe b     ) -> Recipe b
-{- E -} Recipe Yolk -> (Yolk  -> Recipe Batter) -> Recipe ()
-```
-
-<br>
-<br>
-<br>
-<br>
-
-## Looks Familiar
-
-Wait a bit, the signature looks familiar!
-
-```haskell
-combineWithResult :: Recipe a -> (a -> Recipe b) -> Recipe b
-```
-
-Remember this
-
-```haskell
-(>>=)             :: Result a -> (a -> Result b) -> Result b
-```
-
-## `Recipe` is an instance of `Monad`
-
-In fact, in the standard library
-
-```haskell
-instance Monad Recipe where
-  (>>=) = {-... combineWithResult... -}
-```
-
-So we can put this together with `putStrLn` to get:
-
-```haskell
-main :: Recipe ()
-main = getLine >>= \name -> putStrLn ("Hello, " ++ name ++ "!")
-```
-
-or, using `do` notation the above becomes
-
-```haskell
-main :: Recipe ()
-main = do name <- getLine
-          putStrLn ("Hello, " ++ name ++ "!")
-```
-
-**Exercise** 
-
-1. _Compile_ and run to make sure its ok!
-2. _Modify_ the above to repeatedly ask for names.
-3. _Extend_ the above to print a "prompt" that tells you how many iterations have occurred.
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## Monads are Amazing
-
-Monads have had a _revolutionary_ influence in PL, well beyond Haskell, some recent examples
-
-- **Error handling** in `go` e.g. [1](https://speakerdeck.com/rebeccaskinner/monadic-error-handling-in-go)  and [2](https://www.innoq.com/en/blog/golang-errors-monads/)
-
-- **Asynchrony** in JavaScript e.g. [1](https://gist.github.com/MaiaVictor/bc0c02b6d1fbc7e3dbae838fb1376c80) and [2](https://medium.com/@dtipson/building-a-better-promise-3dd366f80c16)
-
-- **Big data** pipelines e.g. [LinQ](https://www.microsoft.com/en-us/research/project/dryadlinq/) and [TensorFlow](https://www.tensorflow.org/)
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## A Silly App to End CSE 130
-
-Lets write an app called [moo](/static/raw/moo.hs) inspired by [cowsay](https://medium.com/@jasonrigden/cowsay-is-the-most-important-unix-like-command-ever-35abdbc22b7f)
-
-**A Command Line App**
-
-![`moo`](/static/img/moo1.png){#fig:types .align-center width=70%}
-
-**`moo` works with pipes**
-
-![Thanks, and good luck for the final!](/static/img/moo2.png){#fig:types .align-center width=70%}
-
-<!--
-![](/static/img/moo3.png){#fig:types .align-center width=70%}
-
-```sh
-$ ./moo Jhala, y u no make final easy!
-
- --------------------------------
-< Jhala, y u no make final easy! >
- --------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-```
-
-or even using unix pipes
-
-```txt
-$ ./moo Thats all folks, thanks!
-
- ------------------------------------
-< 00-intro.pdf 01-lambda.pdf         >
-< 03-datatypes.pdf 04-hof.pdf        >
-< 05-environments.pdf 06-parsing.pdf >
-< 07-classes.pdf 08-monads.pdf       >
- ------------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-```
-
-Thats all, folks.
-
--->
-
-
-[brietner]: https://www.seas.upenn.edu/~cis194/fall16/lectures/06-io-and-monads.html
