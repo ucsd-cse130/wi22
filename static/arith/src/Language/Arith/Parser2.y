@@ -14,7 +14,7 @@ import Control.Exception
 }
 
 -- Entry point
-%name aexpr 
+%name aexpr
 
 -- Lexer structure
 %tokentype { Token }
@@ -36,11 +36,13 @@ import Control.Exception
 
 %%
 
-SUM-OF-PRODUCT 
+-- SUM-OF-PRODUCT
 
-((((((10) + (20)) + (30 * 49 * 41)))) - (29 * 80))
+--  (2 * 5 * 3) + (10 * 7)
 
-Aexpr -> (((10 + 20) + ((30 * 49) * 41) - (29 * 80) ) 
+-- ((((((10) + (20)) + (30 * 49 * 41)))) - (29 * 80))
+
+-- Aexpr -> (((10 + 20) + ((30 * 49) * 41) - (29 * 80) )
 
 Aexpr : Aexpr '+' Aexpr2         { APlus $1 $3  }
       | Aexpr '-' Aexpr2         { AMinus $1 $3 }

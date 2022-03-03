@@ -4,6 +4,12 @@ date: 2018-05-16
 headerImg: books.jpg
 ---
 
+[Token] -> AExp
+
+
+
+
+
 ## Plan for this week
 
 
@@ -22,7 +28,7 @@ eval :: Env -> Expr -> Value
 ```haskell
 parse :: String -> Expr
 ```
-  
+
 <br>
 <br>
 <br>
@@ -38,13 +44,13 @@ parse :: String -> Expr
 AST representation:
 
 ```haskell
-data Aexpr 
+data Aexpr
   = AConst  Int
   | AVar    Id
   | APlus   Aexpr Aexpr
   | AMinus  Aexpr Aexpr
   | AMul    Aexpr Aexpr
-  | ADiv    Aexpr Aexpr    
+  | ADiv    Aexpr Aexpr
 ```
 
 <br>
@@ -116,15 +122,15 @@ How do I read a sentence "He ate a bagel"?
 
   * First split into words: `["He", "ate", "a", "bagel"]`
   * Then relate words to each other: "He" is the subject, "ate" is the verb, etc
-  
-<br>  
-  
-Let's do the same thing to "read" programs! 
+
+<br>
+
+Let's do the same thing to "read" programs!
 
 <br>
 <br>
 <br>
-<br> 
+<br>
 
 ### Step 1 (Lexing) : From String to Tokens
 
@@ -139,7 +145,7 @@ into **tokens** (i.e. the "words" of the program):
 
 We distinguish tokens of different kinds based on their format:
 
-* all numbers: integer constant 
+* all numbers: integer constant
 * alphanumeric, starts with a letter: identifier
 * `+`: plus operator
 * etc
@@ -155,16 +161,16 @@ Next, we convert a sequence of tokens into an AST
 
   * This is hard...
   * ... but the hard parts do not depend on the language!
-  
-<br>  
-  
+
+<br>
+
 **Parser generators**
 
   * Given the description of the *token format* generates a *lexer*
   * Given the description of the *grammar* generates a *parser*
-  
+
 We will be using parser generators,
-so we only care about how to describe the token format and the grammar 
+so we only care about how to describe the token format and the grammar
 
 <br>
 <br>
@@ -235,16 +241,16 @@ Next we describe the format of each kind of token using a rule:
 ```
 
 Each line consist of:
-  
+
   * a *regular expression* that describes which strings should be recognized as this token
   * a Haskell expression that generates the token
-  
+
 You read it as:
 
-  * if at position `p` in the input string 
+  * if at position `p` in the input string
   * you encounter a substring `s` that matches the *regular expression*
-  * evaluate the Haskell expression with arguments `p` and `s`   
-  
+  * evaluate the Haskell expression with arguments `p` and `s`
+
 <br>
 <br>
 <br>
@@ -260,23 +266,23 @@ You read it as:
 A regular expression has one of the following forms:
 
 * `[c1 c2 ... cn]` matches *any of* the characters `c1 .. cn`
-    
+
     * `[0-9]` matches *any digit*
-    * `[a-z]` matches *any lower-case letter*    
+    * `[a-z]` matches *any lower-case letter*
     * `[A-Z]` matches *any upper-case letter*
-    * `[a-z A-Z]` matches *any letter*    
-    
+    * `[a-z A-Z]` matches *any letter*
+
 * `R1 R2` matches a string `s1 ++ s2` where `s1` matches `R1` and `s2` matches `R2`
-    
+
     * e.g. `[0-9] [0-9]` matches any two-digit string
-    
+
 * `R+` matches *one or more* repetitions of what `R` matches
 
     * e.g. `[0-9]+` matches a natural number
-    
-* `R*` matches *zero or more* repetitions of what `R` matches    
-    
-  
+
+* `R*` matches *zero or more* repetitions of what `R` matches
+
+
 <br>
 <br>
 
@@ -332,7 +338,7 @@ and write `[a-z A-Z] [a-z A-Z 0-9]*` as `$alpha [$alpha $digit]*`
   \)                            { \p _ -> RPAREN p }
   $alpha [$alpha $digit \_ \']* { \p s -> ID     p s }
   $digit+                       { \p s -> NUM p (read s) }
-```  
+```
 
 * When you encounter a `+`, generate a `PLUS` token
 * ...
@@ -377,8 +383,8 @@ Right [ NUM (AlexPn 0 1 1) 23
       , NUM (AlexPn 5 1 6) 4
       , DIV (AlexPn 7 1 8)
       , ID (AlexPn 9 1 10) "off"
-      , MINUS (AlexPn 13 1 14) 
-      ]      
+      , MINUS (AlexPn 13 1 14)
+      ]
 ```
 
 ```haskell
@@ -431,13 +437,13 @@ Input to `happy`: a `.y` file that describes the *grammar*
 Wait, wasn't this the grammar?
 
 ```haskell
-data Aexpr 
+data Aexpr
   = AConst  Int
   | AVar    Id
   | APlus   Aexpr Aexpr
   | AMinus  Aexpr Aexpr
   | AMul    Aexpr Aexpr
-  | ADiv    Aexpr Aexpr    
+  | ADiv    Aexpr Aexpr
 ```
 
 This was *abstract syntax*
@@ -463,9 +469,9 @@ A grammar is a recursive definition of a set of trees
 
   - each tree is a *parse tree* for some string
   - *parse* a string `s` = find a parse tree for `s` that belongs to the grammar
-  
+
 <br>
-<br>  
+<br>
 
 A grammar is made of:
 
@@ -475,12 +481,40 @@ A grammar is made of:
 
 - **Production Rules** that describe how to "produce" a non-terminal from terminals and other non-terminals
 
+
+                                               /
+                                              /
+                                       <aexp>
+                                      /  |   \
+                                     /   |    \                |
+                                    /    |     \               |
+                              <aexp>     |      <aexp>         |       <aexp>
+                                 |                 | .         |         |
+        "10 + 45 - 7"   -->   (NUM 10)   PLUS   (NUM 45)      MINUS   (NUM 7)
+
+                              APlus (AConst 10) (AConst 45)
+
+                  <aexp> ::= NUM                   { AConst $1 }
+                           | <aexp> PLUS  <aexp>   { APlus  $1 $3 }
+                           | <aexp> MINUS <aexp>   { AMinus $1 $3 }
+
+                           | <exp> <exp>           { EApp $1 $2 }
+
+                        -->   APlus (AConst 10) (AConst 10)
+
+        let foo = \x y z -> x + y + z
+        in
+          (((foo 10) 20) 30)
+
+
+          (EApp (EAPP (EApp (EVar "foo") (ENum 10)) (ENum 20)) (ENum 30))
+
     - i.e. what children each nonterminal can have:
 
-```haskell 
+```haskell
 Aexpr :   -- NT Aexpr can have as children:
-  | Aexpr '+' Aexpr  { ... } -- NT Aexpr, T '+', and NT Aexpr, or 
-  | Aexpr '-' AExpr  { ... } -- NT Aexpr, T '-', and NT Aexpr, or 
+  | Aexpr '+' Aexpr  { ... } -- NT Aexpr, T '+', and NT Aexpr, or
+  | Aexpr '-' AExpr  { ... } -- NT Aexpr, T '-', and NT Aexpr, or
   | ...
 ```
 
@@ -497,7 +531,7 @@ Aexpr :   -- NT Aexpr can have as children:
 
 Terminals correspond to the *tokens* returned by the lexer
 
-In the `.y` file, we have to declare with terminals in the rules 
+In the `.y` file, we have to declare with terminals in the rules
 correspond to which tokens from the `Token` datatype:
 
 ```haskell
@@ -519,7 +553,7 @@ correspond to which tokens from the `Token` datatype:
 * We use `$$` to designate one parameter of a token constructor as the **value** of that token
 
     * we will refer back to it from the production rules
-    
+
 <br>
 <br>
 <br>
@@ -538,31 +572,31 @@ Aexpr : TNUM                    { AConst $1    }
       | ID                      { AVar   $1    }
       | '(' Aexpr ')'           { $2           }
       | Aexpr '*' Aexpr         { AMul   $1 $3 }
-      | Aexpr '+' Aexpr         { APlus  $1 $3 } 
+      | Aexpr '+' Aexpr         { APlus  $1 $3 }
       | Aexpr '-' Aexpr         { AMinus $1 $3 }
 ```
 
 The expression on the right computes the *value* of this node
 
   * `$1 $2 $3` refer to the *values* of the respective child nodes
-  
+
 <br>
-<br>  
-  
+<br>
+
 **Example:** parsing `(2)` as `AExpr`:
 
-  1. Lexer returns a sequence of `Token`s: `[LPAREN, NUM 2, RPAREN]` 
-  
+  1. Lexer returns a sequence of `Token`s: `[LPAREN, NUM 2, RPAREN]`
+
   2. `LPAREN` is the token for terminal `'('`, so let's pick production `'(' Aexpr ')'`
-  
+
   3. Now we have to parse `NUM 2` as `Aexpr` and `RPAREN` as `')'`
 
   4. `NUM 2` is a token for nonterminal `TNUM`, so let's pick production `TNUM`
 
   5. The value of this `Aexpr` node is `AConst 2`, since the value of `TNUM` is `2`
-  
+
   6. The value of the top-level `Aexpr` node is also `AConst 2` (see the `'(' Aexpr ')'` production)
-  
+
 <br>
 <br>
 <br>
@@ -570,8 +604,8 @@ The expression on the right computes the *value* of this node
 <br>
 <br>
 <br>
-<br>  
-  
+<br>
+
 ## QUIZ
 
 What is the value of the root `AExpr` node when parsing `1 + 2 + 3`?
@@ -581,7 +615,7 @@ Aexpr : TNUM                    { AConst $1    }
       | ID                      { AVar   $1    }
       | '(' Aexpr ')'           { $2           }
       | Aexpr '*' Aexpr         { AMul   $1 $3 }
-      | Aexpr '+' Aexpr         { APlus  $1 $3 } 
+      | Aexpr '+' Aexpr         { APlus  $1 $3 }
       | Aexpr '-' Aexpr         { AMinus $1 $3 }
 ```
 
@@ -644,7 +678,7 @@ We can test the function like so:
     λ> evalString [] "2 - 1 - 1"
     ???
     ```
-    
+
 (I) final
 
     ```haskell
@@ -660,7 +694,7 @@ We can test the function like so:
     λ> evalString [] "2 - 1 - 1"
     2
     ```
-    
+
 
 <br>
 <br>
@@ -755,7 +789,7 @@ Now I cannot parse the string `2 * 5 + 5` as
 
 This problem is so common that parser generators have a special syntax for it!
 
-```haskell 
+```haskell
 %left '+' '-'
 %left '*' '/'
 ```
@@ -764,7 +798,7 @@ What this means:
 
   - All our operators are left-associative
   - Operators on the lower line have higher precedence
-  
+
 <br>
 <br>
 <br>
@@ -774,11 +808,11 @@ What this means:
 <br>
 <br>
 
-That's all folks!  
+That's all folks!
 
 
 
-[0]: https://github.com/ucsd-cse130/arith/blob/master/src/Language/Arith/Types.hs 
+[0]: https://github.com/ucsd-cse130/arith/blob/master/src/Language/Arith/Types.hs
 [1]: https://github.com/ucsd-cse130/arith/blob/master/src/Language/Arith/Parser0.y
 [2]: https://github.com/ucsd-cse130/arith/blob/master/src/Language/Arith/Lexer.x
 [3]: https://github.com/ucsd-cse130/arith/blob/master/src/Language/Arith/Parser1.y

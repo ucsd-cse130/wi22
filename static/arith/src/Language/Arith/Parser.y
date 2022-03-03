@@ -14,7 +14,7 @@ import Control.Exception
 }
 
 -- Entry point
-%name aexpr 
+%name aexpr
 
 -- Lexer structure
 %tokentype { Token }
@@ -35,20 +35,20 @@ import Control.Exception
     ')'   { RPAREN _ }
 
 -- Operators
--- %left '+' '-'
--- %left '*' '/'
+%left '+' '-'
+%left '*' '/'
 %%
 
-Aexpr : BinExp                   { $1           }
-      | TNUM                     { AConst $1    }
-      | ID                       { AVar   $1    }
-      | '(' Aexpr ')'            { $2           }
+Aexpr : TNUM                    { AConst $1    }
+      | ID                      { AVar   $1    }
+      | '(' Aexpr ')'           { $2           }
+      | Aexpr '+' Aexpr         { APlus  $1 $3 }
+      | Aexpr '-' Aexpr         { AMinus $1 $3 }
+      | Aexpr '*' Aexpr         { AMul   $1 $3 }
+      | Aexpr '/' Aexpr         { ADiv   $1 $3 }
 
-BinExp : Aexpr '+' Aexpr         { APlus  $1 $3 } 
-       | Aexpr '-' Aexpr         { AMinus $1 $3 }
-       | Aexpr '*' Aexpr         { AMul   $1 $3 }
-       | Aexpr '/' Aexpr         { ADiv   $1 $3 }
-       
+
+
 {
 
 parseError :: [Token] -> Except String a

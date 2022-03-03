@@ -22,10 +22,10 @@ The live-edited code for each lecture can be found [here][code].
 | 2/17       | Environments & Closures    | [html][lec5] [pdf][pdf5]  |
 | 2/22       | contd.                     | contd.                    |
 | 2/24       | Lexing and Parsing         | [html][lec6] [pdf][pdf6]  |
-| 3/1        | Overloading & Type Classes | [html][lec7] [pdf][pdf7]  | 
+| 3/1        | Overloading & Type Classes | [html][lec7] [pdf]        | 
+| 3/3        | Functors & Monads          | [html][lec8] [pdf][pdf8]  | 
 
 <!-- 
-| 3/3        | Functors & Monads          | [html][lec8] [pdf][pdf8]  | 
 | 3/8 	     | Hello, world! (IO Monad)   | [html][lec9] [pdf][pdf9]  |
 -->
 
@@ -66,6 +66,7 @@ The live-edited code for each lecture can be found [here][code].
 [pdf4]: /static/raw/04-hof.pdf
 [pdf5]: /static/raw/05-environments.pdf
 [pdf6]: /static/raw/06-parsing.pdf
+[pdf8]: /static/raw/08-monads.pdf
 
 [code]: https://github.com/ucsd-cse130/wi21/tree/master/static/code/src
 [arith]: https://github.com/ucsd-cse130/wi21/tree/master/static/arith
