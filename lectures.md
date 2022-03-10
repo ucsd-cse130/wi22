@@ -17,32 +17,27 @@ The live-edited code for each lecture can be found [here][code].
 | 2/1        | contd.                     | contd.                    |
 | 2/3        | contd.                     | contd.                    |
 | 2/8        | Higher Order Functions     | [html][lec4] [pdf][pdf4]  | 
-| 2/10       | **midterm** 		  | contd.                    |
+| 2/10       | **midterm** 		  |                           |
 | 2/15       | contd. 		          | contd. 		      |
 | 2/17       | Environments & Closures    | [html][lec5] [pdf][pdf5]  |
 | 2/22       | contd.                     | contd.                    |
 | 2/24       | Lexing and Parsing         | [html][lec6] [pdf][pdf6]  |
 | 3/1        | Overloading & Type Classes | [html][lec7] [pdf]        | 
-| 3/3        | Functors & Monads          | [html][lec8] [pdf][pdf8]  | 
-
-<!-- 
-| 3/8 	     | Hello, world! (IO Monad)   | [html][lec9] [pdf][pdf9]  |
--->
-
+| 3/3        | contd.                     |                           | 
+| 3/8        | Functors & Monads          | [html][lec8]              | 
+| 3/10 	     | Hello, world! (IO Monad)   | [html][lec9]              |
+| 3/15       | **final** 		  |                           |
 
 <!-- 
 ## Discussions
-
 | Date       | Topic                    | Slides               | 
 |:----------:|:-------------------------|:--------------------:|
-
 | 1/6        | Lambda Calculus & Elsa   | [blank][disc1-blank], [annotated][disc1-annotated]  |
 | 1/14       | Lambda Calculus          | [pdf][disc1]         |
 | 3/17       | Final Review             | [html][final-review] |
 | 2/25       | Nano: Parsing and Eval   | [pdf][disc5]  |
 | 3/4        | Type checking tips       | [pdf][disc6]  |
 | 3/11       | Final Review             | [pdf][discFinal] |
-
 -->
 
 [lec0]: lectures/00-hello.html
